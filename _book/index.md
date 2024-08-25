@@ -1,7 +1,7 @@
 ---
 title: "An Introduction to Research Methods in Mass Media"
 author: "Alex P Leith"
-date: "2024-08-18"
+date: "2024-08-23"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 mainfont: Lucida Handwriting

@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 8 Special Topics in Research Methods | An Introduction to Research Methods in Mass Media</title>
+  <title>Chapter 13 Special Topics in Research Methods | An Introduction to Research Methods in Mass Media</title>
   <meta name="description" content="This is the textbook for MC 451 at SIU Edwardsville." />
   <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 8 Special Topics in Research Methods | An Introduction to Research Methods in Mass Media" />
+  <meta property="og:title" content="Chapter 13 Special Topics in Research Methods | An Introduction to Research Methods in Mass Media" />
   <meta property="og:type" content="book" />
   <meta property="og:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg" />
   <meta property="og:description" content="This is the textbook for MC 451 at SIU Edwardsville." />
   <meta name="github-repo" content="SIM-Lab-SIUE/mc451-fall24" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 8 Special Topics in Research Methods | An Introduction to Research Methods in Mass Media" />
+  <meta name="twitter:title" content="Chapter 13 Special Topics in Research Methods | An Introduction to Research Methods in Mass Media" />
   
   <meta name="twitter:description" content="This is the textbook for MC 451 at SIU Edwardsville." />
   <meta name="twitter:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg" />
@@ -23,14 +23,14 @@
 <meta name="author" content="Alex P Leith" />
 
 
-<meta name="date" content="2024-08-18" />
+<meta name="date" content="2024-08-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="writing-and-presenting-research.html"/>
+<link rel="prev" href="data-visualization-in-r.html"/>
 <link rel="next" href="appendix-1.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
@@ -54,6 +54,70 @@
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
 
 <style type="text/css">
   
@@ -73,121 +137,355 @@
 
 <ul class="summary">
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Preface</a></li>
-<li class="chapter" data-level="2" data-path="introduction-to-research-in-mass-communications.html"><a href="introduction-to-research-in-mass-communications.html"><i class="fa fa-check"></i><b>2</b> Introduction to Research in Mass Communications</a>
+<li class="chapter" data-level="2" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html"><i class="fa fa-check"></i><b>2</b> Overview of Research Methods</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="introduction-to-research-in-mass-communications.html"><a href="introduction-to-research-in-mass-communications.html#overview-of-research-methods"><i class="fa fa-check"></i><b>2.1</b> Overview of Research Methods</a>
+<li class="chapter" data-level="2.1" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#definition-and-importance-of-research"><i class="fa fa-check"></i><b>2.1</b> Definition and Importance of Research</a>
 <ul>
-<li class="chapter" data-level="" data-path="introduction-to-research-in-mass-communications.html"><a href="introduction-to-research-in-mass-communications.html#definition-and-importance-of-research"><i class="fa fa-check"></i>Definition and Importance of Research</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-in-mass-communications.html"><a href="introduction-to-research-in-mass-communications.html#qualitative-vs.-quantitative"><i class="fa fa-check"></i>Qualitative vs. Quantitative</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#artifacts-in-mass-communications-research"><i class="fa fa-check"></i>Artifacts in Mass Communications Research</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#attributes-and-their-role-in-research"><i class="fa fa-check"></i>Attributes and Their Role in Research</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#the-significance-of-content-analysis"><i class="fa fa-check"></i>The Significance of Content Analysis</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#studying-media-portrayals"><i class="fa fa-check"></i>Studying Media Portrayals</a></li>
 </ul></li>
-<li class="chapter" data-level="2.2" data-path="introduction-to-research-in-mass-communications.html"><a href="introduction-to-research-in-mass-communications.html#research-ethics-and-the-irb-process"><i class="fa fa-check"></i><b>2.2</b> Research Ethics and the IRB Process</a>
+<li class="chapter" data-level="2.2" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#qualitative-vs.-quantitative"><i class="fa fa-check"></i><b>2.2</b> Qualitative vs. Quantitative</a>
 <ul>
-<li class="chapter" data-level="" data-path="introduction-to-research-in-mass-communications.html"><a href="introduction-to-research-in-mass-communications.html#ethics-in-research"><i class="fa fa-check"></i>Ethics in Research</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-in-mass-communications.html"><a href="introduction-to-research-in-mass-communications.html#navigating-the-irb-process"><i class="fa fa-check"></i>Navigating the IRB Process</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-in-mass-communications.html"><a href="introduction-to-research-in-mass-communications.html#ethical-considerations-specific-to-mass-media-research"><i class="fa fa-check"></i>Ethical Considerations Specific to Mass Media Research</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html"><i class="fa fa-check"></i><b>3</b> Developing Research Questions and Hypotheses</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#formulating-research-questions"><i class="fa fa-check"></i><b>3.1</b> Formulating Research Questions</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#conceptual-definitions-and-operationalization"><i class="fa fa-check"></i><b>3.1.1</b> Conceptual Definitions and Operationalization</a></li>
-<li class="chapter" data-level="3.1.2" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#constructing-hypotheses"><i class="fa fa-check"></i><b>3.1.2</b> Constructing Hypotheses</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#measurement-and-variables"><i class="fa fa-check"></i><b>3.2</b> Measurement and Variables</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#levels-of-measurement"><i class="fa fa-check"></i><b>3.2.1</b> Levels of Measurement</a></li>
-<li class="chapter" data-level="3.2.2" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#identifying-independent-and-dependent-variables"><i class="fa fa-check"></i><b>3.2.2</b> Identifying Independent and Dependent Variables</a></li>
-<li class="chapter" data-level="3.2.3" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#issues-in-measurement"><i class="fa fa-check"></i><b>3.2.3</b> Issues in Measurement</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#qualitative-research"><i class="fa fa-check"></i>Qualitative Research</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#quantitative-research"><i class="fa fa-check"></i>Quantitative Research</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#mixed-methods-approach"><i class="fa fa-check"></i>Mixed Methods Approach</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html"><i class="fa fa-check"></i><b>4</b> Designing Quantitative Research</a>
+<li class="chapter" data-level="3" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html"><i class="fa fa-check"></i><b>3</b> Research Ethics and the IRB Process</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#research-design"><i class="fa fa-check"></i><b>4.1</b> Research Design</a>
+<li class="chapter" data-level="3.1" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#ethics-in-research"><i class="fa fa-check"></i><b>3.1</b> Ethics in Research</a>
 <ul>
-<li class="chapter" data-level="4.1.1" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#experimental-designs"><i class="fa fa-check"></i><b>4.1.1</b> Experimental Designs</a></li>
-<li class="chapter" data-level="4.1.2" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#non-experimental-designs"><i class="fa fa-check"></i><b>4.1.2</b> Non-experimental Designs</a></li>
-<li class="chapter" data-level="4.1.3" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#sampling-methods"><i class="fa fa-check"></i><b>4.1.3</b> Sampling Methods</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#informed-consent"><i class="fa fa-check"></i>Informed Consent</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#confidentiality"><i class="fa fa-check"></i>Confidentiality</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#anonymity"><i class="fa fa-check"></i>Anonymity</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#ethical-challenges-and-considerations"><i class="fa fa-check"></i>Ethical Challenges and Considerations</a></li>
 </ul></li>
-<li class="chapter" data-level="4.2" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#data-collection-techniques"><i class="fa fa-check"></i><b>4.2</b> Data Collection Techniques</a>
+<li class="chapter" data-level="3.2" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#navigating-the-irb-process"><i class="fa fa-check"></i><b>3.2</b> Navigating the IRB Process</a>
 <ul>
-<li class="chapter" data-level="4.2.1" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#surveys-and-questionnaires"><i class="fa fa-check"></i><b>4.2.1</b> Surveys and Questionnaires</a></li>
-<li class="chapter" data-level="4.2.2" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#observation-methods"><i class="fa fa-check"></i><b>4.2.2</b> Observation Methods</a></li>
-<li class="chapter" data-level="4.2.3" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#content-analysis"><i class="fa fa-check"></i><b>4.2.3</b> Content Analysis</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#developing-consent-forms"><i class="fa fa-check"></i>Developing Consent Forms</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-debriefing-process"><i class="fa fa-check"></i>The Debriefing Process</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#assessing-and-minimizing-harm"><i class="fa fa-check"></i>Assessing and Minimizing Harm</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#offering-incentives"><i class="fa fa-check"></i>Offering Incentives</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#submission-and-review-protocols"><i class="fa fa-check"></i>Submission and Review Protocols</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html"><i class="fa fa-check"></i><b>5</b> Data Analysis and Statistical Techniques</a>
+<li class="chapter" data-level="3.3" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#ethical-considerations-specific-to-mass-media-research"><i class="fa fa-check"></i><b>3.3</b> Ethical Considerations Specific to Mass Media Research</a>
 <ul>
-<li class="chapter" data-level="5.1" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html#descriptive-statistics"><i class="fa fa-check"></i><b>5.1</b> Descriptive Statistics</a>
-<ul>
-<li class="chapter" data-level="5.1.1" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>5.1.1</b> Measures of Central Tendency</a></li>
-<li class="chapter" data-level="5.1.2" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html#measures-of-dispersion"><i class="fa fa-check"></i><b>5.1.2</b> Measures of Dispersion</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html#inferential-statistics"><i class="fa fa-check"></i><b>5.2</b> Inferential Statistics</a>
-<ul>
-<li class="chapter" data-level="5.2.1" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html#hypothesis-testing"><i class="fa fa-check"></i><b>5.2.1</b> Hypothesis Testing</a></li>
-<li class="chapter" data-level="5.2.2" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html#comparing-groups"><i class="fa fa-check"></i><b>5.2.2</b> Comparing Groups</a></li>
-<li class="chapter" data-level="5.2.3" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html#correlation-and-regression"><i class="fa fa-check"></i><b>5.2.3</b> Correlation and Regression</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html#advanced-statistical-techniques"><i class="fa fa-check"></i><b>5.3</b> Advanced Statistical Techniques</a>
-<ul>
-<li class="chapter" data-level="5.3.1" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html#multivariate-analysis"><i class="fa fa-check"></i><b>5.3.1</b> Multivariate Analysis</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="data-analysis-and-statistical-techniques.html"><a href="data-analysis-and-statistical-techniques.html#controlling-for-confounds"><i class="fa fa-check"></i><b>5.4</b> Controlling for Confounds</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="data-management-and-visualization.html"><a href="data-management-and-visualization.html"><i class="fa fa-check"></i><b>6</b> Data Management and Visualization</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="data-management-and-visualization.html"><a href="data-management-and-visualization.html#rstudio"><i class="fa fa-check"></i><b>6.1</b> RStudio</a>
-<ul>
-<li class="chapter" data-level="6.1.1" data-path="data-management-and-visualization.html"><a href="data-management-and-visualization.html#introduction-to-rstudio"><i class="fa fa-check"></i><b>6.1.1</b> Introduction to RStudio</a></li>
-<li class="chapter" data-level="6.1.2" data-path="data-management-and-visualization.html"><a href="data-management-and-visualization.html#data-management-in-r"><i class="fa fa-check"></i><b>6.1.2</b> Data Management in R</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="data-management-and-visualization.html"><a href="data-management-and-visualization.html#data-visualization"><i class="fa fa-check"></i><b>6.2</b> Data Visualization</a>
-<ul>
-<li class="chapter" data-level="6.2.1" data-path="data-management-and-visualization.html"><a href="data-management-and-visualization.html#advanced-visualization-techniques"><i class="fa fa-check"></i><b>6.2.1</b> Advanced Visualization Techniques</a></li>
-<li class="chapter" data-level="6.2.2" data-path="data-management-and-visualization.html"><a href="data-management-and-visualization.html#creating-infographics"><i class="fa fa-check"></i><b>6.2.2</b> Creating Infographics</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-observer-effect"><i class="fa fa-check"></i>The Observer Effect</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-observer-as-participant-role"><i class="fa fa-check"></i>The Observer-as-Participant Role</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#ethical-considerations-and-strategies-for-mitigation"><i class="fa fa-check"></i>Ethical Considerations and Strategies for Mitigation</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="writing-and-presenting-research.html"><a href="writing-and-presenting-research.html"><i class="fa fa-check"></i><b>7</b> Writing and Presenting Research</a>
+<li class="chapter" data-level="4" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html"><i class="fa fa-check"></i><b>4</b> Introduction to Research Papers</a>
 <ul>
-<li class="chapter" data-level="7.1" data-path="writing-and-presenting-research.html"><a href="writing-and-presenting-research.html#writing-the-research-report"><i class="fa fa-check"></i><b>7.1</b> Writing the Research Report</a>
+<li class="chapter" data-level="4.1" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#what-are-research-papers"><i class="fa fa-check"></i><b>4.1</b> What are Research Papers</a></li>
+<li class="chapter" data-level="4.2" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#find"><i class="fa fa-check"></i><b>4.2</b> How to Find Research Papers</a>
 <ul>
-<li class="chapter" data-level="7.1.1" data-path="writing-and-presenting-research.html"><a href="writing-and-presenting-research.html#structure-of-a-research-report"><i class="fa fa-check"></i><b>7.1.1</b> Structure of a Research Report</a></li>
-<li class="chapter" data-level="7.1.2" data-path="writing-and-presenting-research.html"><a href="writing-and-presenting-research.html#apa-formatting-and-citation"><i class="fa fa-check"></i><b>7.1.2</b> APA Formatting and Citation</a></li>
-<li class="chapter" data-level="7.1.3" data-path="writing-and-presenting-research.html"><a href="writing-and-presenting-research.html#common-writing-challenges"><i class="fa fa-check"></i><b>7.1.3</b> Common Writing Challenges</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#use-a-specialized-search-engine."><i class="fa fa-check"></i>Use a specialized search engine.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#check-your-university-library."><i class="fa fa-check"></i>Check your university library.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#search-for-preprints."><i class="fa fa-check"></i>Search for preprints.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#use-social-media."><i class="fa fa-check"></i>Use social media.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#contact-experts-in-your-field."><i class="fa fa-check"></i>Contact experts in your field.</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="writing-and-presenting-research.html"><a href="writing-and-presenting-research.html#presenting-research-findings"><i class="fa fa-check"></i><b>7.2</b> Presenting Research Findings</a>
+<li class="chapter" data-level="4.3" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#read"><i class="fa fa-check"></i><b>4.3</b> How to Read Research Papers</a>
 <ul>
-<li class="chapter" data-level="7.2.1" data-path="writing-and-presenting-research.html"><a href="writing-and-presenting-research.html#creating-effective-presentations"><i class="fa fa-check"></i><b>7.2.1</b> Creating Effective Presentations</a></li>
-<li class="chapter" data-level="7.2.2" data-path="writing-and-presenting-research.html"><a href="writing-and-presenting-research.html#engaging-public-audiences"><i class="fa fa-check"></i><b>7.2.2</b> Engaging Public Audiences</a></li>
-<li class="chapter" data-level="7.2.3" data-path="writing-and-presenting-research.html"><a href="writing-and-presenting-research.html#final-project-feature-article-or-infographic"><i class="fa fa-check"></i><b>7.2.3</b> Final Project: Feature Article or Infographic</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-three-pass-approach."><i class="fa fa-check"></i>The three-pass approach.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-question-based-approach."><i class="fa fa-check"></i>The question-based approach.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-active-reading-approach."><i class="fa fa-check"></i>The active reading approach.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-collaborative-reading-approach."><i class="fa fa-check"></i>The collaborative reading approach.</a></li>
 </ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html"><i class="fa fa-check"></i><b>8</b> Special Topics in Research Methods</a>
+<li class="chapter" data-level="4.4" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#write"><i class="fa fa-check"></i><b>4.4</b> How to Write Research Papers</a>
 <ul>
-<li class="chapter" data-level="8.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#ethical-issues-in-emerging-media-research"><i class="fa fa-check"></i><b>8.1</b> Ethical Issues in Emerging Media Research</a>
-<ul>
-<li class="chapter" data-level="8.1.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#digital-privacy-and-research"><i class="fa fa-check"></i><b>8.1.1</b> Digital Privacy and Research</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#current-trends-in-mass-media-research"><i class="fa fa-check"></i><b>8.2</b> Current Trends in Mass Media Research</a>
-<ul>
-<li class="chapter" data-level="8.2.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#data-driven-journalism"><i class="fa fa-check"></i><b>8.2.1</b> Data-Driven Journalism</a></li>
-<li class="chapter" data-level="8.2.2" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#critical-analysis-and-rhetorical-criticism"><i class="fa fa-check"></i><b>8.2.2</b> Critical Analysis and Rhetorical Criticism</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#sections-of-an-academic-paper"><i class="fa fa-check"></i>Sections of an Academic Paper</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#information-for-inclusion"><i class="fa fa-check"></i>Information for Inclusion</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#examples-of-formal-reports"><i class="fa fa-check"></i>Examples of Formal Reports</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html"><i class="fa fa-check"></i>Appendix</a>
+<li class="chapter" data-level="5" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html"><i class="fa fa-check"></i><b>5</b> Writing for a Public Audience</a>
 <ul>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#glossary-of-terms"><i class="fa fa-check"></i>Glossary of Terms</a>
+<li class="chapter" data-level="5.1" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#communication-strategies"><i class="fa fa-check"></i><b>5.1</b> Communication Strategies</a>
 <ul>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#introduction-to-research-in-mass-communications-1"><i class="fa fa-check"></i>2. <strong>Introduction to Research in Mass Communications</strong></a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#crafting-compelling-messages"><i class="fa fa-check"></i>Crafting Compelling Messages</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#common-formats"><i class="fa fa-check"></i><b>5.2</b> Common Formats</a>
+<ul>
+<li class="chapter" data-level="5.2.1" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#feature-article"><i class="fa fa-check"></i><b>5.2.1</b> Feature Article</a></li>
+<li class="chapter" data-level="5.2.2" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#infographic-with-white-paper"><i class="fa fa-check"></i><b>5.2.2</b> Infographic with White Paper</a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#news-broadcast-script-with-storyboarding"><i class="fa fa-check"></i>News Broadcast Script with Storyboarding</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#utilizing-social-media-platforms"><i class="fa fa-check"></i><b>5.3</b> Utilizing Social Media Platforms</a>
+<ul>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#strengths-and-limitations"><i class="fa fa-check"></i>Strengths and Limitations</a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#twitter"><i class="fa fa-check"></i>Twitter</a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#facebook"><i class="fa fa-check"></i>Facebook</a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#linkedin"><i class="fa fa-check"></i>LinkedIn</a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#instagram"><i class="fa fa-check"></i>Instagram</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html"><i class="fa fa-check"></i><b>6</b> Developing Research Questions and Hypotheses</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#formulating-research-questions"><i class="fa fa-check"></i><b>6.1</b> Formulating Research Questions</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#conceptual-definitions-and-operationalization"><i class="fa fa-check"></i><b>6.1.1</b> Conceptual Definitions and Operationalization</a></li>
+<li class="chapter" data-level="6.1.2" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#constructing-hypotheses"><i class="fa fa-check"></i><b>6.1.2</b> Constructing Hypotheses</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#measurement-and-variables"><i class="fa fa-check"></i><b>6.2</b> Measurement and Variables</a>
+<ul>
+<li class="chapter" data-level="6.2.1" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#levels-of-measurement"><i class="fa fa-check"></i><b>6.2.1</b> Levels of Measurement</a></li>
+<li class="chapter" data-level="6.2.2" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#identifying-independent-and-dependent-variables"><i class="fa fa-check"></i><b>6.2.2</b> Identifying Independent and Dependent Variables</a></li>
+<li class="chapter" data-level="6.2.3" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#issues-in-measurement"><i class="fa fa-check"></i><b>6.2.3</b> Issues in Measurement</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#interpreting-and-discussing-findings"><i class="fa fa-check"></i><b>6.3</b> Interpreting and Discussing Findings</a>
+<ul>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#best-practices-for-interpreting-statistical-results"><i class="fa fa-check"></i>Best Practices for Interpreting Statistical Results</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#reporting-statistical-findings-in-research-papers-and-presentations"><i class="fa fa-check"></i>Reporting Statistical Findings in Research Papers and Presentations</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#visualizing-data-and-results-effectively-using-rs-plotting-capabilities"><i class="fa fa-check"></i>Visualizing Data and Results Effectively Using R’s Plotting Capabilities</a></li>
+</ul></li>
+<li class="chapter" data-level="6.4" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#ensuring-reproducibility"><i class="fa fa-check"></i><b>6.4</b> Ensuring Reproducibility</a>
+<ul>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-importance-of-reproducible-research-in-mass-communications"><i class="fa fa-check"></i>The Importance of Reproducible Research in Mass Communications</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#using-r-markdown-to-create-dynamic-reports"><i class="fa fa-check"></i>Using R Markdown to Create Dynamic Reports</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html"><i class="fa fa-check"></i><b>7</b> Designing Quantitative Research</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#research-design"><i class="fa fa-check"></i><b>7.1</b> Research Design</a>
+<ul>
+<li class="chapter" data-level="7.1.1" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#experimental-designs"><i class="fa fa-check"></i><b>7.1.1</b> Experimental Designs</a></li>
+<li class="chapter" data-level="7.1.2" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#non-experimental-designs"><i class="fa fa-check"></i><b>7.1.2</b> Non-experimental Designs</a></li>
+<li class="chapter" data-level="7.1.3" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#sampling-methods"><i class="fa fa-check"></i><b>7.1.3</b> Sampling Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#data-collection-techniques"><i class="fa fa-check"></i><b>7.2</b> Data Collection Techniques</a>
+<ul>
+<li class="chapter" data-level="7.2.1" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#surveys-and-questionnaires"><i class="fa fa-check"></i><b>7.2.1</b> Surveys and Questionnaires</a></li>
+<li class="chapter" data-level="7.2.2" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#observation-methods"><i class="fa fa-check"></i><b>7.2.2</b> Observation Methods</a></li>
+<li class="chapter" data-level="7.2.3" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#content-analysis"><i class="fa fa-check"></i><b>7.2.3</b> Content Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html"><i class="fa fa-check"></i><b>8</b> Introduction to R and RStudio for Beginners</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#introduction-to-r"><i class="fa fa-check"></i><b>8.1</b> Introduction to R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#overview-of-r-as-a-statistical-programming-language"><i class="fa fa-check"></i>Overview of R as a Statistical Programming Language</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#the-significance-of-r-in-data-analysis-visualization-and-mass-communications-research"><i class="fa fa-check"></i>The Significance of R in Data Analysis, Visualization, and Mass Communications Research</a></li>
+<li class="chapter" data-level="8.1.1" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#comparison-with-other-statistical-software"><i class="fa fa-check"></i><b>8.1.1</b> Comparison with Other Statistical Software</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#a-note-about-r"><i class="fa fa-check"></i><b>8.2</b> A Note About R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#the-philosophy-behind-r-open-source-and-community-contributions"><i class="fa fa-check"></i>The Philosophy Behind R: Open Source and Community Contributions</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#importance-of-reproducible-research-and-rs-role-in-facilitating-this"><i class="fa fa-check"></i>Importance of Reproducible Research and R’s Role in Facilitating This</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#getting-started-with-r-and-rstudio"><i class="fa fa-check"></i><b>8.3</b> Getting Started with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#installing-r-and-rstudio"><i class="fa fa-check"></i>Installing R and RStudio</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#overview-of-the-rstudio-interface"><i class="fa fa-check"></i>Overview of the RStudio Interface</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#setting-up-a-new-project-in-rstudio"><i class="fa fa-check"></i>Setting Up a New Project in RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#basic-concepts-in-r-programming"><i class="fa fa-check"></i><b>8.4</b> Basic Concepts in R Programming</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#understanding-r-syntax"><i class="fa fa-check"></i>Understanding R Syntax</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#data-types-and-structures"><i class="fa fa-check"></i>Data Types and Structures</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#basic-operations"><i class="fa fa-check"></i>Basic Operations</a></li>
+</ul></li>
+<li class="chapter" data-level="8.5" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#introduction-to-coding-in-r"><i class="fa fa-check"></i><b>8.5</b> Introduction to Coding in R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#writing-your-first-r-script"><i class="fa fa-check"></i>Writing Your First R Script</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#saving-and-executing-scripts"><i class="fa fa-check"></i>Saving and Executing Scripts</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#commenting-and-organizing-code"><i class="fa fa-check"></i>Commenting and Organizing Code</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#introduction-to-data-analysis-in-r"><i class="fa fa-check"></i><b>8.6</b> Introduction to Data Analysis in R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#the-significance-of-r-in-statistical-analysis-for-mass-communications-research"><i class="fa fa-check"></i>The Significance of R in Statistical Analysis for Mass Communications Research</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#overview-of-the-types-of-statistical-analyses-commonly-conducted-in-mass-communications"><i class="fa fa-check"></i>Overview of the Types of Statistical Analyses Commonly Conducted in Mass Communications</a></li>
+</ul></li>
+<li class="chapter" data-level="8.7" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#understanding-error-in-r"><i class="fa fa-check"></i><b>8.7</b> Understanding Error in R</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#common-types-of-errors-and-warnings-in-r"><i class="fa fa-check"></i>Common Types of Errors and Warnings in R</a></li>
+<li class="chapter" data-level="8.7.1" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#debugging-tips-interpreting-error-messages-and-troubleshooting"><i class="fa fa-check"></i><b>8.7.1</b> Debugging Tips: Interpreting Error Messages and Troubleshooting</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#best-practices-for-avoiding-common-mistakes"><i class="fa fa-check"></i>Best Practices for Avoiding Common Mistakes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.8" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#using-the-research-project-worksheet"><i class="fa fa-check"></i><b>8.8</b> Using the Research Project Worksheet</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#organizing-research-projects-in-rstudio-using-projects-and-r-scripts"><i class="fa fa-check"></i>Organizing Research Projects in RStudio using Projects and R Scripts</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#utilizing-r-markdown-for-integrating-data-analysis-and-report-writing"><i class="fa fa-check"></i>Utilizing R Markdown for Integrating Data Analysis and Report Writing</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#managing-data-importing-viewing-and-basic-manipulation-of-datasets"><i class="fa fa-check"></i>Managing Data: Importing, Viewing, and Basic Manipulation of Datasets</a></li>
+</ul></li>
+<li class="chapter" data-level="8.9" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#effective-practices-for-r-users"><i class="fa fa-check"></i><b>8.9</b> Effective Practices for R Users</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#installing-and-managing-packages-in-r"><i class="fa fa-check"></i>Installing and Managing Packages in R</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#seeking-help-using-built-in-help-features-and-online-resources"><i class="fa fa-check"></i>Seeking Help: Using Built-in Help Features and Online Resources</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio-for-beginners.html"><a href="introduction-to-r-and-rstudio-for-beginners.html#engaging-with-the-r-community-forums-social-media-and-conferences"><i class="fa fa-check"></i>Engaging with the R Community: Forums, Social Media, and Conferences</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>9</b> Data</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="data.html"><a href="data.html#defining-data"><i class="fa fa-check"></i><b>9.1</b> Defining Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#explanation-of-data-in-the-context-of-research"><i class="fa fa-check"></i>Explanation of Data in the Context of Research</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="data.html"><a href="data.html#variables-and-observations"><i class="fa fa-check"></i><b>9.2</b> Variables and Observations</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#define-variables-and-observations"><i class="fa fa-check"></i>Define Variables and Observations</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#explanation-of-data-types"><i class="fa fa-check"></i>Explanation of Data Types</a></li>
+</ul></li>
+<li class="chapter" data-level="9.3" data-path="data.html"><a href="data.html#collecting-data"><i class="fa fa-check"></i><b>9.3</b> Collecting Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#primary-and-secondary-data"><i class="fa fa-check"></i>Primary and Secondary Data</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#discussion-of-primary-vs.-secondary-data-collection-methods"><i class="fa fa-check"></i>Discussion of Primary vs. Secondary Data Collection Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="9.4" data-path="data.html"><a href="data.html#data-sources"><i class="fa fa-check"></i><b>9.4</b> Data Sources</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#web-scraping-apis-and-existing-databases"><i class="fa fa-check"></i>Web Scraping, APIs, and Existing Databases</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#importance-of-credible-data-sources"><i class="fa fa-check"></i>Importance of Credible Data Sources</a></li>
+</ul></li>
+<li class="chapter" data-level="9.5" data-path="data.html"><a href="data.html#cleaning-data-for-visualizations-and-analyses"><i class="fa fa-check"></i><b>9.5</b> Cleaning Data for Visualizations and Analyses</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#how-to-import-csv-files-into-r"><i class="fa fa-check"></i>How to Import CSV Files into R</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#handling-missing-data"><i class="fa fa-check"></i>Handling Missing Data</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#data-transformation"><i class="fa fa-check"></i>Data Transformation</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#outliers-and-normalization"><i class="fa fa-check"></i>Outliers and Normalization</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#normalization-techniques"><i class="fa fa-check"></i>Normalization Techniques</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html"><i class="fa fa-check"></i><b>10</b> Descriptive Analysis</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>10.1</b> Measures of Central Tendency</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#load-data"><i class="fa fa-check"></i>Load data</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#mean"><i class="fa fa-check"></i>Mean</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#median"><i class="fa fa-check"></i>Median</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#mode"><i class="fa fa-check"></i>Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#measures-of-dispersion"><i class="fa fa-check"></i><b>10.2</b> Measures of Dispersion</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#range"><i class="fa fa-check"></i>Range</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#standard-deviation"><i class="fa fa-check"></i>Standard Deviation</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#general-summary"><i class="fa fa-check"></i><b>10.3</b> General Summary</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#summary"><i class="fa fa-check"></i><code>summary()</code></a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#skimr"><i class="fa fa-check"></i><code>skimr</code></a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="inferential-analysis.html"><a href="inferential-analysis.html"><i class="fa fa-check"></i><b>11</b> Inferential Analysis</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="inferential-analysis.html"><a href="inferential-analysis.html#understanding-chi-square-tests"><i class="fa fa-check"></i><b>11.1</b> Understanding Chi-Square Tests</a>
+<ul>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#background-information-on-chi-square-tests-and-their-application"><i class="fa fa-check"></i>Background Information on Chi-Square Tests and Their Application</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#conducting-chi-square-tests-for-independence-in-r-code-examples-and-interpretation-of-results"><i class="fa fa-check"></i>Conducting Chi-Square Tests for Independence in R: Code Examples and Interpretation of Results</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#discussing-findings-from-chi-square-analyses-in-the-context-of-mass-communications-research"><i class="fa fa-check"></i>Discussing Findings from Chi-Square Analyses in the Context of Mass Communications Research</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="inferential-analysis.html"><a href="inferential-analysis.html#comparison-of-means"><i class="fa fa-check"></i><b>11.2</b> Comparison of Means</a>
+<ul>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#t-test"><i class="fa fa-check"></i>T-test</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#analysis-of-variance-anova"><i class="fa fa-check"></i>Analysis of Variance (ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="inferential-analysis.html"><a href="inferential-analysis.html#regression-analysis"><i class="fa fa-check"></i><b>11.3</b> Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#simple-linear-regression"><i class="fa fa-check"></i>Simple Linear Regression</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#multiple-linear-regression"><i class="fa fa-check"></i>Multiple Linear Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="inferential-analysis.html"><a href="inferential-analysis.html#calculating-effect-sizes-in-r"><i class="fa fa-check"></i><b>11.4</b> Calculating Effect Sizes in R</a>
+<ul>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#introduction-to-effect-sizes-and-their-importance-in-research"><i class="fa fa-check"></i>Introduction to Effect Sizes and Their Importance in Research</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#calculating-and-interpreting-different-effect-sizes"><i class="fa fa-check"></i>Calculating and Interpreting Different Effect Sizes</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#practical-examples-of-calculating-effect-sizes-in-r"><i class="fa fa-check"></i>Practical Examples of Calculating Effect Sizes in R</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="inferential-analysis.html"><a href="inferential-analysis.html#regression-analysis-1"><i class="fa fa-check"></i><b>11.5</b> Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#background-on-regression-analysis-linear-regression-logistic-regression"><i class="fa fa-check"></i>Background on Regression Analysis: Linear Regression, Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#steps-for-conducting-regression-analysis-in-r"><i class="fa fa-check"></i>Steps for Conducting Regression Analysis in R</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-regression-output"><i class="fa fa-check"></i>Interpreting Regression Output</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#practical-example-in-r"><i class="fa fa-check"></i>Practical Example in R</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#decision-making-based-on-p-values-and-confidence-intervals"><i class="fa fa-check"></i>Decision-making Based on P-values and Confidence Intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html"><i class="fa fa-check"></i><b>12</b> Data Visualization in R</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-data-visualization"><i class="fa fa-check"></i><b>12.1</b> Introduction to Data Visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#the-importance-of-data-visualization-in-mass-communications-research"><i class="fa fa-check"></i>The Importance of Data Visualization in Mass Communications Research</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#overview-of-data-visualization-capabilities-in-r"><i class="fa fa-check"></i>Overview of Data Visualization Capabilities in R</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#visualization-techniques"><i class="fa fa-check"></i><b>12.2</b> Visualization Techniques</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#creating-infographics"><i class="fa fa-check"></i>Creating Infographics</a></li>
+</ul></li>
+<li class="chapter" data-level="12.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#getting-started-with-ggplot2"><i class="fa fa-check"></i><b>12.3</b> Getting Started with ggplot2</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-ggplot2"><i class="fa fa-check"></i>Introduction to ggplot2</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#basic-concepts-of-the-grammar-of-graphics"><i class="fa fa-check"></i>Basic Concepts of the Grammar of Graphics</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#setting-up-rstudio-and-installing-ggplot2"><i class="fa fa-check"></i>Setting Up RStudio and Installing ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="12.4" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#plots"><i class="fa fa-check"></i><b>12.4</b> Plots</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#prepare-workspace"><i class="fa fa-check"></i>Prepare Workspace</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#components-of-ggplot2-in-r"><i class="fa fa-check"></i>Components of ggplot2 in R</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#distribution-plots"><i class="fa fa-check"></i>Distribution Plots</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#correlation-plots"><i class="fa fa-check"></i>Correlation Plots</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#ranking-plots"><i class="fa fa-check"></i>Ranking Plots</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#part-of-a-whole"><i class="fa fa-check"></i>Part of a Whole</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#store-and-edit-plots"><i class="fa fa-check"></i>Store and Edit Plots</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#saving-plots-in-r-markdown"><i class="fa fa-check"></i>Saving Plots in R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="12.5" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#designing-infographics-in-r"><i class="fa fa-check"></i><b>12.5</b> Designing Infographics in R</a>
+<ul>
+<li class="chapter" data-level="12.5.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#overview-of-infographics-and-their-value-in-communicating-research-findings"><i class="fa fa-check"></i><b>12.5.1</b> Overview of Infographics and Their Value in Communicating Research Findings</a></li>
+<li class="chapter" data-level="12.5.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#tools-and-packages-in-r-for-creating-infographics"><i class="fa fa-check"></i><b>12.5.2</b> Tools and Packages in R for Creating Infographics</a></li>
+<li class="chapter" data-level="12.5.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#tips-for-effective-infographic-design"><i class="fa fa-check"></i><b>12.5.3</b> Tips for Effective Infographic Design</a></li>
+</ul></li>
+<li class="chapter" data-level="12.6" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#advanced-visualization-techniques"><i class="fa fa-check"></i><b>12.6</b> Advanced Visualization Techniques</a>
+<ul>
+<li class="chapter" data-level="12.6.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#visualizing-multiple-linear-regressions"><i class="fa fa-check"></i><b>12.6.1</b> Visualizing Multiple Linear Regressions</a></li>
+<li class="chapter" data-level="12.6.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#heat-maps-and-correlation-plots"><i class="fa fa-check"></i><b>12.6.2</b> Heat Maps and Correlation Plots</a></li>
+<li class="chapter" data-level="12.6.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#network-diagrams-and-maps"><i class="fa fa-check"></i><b>12.6.3</b> Network Diagrams and Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="12.7" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#customizing-visualizations-in-r"><i class="fa fa-check"></i><b>12.7</b> Customizing Visualizations in R</a>
+<ul>
+<li class="chapter" data-level="12.7.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#customizing-plot-aesthetics-themes-colors-and-fonts"><i class="fa fa-check"></i><b>12.7.1</b> Customizing Plot Aesthetics: Themes, Colors, and Fonts</a></li>
+<li class="chapter" data-level="12.7.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#adding-annotations-and-labels-to-enhance-understanding"><i class="fa fa-check"></i><b>12.7.2</b> Adding Annotations and Labels to Enhance Understanding</a></li>
+<li class="chapter" data-level="12.7.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#adjusting-plot-dimensions-and-exporting-for-publication-and-presentations"><i class="fa fa-check"></i><b>12.7.3</b> Adjusting Plot Dimensions and Exporting for Publication and Presentations</a></li>
+</ul></li>
+<li class="chapter" data-level="12.8" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#interactive-visualizations-with-r"><i class="fa fa-check"></i><b>12.8</b> Interactive Visualizations with R</a>
+<ul>
+<li class="chapter" data-level="12.8.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-interactive-visualizations-using-packages-like-plotly-and-shiny"><i class="fa fa-check"></i><b>12.8.1</b> Introduction to Interactive Visualizations Using Packages like <code>plotly</code> and <code>shiny</code></a></li>
+<li class="chapter" data-level="12.8.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#creating-web-based-interactive-charts-and-dashboards"><i class="fa fa-check"></i><b>12.8.2</b> Creating Web-based Interactive Charts and Dashboards</a></li>
+<li class="chapter" data-level="12.8.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#applications-of-interactive-visualizations-in-mass-communications-research"><i class="fa fa-check"></i><b>12.8.3</b> Applications of Interactive Visualizations in Mass Communications Research</a></li>
+</ul></li>
+<li class="chapter" data-level="12.9" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#best-practices-for-data-visualization"><i class="fa fa-check"></i><b>12.9</b> Best Practices for Data Visualization</a>
+<ul>
+<li class="chapter" data-level="12.9.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#ethical-considerations-in-data-visualization"><i class="fa fa-check"></i><b>12.9.1</b> Ethical Considerations in Data Visualization</a></li>
+<li class="chapter" data-level="12.9.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#choosing-the-right-type-of-visualization-for-your-data"><i class="fa fa-check"></i><b>12.9.2</b> Choosing the Right Type of Visualization for Your Data</a></li>
+<li class="chapter" data-level="12.9.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#storytelling-with-data-crafting-a-narrative-around-your-visualizations"><i class="fa fa-check"></i><b>12.9.3</b> Storytelling with Data: Crafting a Narrative Around Your Visualizations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html"><i class="fa fa-check"></i><b>13</b> Special Topics in Research Methods</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#ethical-issues-in-emerging-media-research"><i class="fa fa-check"></i><b>13.1</b> Ethical Issues in Emerging Media Research</a>
+<ul>
+<li class="chapter" data-level="13.1.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#digital-privacy-and-research"><i class="fa fa-check"></i><b>13.1.1</b> Digital Privacy and Research</a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#current-trends-in-mass-media-research"><i class="fa fa-check"></i><b>13.2</b> Current Trends in Mass Media Research</a>
+<ul>
+<li class="chapter" data-level="13.2.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#data-driven-journalism"><i class="fa fa-check"></i><b>13.2.1</b> Data-Driven Journalism</a></li>
+<li class="chapter" data-level="13.2.2" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#critical-analysis-and-rhetorical-criticism"><i class="fa fa-check"></i><b>13.2.2</b> Critical Analysis and Rhetorical Criticism</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="appendix-1.html"><a href="appendix-1.html"><i class="fa fa-check"></i><b>14</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="14.1" data-path="appendix-1.html"><a href="appendix-1.html#glossary-of-terms"><i class="fa fa-check"></i><b>14.1</b> Glossary of Terms</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#introduction-to-research-in-mass-communications"><i class="fa fa-check"></i>2. <strong>Introduction to Research in Mass Communications</strong></a></li>
 <li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#developing-research-questions-and-hypotheses-1"><i class="fa fa-check"></i>3. <strong>Developing Research Questions and Hypotheses</strong></a></li>
 <li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#designing-quantitative-research-1"><i class="fa fa-check"></i>4. <strong>Designing Quantitative Research</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#data-analysis-and-statistical-techniques-1"><i class="fa fa-check"></i>5. <strong>Data Analysis and Statistical Techniques</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#data-management-and-visualization-1"><i class="fa fa-check"></i>6. <strong>Data Management and Visualization</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#writing-and-presenting-research-1"><i class="fa fa-check"></i>7. <strong>Writing and Presenting Research</strong></a></li>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#data-analysis-and-statistical-techniques"><i class="fa fa-check"></i>5. <strong>Data Analysis and Statistical Techniques</strong></a></li>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#data-management-and-visualization"><i class="fa fa-check"></i>6. <strong>Data Management and Visualization</strong></a></li>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#writing-and-presenting-research"><i class="fa fa-check"></i>7. <strong>Writing and Presenting Research</strong></a></li>
 <li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#special-topics-in-research-methods-1"><i class="fa fa-check"></i>8. <strong>Special Topics in Research Methods</strong></a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#assignments"><i class="fa fa-check"></i>Assignments</a></li>
+<li class="chapter" data-level="14.2" data-path="appendix-1.html"><a href="appendix-1.html#assignments"><i class="fa fa-check"></i><b>14.2</b> Assignments</a></li>
 </ul></li>
 </ul>
 
@@ -206,15 +504,15 @@
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="special-topics-in-research-methods" class="section level1 hasAnchor" number="8">
-<h1><span class="header-section-number">Chapter 8</span> Special Topics in Research Methods<a href="special-topics-in-research-methods.html#special-topics-in-research-methods" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="ethical-issues-in-emerging-media-research" class="section level2 hasAnchor" number="8.1">
-<h2><span class="header-section-number">8.1</span> Ethical Issues in Emerging Media Research<a href="special-topics-in-research-methods.html#ethical-issues-in-emerging-media-research" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="digital-privacy-and-research" class="section level3 hasAnchor" number="8.1.1">
-<h3><span class="header-section-number">8.1.1</span> Digital Privacy and Research<a href="special-topics-in-research-methods.html#digital-privacy-and-research" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="special-topics-in-research-methods" class="section level1 hasAnchor" number="13">
+<h1><span class="header-section-number">Chapter 13</span> Special Topics in Research Methods<a href="special-topics-in-research-methods.html#special-topics-in-research-methods" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="ethical-issues-in-emerging-media-research" class="section level2 hasAnchor" number="13.1">
+<h2><span class="header-section-number">13.1</span> Ethical Issues in Emerging Media Research<a href="special-topics-in-research-methods.html#ethical-issues-in-emerging-media-research" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="digital-privacy-and-research" class="section level3 hasAnchor" number="13.1.1">
+<h3><span class="header-section-number">13.1.1</span> Digital Privacy and Research<a href="special-topics-in-research-methods.html#digital-privacy-and-research" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the digital age, research increasingly involves collecting data from participants over the internet, whether through surveys, online studies, or participation in internet panels. While this method offers convenience and access to a broader participant pool, it also introduces significant ethical challenges, particularly concerning privacy and data security. Understanding these challenges and learning how to navigate them is crucial for conducting responsible and ethical research in the digital realm.</p>
-<div id="internet-panels" class="section level4 hasAnchor" number="8.1.1.1">
-<h4><span class="header-section-number">8.1.1.1</span> Internet Panels<a href="special-topics-in-research-methods.html#internet-panels" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="internet-panels" class="section level4 hasAnchor" number="13.1.1.1">
+<h4><span class="header-section-number">13.1.1.1</span> Internet Panels<a href="special-topics-in-research-methods.html#internet-panels" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Internet panels are a common method of gathering data from participants who regularly engage in online surveys or studies. These panels involve recruiting individuals to participate in ongoing research, often with the promise of incentives such as monetary rewards or gift cards. While internet panels can provide valuable longitudinal data, they raise critical privacy concerns. Researchers must ensure that participants’ personal information is protected and that data ownership is clearly defined.</p>
 <p>Ethical considerations are paramount when designing and conducting research using internet panels. One must consider the informed consent process, where participants should fully understand how their data will be used, who will have access to it, and how it will be stored. Additionally, researchers must be aware of potential biases that can arise from self-selection, as individuals who choose to join internet panels may differ significantly from the general population.</p>
 <p>To illustrate the importance of these issues, we will discuss several case studies where privacy concerns in internet panels were brought to light. For instance, one case might involve a breach of data security where participants’ personal information was accessed by unauthorized parties. In another, participants may have been unaware of the extent to which their data was being shared with third parties, leading to concerns about data ownership and consent.</p>
@@ -222,16 +520,16 @@
 <p><em>Figure 094. A diagram showing the flow of data in an internet panel study, highlighting key points where privacy and security measures must be implemented, such as consent forms, data encryption, and storage protocols.</em></p>
 <p>As part of your learning, you will be tasked with designing an internet panel study. This exercise will focus on developing clear and robust privacy policies and consent procedures. You will need to consider how to communicate these policies to participants in a transparent and understandable way, ensuring that their privacy is respected throughout the research process.</p>
 </div>
-<div id="internet-surveys" class="section level4 hasAnchor" number="8.1.1.2">
-<h4><span class="header-section-number">8.1.1.2</span> Internet Surveys<a href="special-topics-in-research-methods.html#internet-surveys" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="internet-surveys" class="section level4 hasAnchor" number="13.1.1.2">
+<h4><span class="header-section-number">13.1.1.2</span> Internet Surveys<a href="special-topics-in-research-methods.html#internet-surveys" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Internet surveys are another widely used tool in digital research, offering a convenient way to collect data from a large and geographically diverse group of participants. However, conducting surveys online comes with its own set of privacy challenges. The risk of data breaches, unauthorized access, and the potential misuse of collected data are all concerns that researchers must address proactively.</p>
 <p>To ensure the security of data collected through internet surveys, researchers should implement best practices such as encryption of data during transmission and storage, anonymization of responses to protect participant identities, and secure storage solutions that prevent unauthorized access. Additionally, the ethical implications of these practices must be considered, particularly in relation to the digital divide, where unequal access to technology can influence who participates in online surveys and how they respond.</p>
 <p><img src="images/fig095.jpg" style="width:100.0%" /></p>
 <p><em>Figure 095. A flowchart illustrating the process of conducting an internet survey, from design to data collection, with emphasis on points where privacy and security measures should be implemented, such as data encryption and anonymization techniques.</em></p>
 <p>In class, we will discuss these best practices and review real-world examples where internet surveys have encountered privacy challenges. You will then engage in a project where you create your own internet survey, paying particular attention to how you address privacy concerns and ethical considerations in the design of your study.</p>
 </div>
-<div id="social-desirability" class="section level4 hasAnchor" number="8.1.1.3">
-<h4><span class="header-section-number">8.1.1.3</span> Social Desirability<a href="special-topics-in-research-methods.html#social-desirability" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="social-desirability" class="section level4 hasAnchor" number="13.1.1.3">
+<h4><span class="header-section-number">13.1.1.3</span> Social Desirability<a href="special-topics-in-research-methods.html#social-desirability" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Social desirability bias is a well-known issue in survey research, where participants may respond to questions in a manner they believe will be viewed favorably by others rather than how they truly feel. This bias can be particularly pronounced in online surveys, where the perceived anonymity of the internet might either diminish or exacerbate the effect.</p>
 <p>For example, in surveys about socially sensitive topics, participants might alter their responses to align with what they perceive as socially acceptable opinions. This can lead to skewed data and misinterpretations of the research findings. Understanding and mitigating social desirability bias is essential for ensuring the accuracy and validity of your research.</p>
 <p>We will explore this concept through examples of online surveys where social desirability bias may have influenced the results. For instance, consider a survey on political beliefs conducted online, where respondents may alter their answers depending on the political climate or the perceived anonymity of the platform.</p>
@@ -242,28 +540,28 @@
 </div>
 </div>
 </div>
-<div id="current-trends-in-mass-media-research" class="section level2 hasAnchor" number="8.2">
-<h2><span class="header-section-number">8.2</span> Current Trends in Mass Media Research<a href="special-topics-in-research-methods.html#current-trends-in-mass-media-research" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="data-driven-journalism" class="section level3 hasAnchor" number="8.2.1">
-<h3><span class="header-section-number">8.2.1</span> Data-Driven Journalism<a href="special-topics-in-research-methods.html#data-driven-journalism" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="current-trends-in-mass-media-research" class="section level2 hasAnchor" number="13.2">
+<h2><span class="header-section-number">13.2</span> Current Trends in Mass Media Research<a href="special-topics-in-research-methods.html#current-trends-in-mass-media-research" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="data-driven-journalism" class="section level3 hasAnchor" number="13.2.1">
+<h3><span class="header-section-number">13.2.1</span> Data-Driven Journalism<a href="special-topics-in-research-methods.html#data-driven-journalism" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the evolving landscape of journalism, data-driven journalism has emerged as a powerful tool for uncovering stories that might not be immediately apparent through traditional reporting methods. This approach involves the collection, analysis, and visualization of large datasets to reveal trends, patterns, and insights that inform public understanding.</p>
-<div id="data-collection" class="section level4 hasAnchor" number="8.2.1.1">
-<h4><span class="header-section-number">8.2.1.1</span> Data Collection<a href="special-topics-in-research-methods.html#data-collection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="data-collection" class="section level4 hasAnchor" number="13.2.1.1">
+<h4><span class="header-section-number">13.2.1.1</span> Data Collection<a href="special-topics-in-research-methods.html#data-collection" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Data-driven journalism begins with the meticulous collection of data. Unlike traditional reporting, which often relies on interviews and observations, data-driven journalism depends on gathering large datasets, which might include anything from government statistics to social media activity. The ability to uncover hidden stories and trends lies in the careful selection and collection of this data.</p>
 <p>To help you understand the importance of data collection, we will explore the principles that guide this process, emphasizing accuracy, transparency, and ethical data use. You will engage in a hands-on project where you will collect and analyze a dataset related to a current news topic, such as economic trends or public health data. This project will illustrate how data can shape the narrative in journalism.</p>
 <p>Ethical considerations are paramount in this process, particularly regarding issues of consent, privacy, and potential misuse of data. Journalists must navigate these challenges carefully to ensure that their work upholds the highest standards of integrity.</p>
 <p><img src="images/fig097.jpg" style="width:100.0%" /></p>
 <p><em>Figure 097. A flowchart illustrating the data collection process in journalism, from identifying sources to ensuring data accuracy and addressing ethical considerations.</em></p>
 </div>
-<div id="data-analysis" class="section level4 hasAnchor" number="8.2.1.2">
-<h4><span class="header-section-number">8.2.1.2</span> Data Analysis<a href="special-topics-in-research-methods.html#data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="data-analysis" class="section level4 hasAnchor" number="13.2.1.2">
+<h4><span class="header-section-number">13.2.1.2</span> Data Analysis<a href="special-topics-in-research-methods.html#data-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Once the data has been collected, the next step is analysis. Data analysis in journalism involves using statistical techniques to interpret the data and draw meaningful conclusions. This process requires a balance between rigorous statistical methods and the ability to communicate findings in a way that is accessible to the general public.</p>
 <p>In this section, we will cover basic statistical techniques commonly used in data journalism, such as frequency analysis, cross-tabulation, and regression. You will be assigned to analyze a dataset, identify key insights, and consider how these insights could inform a news story. The focus will be on maintaining accuracy and integrity in data interpretation, ensuring that the story told by the data is both truthful and compelling.</p>
 <p><img src="images/fig098.jpg" style="width:100.0%" /></p>
 <p>*Figure 098. A bar chart showing the results of a data analysis, with annotations that highlight key findings and how they might inform a news story.</p>
 </div>
-<div id="data-visualization-1" class="section level4 hasAnchor" number="8.2.1.3">
-<h4><span class="header-section-number">8.2.1.3</span> Data Visualization<a href="special-topics-in-research-methods.html#data-visualization-1" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="data-visualization" class="section level4 hasAnchor" number="13.2.1.3">
+<h4><span class="header-section-number">13.2.1.3</span> Data Visualization<a href="special-topics-in-research-methods.html#data-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The final step in data-driven journalism is data visualization, which allows journalists to communicate complex data effectively through visual means. Data visualizations, such as charts, graphs, and interactive tools, help make data more accessible to the audience, enabling them to grasp complex information quickly.</p>
 <p>You will be introduced to various tools and techniques for creating effective data visualizations. For instance, we will explore how to use <code>ggplot2</code> in R for creating customized visualizations, as well as platforms like Tableau and Datawrapper for more interactive and web-based visual content. The goal is to create a visualization that not only accurately represents the data but also engages and informs the audience.</p>
 <p>We will also discuss the ethical implications of data visualization, such as the potential for creating misleading visuals. Transparency in design choices is critical to maintaining the credibility of the work.</p>
@@ -272,27 +570,27 @@
 <p>Through this process, you will gain a comprehensive understanding of how data-driven journalism is conducted, from data collection to the final presentation of the findings. By applying these skills, you will be able to contribute to the field of journalism with stories that are not only compelling but also grounded in robust data analysis.</p>
 </div>
 </div>
-<div id="critical-analysis-and-rhetorical-criticism" class="section level3 hasAnchor" number="8.2.2">
-<h3><span class="header-section-number">8.2.2</span> Critical Analysis and Rhetorical Criticism<a href="special-topics-in-research-methods.html#critical-analysis-and-rhetorical-criticism" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="critical-analysis-and-rhetorical-criticism" class="section level3 hasAnchor" number="13.2.2">
+<h3><span class="header-section-number">13.2.2</span> Critical Analysis and Rhetorical Criticism<a href="special-topics-in-research-methods.html#critical-analysis-and-rhetorical-criticism" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>In the study of media and communication, critical analysis and rhetorical criticism play a crucial role in understanding how messages are constructed and how they influence audiences. This chapter will introduce you to key methods and theories used in the analysis of media texts, focusing on discourse analysis, conversation analysis, and standpoint theory.</p>
-<div id="discourse-analysis" class="section level4 hasAnchor" number="8.2.2.1">
-<h4><span class="header-section-number">8.2.2.1</span> Discourse Analysis<a href="special-topics-in-research-methods.html#discourse-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="discourse-analysis" class="section level4 hasAnchor" number="13.2.2.1">
+<h4><span class="header-section-number">13.2.2.1</span> Discourse Analysis<a href="special-topics-in-research-methods.html#discourse-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Discourse analysis is a method used to examine how language in media texts constructs meaning, power relations, and social identities. By analyzing the words, phrases, and structures used in texts, researchers can uncover the underlying messages and assumptions that shape public perception and social norms.</p>
 <p>In this section, we will explore examples of discourse analysis applied to various media texts, such as political speeches, news reports, and advertisements. You will engage in close reading exercises to identify key discursive strategies, such as framing, metaphor, and narrative, and discuss their implications for the audience.</p>
 <p>You will also be assigned a project to conduct a discourse analysis on a chosen media text, such as a commercial, a political ad, or a news article. This project will help you develop the skills needed to critically evaluate how language shapes the audience’s perception of reality.</p>
 <p><img src="images/fig100.jpg" style="width:100.0%" /></p>
 <p><em>Figure 100. A visual breakdown of a political speech, highlighting key phrases, metaphors, and rhetorical strategies used to influence public opinion. The image should include annotations explaining how these elements contribute to the construction of meaning and power relations.</em></p>
 </div>
-<div id="conversation-analysis" class="section level4 hasAnchor" number="8.2.2.2">
-<h4><span class="header-section-number">8.2.2.2</span> Conversation Analysis<a href="special-topics-in-research-methods.html#conversation-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="conversation-analysis" class="section level4 hasAnchor" number="13.2.2.2">
+<h4><span class="header-section-number">13.2.2.2</span> Conversation Analysis<a href="special-topics-in-research-methods.html#conversation-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Conversation analysis is a method focused on the structure and patterns of interactions in spoken or written communication. It often examines how participants take turns, manage pauses, and repair communication breakdowns. This method is particularly useful in understanding the subtleties of everyday communication and the underlying social norms and power dynamics present in interactions.</p>
 <p>We will begin by introducing the basic principles of conversation analysis using examples from real-life interactions or media transcripts. You will participate in a classroom activity where you analyze a recorded conversation or media interview, identifying patterns such as turn-taking, interruptions, and pauses. Through this analysis, we will discuss the significance of these patterns and what they reveal about the social dynamics at play.</p>
 <p>The insights gained from conversation analysis can help you better understand how media representations of conversations, such as those in talk shows or news interviews, reflect and reinforce social norms and power structures.</p>
 <p><img src="images/fig101.jpg" style="width:100.0%" /></p>
 <p><em>Figure 101. A diagram showing a transcript of a conversation with highlighted sections that illustrate key conversational features like turn-taking, pauses, and repairs. Annotations should explain how these features contribute to the overall flow and meaning of the interaction.</em></p>
 </div>
-<div id="standpoint-theory" class="section level4 hasAnchor" number="8.2.2.3">
-<h4><span class="header-section-number">8.2.2.3</span> Standpoint Theory<a href="special-topics-in-research-methods.html#standpoint-theory" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="standpoint-theory" class="section level4 hasAnchor" number="13.2.2.3">
+<h4><span class="header-section-number">13.2.2.3</span> Standpoint Theory<a href="special-topics-in-research-methods.html#standpoint-theory" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Standpoint theory argues that an individual’s perspectives are shaped by their social position, and these perspectives influence how they understand and communicate about the world. This theory highlights the importance of considering diverse viewpoints in media analysis, as different social groups may interpret the same media content in varied ways.</p>
 <p>In this section, we will explore how standpoint theory has been applied in media research to understand how different social identities—such as race, gender, and class—affect media interpretation. You will be encouraged to reflect on your own standpoint and how it influences your interpretation of media texts.</p>
 <p>A reflective writing exercise will be assigned where you will analyze a media text from your perspective, considering how your social position shapes your understanding and interpretation. This exercise will help you appreciate the diversity of perspectives in media interpretation and challenge dominant narratives that may marginalize certain viewpoints.</p>
@@ -309,7 +607,7 @@
           </div>
         </div>
       </div>
-<a href="writing-and-presenting-research.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data-visualization-in-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 <a href="appendix-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
@@ -364,6 +662,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>
