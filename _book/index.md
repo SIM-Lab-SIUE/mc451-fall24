@@ -1,7 +1,7 @@
 ---
 title: "An Introduction to Research Methods in Mass Media"
 author: "Alex P Leith"
-date: "2024-08-23"
+date: "2024-08-26"
 site: bookdown::bookdown_site
 output: bookdown::gitbook
 mainfont: Lucida Handwriting
@@ -15,7 +15,7 @@ cover-image: images/cover.jpg
 description: "This is the textbook for MC 451 at SIU Edwardsville."
 ---
 
-# Preface
+# Preface {.unnumbered}
 
 This textbook, *An Introduction to Research Methods in Mass Media*, has been developed as an essential resource for students and researchers delving into the intricate world of mass media research. The journey of crafting this book was driven by a profound understanding of the unique challenges that mass communications scholars encounter when applying quantitative research methods within a rapidly evolving digital landscape.
 
