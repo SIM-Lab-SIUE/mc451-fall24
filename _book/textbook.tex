@@ -18,7 +18,7 @@
 \usepackage{lmodern}
 \ifPDFTeX\else
   % xetex/luatex font selection
-    \setmainfont[]{Roboto Mono}
+  \setmainfont[]{Roboto Mono}
 \fi
 % Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
@@ -89,17 +89,15 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\newsavebox\pandoc@box
-\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
-  \sbox\pandoc@box{#1}%
-  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
-  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
-  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
-  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
-  \else\usebox{\pandoc@box}%
-  \fi%
-}
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 % Set default figure placement to htbp
+\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
@@ -109,6 +107,9 @@
 \usepackage{booktabs}
 \usepackage{fontspec}
 \setmainfont{Roboto Mono}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 \usepackage{bookmark}
@@ -172,7 +173,7 @@ For example, in a study analyzing the tone of news coverage, the tone (whether p
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig01a.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig01a.jpg}
 \caption{Highlighting sentiment in newspaper}
 \end{figure}
 
@@ -187,7 +188,7 @@ Content analysis can be qualitative, focusing on the deeper meanings and interpr
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{images/fig01b.jpg}}
+\includegraphics{images/fig01b.jpg}
 \caption{Content analysis of interview using NVivo}
 \end{figure}
 
@@ -267,7 +268,7 @@ The men were told they were being treated for ``bad blood,'' a local term used t
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/Tuskegee-syphilis-study.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/Tuskegee-syphilis-study.jpg}
 \caption{A doctor draws blood from one of the Tuskegee test subjects.}
 \end{figure}
 
@@ -284,7 +285,7 @@ Participants in the Milgram Experiments were told they were participating in a s
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/Milgram_experiment.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/Milgram_experiment.png}
 \caption{Participants by role. T = Teacher, L = Learner, E = Experimenter.}
 \end{figure}
 
@@ -303,7 +304,7 @@ The participants were randomly assigned to play the roles of either guards or pr
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/police-blindfolding.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/police-blindfolding.jpg}
 \caption{Police blindfolding a research participant (\href{https://www.prisonexp.org/gallery}{prisonexp.org}).}
 \end{figure}
 
@@ -325,7 +326,7 @@ The first significant step toward formalizing ethical standards in research came
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/nuremberg-trial.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/nuremberg-trial.jpg}
 \caption{Handing over the indictment to the tribunal, 18 October 1945}
 \end{figure}
 
@@ -402,7 +403,7 @@ As social science research continues to evolve, the ethical challenges facing re
 
 Navigating the Institutional Review Board (IRB) process is critical to conducting ethical research involving human participants. The IRB is responsible for reviewing research proposals to ensure that they comply with ethical standards and protect the rights and welfare of participants. As a researcher, particularly within the context of Southern Illinois University Edwardsville (SIUE), understanding the intricacies of this process is essential for gaining approval and conducting your research responsibly. This section will thoroughly explore the key components of the IRB process at SIUE, including creating consent forms, debriefing participants, assessing potential harm, offering incentives, and understanding the submission protocols.
 
-\href{https://www.siue.edu/compliance/training/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/compliance-education.png}}
+\href{https://www.siue.edu/compliance/training/}{\includegraphics[width=1\textwidth,height=\textheight]{images/compliance-education.png}}
 
 \subsection*{Completing CITI Certification}\label{completing-citi-certification}
 \addcontentsline{toc}{subsection}{Completing CITI Certification}
@@ -427,7 +428,7 @@ Navigating the Institutional Review Board (IRB) process is critical to conductin
 
   \begin{figure}
   \centering
-  \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/citi-org-login.png}
+  \includegraphics[width=1\textwidth,height=\textheight]{images/citi-org-login.png}
   \caption{Organization Single Sign On (SSO) screen for CITI}
   \end{figure}
 
@@ -455,7 +456,7 @@ Navigating the Institutional Review Board (IRB) process is critical to conductin
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/citi-add-a-course.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/citi-add-a-course.png}
 \caption{Click the circled link to add a new course.}
 \end{figure}
 
@@ -465,7 +466,7 @@ Navigating the Institutional Review Board (IRB) process is critical to conductin
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/citi-topics.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/citi-topics.png}
 \caption{CITI compliance topics.}
 \end{figure}
 
@@ -475,7 +476,7 @@ Navigating the Institutional Review Board (IRB) process is critical to conductin
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/citi-courses.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/citi-courses.png}
 \caption{CITI course selection.}
 \end{figure}
 
@@ -495,13 +496,13 @@ Once you have completed your CITI certification, you can review the course or vi
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/citi-cert-link.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/citi-cert-link.png}
 \caption{Link circled to access IRB certification.}
 \end{figure}
 
 Whether you access your IRB certificate through the CITI website or from your LinkedIn profile, it will be identical. Most research courses or teams will request a copy of your CITI Certificate to keep on record since it is commonly requested when completing an IRB proposal.
 
-\href{https://www.linkedin.com/in/apleith/details/certifications/}{\pandocbounded{\includegraphics[keepaspectratio]{images/irb-cert.png}}}
+\href{https://www.linkedin.com/in/apleith/details/certifications/}{\includegraphics{images/irb-cert.png}}
 
 \subsection*{Completing IRB Proposal}\label{completing-irb-proposal}
 \addcontentsline{toc}{subsection}{Completing IRB Proposal}
@@ -512,13 +513,13 @@ In the \textbf{General Information} section, the creator of the proposal should 
 
 For the \textbf{SIUE Personnel} section, you must include the names of all participants at SIUE. You must make sure to include an answer to all sections. You select the ``\textbf{+ Add Line}'' button to add additional researchers. The pencil icon lets you edit the person's information. From there, you must add information to each field. Required information may include a copy of IRB Certificates. You must also grant Access to all participants, including the professor if they supervise the research. There are sections that include researcher experience and researcher involvement that must be answered, even if there is no experience or limited involvement. You select No for external researchers unless you are also working with scholars outside of your university.
 
-\href{https://siue.kuali.co/protocols/portal/protocols}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/siue-personnel.png}}
+\href{https://siue.kuali.co/protocols/portal/protocols}{\includegraphics[width=1\textwidth,height=\textheight]{images/siue-personnel.png}}
 
 The next significant stage for discussion is the ``\textbf{Review Category Questions (GQ)}'' section. The GQ section allows you to identify how strict the IRB must be with your study. The less potential harm, the simpler it is to approve your research. For this course, we are strictly doing exempt projects. Exempt projects generally exclude protected classes or projects that may cause atypical harm. If you are doing survey research, you select exempt status and Category 2 since this is a survey procedure. You should have learned the different categories curing your CITI IRB certification process.
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/kuali-exempt.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/kuali-exempt.png}
 \caption{Kuali section for select exempt status.}
 \end{figure}
 
@@ -542,7 +543,7 @@ Recruitment materials play a crucial role in attracting participants to a resear
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/recruit-ad.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/recruit-ad.png}
 \caption{Instagram recruitment examples made with Adobe Express.}
 \end{figure}
 
@@ -559,7 +560,7 @@ The survey or interview questions should be constructed to elicit clear, honest 
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/likert-scale.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/likert-scale.png}
 \caption{Common Likert-type scale responses.}
 \end{figure}
 
@@ -592,7 +593,7 @@ Incentives should be described in the IRB protocol submission, with a clear just
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{images/fig01e.jpg}}
+\includegraphics{images/fig01e.jpg}
 \caption{An example of an excessive cash incentive}
 \end{figure}
 
@@ -631,7 +632,7 @@ For example, a researcher studying online communities might participate in discu
 
 \begin{figure}
 \centering
-\pandocbounded{\includegraphics[keepaspectratio]{images/fig01f.jpg}}
+\includegraphics{images/fig01f.jpg}
 \caption{Representation of participant observer}
 \end{figure}
 
@@ -667,153 +668,263 @@ Research papers, often referred to as scholarly articles, serve as vital conduit
 \subsection*{Originality}\label{originality}
 \addcontentsline{toc}{subsection}{Originality}
 
-The process of preparing a research paper involves rigorous intellectual effort, beginning with the identification of a research question or problem that is both original and significant. This question drives the research process, guiding the methodology and analysis that follow. The research must offer new insights, whether through the collection and interpretation of empirical data or through the development of new theoretical perspectives. In doing so, research papers contribute to the existing body of knowledge, offering fresh perspectives or addressing gaps that have been identified in previous studies.
+Originality is a fundamental criterion that distinguishes a research paper from other forms of academic writing. In the context of research, originality refers to the introduction of novel ideas, methods, or interpretations that have not been previously explored or sufficiently addressed within the existing body of literature. The originality of a research paper can be manifested through the identification of a unique research question or problem, the development of an innovative methodological approach, or the provision of fresh empirical evidence that challenges or refines established theories. This originality is not merely about being new for the sake of novelty; it must be significant and relevant, offering meaningful contributions to the academic field. An original research paper often fills a gap in the literature, addresses an overlooked aspect of a known issue, or provides new insights that lead to further research inquiries.
 
 \subsection*{Methodology}\label{methodology}
 \addcontentsline{toc}{subsection}{Methodology}
 
-One of the defining characteristics of research papers is their adherence to a systematic methodology. The methodology section of a research paper is critical as it outlines the research design, the data collection procedures, and the analytical techniques employed. This transparency allows other scholars to evaluate the reliability and validity of the research, as well as to replicate or build upon the study in future research. The rigor of the methodology is a key factor in the credibility of the research findings.
+Methodology in a research paper is more than just a set of procedures; it is the backbone of the research that ensures the study's validity, reliability, and replicability. A well-defined methodology provides a clear roadmap for how the research was conducted, including the selection of participants or data sources, the tools and techniques used for data collection, and the methods of analysis. The methodology should be meticulously documented so that other researchers can critically assess the study's rigor and potentially replicate the findings in different contexts or with different samples. Moreover, a robust methodology reflects an understanding of the methodological challenges inherent to the research question and demonstrates the researcher's ability to address these challenges in a scientifically sound manner. The methodology section is where the researcher defends their choice of methods and discusses their limitations, providing a transparent account of the research process.
 
 \subsection*{Evidence-Based}\label{evidence-based}
 \addcontentsline{toc}{subsection}{Evidence-Based}
 
-Research papers are fundamentally evidence-based, meaning that their conclusions and arguments are grounded in data and supported by empirical evidence or theoretical reasoning. The evidence presented in research papers is typically derived from a range of sources, including experiments, surveys, observations, or existing literature. Researchers must carefully analyze this evidence and present their findings in a clear and logical manner. The inclusion of data and results, along with proper citations, is essential for supporting the paper's claims and for situating the research within the broader academic discourse.
+An evidence-based research paper is grounded in the systematic collection and analysis of data, which serves as the foundation for the paper's arguments and conclusions. The evidence presented can take many forms, including quantitative data from experiments or surveys, qualitative data from interviews or observations, or secondary data from existing literature. Regardless of the type of evidence, the key is that it must be relevant, reliable, and sufficient to support the research claims. Researchers must critically evaluate the evidence they collect, using appropriate analytical techniques to draw valid inferences. This process includes acknowledging any potential biases or limitations in the data, ensuring that the evidence is presented transparently and interpreted accurately. An evidence-based approach not only strengthens the credibility of the research findings but also aligns the study with the broader principles of scientific inquiry, where conclusions are drawn based on observable and verifiable facts rather than conjecture.
 
 \subsection*{Peer Review}\label{peer-review}
 \addcontentsline{toc}{subsection}{Peer Review}
 
-Before a research paper can be published, it must undergo a process of peer review, which is a cornerstone of academic publishing. Peer review involves the evaluation of the research paper by other experts in the field, who assess the validity, originality, and significance of the work. This process is crucial in maintaining the quality and integrity of academic literature, as it helps to ensure that only research that meets high standards of scholarly excellence is published. The feedback from peer reviewers often leads to revisions that improve the clarity, robustness, and impact of the paper.
+Peer review is an essential component of the scholarly publication process, serving as a quality control mechanism that upholds the standards of academic integrity. During peer review, a research paper is scrutinized by independent experts in the relevant field who evaluate the paper's methodological soundness, the originality of its contributions, and the significance of its findings. The peer reviewers assess whether the research question is well-defined, whether the methodology is appropriate and rigorously applied, and whether the conclusions are adequately supported by the evidence. This process often involves multiple rounds of feedback, where the author is required to address reviewers' comments and make necessary revisions. The objective of peer review is to ensure that the research is robust, credible, and worthy of publication, thus contributing to the advancement of knowledge in the field. The peer review process also provides an opportunity for the author to refine their work based on expert feedback, enhancing the overall quality and impact of the research.
 
 \subsection*{Structure}\label{structure}
 \addcontentsline{toc}{subsection}{Structure}
 
-The structure of a research paper is typically standardized, following a format that enhances the clarity and accessibility of the research. Common sections include an abstract, introduction, methodology, results, discussion, and references. The abstract provides a concise summary of the research, highlighting the main findings and their implications. The introduction sets the stage for the research, presenting the research question and its significance. The methodology details the research design and procedures, while the results section presents the findings. The discussion interprets the results, exploring their implications and how they contribute to the existing body of knowledge. Finally, the references section lists the sources cited in the paper, providing a framework for further reading and acknowledging the contributions of other scholars.
+The structure of a research paper is designed to facilitate the clear and logical presentation of the research process and findings. A typical research paper is organized into several key sections: the abstract, introduction, literature review, methodology, results, discussion, and references. Each section serves a distinct purpose in the overall narrative of the paper. The abstract offers a brief summary of the research, providing readers with an overview of the study's objectives, methods, and key findings. The introduction establishes the research context, presenting the research question and its significance while reviewing relevant literature to position the study within the existing body of knowledge. The methodology section details the research design and methods used, allowing for transparency and reproducibility. The results section presents the findings, often with the aid of tables, figures, or other visual aids. The discussion interprets these findings, exploring their implications, limitations, and potential for future research. Finally, the references section cites all the sources used, ensuring proper attribution and enabling readers to locate the original sources for further investigation. This structured approach not only enhances the clarity and coherence of the paper but also ensures that it meets the rigorous standards of academic writing.
 
 \section{How to Find Research Papers}\label{find}
 
-There are many ways to find research papers, both paid and free. Here are a few popular methods:
+Finding research papers is an essential skill for students and researchers alike. Research papers are the backbone of academic work, providing the evidence, insights, and foundations necessary for developing new theories, testing hypotheses, and building knowledge. Whether you're writing a paper, preparing a presentation, or simply expanding your understanding of a topic, knowing how to locate and access research papers efficiently is crucial. Below are some effective strategies to help you find the research papers you need.
+
+\subsection*{Check Your University Library}\label{check-your-university-library}
+\addcontentsline{toc}{subsection}{Check Your University Library}
+
+Your university library is one of the most valuable resources for finding research papers. University libraries provide access to a vast array of academic materials, including books, journals, and databases that are often not available for free online. Here's how to make the most of your university library's resources:
+
+\href{https://www.siue.edu/lovejoy-library/ask-a-librarian/}{\textbf{Talk to a Librarian}}\textbf{.} Librarians are highly trained in information retrieval and can assist you in finding the most relevant and high-quality research papers for your topic. They can guide you to the right databases, help you refine your search strategies, and even suggest keywords or subject headings you might not have considered. Many libraries also offer personalized research consultations where you can get in-depth assistance on your specific research needs.
+
+\href{https://i-share-sie.primo.exlibrisgroup.com/discovery/search?vid=01CARLI_SIE:CARLI_SIE&lang=en}{\textbf{Use the Library's Online Catalog}}\textbf{.} The online catalog is a powerful tool that allows you to search the entire collection of your university library, including books, journals, e-books, and other materials. You can narrow down your results by using specific search terms or filters to find the most relevant research papers. Most catalogs also allow you to see whether the materials are available physically in the library or online.
+
+\href{https://libguides.siue.edu/az.php}{\textbf{Access the Library's Databases}}\textbf{.} University libraries subscribe to many academic databases that provide access to thousands of scholarly journals, articles, and other resources. These databases are often organized by subject, making finding research papers in your field of study easier. Popular databases include JSTOR, ProQuest, and EBSCOhost, among others. Databases can usually be searched by keyword, author, or subject, and many offer advanced search options that allow you to combine terms and apply filters to get the best results.
 
 \subsection*{Use a specialized search engine.}\label{use-a-specialized-search-engine.}
 \addcontentsline{toc}{subsection}{Use a specialized search engine.}
 
 Specialized search engines are designed to search for specific types of information, such as research articles. Here are some tips on how to use a specialized search engine to find research articles:
 
-\textbf{Choose the right search engine.} There are many specialized search engines available, so it is important to choose one that is relevant to your topic. Some popular specialized search engines for research articles include:
+\subsubsection{Where to Search}\label{where-to-search}
+
+When searching for research articles, knowing where to search is just as important as how you search. Specialized search engines are designed specifically for academic and scholarly materials, making them ideal tools for finding high-quality research papers. Unlike general search engines like Google, these specialized tools index scholarly content such as journal articles, conference papers, and theses. Below are some key specialized search engines and tips on how to choose the right one for your research needs.
+
+Selecting the appropriate search engine depends on your research topic. If you're studying medicine or biology, PubMed should be your first choice. For engineering and technology, IEEE Xplore and ACM Digital Library are more suitable. If your research spans multiple disciplines, starting with Google Scholar, Web of Science, or Scopus may yield the broadest results.
+
+\textbf{1. Google Scholar}
+
+Google Scholar is one of the most widely used academic search engines. It provides access to a broad range of scholarly articles, theses, books, conference papers, and patents across various disciplines. It's a good starting point for most research topics due to its extensive coverage.
+
+\href{https://scholar.google.com/}{\includegraphics[width=1\textwidth,height=\textheight]{images/google-scholar.jpg}}
+
+\textbf{2. PubMed}
+
+PubMed is the go-to search engine for research in the biomedical and life sciences. It offers a comprehensive collection of articles from journals in medicine, biology, and health-related fields. If your research is in these areas, PubMed is an indispensable resource.
+
+\href{https://pubmed.ncbi.nlm.nih.gov/}{\includegraphics[width=1\textwidth,height=\textheight]{images/pubmed.jpg}}
+
+\textbf{3. Web of Science}
+
+Web of Science is a powerful tool that covers a wide array of disciplines, including the sciences, social sciences, arts, and humanities. It is particularly useful for citation tracking, allowing you to see how often an article has been cited by others, which can help you gauge its impact and relevance.
+
+\href{https://go.openathens.net/redirector/siue.edu?url=https\%3A\%2F\%2Fwebofknowledge.com\%2FWOS}{\includegraphics[width=1\textwidth,height=\textheight]{images/web-of-science.jpg}}
+
+\textbf{4. Scopus}
+
+Scopus is another multidisciplinary database, with an extensive collection of articles in the sciences, technology, medicine, social sciences, and more. Scopus also provides citation analysis, making it useful for understanding the influence of a particular study within its field.
+
+\href{https://www.scopus.com/home.uri}{\includegraphics[width=1\textwidth,height=\textheight]{images/scopus.jpg}}
+
+\textbf{5. IEEE Xplore}
+
+IEEE Xplore is the premier search engine for research in electrical engineering, computer science, and electronics. It indexes a vast number of conference papers, journal articles, and standards published by the IEEE.
+
+\href{https://ieeexplore.ieee.org/Xplore/home.jsp}{\includegraphics[width=1\textwidth,height=\textheight]{images/ieee-xplore.jpg}}
+
+\textbf{6. ACM Digital Library}
+
+The ACM Digital Library is essential for computer science research, offering a wide range of articles, conference proceedings, and other publications by the Association for Computing Machinery. It is particularly valuable for topics in software engineering, computer systems, and human-computer interaction.
+
+\href{https://dl.acm.org/}{\includegraphics[width=1\textwidth,height=\textheight]{images/acm-digital-library.jpg}}
+
+\subsubsection{How to Search}\label{how-to-search}
+
+Once you've chosen where to search, understanding how to effectively use these tools is crucial for finding the most relevant and high-quality research articles. Below are strategies to help you optimize your search process.
+
+\textbf{1. Use Keywords Effectively}
+
+Keywords are the foundation of any search. Start by identifying the main concepts of your research topic. For example, if you're researching the effects of social media on mental health, your main keywords might be ``social media,'' ``mental health,'' and ``impact.'' Input these keywords into your chosen search engine to begin your search.
+
+\textbf{2. Utilize Advanced Search Features}
+
+Most specialized search engines offer advanced search options that allow you to refine your search. You can often specify criteria such as:
 
 \begin{itemize}
+\tightlist
 \item
-  Google Scholar
+  \textbf{Publication Date:} Limit your results to recent publications to ensure the information is up-to-date.
 \item
-  PubMed
+  \textbf{Language:} If you're only interested in articles written in a specific language, you can filter results accordingly.
 \item
-  Web of Science
-\item
-  Scopus
-\item
-  IEEE Xplore
-\item
-  ACM Digital Library
+  \textbf{Document Type:} Narrow down your search to only include journal articles, reviews, conference papers, etc.
 \end{itemize}
 
-\textbf{Use keywords.} When you are searching for research articles, it is important to use keywords that are relevant to your topic. You can use the same keywords that you would use for a general search engine, but you may also need to use more specific keywords.
+For instance, in Google Scholar, you can access these options by clicking on ``Advanced Search,'' which allows you to combine keywords with Boolean operators, search within specific journals, or exclude certain terms from your results.
 
-\textbf{Use advanced search features.} Most specialized search engines have advanced search features that allow you to narrow down your search results. For example, you can specify the publication date, the language, or the type of document.
+\textbf{3. Use Quotation Marks for Exact Phrases}
 
-\textbf{Read the results carefully.} Once you have found some research articles, take some time to read them carefully. This will help you identify the articles that are most relevant to your research.
+When searching for specific phrases, using quotation marks can help ensure that the search engine looks for the words together in the exact order you've specified. For example, searching for ``impact of social media on mental health'' will return results where this phrase appears as is, rather than finding articles where these words appear separately.
 
-\textbf{Evaluate the quality of the sources.} Not all sources are created equal. When you are evaluating the quality of a research article, consider the following factors:
+\textbf{4. Apply Boolean Operators}
+
+Boolean operators (AND, OR, NOT) are powerful tools for refining your search:
 
 \begin{itemize}
+\tightlist
 \item
-  The author's credentials
+  \textbf{AND:} Use AND to narrow your search. For example, ``social media AND mental health'' will return articles that contain both terms.
 \item
-  The publication date
+  \textbf{OR:} Use OR to broaden your search by including synonyms or related terms. For example, ``social media OR social networks'' will return articles that include either term.
 \item
-  The journal's reputation
-\item
-  The methodology used
-\item
-  The findings of the study
+  \textbf{NOT:} Use NOT to exclude unwanted terms. For example, ``social media NOT Facebook'' will exclude articles that specifically focus on Facebook.
 \end{itemize}
 
-By following these tips, you can use a specialized search engine to find research articles that are relevant to your topic and of high quality.
+\begin{figure}
+\centering
+\includegraphics[width=1\textwidth,height=\textheight]{images/boolean.jpg}
+\caption{Boolean Operators}
+\end{figure}
 
-Here are some additional tips for using a specialized search engine to find research articles:
+\textbf{5. Read and Evaluate Search Results Carefully}
 
-\textbf{Use quotation marks to search for exact phrases.} For example, if you are looking for articles about the ``impact of social media on mental health,'' you would search for ``impact of social media on mental health.''
+After conducting your search, take the time to review the results carefully. Pay attention to the title, abstract, and keywords of each article to determine its relevance to your research. Ensure that the articles are published in reputable journals, have undergone peer review, and are authored by credible experts in the field.
 
-\textbf{Use Boolean operators to combine keywords.} Boolean operators, such as AND, OR, and NOT, can be used to combine keywords and narrow down your search results. For example, if you are looking for articles about the ``impact of social media on mental health'' in the journal ``Nature,'' you would search for ``impact of social media AND mental health AND Nature.''
+\textbf{6. Use Filters to Narrow Down Results}
 
-\textbf{Use filters to narrow down your results.} Most specialized search engines allow you to filter your results by publication date, language, and other criteria. This can be helpful if you are looking for specific types of research articles.
+Many specialized search engines provide filters that allow you to narrow down results by various criteria, such as year of publication, subject area, or type of document. For instance, if you are looking for the most recent studies on a topic, you can filter your search results to only include articles published in the last five years.
 
-\textbf{Use the search engine's help documentation.} Most specialized search engines have help documentation that can provide you with more information about how to use the search engine.
+\textbf{7. Refer to Help Documentation}
 
-I hope these tips help you find the research articles you are looking for.
+If you're unfamiliar with a particular search engine, refer to its help documentation. These guides often include tips on using advanced search features, understanding search results, and optimizing your search queries. For example, Google Scholar's help page provides explanations on how to refine searches, save citations, and set up alerts for new research.
 
-\subsection*{Check your university library.}\label{check-your-university-library.}
-\addcontentsline{toc}{subsection}{Check your university library.}
+By combining the right search engine with effective search strategies, you can efficiently find the research articles you need for your academic work.
 
-Your university library has a wealth of resources that you can use to find research articles. Here are some tips on how to use your university library to find research articles:
+\subsection{Using Social Media to Find Research Articles}\label{using-social-media-to-find-research-articles}
 
-\textbf{Talk to a librarian.} Librarians are experts in finding information. They can help you choose the right databases and search strategies for your research.
+Social media has become a powerful tool for academics and researchers, providing a platform to share, discover, and discuss research articles. By leveraging the features of various social media platforms, you can stay informed about the latest developments in your field, find relevant research articles, and connect with other scholars. Below are some effective strategies for using social media to find research articles.
 
-\textbf{Use the library's online catalog.} The library's online catalog is a searchable database of all the books, journals, and other materials that the library owns.
+\subsubsection{1. Follow Researchers and Research Institutions}\label{follow-researchers-and-research-institutions}
 
-\textbf{Use the library's databases.} The library subscribes to a variety of databases that contain research articles. These databases can be searched by keyword, author, or subject.
+One of the most direct ways to stay updated with the latest research is by following individual researchers, academic institutions, and research organizations on social media. Many scholars use platforms like Twitter, LinkedIn, and ResearchGate to share their latest publications, conference presentations, and ongoing projects. By following these accounts, you can receive updates on new research articles as soon as they are published. Additionally, institutions often share open access articles, preprints, and links to publications that might be behind paywalls elsewhere, providing valuable resources for your own research.
 
-\textbf{Ask for help from a research assistant.} Many libraries have research assistants who can help you find research articles.
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tip:} When following researchers, consider looking at their followers and who they follow as well. This can help you find other relevant scholars and institutions in your area of interest.
+\end{itemize}
 
-\subsection*{Use social media.}\label{use-social-media.}
-\addcontentsline{toc}{subsection}{Use social media.}
+\subsubsection{2. Use Relevant Hashtags}\label{use-relevant-hashtags}
 
-You can use social media to find research articles in a few different ways:
+Hashtags on social media platforms like Twitter and Instagram serve as powerful tools for categorizing content and making it discoverable to a broader audience. Researchers and institutions often use specific hashtags related to their field, research topic, or academic events. By searching for or following these hashtags, you can easily find posts related to recent research articles, discussions on emerging trends, and links to relevant studies.
 
-\textbf{Follow researchers and research institutions.} Many researchers and research institutions use social media to share their work, including research articles. By following these accounts, you can stay up-to-date on the latest research in your field.
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Example:} Searching for hashtags such as \#OpenAccess, \#ScienceTwitter, \#AcademicChatter, or discipline-specific tags like \#PsychResearch or \#ClimateScience can lead you to valuable research articles and academic discussions.
+\end{itemize}
 
-\textbf{Use relevant hashtags.} Hashtags are a great way to find research articles on social media. When you search for a relevant hashtag, you will see all the posts that have been tagged with that hashtag. This can be a great way to find research articles that you might not have otherwise found.
+\subsubsection{3. Join Research Groups and Communities}\label{join-research-groups-and-communities}
 
-\textbf{Join research groups and communities.} There are many research groups and communities on social media where researchers can share their work and discuss research topics. By joining these groups, you can connect with other researchers and find research articles that are relevant to your interests.
+Social media platforms host numerous groups and communities dedicated to specific research fields or interdisciplinary topics. These groups, which can be found on platforms like Facebook, LinkedIn, and Reddit, are spaces where researchers share their work, seek advice, and discuss recent findings. Joining these groups allows you to engage with peers, discover articles that might not be widely publicized, and gain insights from ongoing academic discussions.
 
-\textbf{Attend online conferences and workshops.} Many conferences and workshops are now being held online, and these can be a great way to find research articles. Often, the presentations from these events are posted online, and you can also interact with the speakers and other attendees.
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tip:} When joining a group, take the time to introduce yourself and share your research interests. Active participation can lead to more meaningful connections and opportunities to find relevant research articles.
+\end{itemize}
 
-Here are some specific social media platforms that you can use to find research articles:
+\subsubsection{4. Attend Online Conferences and Workshops}\label{attend-online-conferences-and-workshops}
 
-\textbf{Twitter:} Twitter is a great platform for following researchers and research institutions. You can also use Twitter to search for research articles using hashtags.
+The shift to virtual events has made it easier than ever to attend academic conferences and workshops from anywhere in the world. These events are often live-streamed on social media platforms or have dedicated hashtags for participants to follow along and discuss. Attending these online events allows you to access presentations, papers, and discussions that are directly relevant to your research. Additionally, many conferences post recordings of sessions or provide access to conference papers after the event, giving you further opportunities to explore new research.
 
-\textbf{LinkedIn:} LinkedIn is a professional networking platform that can be a great way to connect with researchers and find research articles.
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tip:} After attending a session, engage with the speakers and attendees on social media by sharing your thoughts or asking questions. This can help you build a network of contacts who may share additional resources or research articles.
+\end{itemize}
 
-\textbf{ResearchGate:} ResearchGate is a social networking platform for researchers. You can use ResearchGate to find research articles, collaborate with other researchers, and get feedback on your own work.
+\subsubsection{Specific Social Media Platforms to Use}\label{specific-social-media-platforms-to-use}
 
-\textbf{Academia.edu:} Academia.edu is a social networking platform for academics. You can use Academia.edu to find research articles, connect with other academics, and share your own work.
+\textbf{Twitter:} Twitter is an excellent platform for real-time research updates, especially by following researchers and journals and using hashtags. Many academic communities thrive on Twitter, making it a rich resource for finding the latest studies.
 
-\textbf{Facebook:} Facebook can also be a good platform for finding research articles, especially if you are part of a research group or community.
+\textbf{LinkedIn:} LinkedIn is ideal for connecting with professionals and academics in your field. Researchers often share their publications and discuss their implications on LinkedIn, making it a valuable platform for professional networking and discovering research articles.
 
-When using social media to find research articles, it is important to be critical of the sources you find. Not all research articles that are shared on social media are of high quality. It is important to evaluate the quality of the article before you cite it in your own research. If you are unsure about the quality of a research article, it is always best to consult with a librarian or another expert.
+\textbf{ResearchGate:} ResearchGate is a dedicated social networking site for researchers. It allows you to follow researchers, access their publications, request full-text articles, and engage in discussions. It's particularly useful for finding peer-reviewed research and collaborating with other scholars.
 
-\subsection*{Contact experts in your field.}\label{contact-experts-in-your-field.}
-\addcontentsline{toc}{subsection}{Contact experts in your field.}
+\textbf{Evaluating Sources on Social Media}
 
-There are a few ways to use experts in your field to find research articles:
+While social media is a powerful tool for discovering research articles, it is crucial to critically evaluate the sources you find. Not all articles shared on social media are of high quality or come from reputable journals. Always consider the credibility of the author, the publication venue, and the methodology of the research before incorporating it into your own work. If in doubt, consult a librarian or an academic advisor for further guidance.
 
-\textbf{Talk to your professors or advisors.} Your professors and advisors are likely to be familiar with the latest research in your field. They can recommend research articles that you should read and can also help you to identify experts in your field.
+\subsection{Contacting Experts in Your Field}\label{contacting-experts-in-your-field}
 
-\textbf{Attend conferences and workshops.} Attending conferences and workshops is a great way to meet experts in your field and to learn about the latest research. You can also ask experts for recommendations for research articles.
+In addition to using social media, directly contacting experts in your field can be an invaluable way to find research articles and gain deeper insights into your study area. Experts can provide recommendations for key papers, suggest emerging research areas, and even share unpublished work that may not yet be available in databases.
 
-\textbf{Read research blogs and newsletters.} There are many research blogs and newsletters that are written by experts in various fields. These can be a great way to stay up-to-date on the latest research and to find research articles that are relevant to your interests.
+\subsubsection{1. Talk to Your Professors or Advisors}\label{talk-to-your-professors-or-advisors}
 
-\textbf{Use social media.} As mentioned earlier, you can use social media to connect with experts in your field and to find research articles. You can follow researchers and research institutions on Twitter, LinkedIn, and other social media platforms. You can also join research groups and communities on social media.
+Your professors and academic advisors are often the best starting point when seeking expert guidance. They have deep knowledge of the field, are familiar with the latest research, and can point you toward seminal papers or recommend specific articles that are highly relevant to your research. Moreover, they may have access to articles or resources that are not available to students, which can further enrich your research.
 
-Here are some specific things you can do to find experts in your field:
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tip:} When approaching your professors, be specific about your research topic and what you hope to learn. This will help them provide more targeted recommendations.
+\end{itemize}
 
-\textbf{Search for experts by name or by topic.} There are many online directories that list experts in various fields. You can search for experts by name or by topic.
+\subsubsection{2. Attend Conferences and Workshops}\label{attend-conferences-and-workshops}
 
-\textbf{Look for experts who have published research articles in your field.} You can use a specialized search engine, such as Google Scholar, to find research articles that have been published in your field. The authors of these articles are likely to be experts in your field.
+Conferences and workshops are excellent venues for meeting experts and learning about the latest research. These events often feature presentations from leading scholars, providing an opportunity to hear about their work directly. After a presentation, don't hesitate to approach the speaker with questions or requests for further reading. Many experts are happy to share their articles or direct you to where you can find them.
 
-\textbf{Look for experts who have given presentations at conferences or workshops in your field.} You can find information about conferences and workshops on the websites of professional organizations.
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tip:} Prepare a list of questions or topics of interest before attending a conference. This will help you maximize the networking opportunities and identify experts who can assist with your research.
+\end{itemize}
 
-\textbf{Look for experts who are active on social media.} As mentioned earlier, you can use social media to connect with experts in your field. You can follow researchers and research institutions on Twitter, LinkedIn, and other social media platforms. You can also join research groups and communities on social media.
+\subsubsection{3. Read Research Blogs and Newsletters}\label{read-research-blogs-and-newsletters}
 
-When using experts in your field to find research articles, it is important to be respectful of their time. When you reach out to an expert, be sure to explain why you are interested in their research and what you are looking for. Be sure to also thank the expert for their time and consideration.
+Many experts maintain blogs or contribute to newsletters that discuss their research and developments in the field. These platforms are often more accessible than academic journals and provide insights into the latest research trends. Following these blogs or subscribing to newsletters can keep you informed about new publications and give you a more nuanced understanding of ongoing debates in your field.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tip:} Look for blogs that are peer-reviewed or written by recognized experts in the field to ensure the information is reliable.
+\end{itemize}
+
+\subsubsection{4. Use Social Media to Connect with Experts}\label{use-social-media-to-connect-with-experts}
+
+As mentioned earlier, social media platforms are also useful for connecting with experts. By following researchers, engaging with their posts, and joining relevant groups, you can build relationships that may lead to further collaboration or recommendations for research articles. Many researchers are open to sharing their work or discussing their findings with interested peers, especially if you approach them respectfully and with clear questions.
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Tip:} When reaching out to an expert on social media, always introduce yourself and explain why you are interested in their work. Be concise and professional in your communication to make a positive impression.
+\end{itemize}
+
+\subsubsection{Finding and Contacting Experts}\label{finding-and-contacting-experts}
+
+\textbf{Search by Name or Topic:} Use academic databases, professional organizations, or specialized directories to find experts in your field. You can search by specific research topics or by the names of researchers who have published influential work in your area of interest.
+
+\textbf{Look for Published Authors:} Identify experts by looking at the authors of the research articles you find through databases like Google Scholar or Scopus. Those who frequently publish in reputable journals are likely to be well-established in their field.
+
+\textbf{Seek Out Conference Presenters:} Experts who present at conferences are often leaders in their field. You can find information about upcoming conferences on the websites of professional organizations. After identifying relevant presenters, consider reaching out to them with specific questions or requests for further reading.
+
+\textbf{Engage with Active Social Media Users:} Many researchers are active on platforms like Twitter, LinkedIn, and ResearchGate. By engaging with their content---whether through likes, comments, or direct messages---you can start a conversation that may lead to valuable research recommendations.
+
+When contacting experts, be mindful of their time and make your requests clear and concise. Express gratitude for their assistance and follow up with any additional questions you may have after your initial conversation. Building a professional relationship with experts in your field can significantly enhance your research and provide you with insights that are not readily available through other means.
 
 \section{How to Read Research Papers}\label{read}
 
@@ -907,14 +1018,14 @@ The title of your research report is more than just a label; it is the first imp
 
 The abstract is one of the most critical components of a research report, serving as a concise summary that encapsulates the entire study. It typically ranges between 150 and 250 words and should be written in past tense. The abstract must efficiently convey the purpose of the study, the methods used, the main findings, and the conclusions drawn, providing readers with a clear overview of what the report entails. Since the abstract is often the first---and sometimes the only---part of the report that others will read, it needs to be clear and informative, free of jargon, and devoid of citations. Crafting a strong abstract involves striking a balance between brevity and completeness; it should cover the key aspects of the study without delving into unnecessary details. In learning to write effective abstracts, students will review examples from published research, which will highlight how successful abstracts succinctly summarize complex studies. Through writing exercises and peer reviews, students will develop the skill to distill their research into a compelling, accurate summary, while avoiding common pitfalls like vagueness or excessive detail that can obscure the main message.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig081.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig081.jpg}
 
 \subsubsection*{Introduction}\label{introduction}
 \addcontentsline{toc}{subsubsection}{Introduction}
 
 The introduction of your research report serves as the gateway to your study, providing the necessary background information and framing the research problem within a broader context. A well-written introduction should clearly state the research problem, explain its significance, and outline the research question or hypothesis. This section is crucial for engaging the reader, as it not only introduces the topic but also justifies why the study is important. A strong introduction links the research question to existing literature or ongoing debates in the field, setting the stage for the subsequent sections of the report. In crafting an introduction, it is essential to balance providing enough background to understand the research with keeping the reader's interest. Students will examine examples from academic journals to see how effective introductions establish context, articulate the research problem, and lead seamlessly into the study's objectives. By practicing drafting introductions for hypothetical studies, students will learn to frame their research in a way that is both compelling and informative, ensuring that their readers are both engaged and well-informed from the outset.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig082.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig082.jpg}
 
 \subsubsection*{Literature Review}\label{literature-review}
 \addcontentsline{toc}{subsubsection}{Literature Review}
@@ -926,7 +1037,7 @@ The literature review is a foundational component of a research report, serving 
 
 The methods section of a research report is where you detail how the research was conducted, providing a roadmap that allows others to replicate your study. This section should include a comprehensive description of the participants, materials, procedures, and methods of data analysis used in the study. Clarity and precision are crucial, as the goal is to provide enough detail for another researcher to replicate the study exactly. The methods section is typically written in the past tense, as it describes actions that have already been completed. To assist in writing this section, students will be provided with a template or checklist to ensure all necessary details are included. They will practice writing a method section based on a described experiment or survey, followed by class reviews to discuss completeness and clarity. These discussions will emphasize the importance of transparency in the methods section, as it underpins the study's scientific rigor and reliability. By mastering the methods section, students will be able to communicate the how of their research clearly and effectively, ensuring that their study can be trusted and potentially replicated by others in the field.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig083.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig083.jpg}
 
 \subsubsection*{Results}\label{results}
 \addcontentsline{toc}{subsubsection}{Results}
@@ -943,14 +1054,14 @@ The discussion section is where you interpret the results of your study, relatin
 
 The references section is where you list all the sources cited in your research report, providing full citations in the appropriate format (typically APA style). This section is essential for giving credit to the original authors and for allowing readers to locate the sources you used. Accurate and consistent referencing is crucial for maintaining the credibility of your research report. To familiarize students with APA formatting rules, they will be introduced to the APA Publication Manual and other online resources. A workshop will be conducted where students practice formatting references for various types of sources, such as books, journal articles, and websites. During this workshop, common citation errors will be discussed, along with strategies to avoid them. The emphasis will be on maintaining consistency and accuracy in references, as these are key to producing a credible and professional research report.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig085.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig085.jpg}
 
 \subsubsection*{Appendix}\label{appendix}
 \addcontentsline{toc}{subsubsection}{Appendix}
 
 The appendix is where you include supplementary materials that support your research but are not essential to the main text. These materials might include survey instruments, raw data, detailed tables, or consent forms. While not every research report will require an appendix, it can be a valuable addition when you need to provide additional context or transparency. To help students understand what to include in an appendix, examples from published research will be shown. These examples will illustrate the types of materials that are typically included and how they add value to the report without overwhelming the reader. Students will then be assigned to create an appendix for their research report, incorporating materials such as raw data, consent forms, or detailed descriptions of their methodology. The class will discuss how to reference the appendix in the main text, ensuring that it complements the report rather than detracts from it. This exercise will help students understand the role of the appendix in providing transparency and supporting the credibility of their research, while also ensuring that the main body of the report remains focused and concise.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig086.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig086.jpg}
 
 \subsection*{Information for Inclusion}\label{information-for-inclusion}
 \addcontentsline{toc}{subsection}{Information for Inclusion}
@@ -1037,7 +1148,7 @@ There are many different ways to report research in academia. Some of the most c
 
 \textbf{Conference papers}: Conference papers are presented at academic conferences. They are typically shorter than research papers and are written in a more informal style.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/papers.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/papers.png}
 
 \textbf{Theses and dissertations}: Theses and dissertations are written by graduate students to complete their degree requirements. They are typically longer and more comprehensive than research papers.
 
@@ -1047,13 +1158,13 @@ There are many different ways to report research in academia. Some of the most c
 
 \textbf{Presentations}: Presentations are a way to share research with a live audience. They can be given at conferences, workshops, or other events.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/BMS 2023 poster final.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/BMS 2023 poster final.jpg}
 
 \textbf{Blogs and social media}: Blogs and social media can be used to share research with a wider audience. They are a good way to communicate research in a more informal way.
 
 The best way to report research depends on the specific research project and the intended audience. However, all of these methods can be effective ways to communicate research findings and to contribute to the academic community.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig091.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig091.jpg}
 
 \subsubsection*{Industry Examples}\label{industry-examples}
 \addcontentsline{toc}{subsubsection}{Industry Examples}
@@ -1062,7 +1173,7 @@ There are many different ways to report research in industry. Some of the most c
 
 \textbf{White papers}: White papers are a type of report that is commonly used in industry to present research findings to a specific audience. They are typically written in a clear and concise style and focus on a specific topic.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/white_paper.png}
+\includegraphics[width=1\textwidth,height=\textheight]{images/white_paper.png}
 
 \textbf{Executive summaries}: Executive summaries are a brief overview of a white paper or other research report. They are typically written for senior executives and other decision-makers.
 
@@ -1136,7 +1247,7 @@ Visual aids, such as charts, graphs, and infographics, are invaluable tools for 
 
 Creating clear and engaging messages involves a careful balance of simplicity and conciseness. The aim is not to oversimplify the content but to make it accessible and interesting to a broader audience. By focusing on these principles, researchers can bridge the gap between academic research and public understanding, ensuring that their work is not only recognized but also valued by society. This approach fosters a greater appreciation for the role of research in addressing societal challenges and advancing knowledge, ultimately contributing to a more informed and engaged public.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig087.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig087.jpg}
 
 \subsubsection*{Employing Storytelling Techniques}\label{employing-storytelling-techniques-1}
 \addcontentsline{toc}{subsubsection}{Employing Storytelling Techniques}
@@ -1176,7 +1287,7 @@ Employing storytelling techniques in research communication is not about embelli
 
 In today's digital landscape, where information is rapidly consumed and often fleetingly retained, the role of visual elements in research communication cannot be overstated. Visuals have the unique ability to condense complex information into more digestible forms, making them indispensable tools for researchers, especially when aiming to engage public audiences. This is particularly true in fields such as social media analytics, where data can be dense and difficult to interpret without visual aids. Effective visuals not only clarify complex data but also enhance the overall appeal and shareability of research findings. This section explores strategies for incorporating visual elements into your research communication, ensuring that your message is both impactful and accessible.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig089.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig089.jpg}
 
 \textbf{Data Visualizations}
 
@@ -1226,7 +1337,7 @@ Maintaining reader interest throughout the article is another crucial element. U
 
 Striking the right tone is also key to crafting an engaging feature article. While the writing should be accessible and conversational, it must also maintain a level of professionalism appropriate for the subject matter. This balance ensures that the article is both credible and approachable. The tone should not be overly casual, as this can undermine the seriousness of the research, but it should avoid the stiffness of academic prose. The aim is to make the content feel like a dialogue rather than a lecture, encouraging readers to engage with the material rather than passively receive it.
 
-\href{https://medium.com/@nishiyama.ry/data-analysis-problematic-and-exploitative-beauty-contests-in-japanese-universities-fe551d31fa66}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/feature-article.png}}
+\href{https://medium.com/@nishiyama.ry/data-analysis-problematic-and-exploitative-beauty-contests-in-japanese-universities-fe551d31fa66}{\includegraphics[width=1\textwidth,height=\textheight]{images/feature-article.png}}
 
 \subsubsection*{Structuring the Article}\label{structuring-the-article}
 \addcontentsline{toc}{subsubsection}{Structuring the Article}
@@ -1254,7 +1365,7 @@ In contrast, the white paper should provide the depth and context that the infog
 
 The white paper should be seen as an extension of the infographic, filling in the gaps and providing the reader with a comprehensive understanding of the research. While the infographic grabs attention and delivers the highlights, the white paper answers the questions that the infographic might raise. For example, if the infographic presents a striking statistic about a correlation between two variables, the white paper should explain how that correlation was discovered, why it is significant, and what it means in practical terms. This detailed explanation helps to reinforce the credibility of the research and provides the audience with the tools they need to interpret the data correctly.
 
-\href{https://winefolly.com/deep-dive/simple-food-and-wine-pairing/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/infographic.jpg}}
+\href{https://winefolly.com/deep-dive/simple-food-and-wine-pairing/}{\includegraphics[width=1\textwidth,height=\textheight]{images/infographic.jpg}}
 
 \subsubsection*{Structuring the White Paper}\label{structuring-the-white-paper}
 \addcontentsline{toc}{subsubsection}{Structuring the White Paper}
@@ -1303,7 +1414,7 @@ Incorporating graphics and text overlays into the storyboard is also essential f
 
 \begin{figure}
 \centering
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/storyboard-script.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/storyboard-script.jpg}
 \caption{Example of a storyboard with script}
 \end{figure}
 
@@ -1323,7 +1434,7 @@ Once the storyboard is complete, it is essential to review and revise it to ensu
 
 In the digital age, social media platforms have revolutionized the way information is disseminated, offering researchers unparalleled opportunities to share their findings with a global audience. Each platform---Twitter, Facebook, LinkedIn, and Instagram---brings unique strengths and limitations to the table, making them suitable for different types of research communication. Understanding these characteristics is essential for effectively leveraging social media to maximize the reach and impact of your research. This analysis provides an in-depth exploration of the major platforms, focusing on how they can be utilized to disseminate research findings, engage with audiences, and foster academic discourse.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig092.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig092.jpg}
 
 \subsection*{Twitter}\label{twitter}
 \addcontentsline{toc}{subsection}{Twitter}
@@ -1379,7 +1490,7 @@ Let's start by discussing the idea of a \textbf{concept}. A concept is an abstra
 
 To better understand how concepts are used in research, it's helpful to begin with a broad example. Take the concept of ``democracy.'' Democracy is an abstract idea that can be explored from various angles, such as political participation, freedom of speech, or electoral processes. In research, defining this concept more narrowly allows us to study specific aspects of democracy, such as voter turnout or the impact of media on political knowledge. By narrowing down broad concepts into more specific definitions, researchers can focus their studies and make their findings more relevant and actionable.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig013.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig013.jpg}
 
 \emph{Figure 013. A visual representation of the process of narrowing a broad concept into a specific research focus. The image could start with a large circle labeled ``Broad Concept'' (e.g., ``Democracy'') and show arrows pointing to smaller circles with more focused aspects (e.g., ``Voter Turnout,'' ``Media Influence on Political Knowledge''). This image would help students visualize how broad ideas are refined into researchable topics.}
 
@@ -1387,7 +1498,7 @@ Once you have a clear concept in mind, the next step is \textbf{operationalizati
 
 For instance, if you are studying ``audience engagement,'' you need to determine how to measure this concept in a way that reflects its true meaning. One way to operationalize audience engagement might be to look at social media metrics, such as the number of likes, shares, and comments a piece of content receives. These metrics provide tangible data that can be used to assess how engaged an audience is with a particular media message. Similarly, if you were studying ``media influence,'' you might operationalize this concept by measuring changes in public opinion before and after exposure to a specific media campaign.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig014.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig014.jpg}
 
 \emph{Figure 014. A step-by-step flowchart illustrating the operationalization process. The image could begin with an abstract concept (e.g., ``Audience Engagement''), followed by arrows pointing to specific measurable variables (e.g., ``Likes,'' ``Shares,'' ``Comments''). The final step could show these variables being analyzed in a research context. This visual would help students understand how abstract ideas are translated into measurable data.}
 
@@ -1399,7 +1510,7 @@ Following this, we will focus on operationalization, using case studies to illus
 
 Finally, you will have the opportunity to practice creating operational definitions for a list of given concepts. This exercise will challenge you to think critically about how to measure abstract ideas in a way that is both accurate and meaningful. You might, for example, be asked to operationalize the concept of ``media literacy'' by deciding which behaviors or knowledge indicators best represent this idea. Through this practice, you will develop the skills needed to turn theoretical concepts into practical research tools.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig015.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig015.jpg}
 
 *Figure 015. An interactive example or exercise embedded within the textbook. The image could show a blank template for operationalizing a concept, with prompts for students to fill in. For example, the template could ask, ``Concept: \_\textbf{,'' ``Operational Definition: },'' ``Measurable Variables: \_\_\_\_.'' This image would provide a hands-on tool for students to apply what they have learned directly in the textbook.*
 
@@ -1413,7 +1524,7 @@ The \textbf{null hypothesis (H0)} is a statement that asserts there is no effect
 
 Understanding and formulating a null hypothesis is fundamental to conducting rigorous research. By starting with the assumption that there is no effect, you can objectively test whether your data provides sufficient evidence to reject this hypothesis. This approach ensures that your conclusions are based on empirical evidence rather than preconceived notions.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig016.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig016.jpg}
 
 \emph{Figure 016. A flowchart showing the process of hypothesis testing, beginning with the null hypothesis (H0) and moving through data collection, analysis, and the decision to either reject or fail to reject the null hypothesis. The chart could include simple examples at each stage, such as ``Data shows no difference'' leading to ``Fail to reject H0'' or ``Data shows a significant difference'' leading to ``Reject H0.'' This visual would help students understand the logical sequence of hypothesis testing.}
 
@@ -1421,7 +1532,7 @@ In contrast to the null hypothesis, the \textbf{alternative hypothesis (H1)} is 
 
 The alternative hypothesis is where you articulate the specific effect or relationship you are interested in exploring. It represents the hypothesis you are testing for and is the focus of your research. The goal of your study is to gather enough evidence to support or refute this hypothesis. If the data contradicts the null hypothesis, you may have grounds to accept the alternative hypothesis, indicating that the variables are indeed related.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig017.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig017.jpg}
 
 \emph{Figure 017. A side-by-side comparison of the null hypothesis and the alternative hypothesis. The image could use a simple example, such as the relationship between study time and exam scores. On one side, the null hypothesis might state, ``Study time does not affect exam scores,'' while the alternative hypothesis might state, ``Increased study time leads to higher exam scores.'' This visual would help students see the contrast between the two types of hypotheses and their roles in research.}
 
@@ -1429,7 +1540,7 @@ At the heart of hypothesis construction is the \textbf{research question}---the 
 
 Crafting a good research question is an essential skill for any researcher. It involves narrowing down broad topics into specific, researchable queries that can be addressed through empirical study. A well-defined research question helps ensure that your study remains focused and that your hypotheses are directly aligned with the goals of your research.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig018.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig018.jpg}
 
 \emph{Figure 018. An example of a research question development process. The image could start with a broad topic, such as ``Media Influence,'' and show how it is refined into a specific research question like ``How does media consumption influence political attitudes among young adults?'' Arrows could guide students through the steps of narrowing and focusing the question. This visual would help students understand the process of refining a research topic into a precise and manageable research question.}
 
@@ -1449,7 +1560,7 @@ The \textbf{nominal level} of measurement involves classifying data into distinc
 
 Nominal data is particularly useful when your goal is to count the frequency of occurrences in each category or when you need to distinguish between different types of entities. However, because nominal data lacks an inherent order, you cannot perform mathematical operations like addition or subtraction on it. Understanding the limitations and appropriate uses of nominal data is crucial for ensuring the accuracy of your analyses.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig019.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig019.jpg}
 
 \emph{Figure 019. A chart illustrating nominal level data categorization. The image could display different TV show genres (e.g., drama, comedy, documentary) with visual icons representing each genre. Arrows could show how individual TV shows are categorized into these genres. This visual would help students grasp the concept of nominal categorization and its application in media studies.}
 
@@ -1457,7 +1568,7 @@ The \textbf{ordinal level} of measurement takes categorization a step further by
 
 Ordinal data is often used in research to assess relative standings or preferences. However, because the distances between the ranks are not equal or known, you cannot assume that the difference between two ranks is the same as the difference between two other ranks. This limitation affects the types of statistical analyses that can be performed, making it important to choose the right level of measurement for your research question.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig020.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig020.jpg}
 
 \emph{Figure 020. An example of ordinal data representation. The image could show a ranking of favorite TV shows, with each show placed in a specific order but without equal spacing between the ranks. A visual representation of the rankings, such as a list with arrows indicating the order, would help students understand how ordinal data is structured and interpreted.}
 
@@ -1465,7 +1576,7 @@ Moving beyond ordinal data, the \textbf{interval level} of measurement involves 
 
 Interval data allows for a wider range of statistical analyses than nominal or ordinal data, as you can calculate means and standard deviations. However, because interval data lacks a true zero point, certain operations, like calculating ratios, are not meaningful. For instance, saying that a score of 4 on a Likert scale is ``twice as positive'' as a score of 2 is not valid, as the scale does not represent an absolute quantity.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig021.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig021.jpg}
 
 \emph{Figure 021. A Likert scale example from a survey, showing a range from 1 (Strongly Disagree) to 5 (Strongly Agree). Each point on the scale should be evenly spaced to emphasize the equal intervals between them. This visual would clarify how interval data is structured and why the equal spacing is important for analysis.}
 
@@ -1473,7 +1584,7 @@ Finally, the \textbf{ratio level} of measurement is the most informative level, 
 
 Ratio data provides the greatest flexibility for statistical analysis, allowing you to use all mathematical operations, including calculating means, variances, and ratios. Understanding and correctly identifying ratio data is crucial for conducting accurate and meaningful research, as it allows for the most precise and comprehensive analysis.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig022.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig022.jpg}
 
 \emph{Figure 022. A bar graph showing the number of hours spent watching TV per week by different individuals. The graph could highlight that the data has a true zero point and uses consistent intervals, showing how this allows for meaningful comparisons between different values. This visual would help students understand the concept of ratio data and its application in research.}
 
@@ -1489,7 +1600,7 @@ The \textbf{independent variable (IV)} is the variable that the researcher manip
 
 To help you better understand independent variables, consider an experiment where you want to study how different advertising formats affect consumer behavior. The independent variable could be the format of the advertisement---such as a video, a banner ad, or a social media post. By manipulating the format, you can observe how these changes influence consumer behavior, such as click-through rates or purchasing decisions.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig023.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig023.jpg}
 
 \emph{Figure 023. A diagram showing an experiment where the independent variable (e.g., ``Type of Media Content'') is manipulated to observe its effect on the dependent variable (e.g., ``Audience Engagement''). The diagram could use arrows to indicate the direction of influence from the independent variable to the dependent variable. This visual would help students see the relationship between these variables in a research context.}
 
@@ -1497,7 +1608,7 @@ On the other hand, the \textbf{dependent variable (DV)} is the variable that is 
 
 To illustrate the role of dependent variables, imagine a study where you are investigating how different headlines affect readers' perceptions of news credibility. The dependent variable could be the credibility score that readers assign to each article after reading it. By measuring this score, you can assess whether changes in the headline (the independent variable) have an impact on readers' perceptions of credibility (the dependent variable).
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig024.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig024.jpg}
 
 \emph{Figure 024. A chart displaying an example study where different headlines (independent variable) are tested against readers' credibility scores (dependent variable). The chart could show varying scores based on different headlines, visually representing the effect of the independent variable on the dependent variable. This image would help students understand how changes in the independent variable can influence the dependent variable.}
 
@@ -1505,7 +1616,7 @@ In the classroom, we will explore these concepts by examining case studies where
 
 To reinforce your understanding, you will also engage in activities where you map out research scenarios and clearly define the independent and dependent variables. For instance, you might be tasked with designing a study to investigate how different levels of advertising exposure (independent variable) influence brand recall (dependent variable). By defining these variables, you will gain practical experience in structuring research questions and experiments.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig025.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig025.jpg}
 
 \emph{Figure 025. A worksheet or template where students can practice identifying and defining independent and dependent variables in various research scenarios. The worksheet could include prompts like ``Research Question:'', ``Independent Variable: \textbf{'', and ''Dependent Variable: }\_''. This interactive element would provide a hands-on tool for students to apply what they have learned.}
 
@@ -1519,7 +1630,7 @@ When conducting research, particularly in the social sciences and media studies,
 
 Understanding and identifying sources of measurement error is key to minimizing its impact on your research. For example, consider a study measuring the effectiveness of a new media literacy program. If participants misunderstand a survey question about their media consumption habits, the resulting data might inaccurately represent their actual media use. This could lead to incorrect conclusions about the program's effectiveness.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig026.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig026.jpg}
 
 \emph{Figure 026. An infographic showing different sources of measurement error. The image could include icons representing respondent misunderstanding (e.g., a question mark over a survey response), data entry errors (e.g., a keyboard with a typo), and instrument inconsistencies (e.g., a broken ruler). This visual would help students recognize various types of measurement error and their potential impact on research outcomes.}
 
@@ -1529,7 +1640,7 @@ To help you grasp the concept of measurement error, we will discuss practical ex
 
 For example, in media studies, psychological scales are often used to measure abstract concepts like media literacy or audience engagement. To assess the construct validity of such a scale, you would need to determine whether the scale truly captures the essence of the concept it aims to measure. If the scale includes irrelevant items or fails to address key aspects of the concept, its validity would be compromised.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig027.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig027.jpg}
 
 \emph{Figure 027. A diagram illustrating the concept of construct validity. The image could show a target with an arrow hitting the center, labeled ``Accurate Measurement,'' to symbolize valid measurement. Surrounding the target, there could be examples of both valid and invalid measures, helping students visualize the importance of hitting the ``target'' with their measurement tools.}
 
@@ -1539,7 +1650,7 @@ Finally, we must consider \textbf{reliability}, which refers to the consistency 
 
 Reliability is crucial because it ensures that your measurements are stable and repeatable. Without reliability, even valid measurements can be rendered meaningless, as inconsistent results can obscure the true relationships between variables. For instance, if a survey instrument designed to measure audience engagement produces wildly different results each time it is administered, it would be difficult to draw any reliable conclusions about audience behavior.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig028.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig028.jpg}
 
 \emph{Figure 028. A visual representation of reliability in measurement. The image could depict multiple arrows consistently hitting the same spot on a target, labeled ``Consistent Results.'' Alongside this, another target could show arrows scattered all over, labeled ``Inconsistent Results,'' to illustrate unreliable measurement. This visual would help students understand the concept of reliability and its importance in research.}
 
@@ -1683,7 +1794,7 @@ One of the most commonly used experimental designs is the \textbf{between-subjec
 
 This approach is particularly effective when you want to ensure that the effects you are observing are due to the independent variable rather than other factors. Because each group only experiences one condition, there is less risk of participants becoming biased or fatigued by multiple exposures. However, between-subjects designs also require careful consideration of group equivalence, ensuring that any differences between groups are due to the experimental manipulation and not pre-existing differences among participants.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig029.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig029.jpg}
 
 \emph{Figure 029. A diagram illustrating a between-subjects design. The image could show two groups of participants, with one group labeled ``Group A: Positive Tone'' and the other ``Group B: Negative Tone.'' Arrows could point from each group to a measurement outcome, such as ``Perception of News.'' This visual would help students understand how different conditions are applied to different groups in a between-subjects design.}
 
@@ -1691,7 +1802,7 @@ In contrast to the between-subjects design, a \textbf{within-subjects design} in
 
 Within-subjects designs are particularly useful when you want to control for individual differences, as each participant serves as their own control. However, this design can also introduce potential issues like order effects, where the sequence in which conditions are presented affects the results. For example, participants might become more critical or fatigued after watching multiple broadcasts, which could influence their responses. To mitigate these effects, researchers often use techniques such as counterbalancing, where the order of conditions is varied across participants.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig030.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig030.jpg}
 
 \emph{Figure 030. A timeline showing a within-subjects design. The image could depict a single group of participants experiencing two conditions in sequence, labeled ``Condition 1: Positive Tone'' followed by ``Condition 2: Negative Tone.'' Arrows could point to their measured reactions after each condition. This visual would help students see how within-subjects designs allow for direct comparison within the same group.}
 
@@ -1699,7 +1810,7 @@ A crucial component of any experimental design is the inclusion of a \textbf{con
 
 Control groups are essential for isolating the effect of the independent variable and ruling out alternative explanations for your findings. Without a control group, it would be difficult to determine whether observed changes are due to the manipulation or other factors. For instance, if both the experimental and control groups show similar changes in perception, this might suggest that factors other than the media content are at play.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig031.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig031.jpg}
 
 \emph{Figure 031. A side-by-side comparison of an experimental group and a control group. The image could show one group labeled ``Experimental Group: Biased Content'' and another labeled ``Control Group: Neutral Content,'' with arrows leading to different outcome measures. This visual would help students understand the role of a control group in providing a baseline for comparison in experimental research.}
 
@@ -1721,7 +1832,7 @@ One of the primary advantages of cross-sectional designs is their efficiency. Be
 
 However, while cross-sectional designs are excellent for identifying relationships between variables, they have significant limitations when it comes to inferring causality. Since the data is collected at only one point in time, it is difficult to determine the direction of relationships between variables or to establish cause-and-effect relationships. For instance, if you find that individuals who spend more time on social media have higher levels of anxiety, a cross-sectional study cannot tell you whether social media use causes anxiety, whether anxiety leads to increased social media use, or whether another factor influences both.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig032.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig032.jpg}
 
 \emph{Figure 032. A visual representation of a cross-sectional study. The image could depict a single point in time with a large group of diverse participants responding to a survey. Arrows might show the relationships being studied, such as the link between social media use and anxiety levels. This visual would help students understand the nature of cross-sectional designs and their focus on capturing data at one moment.}
 
@@ -1731,7 +1842,7 @@ Longitudinal designs are particularly valuable for studying changes and developm
 
 However, longitudinal research also presents several challenges. One of the most significant is participant dropout, also known as attrition. Over the course of a long-term study, some participants may drop out due to various reasons, such as losing interest, moving away, or experiencing life changes that make continued participation difficult. This can lead to biased results if the individuals who remain in the study differ in important ways from those who drop out. Additionally, longitudinal studies are typically more time-consuming and costly than cross-sectional studies, requiring careful planning and sustained resources.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig033.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig033.jpg}
 
 \emph{Figure 033. A timeline illustrating a longitudinal study. The image could show a group of participants being observed at multiple time points (e.g., Year 1, Year 3, Year 5), with arrows indicating how data is collected and tracked over time. The visual could highlight the concept of tracking changes and developments in variables, such as political attitudes, across these time points. This image would help students visualize the extended nature of longitudinal designs and their ability to capture change.}
 
@@ -1751,7 +1862,7 @@ One of the most effective and widely used sampling methods is \textbf{random sam
 
 Random sampling is particularly valuable when you need to draw conclusions that apply broadly to the entire population. However, it requires careful planning and sometimes a larger sample size to ensure that the random selection truly reflects the diversity of the population. Additionally, while random sampling reduces bias, it does not eliminate it entirely; factors such as non-response can still introduce some degree of bias.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig034.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig034.jpg}
 
 \emph{Figure 034. A visual diagram showing the process of random sampling. The image could depict a large circle representing the entire population, with small dots inside representing individuals. Arrows could point from different parts of the population to a smaller circle labeled ``Sample,'' indicating that individuals are selected at random. This visual would help students understand how random sampling works and its role in ensuring representativeness.}
 
@@ -1759,7 +1870,7 @@ Another method is \textbf{stratified sampling}, which involves dividing the popu
 
 Stratified sampling is especially beneficial when the population is heterogeneous, meaning that there are significant differences between subgroups. By ensuring that each subgroup is proportionately represented, stratified sampling improves the accuracy of your estimates and reduces sampling error. However, it also requires more detailed knowledge of the population and can be more complex to implement than simple random sampling.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig035.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig035.jpg}
 
 \emph{Figure 035. An illustration of stratified sampling. The image could show a large population divided into several subgroups (e.g., different age groups), with arrows indicating random selection from each subgroup into the final sample. This visual would help students visualize how stratified sampling ensures representation from all relevant subgroups.}
 
@@ -1767,7 +1878,7 @@ In contrast, \textbf{convenience sampling} involves selecting participants who a
 
 Convenience sampling is often used in exploratory research, pilot studies, or situations where other sampling methods are not feasible. However, it is crucial to recognize its limitations. Since the sample is not randomly selected, the results may not be generalizable beyond the specific group studied. To mitigate some of these drawbacks, researchers can combine convenience sampling with other techniques, such as increasing the sample size or using quota sampling to ensure some level of diversity within the sample.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig036.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig036.jpg}
 
 \emph{Figure 036. A simple diagram showing convenience sampling. The image could depict a researcher standing in front of a classroom, selecting participants from the students present, with a text box highlighting the ease of selection but also noting the lack of generalizability. This visual would help students understand the trade-offs involved in convenience sampling.}
 
@@ -1789,7 +1900,7 @@ One of the most widely used types of survey questions is the \textbf{Likert-type
 
 Likert-type items are advantageous because they offer a simple and standardized way to measure complex attitudes, allowing for easy comparison across respondents. Additionally, because the scale is consistent across items, Likert-type questions can be used to create composite scores that reflect overall attitudes toward a topic. However, careful attention must be paid to the wording of the statements to avoid bias. For instance, a poorly worded statement could lead respondents to answer in a way that does not accurately reflect their true opinions.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig037.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig037.jpg}
 
 \emph{Figure 037. An example of a Likert scale question. The image could show the statement ``Social media has a positive impact on society'' with a five-point scale ranging from 1 (Strongly Disagree) to 5 (Strongly Agree). Each point on the scale could be labeled to emphasize the gradation of agreement. This visual would help students understand how Likert-type items are structured and how they are used to measure attitudes.}
 
@@ -1799,7 +1910,7 @@ Another common type of survey question is the \textbf{closed-ended question}. Cl
 
 The main advantage of closed-ended questions is their simplicity and ease of analysis. Since the responses are predefined, you can quickly categorize and quantify the data, making it easier to identify patterns and trends. However, one limitation of closed-ended questions is that they may constrain respondents' answers, potentially leading to a loss of nuanced information. For instance, if the predefined options do not fully capture the respondents' true behaviors or opinions, the data collected may not be entirely accurate.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig038.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig038.jpg}
 
 \emph{Figure 038. A sample closed-ended question with response options. The image could show the question ``How often do you use social media?'' followed by the options ``Daily,'' ``Weekly,'' ``Monthly,'' and ``Never.'' The visual could highlight how the predefined responses make it easy to quantify and analyze the data. This visual would help students understand the structure of closed-ended questions and their advantages in survey design.}
 
@@ -1809,7 +1920,7 @@ In contrast to closed-ended questions, \textbf{open-ended questions} allow respo
 
 Open-ended questions are valuable because they can uncover insights that might be missed with closed-ended questions. They allow respondents to provide more nuanced and personal responses, which can reveal underlying attitudes, motivations, or concerns. However, the trade-off is that open-ended questions can be more challenging to analyze. Since responses are often varied and complex, coding and interpreting the data requires careful consideration and may be time-consuming.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig039.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig039.jpg}
 
 \emph{Figure 039. An illustration of an open-ended question response. The image could show the question ``What do you think is the most significant impact of social media on society?'' with a blank space for respondents to write their answers. The visual could also include a snippet of a sample response, highlighting the depth and richness of the data collected through open-ended questions. This visual would help students appreciate the value of open-ended questions in capturing detailed and nuanced information.}
 
@@ -1825,7 +1936,7 @@ Observation methods are a key component of qualitative research, particularly wh
 
 However, participant observation comes with its own set of challenges, particularly related to ethical considerations and the potential for observer bias. As a participant, the researcher's presence and actions can influence the behavior of those being observed, known as the observer effect. Additionally, the researcher's own beliefs and experiences may color their observations, leading to bias in the data collection process. To address these challenges, it is important to maintain a balance between engagement and objectivity, and to be aware of how your participation might affect the data.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig040.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig040.jpg}
 
 \emph{Figure 040. A diagram illustrating participant observation in action. The image could depict a researcher sitting at a computer, engaged in an online forum discussion, with a thought bubble showing them taking notes on the interaction. Arrows might indicate the dual roles of participating and observing, emphasizing the challenge of maintaining objectivity. This visual would help students understand the unique aspects of participant observation and the complexities involved in this method.}
 
@@ -1835,7 +1946,7 @@ On the other end of the spectrum is the \textbf{complete observer} method, where
 
 While the complete observer role reduces the risk of the observer effect, it also comes with limitations. One of the main drawbacks is the potential for a lack of depth in the data collected. Since the researcher does not engage with the participants, they may miss out on the context or motivations behind certain behaviors. Additionally, this method can lead to ethical concerns, particularly regarding the right to privacy and informed consent, especially in settings where participants are unaware that they are being observed.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig041.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig041.jpg}
 
 \emph{Figure 041. An illustration of a researcher conducting complete observation. The image could show a researcher sitting discreetly in a public place, such as a park bench, taking notes on the interactions they observe without engaging with the participants. The visual might highlight the unobtrusive nature of complete observation, while also noting potential ethical concerns. This image would help students grasp the concept of complete observation and its implications for research.}
 
@@ -1845,7 +1956,7 @@ To help you understand the complete observer role, we will discuss its pros and 
 
 Direct observation is particularly useful for studies that require precise and quantifiable data on specific behaviors. It allows researchers to collect data that is directly observable, reducing the reliance on self-reported information, which can sometimes be inaccurate or biased. However, the challenge with direct observation is maintaining consistency in how behaviors are recorded and ensuring that the observation process does not become intrusive or influence the behaviors being studied.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig042.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig042.jpg}
 
 \emph{Figure 042. A chart or grid used by a researcher during direct observation. The image could show a researcher systematically recording behaviors, such as phone usage in a café, using a tally or checklist. The visual might highlight the structured nature of direct observation and the importance of consistency in recording data. This image would help students understand how direct observation is conducted and the attention to detail required for this method.}
 
@@ -1861,7 +1972,7 @@ Content analysis is a research method used to systematically analyze media conte
 
 Manifest content analysis is advantageous because it provides clear, objective data that can be easily replicated and compared across different studies. However, it is important to remember that while manifest content analysis can tell you what is present in the media, it does not necessarily explain the deeper meanings or implications behind the content. For instance, knowing that ``climate change'' is mentioned frequently does not reveal whether the coverage is positive, negative, or neutral, or what underlying messages are being conveyed.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig043.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig043.jpg}
 
 \emph{Figure 043. A screenshot of a news article with the word ``climate change'' highlighted each time it appears. This visual could include a tally at the side showing the total count, illustrating how manifest content analysis quantifies observable elements in media content. This image would help students understand how manifest content analysis focuses on counting tangible aspects of media.}
 
@@ -1871,7 +1982,7 @@ In contrast to manifest content, \textbf{latent content} refers to the underlyin
 
 Identifying and interpreting latent content is more complex than analyzing manifest content because it involves subjective judgment and interpretation. The same piece of content might be interpreted differently by different researchers, which can lead to variability in the findings. For this reason, latent content analysis often requires a more nuanced approach, including a thorough understanding of the context in which the content was produced and consumed.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig044.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig044.jpg}
 
 \emph{Figure 044. A news article with color-coded highlights indicating different tones (e.g., positive, negative, neutral) and annotations pointing out subtle biases or underlying themes. This visual would help students see how latent content analysis requires interpretation beyond just counting words or phrases. The image could also include a legend explaining the color-coding used in the analysis.}
 
@@ -1881,7 +1992,7 @@ Central to both manifest and latent content analysis is the process of \textbf{c
 
 Developing a coding scheme is a critical step in content analysis, as it defines how you will categorize and interpret the data. A well-defined coding scheme should be clear, consistent, and applicable across different texts. Additionally, achieving inter-coder reliability---where multiple researchers independently code the same content and reach similar conclusions---is essential to ensure the validity of your findings.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig045.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig045.jpg}
 
 \emph{Figure 045. A coding sheet or software interface showing a list of categories (e.g., ``informative,'' ``persuasive,'' ``entertainment'') with examples of how different media content is tagged under each category. This visual would help students understand how coding organizes content for analysis and the importance of having a well-defined coding scheme.}
 
@@ -4282,7 +4393,7 @@ As you advance in your understanding of data visualization, it's essential to mo
 
 To get started with ggplot2, you will be guided through a step-by-step process. We will begin with basic plots, such as simple scatter plots or bar charts, and gradually introduce more complex features like faceting, theming, and layering. Faceting allows you to create multiple plots based on a factor variable, while theming enables you to customize the overall appearance of your plots to match specific aesthetic requirements. This flexibility makes ggplot2 an indispensable tool for creating visualizations that are both informative and visually appealing.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig076.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig076.jpg}
 
 \emph{Figure 076. A multi-layered scatter plot created using ggplot2, with annotations highlighting the different layers (e.g., points, colors, shapes) and explaining how each layer contributes to the overall visualization. This visual will help students understand the modular approach of ggplot2 and how to build complex plots by adding layers.}
 
@@ -4292,7 +4403,7 @@ Another critical aspect of advanced data visualization is the use of \textbf{Int
 
 We will introduce the concept of interactive visualizations by discussing their advantages, particularly in making data more accessible and engaging for your audience. Interactive visualizations allow users to explore data on their own terms, leading to a more personalized and impactful understanding of the information presented.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig077.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig077.jpg}
 
 \emph{Figure 077. A screenshot of an interactive dashboard created in R Shiny, showing how users can filter data and update the visualizations in real-time. Annotations should explain the different interactive elements, such as dropdown menus, sliders, and dynamically updating charts, to illustrate the added value of interactivity in data exploration.}
 
@@ -4309,7 +4420,7 @@ Infographics are a powerful tool for summarizing and presenting complex informat
 
 To achieve this, you should follow several principles of good infographic design. Clarity is paramount; your infographic should communicate its message at a glance. This means avoiding clutter, using simple language, and ensuring that your visual elements are easy to interpret. Simplicity is also crucial---select a clean, minimalistic layout that helps guide the viewer's eye through the information logically and intuitively. Additionally, the effective use of color and space can make a significant difference in how your infographic is perceived. Colors should not only make the infographic visually appealing but also help differentiate between different sections or data points. Similarly, strategic use of white space can help prevent the design from feeling crowded and can make the content easier to read.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig078.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig078.jpg}
 
 \emph{Figure 078. An example infographic that summarizes the results of a media consumption survey. The infographic should include clear headings, well-organized data points, simple icons or charts, and a consistent color scheme. Annotations can point out how clarity, simplicity, and effective use of color contribute to the overall effectiveness of the design.}
 
@@ -4317,7 +4428,7 @@ Once you understand these principles, tools like Adobe Express or Canva can be i
 
 Customizing visualizations is another essential aspect of effective data communication. Customization involves tailoring the appearance and elements of a visualization to better match the data's message and the intended audience. For example, you might need to adjust the color schemes and fonts in a ggplot2 plot to align with a publication's style guidelines or to make the visualization more accessible to a broader audience. Customization can significantly enhance the effectiveness of your data visualizations, helping to ensure that your message is clear and impactful.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig079.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig079.jpg}
 
 \emph{Figure 079. A side-by-side comparison of two visualizations of the same dataset---one basic and the other customized. The customized version should demonstrate improved clarity, aesthetic appeal, and alignment with the intended message. Annotations should explain the specific changes made, such as color adjustments, font changes, and layout refinements, and how they improve the visualization.}
 
@@ -4325,7 +4436,7 @@ In the classroom, we will explore examples of how customization can enhance the 
 
 Finally, \textbf{Adobe Express} is introduced as a practical tool for creating infographics and other visual content. Adobe Express offers a range of pre-designed templates and easy customization options, making it accessible to non-designers. For instance, you might use Adobe Express to create an infographic that summarizes a study's key findings. The platform's drag-and-drop interface allows you to experiment with different layouts, colors, and fonts, making it easier to design visually compelling infographics without the need for advanced design skills.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig080.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig080.jpg}
 
 \emph{Figure 080. A screenshot of the Adobe Express interface, showing a user creating an infographic. The image should highlight the drag-and-drop functionality, template options, and customization tools available in Adobe Express. Annotations can explain how these features help streamline the design process for users of all skill levels.}
 
@@ -4482,9 +4593,9 @@ This dataset presumably contains information about video games.
 Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4054}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2703}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3243}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4054}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2703}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3243}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 variable
@@ -4532,10 +4643,10 @@ related & character & dictionary: related animes, series, games etc. \\
 Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2329}}
-  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2329}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2877}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2329}}
+  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2329}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2877}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Variable}
@@ -4575,9 +4686,9 @@ Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/202
 Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-09-26/readme.md\#roy-kent-fk-count}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3750}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3750}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3750}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3750}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 variable
@@ -4613,13 +4724,13 @@ Imdb\_rating & double & Imdb rating of that episode \\
 Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-01-08/readme.md}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1493}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1940}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1194}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1343}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0746}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1642}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1642}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1493}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1940}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1194}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1343}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0746}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1642}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1642}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 type
@@ -4654,9 +4765,9 @@ numeric & share & 0 & 2266 & 2266 & NA & NA \\
 Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30/readme.md}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4359}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2564}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3077}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4359}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2564}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3077}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 variable
@@ -5747,7 +5858,7 @@ Ethical considerations are paramount when designing and conducting research usin
 
 To illustrate the importance of these issues, we will discuss several case studies where privacy concerns in internet panels were brought to light. For instance, one case might involve a breach of data security where participants' personal information was accessed by unauthorized parties. In another, participants may have been unaware of the extent to which their data was being shared with third parties, leading to concerns about data ownership and consent.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig094.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig094.jpg}
 
 \emph{Figure 094. A diagram showing the flow of data in an internet panel study, highlighting key points where privacy and security measures must be implemented, such as consent forms, data encryption, and storage protocols.}
 
@@ -5759,7 +5870,7 @@ Internet surveys are another widely used tool in digital research, offering a co
 
 To ensure the security of data collected through internet surveys, researchers should implement best practices such as encryption of data during transmission and storage, anonymization of responses to protect participant identities, and secure storage solutions that prevent unauthorized access. Additionally, the ethical implications of these practices must be considered, particularly in relation to the digital divide, where unequal access to technology can influence who participates in online surveys and how they respond.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig095.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig095.jpg}
 
 \emph{Figure 095. A flowchart illustrating the process of conducting an internet survey, from design to data collection, with emphasis on points where privacy and security measures should be implemented, such as data encryption and anonymization techniques.}
 
@@ -5773,7 +5884,7 @@ For example, in surveys about socially sensitive topics, participants might alte
 
 We will explore this concept through examples of online surveys where social desirability bias may have influenced the results. For instance, consider a survey on political beliefs conducted online, where respondents may alter their answers depending on the political climate or the perceived anonymity of the platform.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig096.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig096.jpg}
 
 \emph{Figure 096. A comparison of survey responses on a sensitive topic, showing how social desirability bias might influence the difference between anonymous and non-anonymous responses.}
 
@@ -5795,7 +5906,7 @@ To help you understand the importance of data collection, we will explore the pr
 
 Ethical considerations are paramount in this process, particularly regarding issues of consent, privacy, and potential misuse of data. Journalists must navigate these challenges carefully to ensure that their work upholds the highest standards of integrity.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig097.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig097.jpg}
 
 \emph{Figure 097. A flowchart illustrating the data collection process in journalism, from identifying sources to ensuring data accuracy and addressing ethical considerations.}
 
@@ -5805,7 +5916,7 @@ Once the data has been collected, the next step is analysis. Data analysis in jo
 
 In this section, we will cover basic statistical techniques commonly used in data journalism, such as frequency analysis, cross-tabulation, and regression. You will be assigned to analyze a dataset, identify key insights, and consider how these insights could inform a news story. The focus will be on maintaining accuracy and integrity in data interpretation, ensuring that the story told by the data is both truthful and compelling.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig098.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig098.jpg}
 
 *Figure 098. A bar chart showing the results of a data analysis, with annotations that highlight key findings and how they might inform a news story.
 
@@ -5817,7 +5928,7 @@ You will be introduced to various tools and techniques for creating effective da
 
 We will also discuss the ethical implications of data visualization, such as the potential for creating misleading visuals. Transparency in design choices is critical to maintaining the credibility of the work.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig099.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig099.jpg}
 
 \emph{Figure 099. A sample data visualization created using \texttt{ggplot2}, showing a well-designed, clear, and engaging chart that effectively communicates a data-driven story.}
 
@@ -5835,7 +5946,7 @@ In this section, we will explore examples of discourse analysis applied to vario
 
 You will also be assigned a project to conduct a discourse analysis on a chosen media text, such as a commercial, a political ad, or a news article. This project will help you develop the skills needed to critically evaluate how language shapes the audience's perception of reality.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig100.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig100.jpg}
 
 \emph{Figure 100. A visual breakdown of a political speech, highlighting key phrases, metaphors, and rhetorical strategies used to influence public opinion. The image should include annotations explaining how these elements contribute to the construction of meaning and power relations.}
 
@@ -5847,7 +5958,7 @@ We will begin by introducing the basic principles of conversation analysis using
 
 The insights gained from conversation analysis can help you better understand how media representations of conversations, such as those in talk shows or news interviews, reflect and reinforce social norms and power structures.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig101.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig101.jpg}
 
 \emph{Figure 101. A diagram showing a transcript of a conversation with highlighted sections that illustrate key conversational features like turn-taking, pauses, and repairs. Annotations should explain how these features contribute to the overall flow and meaning of the interaction.}
 
@@ -5859,7 +5970,7 @@ In this section, we will explore how standpoint theory has been applied in media
 
 A reflective writing exercise will be assigned where you will analyze a media text from your perspective, considering how your social position shapes your understanding and interpretation. This exercise will help you appreciate the diversity of perspectives in media interpretation and challenge dominant narratives that may marginalize certain viewpoints.
 
-\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig102.jpg}
+\includegraphics[width=1\textwidth,height=\textheight]{images/fig102.jpg}
 
 \emph{Figure 102. A visual representation of how different social groups (e.g., based on race, gender, class) might interpret the same media content differently. The image could depict a diverse group of individuals watching the same news report, with thought bubbles showing their different interpretations and reactions.}
 

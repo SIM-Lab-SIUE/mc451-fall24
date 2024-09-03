@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 11 Data Visualization in R | An Introduction to Research Methods in Mass Media</title>
   <meta name="description" content="This is the textbook for MC 451 at SIU Edwardsville." />
-  <meta name="generator" content="bookdown 0.36 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 11 Data Visualization in R | An Introduction to Research Methods in Mass Media" />
   <meta property="og:type" content="book" />
@@ -66,7 +66,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -192,10 +192,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#find"><i class="fa fa-check"></i><b>3.2</b> How to Find Research Papers</a>
 <ul>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#check-your-university-library"><i class="fa fa-check"></i>Check Your University Library</a></li>
 <li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#use-a-specialized-search-engine."><i class="fa fa-check"></i>Use a specialized search engine.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#check-your-university-library."><i class="fa fa-check"></i>Check your university library.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#use-social-media."><i class="fa fa-check"></i>Use social media.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#contact-experts-in-your-field."><i class="fa fa-check"></i>Contact experts in your field.</a></li>
+<li class="chapter" data-level="3.2.1" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#using-social-media-to-find-research-articles"><i class="fa fa-check"></i><b>3.2.1</b> Using Social Media to Find Research Articles</a></li>
+<li class="chapter" data-level="3.2.2" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#contacting-experts-in-your-field"><i class="fa fa-check"></i><b>3.2.2</b> Contacting Experts in Your Field</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#read"><i class="fa fa-check"></i><b>3.3</b> How to Read Research Papers</a>
 <ul>
@@ -648,149 +648,149 @@ This dataset presumably contains information about video games.</p>
 <col width="32%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">variable</th>
 <th align="left">class</th>
 <th align="left">description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">animeID</td>
 <td align="left">double</td>
 <td align="left">Anime ID (as in <a href="https://myanimelist.net/anime/animeID" class="uri">https://myanimelist.net/anime/animeID</a>)</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">name</td>
 <td align="left">character</td>
 <td align="left">anime title - extracted from the site.</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">title_english</td>
 <td align="left">character</td>
 <td align="left">title in English (sometimes is different, sometimes is missing)</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">title_japanese</td>
 <td align="left">character</td>
 <td align="left">title in Japanese (if Anime is Chinese or Korean, the title, if available, in the respective language)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">title_synonyms</td>
 <td align="left">character</td>
 <td align="left">other variants of the title</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">type</td>
 <td align="left">character</td>
 <td align="left">anime type (e.g. TV, Movie, OVA)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">source</td>
 <td align="left">character</td>
 <td align="left">source of anime (i.e original, manga, game, music, visual novel etc.)</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">producers</td>
 <td align="left">character</td>
 <td align="left">producers</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">genre</td>
 <td align="left">character</td>
 <td align="left">genre</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">studio</td>
 <td align="left">character</td>
 <td align="left">studio</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">episodes</td>
 <td align="left">double</td>
 <td align="left">number of episodes</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">status</td>
 <td align="left">character</td>
 <td align="left">Aired or not aired</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">airing</td>
 <td align="left">logical</td>
 <td align="left">True/False is still airing</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">start_date</td>
 <td align="left">double</td>
 <td align="left">Start date (ymd)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">end_date</td>
 <td align="left">double</td>
 <td align="left">End date (ymd)</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">duration</td>
 <td align="left">character</td>
 <td align="left">Per episode duration or entire duration, text string</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">rating</td>
 <td align="left">character</td>
 <td align="left">Age rating</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">score</td>
 <td align="left">double</td>
 <td align="left">Score (higher = better)</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">scored_by</td>
 <td align="left">double</td>
 <td align="left">Number of users that scored</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">rank</td>
 <td align="left">double</td>
 <td align="left">Rank - weight according to MyAnimeList formula</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">popularity</td>
 <td align="left">double</td>
 <td align="left">based on how many members/users have the respective anime in their list</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">members</td>
 <td align="left">double</td>
 <td align="left">number members that added this anime in their list</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">favorites</td>
 <td align="left">double</td>
 <td align="left">number members that favorites these in their list</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">synopsis</td>
 <td align="left">character</td>
 <td align="left">long string with anime synopsis</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">background</td>
 <td align="left">character</td>
 <td align="left">long string with production background and other things</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">premiered</td>
 <td align="left">character</td>
 <td align="left">anime premiered on season/year</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">broadcast</td>
 <td align="left">character</td>
 <td align="left">when is (regularly) broadcasted</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">related</td>
 <td align="left">character</td>
 <td align="left">dictionary: related animes, series, games etc.</td>
@@ -807,7 +807,7 @@ This dataset presumably contains information about video games.</p>
 <col width="28%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left"><strong>Variable</strong></th>
 <th align="center"><strong>Type</strong></th>
 <th align="left"><strong>Definition</strong></th>
@@ -815,109 +815,109 @@ This dataset presumably contains information about video games.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left"><strong>id</strong></td>
 <td align="center">int</td>
 <td align="left">unique movie id</td>
 <td align="left">4488</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>original_title</strong></td>
 <td align="center">char</td>
 <td align="left">original movie title</td>
 <td align="left">Friday the 13th</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>title</strong></td>
 <td align="center">char</td>
 <td align="left">movie title</td>
 <td align="left">Friday the 13th</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>original_language</strong></td>
 <td align="center">char</td>
 <td align="left">movie language</td>
 <td align="left">en</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>overview</strong></td>
 <td align="center">char</td>
 <td align="left">movie overview/desc</td>
 <td align="left">Camp counselors are stalked…</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>tagline</strong></td>
 <td align="center">char</td>
 <td align="left">tagline</td>
 <td align="left">They were warned…</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>release_date</strong></td>
 <td align="center">date</td>
 <td align="left">release date</td>
 <td align="left">1980-05-09</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>poster_path</strong></td>
 <td align="center">char</td>
 <td align="left">image url</td>
 <td align="left">/HzrPn1gEHWixfMOvOehOTlHROo.jpg</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>popularity</strong></td>
 <td align="center">num</td>
 <td align="left">popularity</td>
 <td align="left">58.957</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>vote_count</strong></td>
 <td align="center">int</td>
 <td align="left">total votes</td>
 <td align="left">2289</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>vote_average</strong></td>
 <td align="center">num</td>
 <td align="left">average rating</td>
 <td align="left">6.4</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>budget</strong></td>
 <td align="center">int</td>
 <td align="left">movie budget</td>
 <td align="left">550000</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>revenue</strong></td>
 <td align="center">int</td>
 <td align="left">movie revenue</td>
 <td align="left">59754601</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>runtime</strong></td>
 <td align="center">int</td>
 <td align="left">movie runtime (min)</td>
 <td align="left">95</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>status</strong></td>
 <td align="center">char</td>
 <td align="left">movie status</td>
 <td align="left">Released</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>genre_names</strong></td>
 <td align="center">char</td>
 <td align="left">list of genre tags</td>
 <td align="left">Horror, Thriller</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left"><strong>collection</strong></td>
 <td align="center">num</td>
 <td align="left">collection id (nullable)</td>
 <td align="left">9735</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left"><strong>collection_name</strong></td>
 <td align="center">char</td>
 <td align="left">collection name (nullable)</td>
@@ -934,89 +934,89 @@ This dataset presumably contains information about video games.</p>
 <col width="37%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">variable</th>
 <th align="left">class</th>
 <th align="left">description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">Character</td>
 <td align="left">character</td>
 <td align="left">Character single value - Roy Kent</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">Episode_order</td>
 <td align="left">double</td>
 <td align="left">The order of the episodes from the first to the last</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">Season</td>
 <td align="left">double</td>
 <td align="left">The season 1, 2 or 3 associated with the count</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">Episode</td>
 <td align="left">double</td>
 <td align="left">The episode within the season associated with the count</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">Season_Episode</td>
 <td align="left">character</td>
 <td align="left">Season and episode as a combined variable</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">F_count_RK</td>
 <td align="left">double</td>
 <td align="left">Roy Kent’s F-ck count in that season and episode</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">F_count_total</td>
 <td align="left">double</td>
 <td align="left">Total F-ck count by all characters combined including Roy Kent in that season and episode</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">cum_rk_season</td>
 <td align="left">double</td>
 <td align="left">Roy Kent’s cumulative F-ck count within that season</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">cum_total_season</td>
 <td align="left">double</td>
 <td align="left">Cumulative total F-ck count by all characters combined including Roy Kent within that season</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">cum_rk_overall</td>
 <td align="left">double</td>
 <td align="left">Roy Kent’s cumulative F-ck count across all episodes and seasons until that episode</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">cum_total_overall</td>
 <td align="left">double</td>
 <td align="left">Cumulative total F-ck count by all characters combined including Roy Kent across all episodes and seasons until that episode</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">F_score</td>
 <td align="left">double</td>
 <td align="left">Roy Kent’s F-count divided by the total F-count in the episode</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">F_perc</td>
 <td align="left">double</td>
 <td align="left">F-score as percentage</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">Dating_flag</td>
 <td align="left">character</td>
 <td align="left">Flag of yes or no for whether during the episode Roy Kent was dating the characted Keeley</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">Coaching_flag</td>
 <td align="left">character</td>
 <td align="left">Flag of yes or no for whether during the episode Roy Kent was coaching the team</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">Imdb_rating</td>
 <td align="left">double</td>
 <td align="left">Imdb rating of that episode</td>
@@ -1036,7 +1036,7 @@ This dataset presumably contains information about video games.</p>
 <col width="16%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">type</th>
 <th align="left">variable</th>
 <th align="left">missing</th>
@@ -1047,7 +1047,7 @@ This dataset presumably contains information about video games.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">character</td>
 <td align="left">genres</td>
 <td align="left">0</td>
@@ -1056,7 +1056,7 @@ This dataset presumably contains information about video games.</p>
 <td align="left">5</td>
 <td align="left">25</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">character</td>
 <td align="left">title</td>
 <td align="left">0</td>
@@ -1065,7 +1065,7 @@ This dataset presumably contains information about video games.</p>
 <td align="left">1</td>
 <td align="left">51</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">character</td>
 <td align="left">titleId</td>
 <td align="left">0</td>
@@ -1074,7 +1074,7 @@ This dataset presumably contains information about video games.</p>
 <td align="left">9</td>
 <td align="left">9</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">Date</td>
 <td align="left">date</td>
 <td align="left">0</td>
@@ -1083,7 +1083,7 @@ This dataset presumably contains information about video games.</p>
 <td align="left">1990-01-03</td>
 <td align="left">2018-10-10</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">integer</td>
 <td align="left">seasonNumber</td>
 <td align="left">0</td>
@@ -1092,7 +1092,7 @@ This dataset presumably contains information about video games.</p>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">numeric</td>
 <td align="left">av_rating</td>
 <td align="left">0</td>
@@ -1101,7 +1101,7 @@ This dataset presumably contains information about video games.</p>
 <td align="left">NA</td>
 <td align="left">NA</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">numeric</td>
 <td align="left">share</td>
 <td align="left">0</td>
@@ -1121,59 +1121,59 @@ This dataset presumably contains information about video games.</p>
 <col width="30%" />
 </colgroup>
 <thead>
-<tr>
+<tr class="header">
 <th align="left">variable</th>
 <th align="left">class</th>
 <th align="left">description</th>
 </tr>
 </thead>
 <tbody>
-<tr>
+<tr class="odd">
 <td align="left">number</td>
 <td align="left">double</td>
 <td align="left">Game number</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">game</td>
 <td align="left">character</td>
 <td align="left">Game Title</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">release_date</td>
 <td align="left">character</td>
 <td align="left">Release date</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">price</td>
 <td align="left">double</td>
 <td align="left">US Dollars + Cents</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">owners</td>
 <td align="left">character</td>
 <td align="left">Estimated number of people owning this game.</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">developer</td>
 <td align="left">character</td>
 <td align="left">Group that developed the game</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">publisher</td>
 <td align="left">character</td>
 <td align="left">Group that published the game</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">average_playtime</td>
 <td align="left">double</td>
 <td align="left">Average playtime in minutes</td>
 </tr>
-<tr>
+<tr class="odd">
 <td align="left">median_playtime</td>
 <td align="left">double</td>
 <td align="left">Median playtime in minutes</td>
 </tr>
-<tr>
+<tr class="even">
 <td align="left">metascore</td>
 <td align="left">double</td>
 <td align="left">Metascore rating</td>
