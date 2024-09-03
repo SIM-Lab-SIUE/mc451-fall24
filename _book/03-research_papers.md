@@ -2,7 +2,27 @@
 
 ## What are Research Papers
 
-Academic journals are a principal resource for finding credible and peer-reviewed research papers. These journals serve as the cornerstone for disseminating scholarly work and ensuring the reliability of research through peer review.
+Research papers, often referred to as scholarly articles, serve as vital conduits for disseminating original research findings, theoretical explorations, or critical analyses within the academic community. These documents are integral to the advancement of knowledge in various disciplines, providing a formalized medium through which researchers communicate their contributions to the broader academic and professional audience. Research papers are typically published in reputable academic journals, which are often associated with professional organizations or academic institutions. These journals serve as repositories of knowledge, where scholars can access and build upon the work of others, fostering the cumulative growth of knowledge in their respective fields.
+
+### Originality {.unnumbered}
+
+The process of preparing a research paper involves rigorous intellectual effort, beginning with the identification of a research question or problem that is both original and significant. This question drives the research process, guiding the methodology and analysis that follow. The research must offer new insights, whether through the collection and interpretation of empirical data or through the development of new theoretical perspectives. In doing so, research papers contribute to the existing body of knowledge, offering fresh perspectives or addressing gaps that have been identified in previous studies.
+
+### Methodology {.unnumbered}
+
+One of the defining characteristics of research papers is their adherence to a systematic methodology. The methodology section of a research paper is critical as it outlines the research design, the data collection procedures, and the analytical techniques employed. This transparency allows other scholars to evaluate the reliability and validity of the research, as well as to replicate or build upon the study in future research. The rigor of the methodology is a key factor in the credibility of the research findings.
+
+### Evidence-Based {.unnumbered}
+
+Research papers are fundamentally evidence-based, meaning that their conclusions and arguments are grounded in data and supported by empirical evidence or theoretical reasoning. The evidence presented in research papers is typically derived from a range of sources, including experiments, surveys, observations, or existing literature. Researchers must carefully analyze this evidence and present their findings in a clear and logical manner. The inclusion of data and results, along with proper citations, is essential for supporting the paper's claims and for situating the research within the broader academic discourse.
+
+### Peer Review {.unnumbered}
+
+Before a research paper can be published, it must undergo a process of peer review, which is a cornerstone of academic publishing. Peer review involves the evaluation of the research paper by other experts in the field, who assess the validity, originality, and significance of the work. This process is crucial in maintaining the quality and integrity of academic literature, as it helps to ensure that only research that meets high standards of scholarly excellence is published. The feedback from peer reviewers often leads to revisions that improve the clarity, robustness, and impact of the paper.
+
+### Structure {.unnumbered}
+
+The structure of a research paper is typically standardized, following a format that enhances the clarity and accessibility of the research. Common sections include an abstract, introduction, methodology, results, discussion, and references. The abstract provides a concise summary of the research, highlighting the main findings and their implications. The introduction sets the stage for the research, presenting the research question and its significance. The methodology details the research design and procedures, while the results section presents the findings. The discussion interprets the results, exploring their implications and how they contribute to the existing body of knowledge. Finally, the references section lists the sources cited in the paper, providing a framework for further reading and acknowledging the contributions of other scholars.
 
 ## How to Find Research Papers {#find}
 
@@ -69,66 +89,6 @@ Your university library has a wealth of resources that you can use to find resea
 **Use the library's databases.** The library subscribes to a variety of databases that contain research articles. These databases can be searched by keyword, author, or subject.
 
 **Ask for help from a research assistant.** Many libraries have research assistants who can help you find research articles.
-
-### Search for preprints. {.unnumbered}
-
-A research preprint is a preliminary version of a research paper that is made available online before it has been peer-reviewed and published in a journal. Preprints are often used by researchers to share their work with the wider community and to get feedback on their findings.
-
-Preprints can be a valuable resource for researchers, as they can provide access to the latest research findings before they are published. They can also help researchers to get feedback on their work and to collaborate with other researchers.
-
-However, it is important to keep in mind that preprints have not been peer-reviewed and may contain errors. Therefore, it is important to evaluate the quality of the preprint carefully before citing it in your own research.
-
-Here are some of the advantages of using preprints:
-
-**Faster dissemination of research findings.** Preprints can be made available online much faster than traditional journal articles, which can take months or even years to publish. This allows researchers to share their work with the wider community more quickly and to get feedback on their findings.
-
-**Increased collaboration.** Preprints can be a valuable tool for collaboration, as they allow researchers to share their work with other researchers before it has been published. This can help to identify potential errors and to improve the quality of the research.
-
-**Reduced publication bias.** Preprints can help to reduce publication bias, which is the tendency for journals to publish research that supports the authors' hypothesis. This is because preprints are not subject to the same peer-review process as journal articles, and therefore, they are more likely to be published regardless of the findings.
-
-Here are some of the disadvantages of using preprints:
-
-**Unreviewed research.** Preprints have not been peer-reviewed, which means that they may contain errors. Therefore, it is important to evaluate the quality of the preprint carefully before citing it in your own research.
-
-**Potential for plagiarism.** Preprints are publicly available, which means that there is a potential for plagiarism. Therefore, it is important to give credit to the original authors of the research when you cite a preprint.
-
-**Legal issues.** There are a number of legal issues that can arise with the use of preprints. For example, it is important to make sure that you have the right to share the preprint and that you are not violating the authors' copyright.
-
-**Search preprint repositories.** There are a number of preprint repositories that you can search, such as:
-
--   arXiv
-
--   bioRxiv
-
--   medRxiv
-
--   PeerJ Preprints
-
--   PsyArXiv
-
--   SocArXiv
-
-**Use specialized search engines.** There are also a number of specialized search engines that can be used to find preprints, such as:
-
--   Preprints.org
-
--   ASAPbio
-
--   PreLights
-
--   Publons
-
-When using preprints, it is important to keep in mind that they have not been peer-reviewed and may contain errors. Therefore, it is important to evaluate the quality of the preprint carefully before citing it in your own research.
-
-Here are some things to consider when evaluating a preprint:
-
--   The author's credentials
-
--   The methodology used
-
--   The findings of the study
-
--   The potential for bias
 
 ### Use social media. {.unnumbered}
 
