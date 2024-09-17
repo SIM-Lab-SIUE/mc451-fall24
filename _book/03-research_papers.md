@@ -42,7 +42,7 @@ Your university library is one of the most valuable resources for finding resear
 
 Specialized search engines are designed to search for specific types of information, such as research articles. Here are some tips on how to use a specialized search engine to find research articles:
 
-#### Where to Search
+#### Where to Search {.unnumbered}
 
 When searching for research articles, knowing where to search is just as important as how you search. Specialized search engines are designed specifically for academic and scholarly materials, making them ideal tools for finding high-quality research papers. Unlike general search engines like Google, these specialized tools index scholarly content such as journal articles, conference papers, and theses. Below are some key specialized search engines and tips on how to choose the right one for your research needs.
 
@@ -84,7 +84,7 @@ The ACM Digital Library is essential for computer science research, offering a w
 
 [![ACM Digital Library](images/acm-digital-library.jpg){width="100%"}](https://dl.acm.org/)
 
-#### How to Search
+#### How to Search {.unnumbered}
 
 Once you’ve chosen where to search, understanding how to effectively use these tools is crucial for finding the most relevant and high-quality research articles. Below are strategies to help you optimize your search process.
 
@@ -130,35 +130,35 @@ If you’re unfamiliar with a particular search engine, refer to its help docume
 
 By combining the right search engine with effective search strategies, you can efficiently find the research articles you need for your academic work.
 
-### Using Social Media to Find Research Articles
+### Using Social Media to Find Research Articles {.unnumbered}
 
 Social media has become a powerful tool for academics and researchers, providing a platform to share, discover, and discuss research articles. By leveraging the features of various social media platforms, you can stay informed about the latest developments in your field, find relevant research articles, and connect with other scholars. Below are some effective strategies for using social media to find research articles.
 
-#### 1. Follow Researchers and Research Institutions
+#### 1. Follow Researchers and Research Institutions {.unnumbered}
 
 One of the most direct ways to stay updated with the latest research is by following individual researchers, academic institutions, and research organizations on social media. Many scholars use platforms like Twitter, LinkedIn, and ResearchGate to share their latest publications, conference presentations, and ongoing projects. By following these accounts, you can receive updates on new research articles as soon as they are published. Additionally, institutions often share open access articles, preprints, and links to publications that might be behind paywalls elsewhere, providing valuable resources for your own research.
 
 -   **Tip:** When following researchers, consider looking at their followers and who they follow as well. This can help you find other relevant scholars and institutions in your area of interest.
 
-#### 2. Use Relevant Hashtags
+#### 2. Use Relevant Hashtags {.unnumbered}
 
 Hashtags on social media platforms like Twitter and Instagram serve as powerful tools for categorizing content and making it discoverable to a broader audience. Researchers and institutions often use specific hashtags related to their field, research topic, or academic events. By searching for or following these hashtags, you can easily find posts related to recent research articles, discussions on emerging trends, and links to relevant studies.
 
 -   **Example:** Searching for hashtags such as #OpenAccess, #ScienceTwitter, #AcademicChatter, or discipline-specific tags like #PsychResearch or #ClimateScience can lead you to valuable research articles and academic discussions.
 
-#### 3. Join Research Groups and Communities
+#### 3. Join Research Groups and Communities {.unnumbered}
 
 Social media platforms host numerous groups and communities dedicated to specific research fields or interdisciplinary topics. These groups, which can be found on platforms like Facebook, LinkedIn, and Reddit, are spaces where researchers share their work, seek advice, and discuss recent findings. Joining these groups allows you to engage with peers, discover articles that might not be widely publicized, and gain insights from ongoing academic discussions.
 
 -   **Tip:** When joining a group, take the time to introduce yourself and share your research interests. Active participation can lead to more meaningful connections and opportunities to find relevant research articles.
 
-#### 4. Attend Online Conferences and Workshops
+#### 4. Attend Online Conferences and Workshops {.unnumbered}
 
 The shift to virtual events has made it easier than ever to attend academic conferences and workshops from anywhere in the world. These events are often live-streamed on social media platforms or have dedicated hashtags for participants to follow along and discuss. Attending these online events allows you to access presentations, papers, and discussions that are directly relevant to your research. Additionally, many conferences post recordings of sessions or provide access to conference papers after the event, giving you further opportunities to explore new research.
 
 -   **Tip:** After attending a session, engage with the speakers and attendees on social media by sharing your thoughts or asking questions. This can help you build a network of contacts who may share additional resources or research articles.
 
-#### Specific Social Media Platforms to Use
+#### Specific Social Media Platforms to Use {.unnumbered}
 
 **Twitter:** Twitter is an excellent platform for real-time research updates, especially by following researchers and journals and using hashtags. Many academic communities thrive on Twitter, making it a rich resource for finding the latest studies.
 
@@ -170,35 +170,35 @@ The shift to virtual events has made it easier than ever to attend academic conf
 
 While social media is a powerful tool for discovering research articles, it is crucial to critically evaluate the sources you find. Not all articles shared on social media are of high quality or come from reputable journals. Always consider the credibility of the author, the publication venue, and the methodology of the research before incorporating it into your own work. If in doubt, consult a librarian or an academic advisor for further guidance.
 
-### Contacting Experts in Your Field
+### Contacting Experts in Your Field {.unnumbered}
 
 In addition to using social media, directly contacting experts in your field can be an invaluable way to find research articles and gain deeper insights into your study area. Experts can provide recommendations for key papers, suggest emerging research areas, and even share unpublished work that may not yet be available in databases.
 
-#### 1. Talk to Your Professors or Advisors
+#### 1. Talk to Your Professors or Advisors {.unnumbered}
 
 Your professors and academic advisors are often the best starting point when seeking expert guidance. They have deep knowledge of the field, are familiar with the latest research, and can point you toward seminal papers or recommend specific articles that are highly relevant to your research. Moreover, they may have access to articles or resources that are not available to students, which can further enrich your research.
 
 -   **Tip:** When approaching your professors, be specific about your research topic and what you hope to learn. This will help them provide more targeted recommendations.
 
-#### 2. Attend Conferences and Workshops
+#### 2. Attend Conferences and Workshops {.unnumbered}
 
 Conferences and workshops are excellent venues for meeting experts and learning about the latest research. These events often feature presentations from leading scholars, providing an opportunity to hear about their work directly. After a presentation, don't hesitate to approach the speaker with questions or requests for further reading. Many experts are happy to share their articles or direct you to where you can find them.
 
 -   **Tip:** Prepare a list of questions or topics of interest before attending a conference. This will help you maximize the networking opportunities and identify experts who can assist with your research.
 
-#### 3. Read Research Blogs and Newsletters
+#### 3. Read Research Blogs and Newsletters {.unnumbered}
 
 Many experts maintain blogs or contribute to newsletters that discuss their research and developments in the field. These platforms are often more accessible than academic journals and provide insights into the latest research trends. Following these blogs or subscribing to newsletters can keep you informed about new publications and give you a more nuanced understanding of ongoing debates in your field.
 
 -   **Tip:** Look for blogs that are peer-reviewed or written by recognized experts in the field to ensure the information is reliable.
 
-#### 4. Use Social Media to Connect with Experts
+#### 4. Use Social Media to Connect with Experts {.unnumbered}
 
 As mentioned earlier, social media platforms are also useful for connecting with experts. By following researchers, engaging with their posts, and joining relevant groups, you can build relationships that may lead to further collaboration or recommendations for research articles. Many researchers are open to sharing their work or discussing their findings with interested peers, especially if you approach them respectfully and with clear questions.
 
 -   **Tip:** When reaching out to an expert on social media, always introduce yourself and explain why you are interested in their work. Be concise and professional in your communication to make a positive impression.
 
-#### Finding and Contacting Experts
+#### Finding and Contacting Experts {.unnumbered}
 
 **Search by Name or Topic:** Use academic databases, professional organizations, or specialized directories to find experts in your field. You can search by specific research topics or by the names of researchers who have published influential work in your area of interest.
 
