@@ -23,16 +23,11 @@ formulating-research-questions
 constructing-hypotheses
 levels-of-measurement-in-mass-media-research
 issues-in-measurement
-ensuring-reproducibility
 designing-quantitative-research
 research-design
-experimental-designs
 non-experimental-designs
 sampling-methods
 data-collection-techniques
-surveys-and-questionnaires
-observation-methods
-content-analysis
 introduction-to-r-and-rstudio-for-beginners
 introduction-to-r
 comparison-with-other-statistical-software
