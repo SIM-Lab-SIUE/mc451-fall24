@@ -1,277 +1,245 @@
 # Descriptive Analysis
 
-Descriptive statistics form the bedrock of data exploration and initial data analysis. Descriptive analysis plays a pivotal role in data analysis by concisely summarizing the key characteristics of a dataset. It involves calculating various statistics to present a snapshot of the data, enabling researchers to understand its basic structure and form. These statistics facilitate the comprehensive summarization, condensation, and general understanding of the structural attributes of expansive datasets. Employed as a precursor to more advanced statistical procedures, descriptive statistics offer a straightforward way to describe the main aspects of a data set, from the typical values to the variability within the set. They provide researchers with tools to quickly identify patterns, trends, and potential outliers without making generalized predictions about larger populations. Furthermore, descriptive statistics are essential in exploratory data analysis, where their role is to aid in the detection of any unusual observations that may warrant further investigation.
-
-Moreover, descriptive statistics have applications that span across various domains---from social sciences to economics, from healthcare to engineering. The utility lies in their ability to translate large amounts of data into easily understandable formats, such as graphs, tables, and numerical measures, thereby transforming raw data into insightful information. In research, they often serve as the initial step in the process of data analytics, giving researchers a snapshot of what the data looks like before delving into more complex analytical techniques like inferential statistics or machine learning algorithms.
-
-If a researcher's interest lies in examining how variables change together without intending to make predictive inferences, they should utilize descriptive correlational analysis. This type of analysis explores the relationship between variables using correlation coefficients, without extending to prediction.
-
 ## Measures of Central Tendency
 
-To capture the central tendency or the "average" experience within a set of data, calculating the mean is most appropriate. The mean provides a single value summarizing the central point of a dataset's distribution.
+Central tendency is a fundamental concept in descriptive statistics, representing the "center" or "typical" value of a dataset. It provides a single value that summarizes the data and helps us understand its overall distribution. The three primary measures of central tendency are the **mean**, **median**, and **mode**. Each measure has its strengths and weaknesses, depending on the nature of the data and the research question at hand.
 
+In mass communication research, we often use these measures to summarize key data points such as viewer ratings, playtime, episode counts, or even specific word frequencies in media content. By understanding the different measures of central tendency, researchers can more effectively interpret the underlying patterns in their datasets.
 
-### Load data {.unnumbered}
+**Load data for chapter**
+
 ```r
-# Load the packages
-library(tidyverse)
 library(data.table)
 
-options(scipen=999)
+anime <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv")
 
-# Import the datasets
-spotify_songs <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-01-21/spotify_songs.csv")
-movies <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2021/2021-03-09/movies.csv")
+horror_movies <- fread('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv')
+
+richmondway <- fread('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-26/richmondway.csv')
+
+television <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv")
+
+video_games <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv")
 ```
 
-### Mean {.unnumbered}
+### Mean (Arithmetic Average) {.unnumbered}
 
-The mean is perhaps the most widely recognized measure of central tendency, representing the arithmetic average of a dataset. In descriptive analysis, the mean serves as a fundamental measure, providing an average value that represents the central tendency of a dataset. This average is calculated by summing all observations and dividing by the number of observations. The mean is sensitive to outliers, which can disproportionately influence the calculated average, potentially resulting in a misleading representation of central location (McClave, Benson, & Sincich, 2011). Despite this limitation, the mean is highly useful in various statistical methods, including regression analysis and hypothesis testing, because of its mathematical properties (Field, Miles, & Field, 2012).
+The **mean** is the sum of all values in a dataset divided by the number of values. It provides the "average" value of the dataset and is widely used due to its simplicity and ease of interpretation. However, the mean is **sensitive to outliers**, which means that unusually high or low values can significantly skew the result.
 
-Importantly, the mean can be categorized into different types: arithmetic mean, geometric mean, and harmonic mean, each with specific applications depending on the nature of the data and the intended analysis (Triola, 2018). For instance, the geometric mean is often used when dealing with data that exhibit exponential growth or decline, such as in financial or biological contexts.
+#### Why the Mean Is Useful {.unnumbered}
 
-Descriptive statistics are most commonly paired with visualizations to provide clarity. For example, a scatterplot is an invaluable tool in descriptive analysis when the objective is to illustrate the relationship or correlation between two variables. It visually represents the data points for each observed pair, facilitating the detection of patterns or relationships.
+The mean gives a straightforward snapshot of the dataset’s central point and is especially useful for **interval** or **ratio data** where the numbers have a true, meaningful order. In mass communication research, you might use the mean to calculate average viewer ratings for a television show or the average playtime for a video game. However, be mindful that a few extreme values (outliers) can heavily influence the mean, sometimes making it less representative of the data as a whole.
 
-**Example using Spotify Songs Dataset**: To find the mean popularity of songs.
-
-The R code provided demonstrates the use of the `dplyr` package and base R functions to calculate the mean popularity of tracks in the `spotify_songs` dataset. Let's break down the code and its output:
-
-1.  **dplyr summarise function**:
+In the **horror_movies** dataset, we have a variable called `vote_average`, which represents the average rating for each movie. To calculate the mean of this variable in R:
 
 ```r
-mean_popularity <- spotify_songs %>%
-  summarise(mean_popularity = mean(track_popularity, na.rm = TRUE))
+# Calculate the mean vote average
+mean_vote_avg <- mean(horror_movies$vote_average, na.rm = TRUE)
+mean_vote_avg
 ```
 
-This snippet uses the `dplyr` package's `summarise` function to calculate the mean of the `track_popularity` variable in the `spotify_songs` dataframe. The `mean` function is used with the `na.rm = TRUE` argument, which means that it will ignore `NA` (missing) values in the calculation. The result is stored in a new dataframe `mean_popularity`.
+This will give you the overall average rating across all horror movies in the dataset, helping you understand whether audiences generally liked or disliked these films.
 
-2.  **Output Explanation**:
+In the **video_games** dataset, the `average_playtime` variable represents the average time people spend playing a particular game. To calculate the mean playtime:
 
 ```r
-mean_popularity
+# Calculate the mean average playtime
+mean_playtime <- mean(video_games$average_playtime, na.rm = TRUE)
+mean_playtime
 ```
 
-This output indicates that the mean popularity score of the tracks in the dataset is approximately 42.47708. The `<dbl>` notation suggests that the mean popularity score is a double-precision floating-point number, which is a common way of representing decimal numbers in R.
-
-In summary, both methods are used to calculate the average popularity score of tracks in the `spotify_songs` dataset. The output shows the mean value as approximately 42.47708, reflecting the average popularity of the tracks in the dataset. The use of `dplyr` and base R functions provides a means to cross-validate the result for accuracy.
+The result will show you the typical playtime across all games, offering insights into how long players typically engage with video games.
 
 ### Median {.unnumbered}
 
-The median serves as another measure of central tendency and is less sensitive to outliers compared to the mean. It is defined as the middle value in a dataset that has been arranged in ascending order. If the dataset contains an even number of observations, the median is calculated as the average of the two middle numbers. Medians are particularly useful for data that are skewed or contain outliers, as they provide a more "resistant" measure of the data's central location.
+The **median** is the middle value of a dataset when it is ordered from least to greatest. Unlike the mean, the median is **resistant to outliers**, making it a more accurate measure of central tendency when the dataset contains extreme values. The median is especially useful for **ordinal**, **interval**, and **ratio data**, where the order of values matters.
 
-In addition to its robustness against outliers, the median is often used in non-parametric statistical tests like the Mann-Whitney U test and the Kruskal-Wallis test. These tests do not assume that the data follow a specific distribution, making the median an invaluable asset in such scenarios (Siegel & Castellan, 1988).
+#### Why the Median Is Useful {.unnumbered}
 
-**Example using Movies Dataset**: To find the median budget of movies.
+The median provides a more robust measure of central tendency than the mean in cases where the dataset is **skewed** or contains outliers. In mass communication research, for instance, if you are studying the number of episodes in different anime series, a few long-running shows could inflate the mean, making it less representative of the typical number of episodes. In such cases, the median offers a better "typical" value.
 
-The provided R code calculates the median budget of movies in the `movies` dataset, with two different approaches, and the results are displayed. Let's analyze the code and its outputs:
-
-1.  **Using dplyr's summarise function**:
+In the **anime** dataset, the `episodes` variable tells us how many episodes each anime has. To calculate the median number of episodes:
 
 ```r
-median_budget <- movies %>%
-  summarise(median_budget = median(budget/1000000, na.rm = TRUE))
+# Calculate the median number of episodes
+median_episodes <- median(anime$episodes, na.rm = TRUE)
+median_episodes
 ```
 
-This snippet uses the `dplyr` package's `summarise` function to compute the median of the `budget` variable in the `movies` dataframe. Before calculating the median, each budget value is divided by 1,000,000 (`budget/1000000`), effectively converting the budget values from (presumably) dollars to millions of dollars. The `na.rm = TRUE` argument in the `median` function indicates that any `NA` (missing) values should be ignored in the calculation. The result is stored in a new dataframe called `median_budget`.
+This result will show you the middle value of episode counts, giving you a clearer picture of the typical length of anime series without being skewed by a few extremely long shows.
 
-2.  **Output Explanation**:
+In the **video_games** dataset, the `median_playtime` variable represents the middle value of playtime for each game. To calculate the median:
 
 ```r
-median_budget
+# Calculate the median playtime
+median_playtime <- median(video_games$median_playtime, na.rm = TRUE)
+median_playtime
 ```
 
-This indicates that the median budget of the movies, in millions of dollars, is 28. The `<dbl>` notation signifies that the median budget is a double-precision floating-point number.
-
-In conclusion, both methods are used to calculate the median budget of movies in the dataset, and both approaches confirm that the median budget is 28 million dollars. The use of both `dplyr` and base R functions serves as a cross-verification to ensure the accuracy of the result.
+This will give you the typical amount of time people spend playing a game, without being skewed by extremely high or low playtimes.
 
 ### Mode {.unnumbered}
 
-The mode refers to the value or values that appear most frequently in a dataset. A dataset can be unimodal, having one mode; bimodal, having two modes; or multimodal, having multiple modes. While the mode is less commonly used than the mean and median for numerical data, it is the primary measure of central tendency for categorical or nominal data.
+The **mode** is the value that appears most frequently in a dataset. It is the only measure of central tendency that can be used with **nominal data**, which have no numerical or ordered relationship (e.g., genres or titles). The mode is also useful for **categorical** or **discrete** data where you want to identify the most common category or value.
 
-Despite its less frequent application in numerical contexts, the mode can still be useful for identifying the most common values in a dataset and for understanding the general distribution of the data. For example, in market research, knowing the mode of a dataset related to consumer preferences can provide valuable insights into what most consumers are likely to choose.
+#### Why the Mode Is Useful {.unnumbered}
 
-**Example using Spotify Songs Dataset**: To find the mode of the `playlist_genre`.
+The mode highlights the most common occurrence in the data and is particularly valuable when analyzing **qualitative data** or data with repeating values. For instance, in mass communication, if you're analyzing the genres of horror movies, knowing the most frequently occurring genre gives insights into what type of horror movie is most commonly produced. Similarly, finding the most common score for anime users provides an indication of how people generally rate their anime experiences.
 
-The provided R code calculates the mode of the `playlist_genre` variable in the `spotify_songs` dataset using the `Mode` function from the `DescTools` package. The mode is the value that appears most frequently in a dataset. Let's break down the code and its output:
-
-1.  **Using the DescTools package's Mode function**:
+In the **horror_movies** dataset, the `genre_names` variable contains the genres of each movie. To find the most common genre (the mode):
 
 ```r
-library(DescTools)
-
-mode_genre <- Mode(spotify_songs$playlist_genre)
-```
-
-This snippet uses the `Mode` function from the `DescTools` package to find the most frequently occurring genre in the `playlist_genre` column of the `spotify_songs` dataset. The result is stored in the variable `mode_genre`.
-
-2.  **Output Explanation**:
-
-```r
+# Calculate the mode for genre names
+mode_genre <- horror_movies$genre_names[which.max(table(horror_movies$genre_names))]
 mode_genre
 ```
 
-This output indicates that the most common genre (mode) in the `playlist_genre` column is "edm". The `attr(,"freq")` part shows the frequency of this mode, which is 6043. This means that "edm" appears 6043 times in the `playlist_genre` column, more than any other genre.
+This will tell you which genre appears most frequently in the dataset, helping you understand the dominant themes in horror films.
 
-In summary, the code calculates and displays the mode of the `playlist_genre` variable in the `spotify_songs` dataset, indicating that the most common genre is "edm", which appears 6043 times. The consistency of the results from both methods demonstrates the reliability of the calculation.
+In the **anime** dataset, the `score` variable represents how users rate different anime. To find the most common score:
+
+```r
+# Calculate the mode for anime score
+mode_score <- anime$score[which.max(table(anime$score))]
+mode_score
+```
+
+This will provide the most frequent user score, offering insight into how anime viewers typically rate their experiences.
+
+### Comparing Mean, Median, and Mode {.unnumbered}
+
+Understanding when to use each measure of central tendency is crucial in descriptive statistics. Here’s a general guideline:
+
+- **Mean**: Use when you want to calculate the average of **interval** or **ratio data** and the data are **not skewed** by outliers. It’s best for normally distributed data.
+- **Median**: Use when your data are **skewed** or when you are dealing with **ordinal**, **interval**, or **ratio data** that have extreme values or outliers.
+- **Mode**: Use when you are working with **nominal** or **categorical data**, or when you want to know the most frequently occurring value in your dataset.
+
+Each of these measures offers a different perspective on the data, and the appropriate measure depends on the research question and the type of data you're analyzing. By mastering these concepts, you’ll be better equipped to summarize and interpret data in mass communication research, whether you're studying anime ratings, horror movie genres, or video game playtimes.
+
+Here is a detailed, pedagogically focused draft for the **Measures of Dispersion** section, following the same format as the earlier section on Measures of Central Tendency. This section will explain key concepts related to dispersion, providing R examples using the datasets you've provided.
 
 ## Measures of Dispersion
 
+While measures of central tendency (mean, median, mode) summarize the central point of a dataset, they do not tell the whole story. **Measures of dispersion** help us understand how spread out or variable the data are around the central point. In mass communication research, understanding data variability is essential for accurately interpreting audience behaviors, ratings, or playtimes. Common measures of dispersion include the **range**, **variance**, **standard deviation**, and **interquartile range** (IQR).
+
+Dispersion gives insights into the consistency or variability of the data. For instance, two TV shows may both have a mean rating of 8/10, but one may have ratings clustered tightly around that mean, while the other has ratings ranging from 2 to 10. Measures of dispersion can help identify such differences.
+
 ### Range {.unnumbered}
 
-The range is the simplest measure of dispersion, calculated by subtracting the smallest value from the largest value in the dataset. While straightforward to compute, the range is highly sensitive to outliers and does not account for how the rest of the values in the dataset are distributed.
+The **range** is the simplest measure of dispersion, calculated as the difference between the largest and smallest values in a dataset. It gives a rough estimate of how spread out the values are, but it is sensitive to outliers, as just one extreme value can drastically increase the range.
 
-The range offers a quick, albeit crude, estimate of the dataset's variability. It is often used in conjunction with other measures of dispersion for a more comprehensive understanding of data spread. Despite its limitations, the range can be helpful in initial exploratory analyses to quickly identify the scope of the data and to detect possible outliers or data entry errors.
+#### Why the Range Is Useful {.unnumbered}
 
-**Example using Movies Dataset**: To find the range of movie budgets.
+The range gives a quick overview of how widely the data points vary. In mass communication research, the range can show how ratings, playtimes, or other numerical measures differ between the highest and lowest values.
 
-The R code provided calculates the range of the `budget` column in the `movies` dataset using the `dplyr` package. The range is a measure of dispersion that represents the difference between the maximum and minimum values in a dataset. Here's a breakdown of the code and its output:
-
-1.  **Code Explanation**:
+In the **anime** dataset, the `score` variable represents user ratings for different anime. To calculate the range of scores:
 
 ```r
-budget_range <- movies %>%
-  summarise(Range = max(budget/1000000, 
-                        na.rm = TRUE) - min(budget/1000000,
-                                            na.rm = TRUE))
+# Calculate the range of anime scores
+range_anime_score <- range(anime$score, na.rm = TRUE)
+range_anime_score
 ```
 
--   `movies %>%`: This part indicates that the code is using the `movies` dataframe and piping (`%>%`) it into subsequent operations.
+This will provide the minimum and maximum anime scores, showing how spread out the ratings are across the dataset.
 
--   `summarise(Range = ...)`: The `summarise` function from the `dplyr` package is used to compute a summary statistic. Here, it's creating a new variable named `Range`.
-
--   `max(budget/1000000, na.rm = TRUE) - min(budget/1000000, na.rm = TRUE)`: This calculates the range of the movie budgets. Each `budget` value is first divided by 1,000,000 (presumably converting the budget from dollars to millions of dollars). The `max` function finds the maximum value and `min` finds the minimum value, with `na.rm = TRUE` indicating that any `NA` (missing) values should be ignored. The range is the difference between these two values.
-
-    **Output Explanation**:
+In the **video_games** dataset, we can calculate the range of average playtime (`average_playtime`):
 
 ```r
-budget_range
+# Calculate the range of average playtime
+range_playtime <- range(video_games$average_playtime, na.rm = TRUE)
+range_playtime
 ```
 
--   The output shows that the calculated range of the movie budgets, in millions of dollars, is approximately 424.993. This means that the largest budget in the dataset exceeds the smallest budget by about 424.993 million dollars.
--   The `<dbl>` notation indicates that the calculated range is a double-precision floating-point number, a standard numeric type in R for representing decimal values.
-
-In summary, the code calculates the range of movie budgets in the `movies` dataset and finds that the budgets span approximately 424.993 million dollars, from the smallest to the largest. This provides a sense of how varied the movie budgets are in the dataset.
-
-### Standard Deviation {.unnumbered}
-
-The standard deviation is a more sophisticated measure of dispersion that indicates how much individual data points deviate from the mean (Lind et al., 2012). Standard deviation is a measure in descriptive analysis that quantifies the variation or dispersion of a set of data values. It reflects how much individual data points differ from the mean, indicating the dataset’s spread. Calculated as the square root of the variance, the standard deviation provides an intuitive sense of the data's spread since it is in the same unit as the original data points. It plays a crucial role in various statistical analyses, including hypothesis testing and confidence interval estimation, and is fundamental in fields ranging from finance to natural sciences.
-
-The standard deviation can be classified into two types: population standard deviation and sample standard deviation. The former is used when the data represent an entire population, while the latter is used for sample data and is calculated with a slight adjustment to account for sample bias (Kenney & Keeping, 1962).
-
-**Example using Spotify Songs Dataset**: To find the standard deviation of `danceability`.
-
-The R code you've provided calculates the standard deviation of the `danceability` variable in the `spotify_songs` dataset using the `dplyr` package. Let's break down the code and its output:
-
-1.  **Code Explanation**:
-
-```r
-std_danceability <- spotify_songs %>%
-  summarise(std_danceability = sd(danceability, na.rm = TRUE))
-```
-
--   `spotify_songs %>%`: This part uses the `spotify_songs` dataframe and pipes it into the subsequent operation using `%>%`.
--   `summarise(std_danceability = ...)`: The `summarise` function from `dplyr` is used to compute a summary statistic. Here, it's creating a new variable named `std_danceability`.
--   `sd(danceability, na.rm = TRUE)`: This calculates the standard deviation of the `danceability` variable. The `sd` function computes the standard deviation, and `na.rm = TRUE` indicates that any `NA` (missing) values should be ignored in the calculation.
-
-2.  **Output Explanation**:
-
-```r
-std_danceability
-```
-
--   The output shows that the calculated standard deviation of the `danceability` scores in the `spotify_songs` dataset is approximately 0.1450853.
--   The `<dbl>` notation indicates that the result is a double-precision floating-point number, which is typical for numeric calculations in R.
-
-The standard deviation is a measure of the amount of variation or dispersion in a set of values. A low standard deviation indicates that the values tend to be close to the mean (also called the expected value) of the set, while a high standard deviation indicates that the values are spread out over a wider range.
-
-In this case, a standard deviation of approximately 0.1450853 for `danceability` suggests that the danceability scores in the `spotify_songs` dataset vary moderately around the mean. This gives an idea of the variability in danceability among the songs in the dataset.
+This result will show how the shortest and longest playtimes compare, giving an initial sense of variability.
 
 ### Variance {.unnumbered}
 
-Variance is closely related to the standard deviation, essentially being its square. It quantifies how much individual data points in a dataset differ from the mean (Gravetter & Wallnau, 2016). Unlike the standard deviation, the variance is not in the same unit as the data, which can make it less intuitive to interpret. However, variance has essential mathematical properties that make it useful in statistical modeling and hypothesis testing (Moore, McCabe, & Craig, 2009).
+**Variance** measures the average squared deviation of each data point from the mean. It gives a sense of how much the values in a dataset vary. A high variance means the data points are spread out from the mean, while a low variance indicates that they are clustered closely around the mean.
 
-In statistical theory, the concept of variance is pivotal for various analytical techniques, such as Analysis of Variance (ANOVA) and Principal Component Analysis (PCA). Variance allows for the decomposition of data into explained and unexplained components, serving as a key element in understanding data variability in greater depth.
+#### Why Variance Is Useful {.unnumbered}
 
-**Example using Movies Dataset**: To find the variance in IMDB ratings.
+Variance is important in mass communication research because it quantifies variability. For instance, understanding the variance in TV show ratings can indicate whether viewers generally agree on the quality of a show or whether their opinions vary widely.
 
-The R code you've shared calculates the variance of the `imdb_rating` variable in the `movies` dataset using the `dplyr` package. Let's examine the code and its output:
-
-1.  **Code Explanation**:
+In the **horror_movies** dataset, the `vote_average` variable represents movie ratings. To calculate the variance of movie ratings:
 
 ```r
-var_imdb_rating <- movies %>%
-  summarise(var_imdb_rating = var(imdb_rating, na.rm = TRUE))
+# Calculate the variance of horror movie ratings
+var_vote_avg <- var(horror_movies$vote_average, na.rm = TRUE)
+var_vote_avg
 ```
 
--   `movies %>%`: This line uses the `movies` dataframe and pipes it into the following operation with `%>%`.
--   `summarise(var_imdb_rating = ...)`: The `summarise` function from `dplyr` is employed to compute a summary statistic, in this case, creating a new variable called `var_imdb_rating`.
--   `var(imdb_rating, na.rm = TRUE)`: This computes the variance of the `imdb_rating` variable. The `var` function calculates the variance, and `na.rm = TRUE` indicates that any `NA` (missing) values should be excluded from the calculation.
+This result shows how much individual ratings differ from the average rating.
 
-2.  **Output Explanation**:
+### Standard Deviation {.unnumbered}
+
+The **standard deviation** is the square root of the variance and is one of the most commonly used measures of dispersion. It has the advantage of being in the same units as the data itself (unlike variance, which is in squared units). A low standard deviation means that the data points are close to the mean, while a high standard deviation indicates that the data points are more spread out.
+
+#### Why Standard Deviation Is Useful {.unnumbered}
+
+Standard deviation is often used in mass communication research to understand the consistency of data. For example, if we want to know how consistently users rate anime, the standard deviation of their ratings can provide that information.
+
+In the **anime** dataset, we can calculate the standard deviation of user ratings (`score`):
 
 ```r
-var_imdb_rating
+# Calculate the standard deviation of anime scores
+sd_anime_score <- sd(anime$score, na.rm = TRUE)
+sd_anime_score
 ```
 
--   The output indicates that the variance of the IMDb ratings in the `movies` dataset is approximately 0.9269498.
--   The `<dbl>` notation signifies that the result is a double-precision floating-point number, which is a standard numeric format in R.
+This result shows how much anime scores deviate from the average score, offering insights into whether most users tend to agree on ratings or whether opinions are more varied.
 
-Variance is a statistical measure that describes the spread of numbers in a data set. More specifically, it measures how far each number in the set is from the mean and thus from every other number in the set. In this context, a variance of approximately 0.9269498 in IMDb ratings suggests the degree to which these ratings vary from their average value in the dataset.
-
-This measure of variance can be particularly useful for understanding the consistency of movie ratings; a lower variance would indicate that the ratings are generally close to the mean, suggesting agreement among raters, whereas a higher variance would imply more diverse opinions on movie ratings.
-
-## General Summary
-
-There are also a couple methods for getting multiple basic descriptive statistics with a single code. The most common of these is the `summary()` function. There is also a package called `skimr`.
-
-### `summary()` {.unnumbered}
-
-The R code snippet you provided uses the `summary()` function to generate descriptive statistics for the `imdb_rating` variable in the `movies` dataset. The `summary()` function in R provides a quick, five-number summary of the given data along with the count of `NA` (missing) values. Let's break down the output:
+In the **video_games** dataset, we can also calculate the standard deviation of playtime (`average_playtime`):
 
 ```r
-summary(movies$imdb_rating)
+# Calculate the standard deviation of average playtime
+sd_playtime <- sd(video_games$average_playtime, na.rm = TRUE)
+sd_playtime
 ```
 
--   **Min. (Minimum)**: The smallest value in the `imdb_rating` data. Here, the minimum IMDb rating is 2.10.
--   **1st Qu. (First Quartile)**: Also known as the lower quartile, it is the median of the lower half of the dataset. This value is 6.20, meaning 25% of the ratings are below this value.
--   **Median**: The middle value when the data is sorted in ascending order. The median IMDb rating is 6.80, indicating that half of the movies have a rating below 6.80 and the other half have a rating above 6.80.
--   **Mean**: The average of the `imdb_rating` values. Calculated as the sum of all ratings divided by the number of non-missing ratings. The mean rating is 6.76.
--   **3rd Qu. (Third Quartile)**: Also known as the upper quartile, it is the median of the upper half of the dataset. Here, 75% of the movies have a rating below 7.40.
--   **Max. (Maximum)**: The largest value in the `imdb_rating` data. The highest IMDb rating in the dataset is 9.30.
--   **NA's**: The number of missing values in the `imdb_rating` data. There are 202 missing values.
+This standard deviation will show how consistent playtimes are across different video games, providing insights into whether users typically engage with games for similar amounts of time or whether there’s significant variation.
 
-This summary provides a comprehensive view of the distribution of IMDb ratings in the `movies` dataset, including the central tendency (mean, median), spread (minimum, first quartile, third quartile, maximum), and the count of missing values. It helps in understanding the overall rating landscape of the movies in the dataset.
+### Interquartile Range (IQR) {.unnumbered}
 
-### `skimr` {.unnumbered}
+The **interquartile range (IQR)** measures the range of the middle 50% of values in a dataset, and is calculated as the difference between the third quartile (Q3) and the first quartile (Q1). It is particularly useful for understanding the spread of the central portion of the data and is less sensitive to outliers than the range.
 
-The R code snippet provided uses the `skim()` function from the `skimr` package to generate a summary of the `imdb_rating` variable from the `movies` dataset. The `skimr` package provides a more detailed summary than the base R `summary()` function, particularly useful for initial exploratory data analysis.
+#### Why the IQR Is Useful {.unnumbered}
+
+The IQR is useful in identifying the spread of the "typical" data, excluding outliers. It’s especially important in skewed datasets, where the mean and standard deviation might not give an accurate picture of variability.
+
+In the **horror_movies** dataset, we can calculate the IQR for movie ratings (`vote_average`):
 
 ```r
-library(skimr)
-
-skim(movies$imdb_rating)
+# Calculate the IQR for horror movie ratings
+iqr_vote_avg <- IQR(horror_movies$vote_average, na.rm = TRUE)
+iqr_vote_avg
 ```
 
-Let's break down the output:
+This will provide the range of the middle 50% of movie ratings, helping us understand the typical spread of ratings without the influence of extreme values.
 
-1.  **Data Summary Section**:
-    -   **Name**: Identifies the data being summarized, here `movies$imdb_rating`.
-    -   **Number of rows**: Indicates the total number of entries in the dataset, which is 1794 for `imdb_rating`.
-    -   **Number of columns**: The number of variables or columns in the data being skimmed. Since `skim()` is applied to a single column, this is 1.
-    -   **Column type frequency**: Shows the types of data present in the columns. Here, there is 1 numeric column.
-2.  **Detailed Statistics Section**:
-    -   **skim_variable**: A character representation of the variable being summarized.
-    -   **n_missing**: The number of missing (`NA`) values in the dataset. Here, there are 202 missing ratings.
-    -   **complete_rate**: Proportion of non-missing values. Calculated as `(Total Number of rows - n_missing) / Total Number of rows`. For `imdb_rating`, it's approximately 0.8874025.
-    -   **mean**: The average of the `imdb_rating` values, which is 6.760113.
-    -   **sd (standard deviation)**: Measures the amount of variation or dispersion in `imdb_rating`. Here, it is 0.9627823.
-    -   **p0, p25, p50, p75, p100**: These represent the percentiles of the data:
-    -   **p0**: The minimum value (0th percentile), which is 2.1.
-    -   **p25**: The 25th percentile, meaning 25% of the data fall below this value, which is 6.2.
-    -   **p50**: The median or 50th percentile, which is 6.8.
-    -   **p75**: The 75th percentile, meaning 75% of the data fall below this value, which is 7.4.
-    -   **p100**: The maximum value (100th percentile), which is 9.3.
-    -   **hist**: A text-based histogram providing a visual representation of the distribution of `imdb_rating`. The characters (▁▁▅▇▂) represent different frequency bins.
+In the **video_games** dataset, we can calculate the IQR for average playtime (`average_playtime`):
 
-In summary, the `skim()` function output provides a detailed statistical summary of the `imdb_rating` variable, including measures of central tendency, dispersion, and data completeness, along with a visual histogram for quick assessment of the data distribution. This information is crucial for understanding the characteristics of the IMDb ratings in the `movies` dataset, especially when preparing for more detailed data analysis.
+```r
+# Calculate the IQR for average playtime
+iqr_playtime <- IQR(video_games$average_playtime, na.rm = TRUE)
+iqr_playtime
+```
 
+This value shows how playtimes are distributed for the central 50% of video games, helping to identify whether most games have a similar playtime or if there’s a large variance.
+
+### Understanding Dispersion in Media Data {.unnumbered}
+
+In summary, measures of dispersion are critical in understanding the variability within datasets. They provide insights beyond the central tendency, helping researchers determine the spread and consistency of values. Here’s how these measures can be applied in mass communication research:
+
+- **Range**: Offers a basic view of variability but is sensitive to outliers.
+  - Example: Calculating the range of anime scores or playtimes in video games.
+  
+- **Variance**: Provides a more nuanced understanding of variability by measuring the average squared deviations from the mean.
+  - Example: Analyzing the variance in movie ratings to assess how much opinions vary.
+  
+- **Standard Deviation**: A more interpretable measure than variance, showing how much values deviate from the mean in the original units of the data.
+  - Example: Understanding the consistency of anime ratings or playtime durations.
+  
+- **Interquartile Range (IQR)**: Focuses on the spread of the middle 50% of the data, excluding outliers.
+  - Example: Examining the IQR of horror movie ratings to get a clearer picture of typical audience sentiment.
+
+By learning and applying these measures of dispersion, students will gain a deeper understanding of how data behaves and how to interpret variability in mass communication datasets.

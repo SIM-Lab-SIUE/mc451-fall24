@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 7 Introduction to R and RStudio | An Introduction to Research Methods in Mass Media</title>
+  <meta name="description" content="This is the textbook for MC 451 at SIU Edwardsville." />
+  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 7 Introduction to R and RStudio | An Introduction to Research Methods in Mass Media" />
+  <meta property="og:type" content="book" />
+  <meta property="og:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg" />
+  <meta property="og:description" content="This is the textbook for MC 451 at SIU Edwardsville." />
+  <meta name="github-repo" content="SIM-Lab-SIUE/mc451-fall24" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 7 Introduction to R and RStudio | An Introduction to Research Methods in Mass Media" />
+  
+  <meta name="twitter:description" content="This is the textbook for MC 451 at SIU Edwardsville." />
+  <meta name="twitter:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg" />
+
+<meta name="author" content="Alex P Leith" />
+
+
+<meta name="date" content="2024-10-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="designing-quantitative-research.html"/>
+<link rel="next" href="data.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html"><i class="fa fa-check"></i><b>1</b> Overview of Research Methods</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#definition-and-importance-of-research"><i class="fa fa-check"></i><b>1.1</b> Definition and Importance of Research</a>
+<ul>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#artifacts-in-mass-communications-research"><i class="fa fa-check"></i>Artifacts in Mass Communications Research</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#attributes-and-their-role-in-research"><i class="fa fa-check"></i>Attributes and Their Role in Research</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#the-significance-of-content-analysis"><i class="fa fa-check"></i>The Significance of Content Analysis</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#studying-media-portrayals"><i class="fa fa-check"></i>Studying Media Portrayals</a></li>
+</ul></li>
+<li class="chapter" data-level="1.2" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#qualitative-vs.-quantitative"><i class="fa fa-check"></i><b>1.2</b> Qualitative vs. Quantitative</a>
+<ul>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#qualitative-research"><i class="fa fa-check"></i>Qualitative Research</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#quantitative-research"><i class="fa fa-check"></i>Quantitative Research</a></li>
+<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#mixed-methods-approach"><i class="fa fa-check"></i>Mixed Methods Approach</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html"><i class="fa fa-check"></i><b>2</b> Research Ethics and the IRB Process</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-evolution-of-research-ethics-in-social-science"><i class="fa fa-check"></i><b>2.1</b> The Evolution of Research Ethics in Social Science</a>
+<ul>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#early-ethical-violations-and-the-call-for-reform"><i class="fa fa-check"></i>Early Ethical Violations and the Call for Reform</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-emergence-of-ethical-standards"><i class="fa fa-check"></i>The Emergence of Ethical Standards</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#navigating-the-irb-process"><i class="fa fa-check"></i><b>2.2</b> Navigating the IRB Process</a>
+<ul>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#completing-citi-certification"><i class="fa fa-check"></i>Completing CITI Certification</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#retrieving-your-citi-certificate"><i class="fa fa-check"></i>Retrieving Your CITI Certificate</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#completing-irb-proposal"><i class="fa fa-check"></i>Completing IRB Proposal</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#developing-consent-forms"><i class="fa fa-check"></i>Developing Consent Forms</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#developing-recruitment-materials"><i class="fa fa-check"></i>Developing Recruitment Materials</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#developing-survey-or-interview-questions"><i class="fa fa-check"></i>Developing Survey or Interview Questions</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-debriefing-process"><i class="fa fa-check"></i>The Debriefing Process</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#assessing-and-minimizing-harm"><i class="fa fa-check"></i>Assessing and Minimizing Harm</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#offering-incentives"><i class="fa fa-check"></i>Offering Incentives</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#submission-and-review-protocols"><i class="fa fa-check"></i>Submission and Review Protocols</a></li>
+</ul></li>
+<li class="chapter" data-level="2.3" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#ethical-considerations-specific-to-mass-media-research"><i class="fa fa-check"></i><b>2.3</b> Ethical Considerations Specific to Mass Media Research</a>
+<ul>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-observer-effect"><i class="fa fa-check"></i>The Observer Effect</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-observer-as-participant-role"><i class="fa fa-check"></i>The Observer-as-Participant Role</a></li>
+<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#ethical-considerations-and-strategies-for-mitigation"><i class="fa fa-check"></i>Ethical Considerations and Strategies for Mitigation</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html"><i class="fa fa-check"></i><b>3</b> Introduction to Research Papers</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#what-are-research-papers"><i class="fa fa-check"></i><b>3.1</b> What are Research Papers</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#originality"><i class="fa fa-check"></i>Originality</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#methodology"><i class="fa fa-check"></i>Methodology</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#evidence-based"><i class="fa fa-check"></i>Evidence-Based</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#peer-review"><i class="fa fa-check"></i>Peer Review</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#structure"><i class="fa fa-check"></i>Structure</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#find"><i class="fa fa-check"></i><b>3.2</b> How to Find Research Papers</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#check-your-university-library"><i class="fa fa-check"></i>Check Your University Library</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#use-a-specialized-search-engine."><i class="fa fa-check"></i>Use a specialized search engine.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#using-social-media-to-find-research-articles"><i class="fa fa-check"></i>Using Social Media to Find Research Articles</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#contacting-experts-in-your-field"><i class="fa fa-check"></i>Contacting Experts in Your Field</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#read"><i class="fa fa-check"></i><b>3.3</b> How to Read Research Papers</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-three-pass-approach."><i class="fa fa-check"></i>The three-pass approach.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-question-based-approach."><i class="fa fa-check"></i>The question-based approach.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-active-reading-approach."><i class="fa fa-check"></i>The active reading approach.</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-collaborative-reading-approach."><i class="fa fa-check"></i>The collaborative reading approach.</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#write"><i class="fa fa-check"></i><b>3.4</b> How to Write Research Papers</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#sections-of-an-academic-paper"><i class="fa fa-check"></i>Sections of an Academic Paper</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#information-for-inclusion"><i class="fa fa-check"></i>Information for Inclusion</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#examples-of-formal-reports"><i class="fa fa-check"></i>Examples of Formal Reports</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html"><i class="fa fa-check"></i><b>4</b> Writing for a Public Audience</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#communication-strategies"><i class="fa fa-check"></i><b>4.1</b> Communication Strategies</a>
+<ul>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#crafting-compelling-messages"><i class="fa fa-check"></i>Crafting Compelling Messages</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#common-formats"><i class="fa fa-check"></i><b>4.2</b> Common Formats</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#feature-article"><i class="fa fa-check"></i><b>4.2.1</b> Feature Article</a></li>
+<li class="chapter" data-level="4.2.2" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#infographic-with-white-paper"><i class="fa fa-check"></i><b>4.2.2</b> Infographic with White Paper</a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#news-broadcast-script-with-storyboarding"><i class="fa fa-check"></i>News Broadcast Script with Storyboarding</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#utilizing-social-media-platforms"><i class="fa fa-check"></i><b>4.3</b> Utilizing Social Media Platforms</a>
+<ul>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#strengths-and-limitations"><i class="fa fa-check"></i>Strengths and Limitations</a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#twitter"><i class="fa fa-check"></i>Twitter</a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#facebook"><i class="fa fa-check"></i>Facebook</a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#linkedin"><i class="fa fa-check"></i>LinkedIn</a></li>
+<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#instagram"><i class="fa fa-check"></i>Instagram</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html"><i class="fa fa-check"></i><b>5</b> Developing Research Questions and Hypotheses</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#conceptual-definitions-and-operationalization"><i class="fa fa-check"></i><b>5.1</b> Conceptual Definitions and Operationalization</a>
+<ul>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#conceptual-definitions"><i class="fa fa-check"></i>Conceptual Definitions</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#operationalization"><i class="fa fa-check"></i>Operationalization</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-importance-of-conceptual-definitions-and-operationalization"><i class="fa fa-check"></i>The Importance of Conceptual Definitions and Operationalization</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#identifying-independent-and-dependent-variables"><i class="fa fa-check"></i><b>5.2</b> Identifying Independent and Dependent Variables</a>
+<ul>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#independent-variables"><i class="fa fa-check"></i>Independent Variables</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#dependent-variables"><i class="fa fa-check"></i>Dependent Variables</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#cause-and-effect"><i class="fa fa-check"></i>Cause-and-Effect</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-role-of-variables-in-experimental-design"><i class="fa fa-check"></i>The Role of Variables in Experimental Design</a></li>
+</ul></li>
+<li class="chapter" data-level="5.3" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#formulating-research-questions"><i class="fa fa-check"></i><b>5.3</b> Formulating Research Questions</a>
+<ul>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#what-makes-a-good-research-question"><i class="fa fa-check"></i>What Makes a Good Research Question?</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#types-of-research-questions"><i class="fa fa-check"></i>Types of Research Questions</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-process-of-developing-a-research-question"><i class="fa fa-check"></i>The Process of Developing a Research Question</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-importance-of-well-defined-research-questions"><i class="fa fa-check"></i>The Importance of Well-Defined Research Questions</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#constructing-hypotheses"><i class="fa fa-check"></i><b>5.4</b> Constructing Hypotheses</a>
+<ul>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#null-hypothesis-h0"><i class="fa fa-check"></i>Null Hypothesis (H0)</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#alternative-hypothesis-h1"><i class="fa fa-check"></i>Alternative Hypothesis (H1)</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-role-of-hypotheses-in-research-design"><i class="fa fa-check"></i>The Role of Hypotheses in Research Design</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#levels-of-measurement-in-mass-media-research"><i class="fa fa-check"></i><b>5.5</b> Levels of Measurement in Mass Media Research</a>
+<ul>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#nominal-level-of-measurement"><i class="fa fa-check"></i>Nominal Level of Measurement</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#ordinal-level-of-measurement"><i class="fa fa-check"></i>Ordinal Level of Measurement</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#interval-level-of-measurement"><i class="fa fa-check"></i>Interval Level of Measurement</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#ratio-level-of-measurement"><i class="fa fa-check"></i>Ratio Level of Measurement</a></li>
+</ul></li>
+<li class="chapter" data-level="5.6" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#issues-in-measurement"><i class="fa fa-check"></i><b>5.6</b> Issues in Measurement</a>
+<ul>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#measurement-error"><i class="fa fa-check"></i>Measurement Error</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#validity"><i class="fa fa-check"></i>Validity</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#reliability"><i class="fa fa-check"></i>Reliability</a></li>
+<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-relationship-between-validity-and-reliability"><i class="fa fa-check"></i>The Relationship Between Validity and Reliability</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html"><i class="fa fa-check"></i><b>6</b> Designing Quantitative Research</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#research-design"><i class="fa fa-check"></i><b>6.1</b> Research Design</a>
+<ul>
+<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#experimental-designs"><i class="fa fa-check"></i>Experimental Designs</a></li>
+<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#non-experimental-designs"><i class="fa fa-check"></i>Non-Experimental Designs</a></li>
+<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#sampling-methods"><i class="fa fa-check"></i>Sampling Methods</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#data-collection-techniques"><i class="fa fa-check"></i><b>6.2</b> Data Collection Techniques</a>
+<ul>
+<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#surveys-and-questionnaires"><i class="fa fa-check"></i>Surveys and Questionnaires</a></li>
+<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#observation-methods"><i class="fa fa-check"></i>Observation Methods</a></li>
+<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#content-analysis"><i class="fa fa-check"></i>Content Analysis</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>7</b> Introduction to R and RStudio</a>
+<ul>
+<li class="chapter" data-level="7.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-r-and-rstudio"><i class="fa fa-check"></i><b>7.1</b> What is R and RStudio?</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-r"><i class="fa fa-check"></i>What is R?</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-rstudio"><i class="fa fa-check"></i>What is RStudio?</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#why-use-r-and-rstudio"><i class="fa fa-check"></i><b>7.2</b> Why Use R and RStudio?</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#open-source"><i class="fa fa-check"></i>Open Source</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-analysis-and-visualization"><i class="fa fa-check"></i>Data Analysis and Visualization</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#reproducible-research"><i class="fa fa-check"></i>Reproducible Research</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#flexibility-and-customization"><i class="fa fa-check"></i>Flexibility and Customization</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#how-to-install-r-and-rstudio"><i class="fa fa-check"></i><b>7.3</b> How to Install R and RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#how-to-install-r"><i class="fa fa-check"></i>How to Install R</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#how-to-install-rstudio"><i class="fa fa-check"></i>How to Install RStudio</a></li>
+</ul></li>
+<li class="chapter" data-level="7.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#getting-started-with-r-and-rstudio"><i class="fa fa-check"></i><b>7.4</b> Getting Started with R and RStudio</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-rstudio-interface"><i class="fa fa-check"></i>The RStudio Interface</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#setting-up-a-new-project"><i class="fa fa-check"></i>Setting Up a New Project</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#file-management"><i class="fa fa-check"></i>File Management</a></li>
+</ul></li>
+<li class="chapter" data-level="7.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#package-management"><i class="fa fa-check"></i><b>7.5</b> Package Management</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-packages"><i class="fa fa-check"></i>Installing Packages</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#commonly-used-packages"><i class="fa fa-check"></i>Commonly Used Packages</a></li>
+</ul></li>
+<li class="chapter" data-level="7.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#basics-of-r-programming"><i class="fa fa-check"></i><b>7.6</b> Basics of R Programming</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#code-chunks-in-r-markdown"><i class="fa fa-check"></i>Code Chunks in R Markdown</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#manually-inputting-data"><i class="fa fa-check"></i>Manually Inputting Data</a></li>
+</ul></li>
+<li class="chapter" data-level="7.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#commenting-and-organizing-code"><i class="fa fa-check"></i><b>7.7</b> Commenting and Organizing Code</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#commenting-code"><i class="fa fa-check"></i>Commenting Code</a></li>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#organizing-code-with-sections"><i class="fa fa-check"></i>Organizing Code with Sections</a></li>
+</ul></li>
+<li class="chapter" data-level="7.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-preparation"><i class="fa fa-check"></i><b>7.8</b> Data Preparation</a>
+<ul>
+<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#keeping-code-tidy"><i class="fa fa-check"></i>Keeping Code Tidy</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>8</b> Data</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="data.html"><a href="data.html#defining-data"><i class="fa fa-check"></i><b>8.1</b> Defining Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#what-is-data"><i class="fa fa-check"></i>What is Data?</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#what-is-data-in-mass-communication-research"><i class="fa fa-check"></i>What is Data in Mass Communication Research?</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#qualitative-vs.-quantitative-data"><i class="fa fa-check"></i>Qualitative vs. Quantitative Data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="data.html"><a href="data.html#variables-and-observations"><i class="fa fa-check"></i><b>8.2</b> Variables and Observations</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#explanation-of-data-types"><i class="fa fa-check"></i>Explanation of Data Types</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="data.html"><a href="data.html#inputting-data"><i class="fa fa-check"></i><b>8.3</b> Inputting Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#dataeditr"><i class="fa fa-check"></i>DataEditR</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#importing-data-from-a-file"><i class="fa fa-check"></i>Importing Data from a File</a></li>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#editing-imported-data"><i class="fa fa-check"></i>Editing Imported Data</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="data.html"><a href="data.html#manipulating-data"><i class="fa fa-check"></i><b>8.4</b> Manipulating Data</a>
+<ul>
+<li class="chapter" data-level="" data-path="data.html"><a href="data.html#the-dplyr-package"><i class="fa fa-check"></i>The <code>dplyr</code> Package</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html"><i class="fa fa-check"></i><b>9</b> Descriptive Analysis</a>
+<ul>
+<li class="chapter" data-level="9.1" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>9.1</b> Measures of Central Tendency</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#mean-arithmetic-average"><i class="fa fa-check"></i>Mean (Arithmetic Average)</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#median"><i class="fa fa-check"></i>Median</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#mode"><i class="fa fa-check"></i>Mode</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#comparing-mean-median-and-mode"><i class="fa fa-check"></i>Comparing Mean, Median, and Mode</a></li>
+</ul></li>
+<li class="chapter" data-level="9.2" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#measures-of-dispersion"><i class="fa fa-check"></i><b>9.2</b> Measures of Dispersion</a>
+<ul>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#range"><i class="fa fa-check"></i>Range</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#variance"><i class="fa fa-check"></i>Variance</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#standard-deviation"><i class="fa fa-check"></i>Standard Deviation</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile Range (IQR)</a></li>
+<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#understanding-dispersion-in-media-data"><i class="fa fa-check"></i>Understanding Dispersion in Media Data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="inferential-analysis.html"><a href="inferential-analysis.html"><i class="fa fa-check"></i><b>10</b> Inferential Analysis</a>
+<ul>
+<li class="chapter" data-level="10.1" data-path="inferential-analysis.html"><a href="inferential-analysis.html#understanding-chi-square-tests"><i class="fa fa-check"></i><b>10.1</b> Understanding Chi-Square Tests</a>
+<ul>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#background-information-on-chi-square-tests-and-their-application"><i class="fa fa-check"></i>Background Information on Chi-Square Tests and Their Application</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#conducting-chi-square-tests-for-independence-in-r-code-examples-and-interpretation-of-results"><i class="fa fa-check"></i>Conducting Chi-Square Tests for Independence in R: Code Examples and Interpretation of Results</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#discussing-findings-from-chi-square-analyses-in-the-context-of-mass-communications-research"><i class="fa fa-check"></i>Discussing Findings from Chi-Square Analyses in the Context of Mass Communications Research</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="inferential-analysis.html"><a href="inferential-analysis.html#comparison-of-means"><i class="fa fa-check"></i><b>10.2</b> Comparison of Means</a>
+<ul>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#t-test"><i class="fa fa-check"></i>T-test</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#analysis-of-variance-anova"><i class="fa fa-check"></i>Analysis of Variance (ANOVA)</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="inferential-analysis.html"><a href="inferential-analysis.html#regression-analysis"><i class="fa fa-check"></i><b>10.3</b> Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#simple-linear-regression"><i class="fa fa-check"></i>Simple Linear Regression</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#multiple-linear-regression"><i class="fa fa-check"></i>Multiple Linear Regression</a></li>
+</ul></li>
+<li class="chapter" data-level="10.4" data-path="inferential-analysis.html"><a href="inferential-analysis.html#calculating-effect-sizes-in-r"><i class="fa fa-check"></i><b>10.4</b> Calculating Effect Sizes in R</a>
+<ul>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#introduction-to-effect-sizes-and-their-importance-in-research"><i class="fa fa-check"></i>Introduction to Effect Sizes and Their Importance in Research</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#calculating-and-interpreting-different-effect-sizes"><i class="fa fa-check"></i>Calculating and Interpreting Different Effect Sizes</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#practical-examples-of-calculating-effect-sizes-in-r"><i class="fa fa-check"></i>Practical Examples of Calculating Effect Sizes in R</a></li>
+</ul></li>
+<li class="chapter" data-level="10.5" data-path="inferential-analysis.html"><a href="inferential-analysis.html#regression-analysis-1"><i class="fa fa-check"></i><b>10.5</b> Regression Analysis</a>
+<ul>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#background-on-regression-analysis-linear-regression-logistic-regression"><i class="fa fa-check"></i>Background on Regression Analysis: Linear Regression, Logistic Regression</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#steps-for-conducting-regression-analysis-in-r"><i class="fa fa-check"></i>Steps for Conducting Regression Analysis in R</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-regression-output"><i class="fa fa-check"></i>Interpreting Regression Output</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#practical-example-in-r"><i class="fa fa-check"></i>Practical Example in R</a></li>
+<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#decision-making-based-on-p-values-and-confidence-intervals"><i class="fa fa-check"></i>Decision-making Based on P-values and Confidence Intervals</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html"><i class="fa fa-check"></i><b>11</b> Data Visualization in R</a>
+<ul>
+<li class="chapter" data-level="11.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-data-visualization"><i class="fa fa-check"></i><b>11.1</b> Introduction to Data Visualization</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#the-importance-of-data-visualization-in-mass-communications-research"><i class="fa fa-check"></i>The Importance of Data Visualization in Mass Communications Research</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#overview-of-data-visualization-capabilities-in-r"><i class="fa fa-check"></i>Overview of Data Visualization Capabilities in R</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#visualization-techniques"><i class="fa fa-check"></i><b>11.2</b> Visualization Techniques</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#creating-infographics"><i class="fa fa-check"></i>Creating Infographics</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#getting-started-with-ggplot2"><i class="fa fa-check"></i><b>11.3</b> Getting Started with ggplot2</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-ggplot2"><i class="fa fa-check"></i>Introduction to ggplot2</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#basic-concepts-of-the-grammar-of-graphics"><i class="fa fa-check"></i>Basic Concepts of the Grammar of Graphics</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#setting-up-rstudio-and-installing-ggplot2"><i class="fa fa-check"></i>Setting Up RStudio and Installing ggplot2</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#plots"><i class="fa fa-check"></i><b>11.4</b> Plots</a>
+<ul>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#prepare-workspace"><i class="fa fa-check"></i>Prepare Workspace</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#components-of-ggplot2-in-r"><i class="fa fa-check"></i>Components of ggplot2 in R</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#distribution-plots"><i class="fa fa-check"></i>Distribution Plots</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#correlation-plots"><i class="fa fa-check"></i>Correlation Plots</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#ranking-plots"><i class="fa fa-check"></i>Ranking Plots</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#part-of-a-whole"><i class="fa fa-check"></i>Part of a Whole</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#store-and-edit-plots"><i class="fa fa-check"></i>Store and Edit Plots</a></li>
+<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#saving-plots-in-r-markdown"><i class="fa fa-check"></i>Saving Plots in R Markdown</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#designing-infographics-in-r"><i class="fa fa-check"></i><b>11.5</b> Designing Infographics in R</a>
+<ul>
+<li class="chapter" data-level="11.5.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#overview-of-infographics-and-their-value-in-communicating-research-findings"><i class="fa fa-check"></i><b>11.5.1</b> Overview of Infographics and Their Value in Communicating Research Findings</a></li>
+<li class="chapter" data-level="11.5.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#tools-and-packages-in-r-for-creating-infographics"><i class="fa fa-check"></i><b>11.5.2</b> Tools and Packages in R for Creating Infographics</a></li>
+<li class="chapter" data-level="11.5.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#tips-for-effective-infographic-design"><i class="fa fa-check"></i><b>11.5.3</b> Tips for Effective Infographic Design</a></li>
+</ul></li>
+<li class="chapter" data-level="11.6" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#advanced-visualization-techniques"><i class="fa fa-check"></i><b>11.6</b> Advanced Visualization Techniques</a>
+<ul>
+<li class="chapter" data-level="11.6.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#visualizing-multiple-linear-regressions"><i class="fa fa-check"></i><b>11.6.1</b> Visualizing Multiple Linear Regressions</a></li>
+<li class="chapter" data-level="11.6.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#heat-maps-and-correlation-plots"><i class="fa fa-check"></i><b>11.6.2</b> Heat Maps and Correlation Plots</a></li>
+<li class="chapter" data-level="11.6.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#network-diagrams-and-maps"><i class="fa fa-check"></i><b>11.6.3</b> Network Diagrams and Maps</a></li>
+</ul></li>
+<li class="chapter" data-level="11.7" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#customizing-visualizations-in-r"><i class="fa fa-check"></i><b>11.7</b> Customizing Visualizations in R</a>
+<ul>
+<li class="chapter" data-level="11.7.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#customizing-plot-aesthetics-themes-colors-and-fonts"><i class="fa fa-check"></i><b>11.7.1</b> Customizing Plot Aesthetics: Themes, Colors, and Fonts</a></li>
+<li class="chapter" data-level="11.7.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#adding-annotations-and-labels-to-enhance-understanding"><i class="fa fa-check"></i><b>11.7.2</b> Adding Annotations and Labels to Enhance Understanding</a></li>
+<li class="chapter" data-level="11.7.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#adjusting-plot-dimensions-and-exporting-for-publication-and-presentations"><i class="fa fa-check"></i><b>11.7.3</b> Adjusting Plot Dimensions and Exporting for Publication and Presentations</a></li>
+</ul></li>
+<li class="chapter" data-level="11.8" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#interactive-visualizations-with-r"><i class="fa fa-check"></i><b>11.8</b> Interactive Visualizations with R</a>
+<ul>
+<li class="chapter" data-level="11.8.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-interactive-visualizations-using-packages-like-plotly-and-shiny"><i class="fa fa-check"></i><b>11.8.1</b> Introduction to Interactive Visualizations Using Packages like <code>plotly</code> and <code>shiny</code></a></li>
+<li class="chapter" data-level="11.8.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#creating-web-based-interactive-charts-and-dashboards"><i class="fa fa-check"></i><b>11.8.2</b> Creating Web-based Interactive Charts and Dashboards</a></li>
+<li class="chapter" data-level="11.8.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#applications-of-interactive-visualizations-in-mass-communications-research"><i class="fa fa-check"></i><b>11.8.3</b> Applications of Interactive Visualizations in Mass Communications Research</a></li>
+</ul></li>
+<li class="chapter" data-level="11.9" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#best-practices-for-data-visualization"><i class="fa fa-check"></i><b>11.9</b> Best Practices for Data Visualization</a>
+<ul>
+<li class="chapter" data-level="11.9.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#ethical-considerations-in-data-visualization"><i class="fa fa-check"></i><b>11.9.1</b> Ethical Considerations in Data Visualization</a></li>
+<li class="chapter" data-level="11.9.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#choosing-the-right-type-of-visualization-for-your-data"><i class="fa fa-check"></i><b>11.9.2</b> Choosing the Right Type of Visualization for Your Data</a></li>
+<li class="chapter" data-level="11.9.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#storytelling-with-data-crafting-a-narrative-around-your-visualizations"><i class="fa fa-check"></i><b>11.9.3</b> Storytelling with Data: Crafting a Narrative Around Your Visualizations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html"><i class="fa fa-check"></i><b>12</b> Special Topics in Research Methods</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#ethical-issues-in-emerging-media-research"><i class="fa fa-check"></i><b>12.1</b> Ethical Issues in Emerging Media Research</a>
+<ul>
+<li class="chapter" data-level="12.1.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#digital-privacy-and-research"><i class="fa fa-check"></i><b>12.1.1</b> Digital Privacy and Research</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#current-trends-in-mass-media-research"><i class="fa fa-check"></i><b>12.2</b> Current Trends in Mass Media Research</a>
+<ul>
+<li class="chapter" data-level="12.2.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#data-driven-journalism"><i class="fa fa-check"></i><b>12.2.1</b> Data-Driven Journalism</a></li>
+<li class="chapter" data-level="12.2.2" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#critical-analysis-and-rhetorical-criticism"><i class="fa fa-check"></i><b>12.2.2</b> Critical Analysis and Rhetorical Criticism</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="appendix-1.html"><a href="appendix-1.html"><i class="fa fa-check"></i><b>13</b> Appendix</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="appendix-1.html"><a href="appendix-1.html#glossary-of-terms"><i class="fa fa-check"></i><b>13.1</b> Glossary of Terms</a>
+<ul>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#introduction-to-research-in-mass-communications"><i class="fa fa-check"></i>2. <strong>Introduction to Research in Mass Communications</strong></a></li>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#developing-research-questions-and-hypotheses-1"><i class="fa fa-check"></i>3. <strong>Developing Research Questions and Hypotheses</strong></a></li>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#designing-quantitative-research-1"><i class="fa fa-check"></i>4. <strong>Designing Quantitative Research</strong></a></li>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#data-analysis-and-statistical-techniques"><i class="fa fa-check"></i>5. <strong>Data Analysis and Statistical Techniques</strong></a></li>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#data-management-and-visualization"><i class="fa fa-check"></i>6. <strong>Data Management and Visualization</strong></a></li>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#writing-and-presenting-research"><i class="fa fa-check"></i>7. <strong>Writing and Presenting Research</strong></a></li>
+<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#special-topics-in-research-methods-1"><i class="fa fa-check"></i>8. <strong>Special Topics in Research Methods</strong></a></li>
+</ul></li>
+<li class="chapter" data-level="13.2" data-path="appendix-1.html"><a href="appendix-1.html#assignments"><i class="fa fa-check"></i><b>13.2</b> Assignments</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Research Methods in Mass Media</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="introduction-to-r-and-rstudio" class="section level1 hasAnchor" number="7">
+<h1><span class="header-section-number">Chapter 7</span> Introduction to R and RStudio<a href="introduction-to-r-and-rstudio.html#introduction-to-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="what-is-r-and-rstudio" class="section level2 hasAnchor" number="7.1">
+<h2><span class="header-section-number">7.1</span> What is R and RStudio?<a href="introduction-to-r-and-rstudio.html#what-is-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="what-is-r" class="section level3 unnumbered hasAnchor">
+<h3>What is R?<a href="introduction-to-r-and-rstudio.html#what-is-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R is an open-source statistical programming language designed for data manipulation, analysis, and visualization. It provides researchers with a flexible framework for executing complex statistical models, handling large datasets, and creating sophisticated graphical representations. In the context of mass communication research, R allows for the rigorous analysis of quantitative data, such as survey results, social media metrics, and media content analysis, making it an indispensable tool for both academic and industry research.</p>
+<p>Unlike traditional spreadsheet programs or point-and-click statistical software, R offers a command-line interface, where users write scripts to execute functions. This characteristic makes it highly adaptable to various research needs, whether analyzing audience engagement with news content or modeling the spread of information through social networks. Researchers can write custom scripts and share them, making research more transparent and reproducible.</p>
+<p>The strength of R lies in its extensive package ecosystem, which covers nearly every imaginable statistical method. The packages extend the functionality of R, allowing researchers to handle everything from basic descriptive statistics to advanced machine learning techniques. With packages like <code>tidyverse</code> for data wrangling and <code>ggplot2</code> for visualization, R offers a comprehensive suite for mass communication research.</p>
+</div>
+<div id="what-is-rstudio" class="section level3 unnumbered hasAnchor">
+<h3>What is RStudio?<a href="introduction-to-r-and-rstudio.html#what-is-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>RStudio is an integrated development environment (IDE) for R, designed to simplify the process of writing and executing R code. It combines a user-friendly interface with powerful tools that enhance productivity, making it easier for both beginners and experienced users to work efficiently. For students and researchers in mass communication, RStudio offers a practical way to interact with R without being overwhelmed by its command-line interface.</p>
+<p>RStudio provides features such as syntax highlighting, auto-completion, and a visual interface for plots and data frames, making it accessible for users at all levels. It organizes R’s functionality into easily navigable panels, including a script editor, a console, a workspace viewer, and a file browser. Additionally, it offers seamless integration with version control systems (e.g., Git), enabling researchers to track changes and collaborate more effectively on data analysis projects.</p>
+<p>For mass communication researchers, who often handle large datasets from surveys or media content analysis, RStudio’s tools streamline data wrangling and visualization. The IDE supports the generation of reproducible reports using R Markdown, which combines narrative text and R code to produce dynamic, interactive documents. This feature is especially useful when presenting research findings, as it allows researchers to include live code and results in their reports, ensuring accuracy and transparency in the research process.</p>
+</div>
+</div>
+<div id="why-use-r-and-rstudio" class="section level2 hasAnchor" number="7.2">
+<h2><span class="header-section-number">7.2</span> Why Use R and RStudio?<a href="introduction-to-r-and-rstudio.html#why-use-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R and RStudio offer significant advantages for students and researchers in mass communication. The combination of these tools provides unparalleled access to robust statistical capabilities, cutting-edge data visualization, and a framework for reproducible and transparent research. Below are some key reasons why R and RStudio are essential for mass communication research.</p>
+<div id="open-source" class="section level3 unnumbered hasAnchor">
+<h3>Open Source<a href="introduction-to-r-and-rstudio.html#open-source" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>One of the primary advantages of R is its open-source nature. Unlike many other statistical software packages that require expensive licenses, R is completely free to download and use. This accessibility ensures that anyone, regardless of institutional resources, can take advantage of its powerful features. Moreover, the open-source community behind R is continually developing and sharing new packages, which means researchers have access to cutting-edge tools without additional costs.</p>
+<p>For mass communication researchers, this is particularly beneficial, as the field often requires interdisciplinary methods and techniques. The vast array of packages and tools available in R enables researchers to adapt their workflows to meet the specific needs of their projects—whether analyzing large datasets, scraping data from social media, or conducting sentiment analysis on user-generated content.</p>
+</div>
+<div id="data-analysis-and-visualization" class="section level3 unnumbered hasAnchor">
+<h3>Data Analysis and Visualization<a href="introduction-to-r-and-rstudio.html#data-analysis-and-visualization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R excels in data analysis and visualization, providing tools that go beyond the basics offered by many standard software packages. With R, users can perform complex statistical analyses, such as regression modeling, hypothesis testing, and machine learning, all within a single platform. Furthermore, packages like <code>ggplot2</code> allow users to create visually appealing and highly customizable graphs, which are essential for communicating research findings effectively.</p>
+<p>For mass communication students and researchers, this means having the ability to explore data from surveys, media analytics, or content studies in a rigorous and visually compelling way. Visualizations such as bar charts, scatter plots, and network diagrams are critical for illustrating patterns in media consumption or audience behavior, helping researchers make their findings more accessible and impactful.</p>
+</div>
+<div id="reproducible-research" class="section level3 unnumbered hasAnchor">
+<h3>Reproducible Research<a href="introduction-to-r-and-rstudio.html#reproducible-research" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>A growing demand in academic research is the ability to reproduce and validate results. RStudio supports this through its integration with R Markdown, which allows researchers to create dynamic documents that combine text, code, and output (e.g., tables, charts) in a single report. This means that anyone reviewing the research can trace the exact steps taken, from data importation to analysis, and reproduce the results with accuracy.</p>
+<p>For mass communication researchers, this capability ensures transparency and integrity, which are particularly important when dealing with potentially sensitive or high-impact media data. Whether publishing a report on social media trends or presenting findings on audience demographics, R and RStudio help researchers document and share their work in a way that is fully traceable.</p>
+</div>
+<div id="flexibility-and-customization" class="section level3 unnumbered hasAnchor">
+<h3>Flexibility and Customization<a href="introduction-to-r-and-rstudio.html#flexibility-and-customization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R’s flexibility is one of its standout features. Unlike other statistical software, which may be limited by pre-built functions or rigid workflows, R allows users to customize their analyses by writing their own scripts. This adaptability is crucial in mass communication research, where the types of data (e.g., textual data, video metrics, user interactions) can vary widely and often require bespoke approaches.</p>
+<p>Additionally, R’s package system allows for almost limitless customization. Users can download packages specific to their field of research or even create their own, making it easier to tailor the analysis to the exact needs of a project. For example, mass communication researchers studying digital engagement might use packages designed for sentiment analysis, network visualization, or web scraping, all of which are readily available in the R ecosystem.</p>
+</div>
+</div>
+<div id="how-to-install-r-and-rstudio" class="section level2 hasAnchor" number="7.3">
+<h2><span class="header-section-number">7.3</span> How to Install R and RStudio<a href="introduction-to-r-and-rstudio.html#how-to-install-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R and RStudio are essential tools for data analysis, visualization, and reproducible research. This section will guide you through the steps to install both R and RStudio on your computer, ensuring you are ready to start coding and analyzing data efficiently.</p>
+<div id="how-to-install-r" class="section level3 unnumbered hasAnchor">
+<h3>How to Install R<a href="introduction-to-r-and-rstudio.html#how-to-install-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>R can be downloaded from the Comprehensive R Archive Network (CRAN) at <a href="https://cran.r-project.org/">https://cran.r-project.org/</a>. Follow the steps below to install R on your machine:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Visit the CRAN website</strong>: Navigate to <a href="https://cran.r-project.org/">https://cran.r-project.org/</a>.</li>
+<li><strong>Select your operating system</strong>: Choose the appropriate option for your computer—Windows, Mac, or Linux.
+<ul>
+<li><strong>Windows</strong>: Click on “Download R for Windows,” and then choose “base” to download the most recent version. Follow the installation prompts.</li>
+<li><strong>Mac</strong>: Click on “Download R for macOS,” and choose the version compatible with your operating system. Follow the installation prompts.</li>
+<li><strong>Linux</strong>: Select “Download R for Linux” and follow the specific instructions for your Linux distribution (e.g., Ubuntu, Debian, Fedora).</li>
+</ul></li>
+<li><strong>Complete the installation</strong>: Once the download is complete, open the installer and follow the on-screen instructions to complete the installation. After installation, R should be ready to use on your system.</li>
+</ol>
+</div>
+<div id="how-to-install-rstudio" class="section level3 unnumbered hasAnchor">
+<h3>How to Install RStudio<a href="introduction-to-r-and-rstudio.html#how-to-install-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>After installing R, you need to install RStudio, a powerful Integrated Development Environment (IDE) that enhances your coding experience and workflow. Follow the steps below to install RStudio:</p>
+<ol style="list-style-type: decimal">
+<li><strong>Visit the RStudio download page</strong>: Go to <a href="https://posit.co/download/rstudio-desktop/">https://posit.co/download/rstudio-desktop/</a>.</li>
+<li><strong>Choose the free version</strong>: Select “RStudio Desktop – Open Source License” to download the free version of RStudio.</li>
+<li><strong>Select your operating system</strong>: Choose the installer for your operating system (Windows, Mac, or Linux) and download the appropriate file.
+<ul>
+<li><strong>Windows</strong>: Download the installer and run it. Follow the setup prompts to install RStudio.</li>
+<li><strong>Mac</strong>: Download the installer for macOS, open the .dmg file, and drag RStudio into your Applications folder.</li>
+<li><strong>Linux</strong>: Follow the instructions provided on the RStudio download page for your specific Linux distribution.</li>
+</ul></li>
+<li><strong>Launch RStudio</strong>: After installation, open RStudio. You should see the RStudio interface with the console panel, ready for you to start writing and running R code.</li>
+</ol>
+</div>
+</div>
+<div id="getting-started-with-r-and-rstudio" class="section level2 hasAnchor" number="7.4">
+<h2><span class="header-section-number">7.4</span> Getting Started with R and RStudio<a href="introduction-to-r-and-rstudio.html#getting-started-with-r-and-rstudio" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="the-rstudio-interface" class="section level3 unnumbered hasAnchor">
+<h3>The RStudio Interface<a href="introduction-to-r-and-rstudio.html#the-rstudio-interface" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>RStudio enhances the R experience by providing a user-friendly interface that simplifies coding, analysis, and visualization. The workspace is divided into four main panels, each serving a distinct function:</p>
+<ul>
+<li><p><strong>Script Panel:</strong> The script panel is where you write and edit your R scripts. Scripts are collections of commands that can be saved and reused, which promotes reproducibility and efficiency in your research. By saving your code as scripts, you can run the same analysis on different datasets or share the exact steps with collaborators.</p></li>
+<li><p><strong>Console Panel:</strong> The console is the interactive component where R executes commands. You can type commands directly into the console or run them from a script. The console also displays output, including error messages and other system feedback. This real-time interaction is helpful for testing snippets of code before integrating them into your larger script.</p></li>
+<li><p><strong>Environment Panel:</strong> The environment panel displays all the objects—such as datasets, variables, and functions—currently stored in memory during your R session. It provides an overview of the data and variables you are working with, allowing you to inspect, remove, or modify them easily.</p></li>
+<li><p><strong>Plots/Help/Files Panels:</strong> This multifunctional area is where RStudio displays generated plots and visualizations. It also gives access to R’s extensive help files and documentation, helping users troubleshoot or learn about specific functions. Additionally, the file browser in this panel lets you navigate your computer’s files and directories, making it easy to locate and import data into R.</p></li>
+</ul>
+</div>
+<div id="setting-up-a-new-project" class="section level3 unnumbered hasAnchor">
+<h3>Setting Up a New Project<a href="introduction-to-r-and-rstudio.html#setting-up-a-new-project" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>RStudio’s project management system helps keep your work organized, especially when handling multiple files or analyses. Setting up a project ensures that all related files, scripts, and outputs are in one place.</p>
+<ul>
+<li><p><strong>Creating a Project:</strong> To start a new project, go to <code>File &gt; New Project...</code>. RStudio allows you to group all the scripts, data files, and visual outputs related to a specific research question or analysis into one project, making it easier to manage your workflow.</p></li>
+<li><p><strong>Choosing a Location:</strong> You can create a new directory for your project or associate it with an existing folder. Creating projects within dedicated directories is crucial for managing your work, as it ensures all related files are in one location and that relative file paths are maintained. This makes it easier to share your project with others or run it on a different machine without breaking file links.</p></li>
+<li><p><strong>Version Control:</strong> If you use version control tools like Git, RStudio seamlessly integrates with them. During the project setup, you can create or link a Git repository, allowing you to track changes and collaborate with others effectively. Version control ensures that every modification to your scripts is documented, which is especially useful when working in teams.</p></li>
+<li><p><strong>Project Management:</strong> RStudio projects save the state of your workspace, including open files, console history, and the working directory. When you reopen the project, RStudio restores this state, enabling you to continue where you left off without needing to reconfigure your environment.</p></li>
+</ul>
+</div>
+<div id="file-management" class="section level3 unnumbered hasAnchor">
+<h3>File Management<a href="introduction-to-r-and-rstudio.html#file-management" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Effective file management is critical for maintaining an organized and efficient workflow in RStudio. Below are some guidelines for managing different types of files:</p>
+<div id="r-script-vs.-r-markdown" class="section level4 unnumbered hasAnchor">
+<h4>R Script vs. R Markdown<a href="introduction-to-r-and-rstudio.html#r-script-vs.-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>R scripts (<code>.R</code> files) are text files where you can write and run R commands. These are best used when the focus is purely on data analysis. On the other hand, R Markdown (<code>.Rmd</code> files) allows you to integrate narrative text, R code, and output (e.g., plots, tables) into a single document. R Markdown is useful for generating reproducible reports, making it ideal for assignments, papers, and presentations.</p>
+<ul>
+<li><strong>When to use R Script</strong>: Use an R script when you are solely focused on coding and analyzing data without needing additional explanation or documentation.</li>
+<li><strong>When to use R Markdown</strong>: Use R Markdown when you want to combine text, code, and results in a report format that can be converted into HTML, PDF, or Word documents.</li>
+</ul>
+</div>
+<div id="csv-vs.-excel" class="section level4 unnumbered hasAnchor">
+<h4>CSV vs. Excel<a href="introduction-to-r-and-rstudio.html#csv-vs.-excel" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>For most data analysis tasks in R, <strong>CSV</strong> (Comma Separated Values) files are the preferred format due to their simplicity and compatibility with R’s data manipulation functions. R also provides tools for reading <strong>Excel</strong> files (<code>.xlsx</code>), but Excel files often introduce complexities, such as multiple sheets or hidden formatting, which can complicate data analysis.</p>
+<ul>
+<li><strong>Use CSV files</strong> for straightforward, clean datasets that will be frequently used in your analysis.</li>
+<li><strong>Use Excel files</strong> when working with collaborators who require Excel formatting or when the dataset contains multiple sheets or more complex structure.</li>
+</ul>
+</div>
+<div id="subfolders" class="section level4 unnumbered hasAnchor">
+<h4>Subfolders<a href="introduction-to-r-and-rstudio.html#subfolders" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>When working on large projects, use subfolders within your project directory to organize your files. Common subfolders might include:
+- <code>data/</code> for storing raw and processed datasets.
+- <code>scripts/</code> for organizing your R scripts.
+- <code>output/</code> for saving graphs, tables, and other generated outputs.
+- <code>reports/</code> for storing R Markdown files or other documents that summarize your findings.</p>
+<p>This hierarchical organization makes it easier to locate files and ensures that your project remains structured as it grows in complexity.</p>
+</div>
+<div id="other-files" class="section level4 unnumbered hasAnchor">
+<h4>Other Files<a href="introduction-to-r-and-rstudio.html#other-files" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p>In addition to scripts and datasets, you may work with a variety of other file types, such as:
+- <strong>Text files (<code>.txt</code>)</strong> for plain text data.
+- <strong>Image files (<code>.png</code>, <code>.jpeg</code>)</strong> for embedding visualizations or outputs into reports.
+- <strong>RData files (<code>.RData</code>)</strong> for saving your R workspace so you can quickly reload objects in future sessions.</p>
+<p>By keeping your files organized and labeled consistently, you can streamline your workflow and reduce the likelihood of errors when collaborating or revisiting older projects.</p>
+</div>
+</div>
+</div>
+<div id="package-management" class="section level2 hasAnchor" number="7.5">
+<h2><span class="header-section-number">7.5</span> Package Management<a href="introduction-to-r-and-rstudio.html#package-management" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>R’s strength lies in its extensive ecosystem of packages, which extend its core functionality to support specific types of analysis, visualization, and data manipulation. Packages are collections of R functions, data, and documentation, tailored for different tasks. In mass communication research, several packages can aid in content analysis, media trend studies, and social network analysis.</p>
+<div id="installing-packages" class="section level3 unnumbered hasAnchor">
+<h3>Installing Packages<a href="introduction-to-r-and-rstudio.html#installing-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To install a package in R, you need to use the <code>install.packages()</code> function. This only needs to be done once per package:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="introduction-to-r-and-rstudio.html#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<p>In RStudio, you can run this code in a code chunk or type it directly into the console. For example, to install a package in R Markdown, use the following code chunk:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="introduction-to-r-and-rstudio.html#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</span></code></pre></div>
+<p>After installation, load the package into your R session using the <code>library()</code> function:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="introduction-to-r-and-rstudio.html#cb3-1" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div>
+<p>This makes the package’s functions available for use during your R session.</p>
+</div>
+<div id="commonly-used-packages" class="section level3 unnumbered hasAnchor">
+<h3>Commonly Used Packages<a href="introduction-to-r-and-rstudio.html#commonly-used-packages" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Some packages particularly useful for mass communication research include:
+- <strong><code>ggplot2</code></strong>: For creating high-quality data visualizations.
+- <strong><code>dplyr</code></strong>: For data manipulation and cleaning.
+- <strong><code>tm</code></strong>: For text mining and content analysis, useful for analyzing media content.
+- <strong><code>rtweet</code></strong>: For collecting and analyzing Twitter data, essential in social media research.
+- <strong><code>quanteda</code></strong>: For text analysis, commonly used for media content studies.</p>
+<p>Once installed, packages can be updated periodically using the <code>update.packages()</code> function.</p>
+</div>
+</div>
+<div id="basics-of-r-programming" class="section level2 hasAnchor" number="7.6">
+<h2><span class="header-section-number">7.6</span> Basics of R Programming<a href="introduction-to-r-and-rstudio.html#basics-of-r-programming" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>This section introduces basic R programming concepts relevant to mass communication research. We assume no prior knowledge of coding, so we’ll start from scratch. The examples below are designed to be used in R Markdown, which allows you to combine code, text, and output into a single, reproducible document.</p>
+<div id="code-chunks-in-r-markdown" class="section level3 unnumbered hasAnchor">
+<h3>Code Chunks in R Markdown<a href="introduction-to-r-and-rstudio.html#code-chunks-in-r-markdown" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In R Markdown, code is written inside “chunks.” These chunks execute code and display the output directly in the document. To insert a code chunk in R Markdown, use three backticks followed by <code>{r}</code> to indicate you are writing R code. For example:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="introduction-to-r-and-rstudio.html#cb4-1" tabindex="-1"></a><span class="co"># This is a code chunk</span></span>
+<span id="cb4-2"><a href="introduction-to-r-and-rstudio.html#cb4-2" tabindex="-1"></a><span class="fu">print</span>(<span class="st">&quot;Hello, World!&quot;</span>)</span></code></pre></div>
+<p>The code inside the chunk runs when you “knit” the document, and the output will appear in the resulting file.</p>
+</div>
+<div id="manually-inputting-data" class="section level3 unnumbered hasAnchor">
+<h3>Manually Inputting Data<a href="introduction-to-r-and-rstudio.html#manually-inputting-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Data can be input directly into R, which is useful for small datasets or examples. Below is how you manually input data as a vector (a list of numbers or words):</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="introduction-to-r-and-rstudio.html#cb5-1" tabindex="-1"></a><span class="co"># Inputting numerical data</span></span>
+<span id="cb5-2"><a href="introduction-to-r-and-rstudio.html#cb5-2" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">23</span>, <span class="dv">21</span>, <span class="dv">30</span>)</span>
+<span id="cb5-3"><a href="introduction-to-r-and-rstudio.html#cb5-3" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="introduction-to-r-and-rstudio.html#cb5-4" tabindex="-1"></a><span class="co"># Inputting character data</span></span>
+<span id="cb5-5"><a href="introduction-to-r-and-rstudio.html#cb5-5" tabindex="-1"></a>names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;Alice&quot;</span>, <span class="st">&quot;Bob&quot;</span>, <span class="st">&quot;Carol&quot;</span>, <span class="st">&quot;David&quot;</span>)</span></code></pre></div>
+</div>
+</div>
+<div id="commenting-and-organizing-code" class="section level2 hasAnchor" number="7.7">
+<h2><span class="header-section-number">7.7</span> Commenting and Organizing Code<a href="introduction-to-r-and-rstudio.html#commenting-and-organizing-code" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Clear, well-commented, and organized code is crucial for making your analysis reproducible and understandable, especially when sharing it with others or revisiting it later.</p>
+<div id="commenting-code" class="section level3 unnumbered hasAnchor">
+<h3>Commenting Code<a href="introduction-to-r-and-rstudio.html#commenting-code" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>In R, comments are created using the <code>#</code> symbol. Anything written after <code>#</code> is ignored by R and is only meant for humans reading the code. Commenting is useful for explaining what each section of the code does or noting important details about the analysis:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="introduction-to-r-and-rstudio.html#cb6-1" tabindex="-1"></a><span class="co"># This is a comment</span></span>
+<span id="cb6-2"><a href="introduction-to-r-and-rstudio.html#cb6-2" tabindex="-1"></a>age <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">18</span>, <span class="dv">23</span>, <span class="dv">21</span>, <span class="dv">30</span>)  <span class="co"># Vector of ages</span></span></code></pre></div>
+<p>Use comments to explain the purpose of code sections, especially when performing key analyses. For example:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb7-1"><a href="introduction-to-r-and-rstudio.html#cb7-1" tabindex="-1"></a><span class="co"># This code reads data from an online CSV file</span></span>
+<span id="cb7-2"><a href="introduction-to-r-and-rstudio.html#cb7-2" tabindex="-1"></a>billboard <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2021/2021-09-14/billboard.csv&quot;</span>)</span></code></pre></div>
+</div>
+<div id="organizing-code-with-sections" class="section level3 unnumbered hasAnchor">
+<h3>Organizing Code with Sections<a href="introduction-to-r-and-rstudio.html#organizing-code-with-sections" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>To organize larger scripts, you can use headers or dividers to mark different sections. This makes it easier to navigate the code:</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="introduction-to-r-and-rstudio.html#cb8-1" tabindex="-1"></a><span class="co"># ===========================</span></span>
+<span id="cb8-2"><a href="introduction-to-r-and-rstudio.html#cb8-2" tabindex="-1"></a><span class="co"># Section: Data Preparation</span></span>
+<span id="cb8-3"><a href="introduction-to-r-and-rstudio.html#cb8-3" tabindex="-1"></a><span class="co"># ===========================</span></span></code></pre></div>
+<p>In R Markdown, you can organize code sections using headings in markdown format:</p>
+</div>
+</div>
+<div id="data-preparation" class="section level2 hasAnchor" number="7.8">
+<h2><span class="header-section-number">7.8</span> Data Preparation<a href="introduction-to-r-and-rstudio.html#data-preparation" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="introduction-to-r-and-rstudio.html#cb9-1" tabindex="-1"></a><span class="co"># Code for preparing data goes here</span></span></code></pre></div>
+<div id="keeping-code-tidy" class="section level3 unnumbered hasAnchor">
+<h3>Keeping Code Tidy<a href="introduction-to-r-and-rstudio.html#keeping-code-tidy" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Organized, readable code is essential, especially in collaborative research projects. Some tips for keeping your code tidy:
+- Use consistent indentation for better readability.
+- Break long lines of code into multiple lines.
+- Avoid excessive nesting of functions; instead, break them into separate steps.</p>
+<p>By commenting effectively and organizing your code logically, you make it easier for others (and yourself) to understand your analysis, contributing to better research practices.</p>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="designing-quantitative-research.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="data.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["textbook.pdf", "textbook.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
