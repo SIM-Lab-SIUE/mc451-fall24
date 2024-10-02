@@ -3,13 +3,14 @@ output: html_document
 editor_options: 
   chunk_output_type: inline
 ---
-# Data
+
+# Data Management
 
 ## Defining Data
 
 ### What is Data? {.unnumbered}
 
-In research, data refers to information collected to answer questions, test hypotheses, or explore patterns. Data can take many forms—numbers, text, images—and understanding these forms is essential for effective analysis. In RStudio, data is organized in tables (data frames), where rows represent individual observations, and columns represent variables.
+In research, data refers to information collected to answer questions, test hypotheses, or explore patterns. Data can take many forms---numbers, text, images---and understanding these forms is essential for effective analysis. In RStudio, data is organized in tables (data frames), where rows represent individual observations, and columns represent variables.
 
 ### What is Data in Mass Communication Research? {.unnumbered}
 
@@ -19,37 +20,118 @@ In mass communication research, data can come from various sources, including au
 
 In mass communication research, data can be classified as either qualitative or quantitative.
 
-- **Qualitative Data**: Qualitative data are non-numerical and often textual or categorical. In the **IMDb_Economist_tv_ratings.csv** dataset, variables such as `title` and `genres` are qualitative. These data provide descriptive details, helping researchers interpret cultural themes or trends in media content. For example, the `genres` variable includes values like "Drama," "Mystery," and "Sci-Fi," which categorize each show based on its narrative content.
+-   **Qualitative Data**: Qualitative data are non-numerical and often textual or categorical. In the **IMDb_Economist_tv_ratings.csv** dataset, variables such as `title` and `genres` are qualitative. These data provide descriptive details, helping researchers interpret cultural themes or trends in media content. For example, the `genres` variable includes values like "Drama," "Mystery," and "Sci-Fi," which categorize each show based on its narrative content.
 
-- **Quantitative Data**: Quantitative data are numerical and can be measured or counted. These data are used to perform statistical analyses. In the **IMDb_Economist_tv_ratings.csv** dataset, variables such as `av_rating` (average rating) and `share` (audience share) are quantitative. These values allow researchers to explore trends and relationships using statistical methods, such as analyzing how audience ratings vary by genre or season.
+-   **Quantitative Data**: Quantitative data are numerical and can be measured or counted. These data are used to perform statistical analyses. In the **IMDb_Economist_tv_ratings.csv** dataset, variables such as `av_rating` (average rating) and `share` (audience share) are quantitative. These values allow researchers to explore trends and relationships using statistical methods, such as analyzing how audience ratings vary by genre or season.
 
 ## Variables and Observations
 
 In RStudio, datasets are organized in a tabular format, where **columns represent variables** and **rows represent observations**.
 
-- **Variables**: Variables represent the characteristics or attributes being measured. In the **IMDb_Economist_tv_ratings.csv** dataset, variables include `title`, `seasonNumber`, `av_rating`, `share`, and `genres`. Each variable holds a specific type of information. For example, the `av_rating` variable represents the average IMDb rating for each TV show, while `genres` lists the categories of the show.
+-   **Variables**: Variables represent the characteristics or attributes being measured. In the **IMDb_Economist_tv_ratings.csv** dataset, variables include `title`, `seasonNumber`, `av_rating`, `share`, and `genres`. Each variable holds a specific type of information. For example, the `av_rating` variable represents the average IMDb rating for each TV show, while `genres` lists the categories of the show.
 
-- **Observations**: Observations are individual data points in the dataset. In this dataset, each row represents a unique combination of a TV show and its season. For example, one observation might represent Season 1 of "12 Monkeys," with its corresponding `av_rating` and `share`. These rows are the building blocks for data analysis, as they provide the raw material that is examined and processed.
+-   **Observations**: Observations are individual data points in the dataset. In this dataset, each row represents a unique combination of a TV show and its season. For example, one observation might represent Season 1 of "12 Monkeys," with its corresponding `av_rating` and `share`. These rows are the building blocks for data analysis, as they provide the raw material that is examined and processed.
 
 ### Explanation of Data Types {.unnumbered}
 
-Different types of data are used in mass communication research, each requiring different methods of analysis. Here’s how the data types in the **IMDb_Economist_tv_ratings.csv** dataset break down:
+Different types of data are used in mass communication research, each requiring different methods of analysis. Here's how the data types in the **IMDb_Economist_tv_ratings.csv** dataset break down:
 
-- **Nominal Data**: Nominal data are qualitative and label variables without any inherent order. The `title` variable is an example of nominal data, as it categorizes the different TV shows without implying any ranking or hierarchy.
+-   **Nominal Data**: Nominal data are qualitative and label variables without any inherent order. The `title` variable is an example of nominal data, as it categorizes the different TV shows without implying any ranking or hierarchy.
 
-- **Categorical Data**: Categorical data can be grouped into categories but have no specific numerical meaning. In this dataset, the `genres` variable is categorical, as it groups shows into different genre categories like "Drama," "Mystery," or "Sci-Fi."
+-   **Categorical Data**: Categorical data can be grouped into categories but have no specific numerical meaning. In this dataset, the `genres` variable is categorical, as it groups shows into different genre categories like "Drama," "Mystery," or "Sci-Fi."
 
-- **Ordinal Data**: Ordinal data are categorical but have a defined order. While there are no ordinal variables in this specific dataset, an example might be a variable representing user rankings (e.g., "Poor," "Average," "Good").
+-   **Ordinal Data**: Ordinal data are categorical but have a defined order. While there are no ordinal variables in this specific dataset, an example might be a variable representing user rankings (e.g., "Poor," "Average," "Good").
 
-- **Interval Data**: Interval data represent ordered values where the differences between values are meaningful, but there is no true zero point. In this dataset, `av_rating` could be considered interval data, as it represents IMDb ratings on a scale where the differences between values are consistent, but there is no absolute zero.
+-   **Interval Data**: Interval data represent ordered values where the differences between values are meaningful, but there is no true zero point. In this dataset, `av_rating` could be considered interval data, as it represents IMDb ratings on a scale where the differences between values are consistent, but there is no absolute zero.
 
-- **Continuous Data**: Continuous data can take any value within a given range. The `share` variable (audience share) is an example of continuous data because it represents the percentage of the total audience, which can vary across a continuous spectrum.
+-   **Continuous Data**: Continuous data can take any value within a given range. The `share` variable (audience share) is an example of continuous data because it represents the percentage of the total audience, which can vary across a continuous spectrum.
 
-- **Dichotomous or Binary Data**: Dichotomous data have only two possible values, such as "yes/no" or "true/false." Although this dataset does not contain any binary variables, a typical example might be whether a show was renewed for another season (Yes/No).
+-   **Dichotomous or Binary Data**: Dichotomous data have only two possible values, such as "yes/no" or "true/false." Although this dataset does not contain any binary variables, a typical example might be whether a show was renewed for another season (Yes/No).
 
 ## Inputting Data
 
 In RStudio, entering and importing data are essential tasks for conducting research. This section introduces DataEditR for manual data input and covers methods for importing data from external files like CSVs. The **IMDb_Economist_tv_ratings.csv** dataset is used in the examples below, which contains information about TV shows, including titles, seasons, ratings, and genres.
+
+### Data Structures in R {.unnumbered}
+
+Data structures are fundamental in R programming as they organize and store the data that one works with for analyses, visualizations, and other computational tasks. Understanding these structures is critical for effective manipulation of data and implementing various algorithms (Wickham & Grolemund, 2017). Below are the primary data structures that R provides.
+
+#### Vectors {.unnumbered}
+
+Vectors are one-dimensional arrays used to hold elements of a single data type. This could be numeric, character, or logical data types. Vectors are often used for operations that require the application of a function to each element in the data set (Maindonald & Braun, 2010).
+
+Vectors can be created using the `c()` function, which combines elements into a vector.
+
+*Creating a numeric vector*
+```r
+# 
+numeric_vector <- c(1, 2, 3, 4, 5)
+```
+
+
+*Creating a character vector*
+```r
+
+character_vector <- c("apple", "banana", "cherry")
+```
+
+
+*Creating a logical vector*
+```r
+logical_vector <- c(TRUE, FALSE, TRUE)
+```
+
+You can perform various operations on vectors like addition, subtraction, or applying a function to each element.
+
+```r
+# Adding two vectors
+sum_vector <- numeric_vector + c(1, 1, 1, 1, 1)
+
+# Calculating mean of a numeric vector
+mean_value <- mean(numeric_vector)
+```
+
+
+#### Data Frames {.unnumbered}
+
+Data frames serve as the fundamental data structure for data analysis in R. They are similar to matrices but allow different types of variables in different columns, which makes them extremely versatile (Chambers, 2008).
+
+Data frames can be created using the `data.frame()` function.
+
+```r
+# Creating a data frame
+df <- data.frame(Name = c("Alice", "Bob"), Age = c(23, 45), Gender = c("F", "M"))
+```
+
+Various operations like subsetting, merging, and sorting can be performed on data frames.
+
+```r
+# Subsetting data frame by column
+subset_df <- df[, c("Name", "Age")]
+```
+
+#### Lists {.unnumbered}
+
+Lists are an ordered collection of objects, which can be of different types and structures, including vectors, matrices, and even other lists (Wickham & Grolemund, 2017).
+
+Lists can be created using the `list()` function.
+
+```r
+# Creating a list
+my_list <- list(Name = "Alice", Age = 23, Scores = c(90, 85, 88))
+```
+
+Lists can be modified by adding, deleting, or updating list elements.
+
+```r
+# Updating a list element
+my_list$Name <- "Bob"
+
+# Adding a new list element
+my_list$Email <- "bob@email.com"
+```
+
+By understanding these primary data structures, students in Mass Communications can gain a strong foundation for more complex data analyses relevant to their field, whether it involves analyzing large sets of textual data, audience metrics, or other forms of media data.
 
 ### DataEditR {.unnumbered}
 
@@ -104,10 +186,12 @@ The `read.csv()` function is part of base R and can be used to import CSV files 
 
 ```r
 # Reading the IMDb_Economist_tv_ratings dataset using read.csv from base R
-csv1 <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv", header = TRUE, stringsAsFactors = FALSE)
+csv_base <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv", header = TRUE, stringsAsFactors = FALSE)
 ```
 
 This code imports the dataset from the URL provided. The `header = TRUE` argument indicates that the first row contains variable names, and `stringsAsFactors = FALSE` prevents character strings from being converted to factors.
+
+Use `write.csv()` to write a data frame to a csv.
 
 #### Use `read_csv` from the `readr` Package {.unnumbered}
 
@@ -121,10 +205,12 @@ The `readr` package provides an alternative function, `read_csv()`, which offers
 library(readr)
 
 # Reading the IMDb_Economist_tv_ratings dataset using read_csv from readr
-csv2 <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv")
+csv_readr <- read_csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv")
 ```
 
 The `read_csv()` function is faster than `read.csv()` and automatically detects data types, making it easier to handle larger datasets efficiently.
+
+Use `write_csv()` to write a data frame to a csv.
 
 #### Use `fread` from the `data.table` Package {.unnumbered}
 
@@ -138,10 +224,31 @@ For very large datasets, `fread()` from the `data.table` package is a faster alt
 library(data.table)
 
 # Reading the IMDb_Economist_tv_ratings dataset using fread from data.table
-csv3 <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv")
+csv_datatable <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv")
 ```
 
 The `fread()` function provides high-speed reading for large CSV files, making it ideal for processing extensive datasets.
+
+Use `fwrite()` to write a data frame to a csv.
+
+#### Use `vroom,` from the `vroom` Package {.unnumbered}
+
+The fastest method for reading rectangular data that I know of is `vroom()` from the `vroom` package:
+
+```r
+# Install the data.table package if it's not already installed
+# install.packages("vroom")
+
+# Load the data.table package
+library(vroom)
+
+# Reading the IMDb_Economist_tv_ratings dataset using fread from data.table
+csv_vroom <- vroom("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv")
+```
+
+The `vroom()` function provides the fastest current read for .csv files.
+
+Use `vroom_write()` to write a data frame to a csv.
 
 ### Editing Imported Data {.unnumbered}
 
@@ -163,13 +270,13 @@ imdb_ratings_new <- data_edit(imdb_ratings)  # Make edits, crop data to selectio
 data_edit(imdb_ratings, save_as = "imdb_ratings.csv")  # Make edits, crop to selection, and save to a CSV file
 ```
 
-This allows you to refine and edit your data after importing it, ensuring that it’s ready for analysis.
+This allows you to refine and edit your data after importing it, ensuring that it's ready for analysis.
 
 By mastering these techniques for manual data input and importing data from external files, researchers can efficiently work with a wide variety of datasets. Whether you are working with a small dataset entered manually or a large public dataset like the **IMDb_Economist_tv_ratings.csv**, RStudio provides flexible tools to help you manage your data.
 
 ## Manipulating Data
 
-Data manipulation is a crucial aspect of preparing datasets for analysis. In RStudio, the **`dplyr`** package—part of the tidyverse ecosystem—provides powerful, intuitive functions for transforming, summarizing, and reshaping data. This section introduces `dplyr` and demonstrates how to manipulate data using examples from the **billboard** dataset, which contains information about songs, performers, and chart positions.
+Data manipulation is a crucial aspect of preparing datasets for analysis. In RStudio, the **`dplyr`** package---part of the tidyverse ecosystem---provides powerful, intuitive functions for transforming, summarizing, and reshaping data. This section introduces `dplyr` and demonstrates how to manipulate data using examples from the **billboard** dataset, which contains information about songs, performers, and chart positions.
 
 ### The `dplyr` Package {.unnumbered}
 
@@ -323,10 +430,10 @@ billboard %>%
 
 **11. `slice_min()`, `slice_max()`, `slice_head()`, `slice_tail()`**
 
-- `slice_min()`: Selects rows with the minimum value in a column.
-- `slice_max()`: Selects rows with the maximum value in a column.
-- `slice_head()`: Selects the first few rows.
-- `slice_tail()`: Selects the last few rows.
+-   `slice_min()`: Selects rows with the minimum value in a column.
+-   `slice_max()`: Selects rows with the maximum value in a column.
+-   `slice_head()`: Selects the first few rows.
+-   `slice_tail()`: Selects the last few rows.
 
 Examples: Select the row with the lowest peak position.
 
@@ -456,4 +563,3 @@ billboard %>%
   summarize(mean_peak = mean(peak_position, na.rm = TRUE), 
             sd_peak = sd(peak_position, na.rm = TRUE))
 ```
-
