@@ -35,7 +35,8 @@ package-management
 basics-of-r-programming
 commenting-and-organizing-code
 data-preparation
-data
+basic-operations-in-r
+data-management
 defining-data
 variables-and-observations
 inputting-data

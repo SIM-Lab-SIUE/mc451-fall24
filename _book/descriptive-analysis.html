@@ -1,759 +1,358 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 9 Descriptive Analysis | An Introduction to Research Methods in Mass Media</title>
-  <meta name="description" content="This is the textbook for MC 451 at SIU Edwardsville." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 9 Descriptive Analysis | An Introduction to Research Methods in Mass Media" />
-  <meta property="og:type" content="book" />
-  <meta property="og:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg" />
-  <meta property="og:description" content="This is the textbook for MC 451 at SIU Edwardsville." />
-  <meta name="github-repo" content="SIM-Lab-SIUE/mc451-fall24" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 9 Descriptive Analysis | An Introduction to Research Methods in Mass Media" />
-  
-  <meta name="twitter:description" content="This is the textbook for MC 451 at SIU Edwardsville." />
-  <meta name="twitter:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg" />
-
-<meta name="author" content="Alex P Leith" />
-
-
-<meta name="date" content="2024-10-01" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="data.html"/>
-<link rel="next" href="inferential-analysis.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 9 Descriptive Analysis | An Introduction to Research Methods in Mass Media</title>
+<meta name="author" content="Alex P Leith">
+<meta name="description" content="9.1 Measures of Central Tendency Central tendency is a fundamental concept in descriptive statistics, representing the “center” or “typical” value of a dataset. It provides a single value that...">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
+<meta property="og:title" content="Chapter 9 Descriptive Analysis | An Introduction to Research Methods in Mass Media">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/descriptive-analysis.html">
+<meta property="og:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
+<meta property="og:description" content="9.1 Measures of Central Tendency Central tendency is a fundamental concept in descriptive statistics, representing the “center” or “typical” value of a dataset. It provides a single value that...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 9 Descriptive Analysis | An Introduction to Research Methods in Mass Media">
+<meta name="twitter:description" content="9.1 Measures of Central Tendency Central tendency is a fundamental concept in descriptive statistics, representing the “center” or “typical” value of a dataset. It provides a single value that...">
+<meta name="twitter:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="https://bootswatch.com/5/litera/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html"><i class="fa fa-check"></i><b>1</b> Overview of Research Methods</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#definition-and-importance-of-research"><i class="fa fa-check"></i><b>1.1</b> Definition and Importance of Research</a>
-<ul>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#artifacts-in-mass-communications-research"><i class="fa fa-check"></i>Artifacts in Mass Communications Research</a></li>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#attributes-and-their-role-in-research"><i class="fa fa-check"></i>Attributes and Their Role in Research</a></li>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#the-significance-of-content-analysis"><i class="fa fa-check"></i>The Significance of Content Analysis</a></li>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#studying-media-portrayals"><i class="fa fa-check"></i>Studying Media Portrayals</a></li>
-</ul></li>
-<li class="chapter" data-level="1.2" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#qualitative-vs.-quantitative"><i class="fa fa-check"></i><b>1.2</b> Qualitative vs. Quantitative</a>
-<ul>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#qualitative-research"><i class="fa fa-check"></i>Qualitative Research</a></li>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#quantitative-research"><i class="fa fa-check"></i>Quantitative Research</a></li>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#mixed-methods-approach"><i class="fa fa-check"></i>Mixed Methods Approach</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html"><i class="fa fa-check"></i><b>2</b> Research Ethics and the IRB Process</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-evolution-of-research-ethics-in-social-science"><i class="fa fa-check"></i><b>2.1</b> The Evolution of Research Ethics in Social Science</a>
-<ul>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#early-ethical-violations-and-the-call-for-reform"><i class="fa fa-check"></i>Early Ethical Violations and the Call for Reform</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-emergence-of-ethical-standards"><i class="fa fa-check"></i>The Emergence of Ethical Standards</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#navigating-the-irb-process"><i class="fa fa-check"></i><b>2.2</b> Navigating the IRB Process</a>
-<ul>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#completing-citi-certification"><i class="fa fa-check"></i>Completing CITI Certification</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#retrieving-your-citi-certificate"><i class="fa fa-check"></i>Retrieving Your CITI Certificate</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#completing-irb-proposal"><i class="fa fa-check"></i>Completing IRB Proposal</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#developing-consent-forms"><i class="fa fa-check"></i>Developing Consent Forms</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#developing-recruitment-materials"><i class="fa fa-check"></i>Developing Recruitment Materials</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#developing-survey-or-interview-questions"><i class="fa fa-check"></i>Developing Survey or Interview Questions</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-debriefing-process"><i class="fa fa-check"></i>The Debriefing Process</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#assessing-and-minimizing-harm"><i class="fa fa-check"></i>Assessing and Minimizing Harm</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#offering-incentives"><i class="fa fa-check"></i>Offering Incentives</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#submission-and-review-protocols"><i class="fa fa-check"></i>Submission and Review Protocols</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#ethical-considerations-specific-to-mass-media-research"><i class="fa fa-check"></i><b>2.3</b> Ethical Considerations Specific to Mass Media Research</a>
-<ul>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-observer-effect"><i class="fa fa-check"></i>The Observer Effect</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-observer-as-participant-role"><i class="fa fa-check"></i>The Observer-as-Participant Role</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#ethical-considerations-and-strategies-for-mitigation"><i class="fa fa-check"></i>Ethical Considerations and Strategies for Mitigation</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html"><i class="fa fa-check"></i><b>3</b> Introduction to Research Papers</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#what-are-research-papers"><i class="fa fa-check"></i><b>3.1</b> What are Research Papers</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#originality"><i class="fa fa-check"></i>Originality</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#methodology"><i class="fa fa-check"></i>Methodology</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#evidence-based"><i class="fa fa-check"></i>Evidence-Based</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#peer-review"><i class="fa fa-check"></i>Peer Review</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#structure"><i class="fa fa-check"></i>Structure</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#find"><i class="fa fa-check"></i><b>3.2</b> How to Find Research Papers</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#check-your-university-library"><i class="fa fa-check"></i>Check Your University Library</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#use-a-specialized-search-engine."><i class="fa fa-check"></i>Use a specialized search engine.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#using-social-media-to-find-research-articles"><i class="fa fa-check"></i>Using Social Media to Find Research Articles</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#contacting-experts-in-your-field"><i class="fa fa-check"></i>Contacting Experts in Your Field</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#read"><i class="fa fa-check"></i><b>3.3</b> How to Read Research Papers</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-three-pass-approach."><i class="fa fa-check"></i>The three-pass approach.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-question-based-approach."><i class="fa fa-check"></i>The question-based approach.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-active-reading-approach."><i class="fa fa-check"></i>The active reading approach.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-collaborative-reading-approach."><i class="fa fa-check"></i>The collaborative reading approach.</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#write"><i class="fa fa-check"></i><b>3.4</b> How to Write Research Papers</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#sections-of-an-academic-paper"><i class="fa fa-check"></i>Sections of an Academic Paper</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#information-for-inclusion"><i class="fa fa-check"></i>Information for Inclusion</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#examples-of-formal-reports"><i class="fa fa-check"></i>Examples of Formal Reports</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html"><i class="fa fa-check"></i><b>4</b> Writing for a Public Audience</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#communication-strategies"><i class="fa fa-check"></i><b>4.1</b> Communication Strategies</a>
-<ul>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#crafting-compelling-messages"><i class="fa fa-check"></i>Crafting Compelling Messages</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#common-formats"><i class="fa fa-check"></i><b>4.2</b> Common Formats</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#feature-article"><i class="fa fa-check"></i><b>4.2.1</b> Feature Article</a></li>
-<li class="chapter" data-level="4.2.2" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#infographic-with-white-paper"><i class="fa fa-check"></i><b>4.2.2</b> Infographic with White Paper</a></li>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#news-broadcast-script-with-storyboarding"><i class="fa fa-check"></i>News Broadcast Script with Storyboarding</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#utilizing-social-media-platforms"><i class="fa fa-check"></i><b>4.3</b> Utilizing Social Media Platforms</a>
-<ul>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#strengths-and-limitations"><i class="fa fa-check"></i>Strengths and Limitations</a></li>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#twitter"><i class="fa fa-check"></i>Twitter</a></li>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#facebook"><i class="fa fa-check"></i>Facebook</a></li>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#linkedin"><i class="fa fa-check"></i>LinkedIn</a></li>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#instagram"><i class="fa fa-check"></i>Instagram</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html"><i class="fa fa-check"></i><b>5</b> Developing Research Questions and Hypotheses</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#conceptual-definitions-and-operationalization"><i class="fa fa-check"></i><b>5.1</b> Conceptual Definitions and Operationalization</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#conceptual-definitions"><i class="fa fa-check"></i>Conceptual Definitions</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#operationalization"><i class="fa fa-check"></i>Operationalization</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-importance-of-conceptual-definitions-and-operationalization"><i class="fa fa-check"></i>The Importance of Conceptual Definitions and Operationalization</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#identifying-independent-and-dependent-variables"><i class="fa fa-check"></i><b>5.2</b> Identifying Independent and Dependent Variables</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#independent-variables"><i class="fa fa-check"></i>Independent Variables</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#dependent-variables"><i class="fa fa-check"></i>Dependent Variables</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#cause-and-effect"><i class="fa fa-check"></i>Cause-and-Effect</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-role-of-variables-in-experimental-design"><i class="fa fa-check"></i>The Role of Variables in Experimental Design</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#formulating-research-questions"><i class="fa fa-check"></i><b>5.3</b> Formulating Research Questions</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#what-makes-a-good-research-question"><i class="fa fa-check"></i>What Makes a Good Research Question?</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#types-of-research-questions"><i class="fa fa-check"></i>Types of Research Questions</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-process-of-developing-a-research-question"><i class="fa fa-check"></i>The Process of Developing a Research Question</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-importance-of-well-defined-research-questions"><i class="fa fa-check"></i>The Importance of Well-Defined Research Questions</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#constructing-hypotheses"><i class="fa fa-check"></i><b>5.4</b> Constructing Hypotheses</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#null-hypothesis-h0"><i class="fa fa-check"></i>Null Hypothesis (H0)</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#alternative-hypothesis-h1"><i class="fa fa-check"></i>Alternative Hypothesis (H1)</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-role-of-hypotheses-in-research-design"><i class="fa fa-check"></i>The Role of Hypotheses in Research Design</a></li>
-</ul></li>
-<li class="chapter" data-level="5.5" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#levels-of-measurement-in-mass-media-research"><i class="fa fa-check"></i><b>5.5</b> Levels of Measurement in Mass Media Research</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#nominal-level-of-measurement"><i class="fa fa-check"></i>Nominal Level of Measurement</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#ordinal-level-of-measurement"><i class="fa fa-check"></i>Ordinal Level of Measurement</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#interval-level-of-measurement"><i class="fa fa-check"></i>Interval Level of Measurement</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#ratio-level-of-measurement"><i class="fa fa-check"></i>Ratio Level of Measurement</a></li>
-</ul></li>
-<li class="chapter" data-level="5.6" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#issues-in-measurement"><i class="fa fa-check"></i><b>5.6</b> Issues in Measurement</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#measurement-error"><i class="fa fa-check"></i>Measurement Error</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#validity"><i class="fa fa-check"></i>Validity</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#reliability"><i class="fa fa-check"></i>Reliability</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-relationship-between-validity-and-reliability"><i class="fa fa-check"></i>The Relationship Between Validity and Reliability</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html"><i class="fa fa-check"></i><b>6</b> Designing Quantitative Research</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#research-design"><i class="fa fa-check"></i><b>6.1</b> Research Design</a>
-<ul>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#experimental-designs"><i class="fa fa-check"></i>Experimental Designs</a></li>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#non-experimental-designs"><i class="fa fa-check"></i>Non-Experimental Designs</a></li>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#sampling-methods"><i class="fa fa-check"></i>Sampling Methods</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#data-collection-techniques"><i class="fa fa-check"></i><b>6.2</b> Data Collection Techniques</a>
-<ul>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#surveys-and-questionnaires"><i class="fa fa-check"></i>Surveys and Questionnaires</a></li>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#observation-methods"><i class="fa fa-check"></i>Observation Methods</a></li>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#content-analysis"><i class="fa fa-check"></i>Content Analysis</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>7</b> Introduction to R and RStudio</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-r-and-rstudio"><i class="fa fa-check"></i><b>7.1</b> What is R and RStudio?</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-r"><i class="fa fa-check"></i>What is R?</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-rstudio"><i class="fa fa-check"></i>What is RStudio?</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#why-use-r-and-rstudio"><i class="fa fa-check"></i><b>7.2</b> Why Use R and RStudio?</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#open-source"><i class="fa fa-check"></i>Open Source</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-analysis-and-visualization"><i class="fa fa-check"></i>Data Analysis and Visualization</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#reproducible-research"><i class="fa fa-check"></i>Reproducible Research</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#flexibility-and-customization"><i class="fa fa-check"></i>Flexibility and Customization</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#how-to-install-r-and-rstudio"><i class="fa fa-check"></i><b>7.3</b> How to Install R and RStudio</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#how-to-install-r"><i class="fa fa-check"></i>How to Install R</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#how-to-install-rstudio"><i class="fa fa-check"></i>How to Install RStudio</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#getting-started-with-r-and-rstudio"><i class="fa fa-check"></i><b>7.4</b> Getting Started with R and RStudio</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-rstudio-interface"><i class="fa fa-check"></i>The RStudio Interface</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#setting-up-a-new-project"><i class="fa fa-check"></i>Setting Up a New Project</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#file-management"><i class="fa fa-check"></i>File Management</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#package-management"><i class="fa fa-check"></i><b>7.5</b> Package Management</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-packages"><i class="fa fa-check"></i>Installing Packages</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#commonly-used-packages"><i class="fa fa-check"></i>Commonly Used Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="7.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#basics-of-r-programming"><i class="fa fa-check"></i><b>7.6</b> Basics of R Programming</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#code-chunks-in-r-markdown"><i class="fa fa-check"></i>Code Chunks in R Markdown</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#manually-inputting-data"><i class="fa fa-check"></i>Manually Inputting Data</a></li>
-</ul></li>
-<li class="chapter" data-level="7.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#commenting-and-organizing-code"><i class="fa fa-check"></i><b>7.7</b> Commenting and Organizing Code</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#commenting-code"><i class="fa fa-check"></i>Commenting Code</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#organizing-code-with-sections"><i class="fa fa-check"></i>Organizing Code with Sections</a></li>
-</ul></li>
-<li class="chapter" data-level="7.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-preparation"><i class="fa fa-check"></i><b>7.8</b> Data Preparation</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#keeping-code-tidy"><i class="fa fa-check"></i>Keeping Code Tidy</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="data.html"><a href="data.html"><i class="fa fa-check"></i><b>8</b> Data</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="data.html"><a href="data.html#defining-data"><i class="fa fa-check"></i><b>8.1</b> Defining Data</a>
-<ul>
-<li class="chapter" data-level="" data-path="data.html"><a href="data.html#what-is-data"><i class="fa fa-check"></i>What is Data?</a></li>
-<li class="chapter" data-level="" data-path="data.html"><a href="data.html#what-is-data-in-mass-communication-research"><i class="fa fa-check"></i>What is Data in Mass Communication Research?</a></li>
-<li class="chapter" data-level="" data-path="data.html"><a href="data.html#qualitative-vs.-quantitative-data"><i class="fa fa-check"></i>Qualitative vs. Quantitative Data</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="data.html"><a href="data.html#variables-and-observations"><i class="fa fa-check"></i><b>8.2</b> Variables and Observations</a>
-<ul>
-<li class="chapter" data-level="" data-path="data.html"><a href="data.html#explanation-of-data-types"><i class="fa fa-check"></i>Explanation of Data Types</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="data.html"><a href="data.html#inputting-data"><i class="fa fa-check"></i><b>8.3</b> Inputting Data</a>
-<ul>
-<li class="chapter" data-level="" data-path="data.html"><a href="data.html#dataeditr"><i class="fa fa-check"></i>DataEditR</a></li>
-<li class="chapter" data-level="" data-path="data.html"><a href="data.html#importing-data-from-a-file"><i class="fa fa-check"></i>Importing Data from a File</a></li>
-<li class="chapter" data-level="" data-path="data.html"><a href="data.html#editing-imported-data"><i class="fa fa-check"></i>Editing Imported Data</a></li>
-</ul></li>
-<li class="chapter" data-level="8.4" data-path="data.html"><a href="data.html#manipulating-data"><i class="fa fa-check"></i><b>8.4</b> Manipulating Data</a>
-<ul>
-<li class="chapter" data-level="" data-path="data.html"><a href="data.html#the-dplyr-package"><i class="fa fa-check"></i>The <code>dplyr</code> Package</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html"><i class="fa fa-check"></i><b>9</b> Descriptive Analysis</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>9.1</b> Measures of Central Tendency</a>
-<ul>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#mean-arithmetic-average"><i class="fa fa-check"></i>Mean (Arithmetic Average)</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#median"><i class="fa fa-check"></i>Median</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#mode"><i class="fa fa-check"></i>Mode</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#comparing-mean-median-and-mode"><i class="fa fa-check"></i>Comparing Mean, Median, and Mode</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#measures-of-dispersion"><i class="fa fa-check"></i><b>9.2</b> Measures of Dispersion</a>
-<ul>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#range"><i class="fa fa-check"></i>Range</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#variance"><i class="fa fa-check"></i>Variance</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#standard-deviation"><i class="fa fa-check"></i>Standard Deviation</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile Range (IQR)</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#understanding-dispersion-in-media-data"><i class="fa fa-check"></i>Understanding Dispersion in Media Data</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="inferential-analysis.html"><a href="inferential-analysis.html"><i class="fa fa-check"></i><b>10</b> Inferential Analysis</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="inferential-analysis.html"><a href="inferential-analysis.html#understanding-chi-square-tests"><i class="fa fa-check"></i><b>10.1</b> Understanding Chi-Square Tests</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#background-information-on-chi-square-tests-and-their-application"><i class="fa fa-check"></i>Background Information on Chi-Square Tests and Their Application</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#conducting-chi-square-tests-for-independence-in-r-code-examples-and-interpretation-of-results"><i class="fa fa-check"></i>Conducting Chi-Square Tests for Independence in R: Code Examples and Interpretation of Results</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#discussing-findings-from-chi-square-analyses-in-the-context-of-mass-communications-research"><i class="fa fa-check"></i>Discussing Findings from Chi-Square Analyses in the Context of Mass Communications Research</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="inferential-analysis.html"><a href="inferential-analysis.html#comparison-of-means"><i class="fa fa-check"></i><b>10.2</b> Comparison of Means</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#t-test"><i class="fa fa-check"></i>T-test</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#analysis-of-variance-anova"><i class="fa fa-check"></i>Analysis of Variance (ANOVA)</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="inferential-analysis.html"><a href="inferential-analysis.html#regression-analysis"><i class="fa fa-check"></i><b>10.3</b> Regression Analysis</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#simple-linear-regression"><i class="fa fa-check"></i>Simple Linear Regression</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#multiple-linear-regression"><i class="fa fa-check"></i>Multiple Linear Regression</a></li>
-</ul></li>
-<li class="chapter" data-level="10.4" data-path="inferential-analysis.html"><a href="inferential-analysis.html#calculating-effect-sizes-in-r"><i class="fa fa-check"></i><b>10.4</b> Calculating Effect Sizes in R</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#introduction-to-effect-sizes-and-their-importance-in-research"><i class="fa fa-check"></i>Introduction to Effect Sizes and Their Importance in Research</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#calculating-and-interpreting-different-effect-sizes"><i class="fa fa-check"></i>Calculating and Interpreting Different Effect Sizes</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#practical-examples-of-calculating-effect-sizes-in-r"><i class="fa fa-check"></i>Practical Examples of Calculating Effect Sizes in R</a></li>
-</ul></li>
-<li class="chapter" data-level="10.5" data-path="inferential-analysis.html"><a href="inferential-analysis.html#regression-analysis-1"><i class="fa fa-check"></i><b>10.5</b> Regression Analysis</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#background-on-regression-analysis-linear-regression-logistic-regression"><i class="fa fa-check"></i>Background on Regression Analysis: Linear Regression, Logistic Regression</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#steps-for-conducting-regression-analysis-in-r"><i class="fa fa-check"></i>Steps for Conducting Regression Analysis in R</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-regression-output"><i class="fa fa-check"></i>Interpreting Regression Output</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#practical-example-in-r"><i class="fa fa-check"></i>Practical Example in R</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#decision-making-based-on-p-values-and-confidence-intervals"><i class="fa fa-check"></i>Decision-making Based on P-values and Confidence Intervals</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html"><i class="fa fa-check"></i><b>11</b> Data Visualization in R</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-data-visualization"><i class="fa fa-check"></i><b>11.1</b> Introduction to Data Visualization</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#the-importance-of-data-visualization-in-mass-communications-research"><i class="fa fa-check"></i>The Importance of Data Visualization in Mass Communications Research</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#overview-of-data-visualization-capabilities-in-r"><i class="fa fa-check"></i>Overview of Data Visualization Capabilities in R</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#visualization-techniques"><i class="fa fa-check"></i><b>11.2</b> Visualization Techniques</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#creating-infographics"><i class="fa fa-check"></i>Creating Infographics</a></li>
-</ul></li>
-<li class="chapter" data-level="11.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#getting-started-with-ggplot2"><i class="fa fa-check"></i><b>11.3</b> Getting Started with ggplot2</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-ggplot2"><i class="fa fa-check"></i>Introduction to ggplot2</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#basic-concepts-of-the-grammar-of-graphics"><i class="fa fa-check"></i>Basic Concepts of the Grammar of Graphics</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#setting-up-rstudio-and-installing-ggplot2"><i class="fa fa-check"></i>Setting Up RStudio and Installing ggplot2</a></li>
-</ul></li>
-<li class="chapter" data-level="11.4" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#plots"><i class="fa fa-check"></i><b>11.4</b> Plots</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#prepare-workspace"><i class="fa fa-check"></i>Prepare Workspace</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#components-of-ggplot2-in-r"><i class="fa fa-check"></i>Components of ggplot2 in R</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#distribution-plots"><i class="fa fa-check"></i>Distribution Plots</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#correlation-plots"><i class="fa fa-check"></i>Correlation Plots</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#ranking-plots"><i class="fa fa-check"></i>Ranking Plots</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#part-of-a-whole"><i class="fa fa-check"></i>Part of a Whole</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#store-and-edit-plots"><i class="fa fa-check"></i>Store and Edit Plots</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#saving-plots-in-r-markdown"><i class="fa fa-check"></i>Saving Plots in R Markdown</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#designing-infographics-in-r"><i class="fa fa-check"></i><b>11.5</b> Designing Infographics in R</a>
-<ul>
-<li class="chapter" data-level="11.5.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#overview-of-infographics-and-their-value-in-communicating-research-findings"><i class="fa fa-check"></i><b>11.5.1</b> Overview of Infographics and Their Value in Communicating Research Findings</a></li>
-<li class="chapter" data-level="11.5.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#tools-and-packages-in-r-for-creating-infographics"><i class="fa fa-check"></i><b>11.5.2</b> Tools and Packages in R for Creating Infographics</a></li>
-<li class="chapter" data-level="11.5.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#tips-for-effective-infographic-design"><i class="fa fa-check"></i><b>11.5.3</b> Tips for Effective Infographic Design</a></li>
-</ul></li>
-<li class="chapter" data-level="11.6" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#advanced-visualization-techniques"><i class="fa fa-check"></i><b>11.6</b> Advanced Visualization Techniques</a>
-<ul>
-<li class="chapter" data-level="11.6.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#visualizing-multiple-linear-regressions"><i class="fa fa-check"></i><b>11.6.1</b> Visualizing Multiple Linear Regressions</a></li>
-<li class="chapter" data-level="11.6.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#heat-maps-and-correlation-plots"><i class="fa fa-check"></i><b>11.6.2</b> Heat Maps and Correlation Plots</a></li>
-<li class="chapter" data-level="11.6.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#network-diagrams-and-maps"><i class="fa fa-check"></i><b>11.6.3</b> Network Diagrams and Maps</a></li>
-</ul></li>
-<li class="chapter" data-level="11.7" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#customizing-visualizations-in-r"><i class="fa fa-check"></i><b>11.7</b> Customizing Visualizations in R</a>
-<ul>
-<li class="chapter" data-level="11.7.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#customizing-plot-aesthetics-themes-colors-and-fonts"><i class="fa fa-check"></i><b>11.7.1</b> Customizing Plot Aesthetics: Themes, Colors, and Fonts</a></li>
-<li class="chapter" data-level="11.7.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#adding-annotations-and-labels-to-enhance-understanding"><i class="fa fa-check"></i><b>11.7.2</b> Adding Annotations and Labels to Enhance Understanding</a></li>
-<li class="chapter" data-level="11.7.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#adjusting-plot-dimensions-and-exporting-for-publication-and-presentations"><i class="fa fa-check"></i><b>11.7.3</b> Adjusting Plot Dimensions and Exporting for Publication and Presentations</a></li>
-</ul></li>
-<li class="chapter" data-level="11.8" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#interactive-visualizations-with-r"><i class="fa fa-check"></i><b>11.8</b> Interactive Visualizations with R</a>
-<ul>
-<li class="chapter" data-level="11.8.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-interactive-visualizations-using-packages-like-plotly-and-shiny"><i class="fa fa-check"></i><b>11.8.1</b> Introduction to Interactive Visualizations Using Packages like <code>plotly</code> and <code>shiny</code></a></li>
-<li class="chapter" data-level="11.8.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#creating-web-based-interactive-charts-and-dashboards"><i class="fa fa-check"></i><b>11.8.2</b> Creating Web-based Interactive Charts and Dashboards</a></li>
-<li class="chapter" data-level="11.8.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#applications-of-interactive-visualizations-in-mass-communications-research"><i class="fa fa-check"></i><b>11.8.3</b> Applications of Interactive Visualizations in Mass Communications Research</a></li>
-</ul></li>
-<li class="chapter" data-level="11.9" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#best-practices-for-data-visualization"><i class="fa fa-check"></i><b>11.9</b> Best Practices for Data Visualization</a>
-<ul>
-<li class="chapter" data-level="11.9.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#ethical-considerations-in-data-visualization"><i class="fa fa-check"></i><b>11.9.1</b> Ethical Considerations in Data Visualization</a></li>
-<li class="chapter" data-level="11.9.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#choosing-the-right-type-of-visualization-for-your-data"><i class="fa fa-check"></i><b>11.9.2</b> Choosing the Right Type of Visualization for Your Data</a></li>
-<li class="chapter" data-level="11.9.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#storytelling-with-data-crafting-a-narrative-around-your-visualizations"><i class="fa fa-check"></i><b>11.9.3</b> Storytelling with Data: Crafting a Narrative Around Your Visualizations</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html"><i class="fa fa-check"></i><b>12</b> Special Topics in Research Methods</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#ethical-issues-in-emerging-media-research"><i class="fa fa-check"></i><b>12.1</b> Ethical Issues in Emerging Media Research</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#digital-privacy-and-research"><i class="fa fa-check"></i><b>12.1.1</b> Digital Privacy and Research</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#current-trends-in-mass-media-research"><i class="fa fa-check"></i><b>12.2</b> Current Trends in Mass Media Research</a>
-<ul>
-<li class="chapter" data-level="12.2.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#data-driven-journalism"><i class="fa fa-check"></i><b>12.2.1</b> Data-Driven Journalism</a></li>
-<li class="chapter" data-level="12.2.2" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#critical-analysis-and-rhetorical-criticism"><i class="fa fa-check"></i><b>12.2.2</b> Critical Analysis and Rhetorical Criticism</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="appendix-1.html"><a href="appendix-1.html"><i class="fa fa-check"></i><b>13</b> Appendix</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="appendix-1.html"><a href="appendix-1.html#glossary-of-terms"><i class="fa fa-check"></i><b>13.1</b> Glossary of Terms</a>
-<ul>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#introduction-to-research-in-mass-communications"><i class="fa fa-check"></i>2. <strong>Introduction to Research in Mass Communications</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#developing-research-questions-and-hypotheses-1"><i class="fa fa-check"></i>3. <strong>Developing Research Questions and Hypotheses</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#designing-quantitative-research-1"><i class="fa fa-check"></i>4. <strong>Designing Quantitative Research</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#data-analysis-and-statistical-techniques"><i class="fa fa-check"></i>5. <strong>Data Analysis and Statistical Techniques</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#data-management-and-visualization"><i class="fa fa-check"></i>6. <strong>Data Management and Visualization</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#writing-and-presenting-research"><i class="fa fa-check"></i>7. <strong>Writing and Presenting Research</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#special-topics-in-research-methods-1"><i class="fa fa-check"></i>8. <strong>Special Topics in Research Methods</strong></a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="appendix-1.html"><a href="appendix-1.html#assignments"><i class="fa fa-check"></i><b>13.2</b> Assignments</a></li>
-</ul></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">An Introduction to Research Methods in Mass Media</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Research Methods in Mass Media</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="overview-of-research-methods.html"><span class="header-section-number">1</span> Overview of Research Methods</a></li>
+<li><a class="" href="research-ethics-and-the-irb-process.html"><span class="header-section-number">2</span> Research Ethics and the IRB Process</a></li>
+<li><a class="" href="introduction-to-research-papers.html"><span class="header-section-number">3</span> Introduction to Research Papers</a></li>
+<li><a class="" href="writing-for-a-public-audience.html"><span class="header-section-number">4</span> Writing for a Public Audience</a></li>
+<li><a class="" href="developing-research-questions-and-hypotheses.html"><span class="header-section-number">5</span> Developing Research Questions and Hypotheses</a></li>
+<li><a class="" href="designing-quantitative-research.html"><span class="header-section-number">6</span> Designing Quantitative Research</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">7</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="data-management.html"><span class="header-section-number">8</span> Data Management</a></li>
+<li><a class="active" href="descriptive-analysis.html"><span class="header-section-number">9</span> Descriptive Analysis</a></li>
+<li><a class="" href="inferential-analysis.html"><span class="header-section-number">10</span> Inferential Analysis</a></li>
+<li><a class="" href="data-visualization-in-r.html"><span class="header-section-number">11</span> Data Visualization in R</a></li>
+<li><a class="" href="special-topics-in-research-methods.html"><span class="header-section-number">12</span> Special Topics in Research Methods</a></li>
+<li><a class="" href="appendix-1.html"><span class="header-section-number">13</span> Appendix</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="descriptive-analysis" class="section level1 hasAnchor" number="9">
-<h1><span class="header-section-number">Chapter 9</span> Descriptive Analysis<a href="descriptive-analysis.html#descriptive-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="measures-of-central-tendency" class="section level2 hasAnchor" number="9.1">
-<h2><span class="header-section-number">9.1</span> Measures of Central Tendency<a href="descriptive-analysis.html#measures-of-central-tendency" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="descriptive-analysis" class="section level1" number="9">
+<h1>
+<span class="header-section-number">9</span> Descriptive Analysis<a class="anchor" aria-label="anchor" href="#descriptive-analysis"><i class="fas fa-link"></i></a>
+</h1>
+<div id="measures-of-central-tendency" class="section level2" number="9.1">
+<h2>
+<span class="header-section-number">9.1</span> Measures of Central Tendency<a class="anchor" aria-label="anchor" href="#measures-of-central-tendency"><i class="fas fa-link"></i></a>
+</h2>
 <p>Central tendency is a fundamental concept in descriptive statistics, representing the “center” or “typical” value of a dataset. It provides a single value that summarizes the data and helps us understand its overall distribution. The three primary measures of central tendency are the <strong>mean</strong>, <strong>median</strong>, and <strong>mode</strong>. Each measure has its strengths and weaknesses, depending on the nature of the data and the research question at hand.</p>
-<p>In mass communication research, we often use these measures to summarize key data points such as viewer ratings, playtime, episode counts, or even specific word frequencies in media content. By understanding the different measures of central tendency, researchers can more effectively interpret the underlying patterns in their datasets.</p>
+<p>In mass communication research, we often use these measures to summarize key data points such as viewer ratings, playtime, episode counts, or even specific word frequencies in media content. By understanding the different measures of central tendency, researchers can more effectively interpret the underlying patterns in their data sets.</p>
 <p><strong>Load data for chapter</strong></p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="descriptive-analysis.html#cb43-1" tabindex="-1"></a><span class="fu">library</span>(data.table)</span>
-<span id="cb43-2"><a href="descriptive-analysis.html#cb43-2" tabindex="-1"></a></span>
-<span id="cb43-3"><a href="descriptive-analysis.html#cb43-3" tabindex="-1"></a>anime <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv&quot;</span>)</span>
-<span id="cb43-4"><a href="descriptive-analysis.html#cb43-4" tabindex="-1"></a></span>
-<span id="cb43-5"><a href="descriptive-analysis.html#cb43-5" tabindex="-1"></a>horror_movies <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv&#39;</span>)</span>
-<span id="cb43-6"><a href="descriptive-analysis.html#cb43-6" tabindex="-1"></a></span>
-<span id="cb43-7"><a href="descriptive-analysis.html#cb43-7" tabindex="-1"></a>richmondway <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&#39;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-26/richmondway.csv&#39;</span>)</span>
-<span id="cb43-8"><a href="descriptive-analysis.html#cb43-8" tabindex="-1"></a></span>
-<span id="cb43-9"><a href="descriptive-analysis.html#cb43-9" tabindex="-1"></a>television <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv&quot;</span>)</span>
-<span id="cb43-10"><a href="descriptive-analysis.html#cb43-10" tabindex="-1"></a></span>
-<span id="cb43-11"><a href="descriptive-analysis.html#cb43-11" tabindex="-1"></a>video_games <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv&quot;</span>)</span></code></pre></div>
-<div id="mean-arithmetic-average" class="section level3 unnumbered hasAnchor">
-<h3>Mean (Arithmetic Average)<a href="descriptive-analysis.html#mean-arithmetic-average" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb61"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://r-datatable.com">data.table</a></span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">richmondway</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-26/richmondway.csv'</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">television</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv"</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">video_games</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv"</span><span class="op">)</span></span></code></pre></div>
+<p>You can access the data descriptions for each of these data sets on their respective TidyTuesday page.</p>
+<ol style="list-style-type: decimal">
+<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md">Anime Dataset</a></li>
+<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md">Horror Movies</a></li>
+<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-09-26/readme.md">Roy Kent F**k count</a></li>
+<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-01-08/readme.md">TV’s golden age is real</a></li>
+<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30//readme.md">Video Games Dataset</a></li>
+</ol>
+<div id="mean-arithmetic-average" class="section level3 unnumbered">
+<h3>Mean (Arithmetic Average)<a class="anchor" aria-label="anchor" href="#mean-arithmetic-average"><i class="fas fa-link"></i></a>
+</h3>
 <p>The <strong>mean</strong> is the sum of all values in a dataset divided by the number of values. It provides the “average” value of the dataset and is widely used due to its simplicity and ease of interpretation. However, the mean is <strong>sensitive to outliers</strong>, which means that unusually high or low values can significantly skew the result.</p>
-<div id="why-the-mean-is-useful" class="section level4 unnumbered hasAnchor">
-<h4>Why the Mean Is Useful<a href="descriptive-analysis.html#why-the-mean-is-useful" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="why-the-mean-is-useful" class="section level4 unnumbered">
+<h4>Why the Mean Is Useful<a class="anchor" aria-label="anchor" href="#why-the-mean-is-useful"><i class="fas fa-link"></i></a>
+</h4>
 <p>The mean gives a straightforward snapshot of the dataset’s central point and is especially useful for <strong>interval</strong> or <strong>ratio data</strong> where the numbers have a true, meaningful order. In mass communication research, you might use the mean to calculate average viewer ratings for a television show or the average playtime for a video game. However, be mindful that a few extreme values (outliers) can heavily influence the mean, sometimes making it less representative of the data as a whole.</p>
 <p>In the <strong>horror_movies</strong> dataset, we have a variable called <code>vote_average</code>, which represents the average rating for each movie. To calculate the mean of this variable in R:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="descriptive-analysis.html#cb44-1" tabindex="-1"></a><span class="co"># Calculate the mean vote average</span></span>
-<span id="cb44-2"><a href="descriptive-analysis.html#cb44-2" tabindex="-1"></a>mean_vote_avg <span class="ot">&lt;-</span> <span class="fu">mean</span>(horror_movies<span class="sc">$</span>vote_average, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb44-3"><a href="descriptive-analysis.html#cb44-3" tabindex="-1"></a>mean_vote_avg</span></code></pre></div>
+<div class="sourceCode" id="cb62"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the mean vote average</span></span>
+<span><span class="va">mean_vote_avg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">horror_movies</span><span class="op">$</span><span class="va">vote_average</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">mean_vote_avg</span></span></code></pre></div>
 <p>This will give you the overall average rating across all horror movies in the dataset, helping you understand whether audiences generally liked or disliked these films.</p>
 <p>In the <strong>video_games</strong> dataset, the <code>average_playtime</code> variable represents the average time people spend playing a particular game. To calculate the mean playtime:</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="descriptive-analysis.html#cb45-1" tabindex="-1"></a><span class="co"># Calculate the mean average playtime</span></span>
-<span id="cb45-2"><a href="descriptive-analysis.html#cb45-2" tabindex="-1"></a>mean_playtime <span class="ot">&lt;-</span> <span class="fu">mean</span>(video_games<span class="sc">$</span>average_playtime, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb45-3"><a href="descriptive-analysis.html#cb45-3" tabindex="-1"></a>mean_playtime</span></code></pre></div>
+<div class="sourceCode" id="cb63"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the mean average playtime</span></span>
+<span><span class="va">mean_playtime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">video_games</span><span class="op">$</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">mean_playtime</span></span></code></pre></div>
 <p>The result will show you the typical playtime across all games, offering insights into how long players typically engage with video games.</p>
 </div>
 </div>
-<div id="median" class="section level3 unnumbered hasAnchor">
-<h3>Median<a href="descriptive-analysis.html#median" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="median" class="section level3 unnumbered">
+<h3>Median<a class="anchor" aria-label="anchor" href="#median"><i class="fas fa-link"></i></a>
+</h3>
 <p>The <strong>median</strong> is the middle value of a dataset when it is ordered from least to greatest. Unlike the mean, the median is <strong>resistant to outliers</strong>, making it a more accurate measure of central tendency when the dataset contains extreme values. The median is especially useful for <strong>ordinal</strong>, <strong>interval</strong>, and <strong>ratio data</strong>, where the order of values matters.</p>
-<div id="why-the-median-is-useful" class="section level4 unnumbered hasAnchor">
-<h4>Why the Median Is Useful<a href="descriptive-analysis.html#why-the-median-is-useful" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="why-the-median-is-useful" class="section level4 unnumbered">
+<h4>Why the Median Is Useful<a class="anchor" aria-label="anchor" href="#why-the-median-is-useful"><i class="fas fa-link"></i></a>
+</h4>
 <p>The median provides a more robust measure of central tendency than the mean in cases where the dataset is <strong>skewed</strong> or contains outliers. In mass communication research, for instance, if you are studying the number of episodes in different anime series, a few long-running shows could inflate the mean, making it less representative of the typical number of episodes. In such cases, the median offers a better “typical” value.</p>
 <p>In the <strong>anime</strong> dataset, the <code>episodes</code> variable tells us how many episodes each anime has. To calculate the median number of episodes:</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="descriptive-analysis.html#cb46-1" tabindex="-1"></a><span class="co"># Calculate the median number of episodes</span></span>
-<span id="cb46-2"><a href="descriptive-analysis.html#cb46-2" tabindex="-1"></a>median_episodes <span class="ot">&lt;-</span> <span class="fu">median</span>(anime<span class="sc">$</span>episodes, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb46-3"><a href="descriptive-analysis.html#cb46-3" tabindex="-1"></a>median_episodes</span></code></pre></div>
+<div class="sourceCode" id="cb64"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the median number of episodes</span></span>
+<span><span class="va">median_episodes</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">anime</span><span class="op">$</span><span class="va">episodes</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">median_episodes</span></span></code></pre></div>
 <p>This result will show you the middle value of episode counts, giving you a clearer picture of the typical length of anime series without being skewed by a few extremely long shows.</p>
 <p>In the <strong>video_games</strong> dataset, the <code>median_playtime</code> variable represents the middle value of playtime for each game. To calculate the median:</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="descriptive-analysis.html#cb47-1" tabindex="-1"></a><span class="co"># Calculate the median playtime</span></span>
-<span id="cb47-2"><a href="descriptive-analysis.html#cb47-2" tabindex="-1"></a>median_playtime <span class="ot">&lt;-</span> <span class="fu">median</span>(video_games<span class="sc">$</span>median_playtime, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb47-3"><a href="descriptive-analysis.html#cb47-3" tabindex="-1"></a>median_playtime</span></code></pre></div>
+<div class="sourceCode" id="cb65"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the median playtime</span></span>
+<span><span class="va">median_playtime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/median.html">median</a></span><span class="op">(</span><span class="va">video_games</span><span class="op">$</span><span class="va">median_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">median_playtime</span></span></code></pre></div>
 <p>This will give you the typical amount of time people spend playing a game, without being skewed by extremely high or low playtimes.</p>
 </div>
 </div>
-<div id="mode" class="section level3 unnumbered hasAnchor">
-<h3>Mode<a href="descriptive-analysis.html#mode" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="mode" class="section level3 unnumbered">
+<h3>Mode<a class="anchor" aria-label="anchor" href="#mode"><i class="fas fa-link"></i></a>
+</h3>
 <p>The <strong>mode</strong> is the value that appears most frequently in a dataset. It is the only measure of central tendency that can be used with <strong>nominal data</strong>, which have no numerical or ordered relationship (e.g., genres or titles). The mode is also useful for <strong>categorical</strong> or <strong>discrete</strong> data where you want to identify the most common category or value.</p>
-<div id="why-the-mode-is-useful" class="section level4 unnumbered hasAnchor">
-<h4>Why the Mode Is Useful<a href="descriptive-analysis.html#why-the-mode-is-useful" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="why-the-mode-is-useful" class="section level4 unnumbered">
+<h4>Why the Mode Is Useful<a class="anchor" aria-label="anchor" href="#why-the-mode-is-useful"><i class="fas fa-link"></i></a>
+</h4>
 <p>The mode highlights the most common occurrence in the data and is particularly valuable when analyzing <strong>qualitative data</strong> or data with repeating values. For instance, in mass communication, if you’re analyzing the genres of horror movies, knowing the most frequently occurring genre gives insights into what type of horror movie is most commonly produced. Similarly, finding the most common score for anime users provides an indication of how people generally rate their anime experiences.</p>
 <p>In the <strong>horror_movies</strong> dataset, the <code>genre_names</code> variable contains the genres of each movie. To find the most common genre (the mode):</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="descriptive-analysis.html#cb48-1" tabindex="-1"></a><span class="co"># Calculate the mode for genre names</span></span>
-<span id="cb48-2"><a href="descriptive-analysis.html#cb48-2" tabindex="-1"></a>mode_genre <span class="ot">&lt;-</span> horror_movies<span class="sc">$</span>genre_names[<span class="fu">which.max</span>(<span class="fu">table</span>(horror_movies<span class="sc">$</span>genre_names))]</span>
-<span id="cb48-3"><a href="descriptive-analysis.html#cb48-3" tabindex="-1"></a>mode_genre</span></code></pre></div>
+<div class="sourceCode" id="cb66"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the mode for genre names</span></span>
+<span><span class="va">mode_genre</span> <span class="op">&lt;-</span> <span class="va">horror_movies</span><span class="op">$</span><span class="va">genre_names</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">horror_movies</span><span class="op">$</span><span class="va">genre_names</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">mode_genre</span></span></code></pre></div>
 <p>This will tell you which genre appears most frequently in the dataset, helping you understand the dominant themes in horror films.</p>
 <p>In the <strong>anime</strong> dataset, the <code>score</code> variable represents how users rate different anime. To find the most common score:</p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="descriptive-analysis.html#cb49-1" tabindex="-1"></a><span class="co"># Calculate the mode for anime score</span></span>
-<span id="cb49-2"><a href="descriptive-analysis.html#cb49-2" tabindex="-1"></a>mode_score <span class="ot">&lt;-</span> anime<span class="sc">$</span>score[<span class="fu">which.max</span>(<span class="fu">table</span>(anime<span class="sc">$</span>score))]</span>
-<span id="cb49-3"><a href="descriptive-analysis.html#cb49-3" tabindex="-1"></a>mode_score</span></code></pre></div>
+<div class="sourceCode" id="cb67"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the mode for anime score</span></span>
+<span><span class="va">mode_score</span> <span class="op">&lt;-</span> <span class="va">anime</span><span class="op">$</span><span class="va">score</span><span class="op">[</span><span class="fu"><a href="https://rdrr.io/r/base/which.min.html">which.max</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">anime</span><span class="op">$</span><span class="va">score</span><span class="op">)</span><span class="op">)</span><span class="op">]</span></span>
+<span><span class="va">mode_score</span></span></code></pre></div>
 <p>This will provide the most frequent user score, offering insight into how anime viewers typically rate their experiences.</p>
 </div>
 </div>
-<div id="comparing-mean-median-and-mode" class="section level3 unnumbered hasAnchor">
-<h3>Comparing Mean, Median, and Mode<a href="descriptive-analysis.html#comparing-mean-median-and-mode" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="comparing-mean-median-and-mode" class="section level3 unnumbered">
+<h3>Comparing Mean, Median, and Mode<a class="anchor" aria-label="anchor" href="#comparing-mean-median-and-mode"><i class="fas fa-link"></i></a>
+</h3>
 <p>Understanding when to use each measure of central tendency is crucial in descriptive statistics. Here’s a general guideline:</p>
 <ul>
-<li><strong>Mean</strong>: Use when you want to calculate the average of <strong>interval</strong> or <strong>ratio data</strong> and the data are <strong>not skewed</strong> by outliers. It’s best for normally distributed data.</li>
-<li><strong>Median</strong>: Use when your data are <strong>skewed</strong> or when you are dealing with <strong>ordinal</strong>, <strong>interval</strong>, or <strong>ratio data</strong> that have extreme values or outliers.</li>
-<li><strong>Mode</strong>: Use when you are working with <strong>nominal</strong> or <strong>categorical data</strong>, or when you want to know the most frequently occurring value in your dataset.</li>
+<li>
+<strong>Mean</strong>: Use when you want to calculate the average of <strong>interval</strong> or <strong>ratio data</strong> and the data are <strong>not skewed</strong> by outliers. It’s best for normally distributed data.</li>
+<li>
+<strong>Median</strong>: Use when your data are <strong>skewed</strong> or when you are dealing with <strong>ordinal</strong>, <strong>interval</strong>, or <strong>ratio data</strong> that have extreme values or outliers.</li>
+<li>
+<strong>Mode</strong>: Use when you are working with <strong>nominal</strong> or <strong>categorical data</strong>, or when you want to know the most frequently occurring value in your dataset.</li>
 </ul>
 <p>Each of these measures offers a different perspective on the data, and the appropriate measure depends on the research question and the type of data you’re analyzing. By mastering these concepts, you’ll be better equipped to summarize and interpret data in mass communication research, whether you’re studying anime ratings, horror movie genres, or video game playtimes.</p>
 <p>Here is a detailed, pedagogically focused draft for the <strong>Measures of Dispersion</strong> section, following the same format as the earlier section on Measures of Central Tendency. This section will explain key concepts related to dispersion, providing R examples using the datasets you’ve provided.</p>
 </div>
 </div>
-<div id="measures-of-dispersion" class="section level2 hasAnchor" number="9.2">
-<h2><span class="header-section-number">9.2</span> Measures of Dispersion<a href="descriptive-analysis.html#measures-of-dispersion" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="measures-of-dispersion" class="section level2" number="9.2">
+<h2>
+<span class="header-section-number">9.2</span> Measures of Dispersion<a class="anchor" aria-label="anchor" href="#measures-of-dispersion"><i class="fas fa-link"></i></a>
+</h2>
 <p>While measures of central tendency (mean, median, mode) summarize the central point of a dataset, they do not tell the whole story. <strong>Measures of dispersion</strong> help us understand how spread out or variable the data are around the central point. In mass communication research, understanding data variability is essential for accurately interpreting audience behaviors, ratings, or playtimes. Common measures of dispersion include the <strong>range</strong>, <strong>variance</strong>, <strong>standard deviation</strong>, and <strong>interquartile range</strong> (IQR).</p>
 <p>Dispersion gives insights into the consistency or variability of the data. For instance, two TV shows may both have a mean rating of 8/10, but one may have ratings clustered tightly around that mean, while the other has ratings ranging from 2 to 10. Measures of dispersion can help identify such differences.</p>
-<div id="range" class="section level3 unnumbered hasAnchor">
-<h3>Range<a href="descriptive-analysis.html#range" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="range" class="section level3 unnumbered">
+<h3>Range<a class="anchor" aria-label="anchor" href="#range"><i class="fas fa-link"></i></a>
+</h3>
 <p>The <strong>range</strong> is the simplest measure of dispersion, calculated as the difference between the largest and smallest values in a dataset. It gives a rough estimate of how spread out the values are, but it is sensitive to outliers, as just one extreme value can drastically increase the range.</p>
-<div id="why-the-range-is-useful" class="section level4 unnumbered hasAnchor">
-<h4>Why the Range Is Useful<a href="descriptive-analysis.html#why-the-range-is-useful" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="why-the-range-is-useful" class="section level4 unnumbered">
+<h4>Why the Range Is Useful<a class="anchor" aria-label="anchor" href="#why-the-range-is-useful"><i class="fas fa-link"></i></a>
+</h4>
 <p>The range gives a quick overview of how widely the data points vary. In mass communication research, the range can show how ratings, playtimes, or other numerical measures differ between the highest and lowest values.</p>
 <p>In the <strong>anime</strong> dataset, the <code>score</code> variable represents user ratings for different anime. To calculate the range of scores:</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="descriptive-analysis.html#cb50-1" tabindex="-1"></a><span class="co"># Calculate the range of anime scores</span></span>
-<span id="cb50-2"><a href="descriptive-analysis.html#cb50-2" tabindex="-1"></a>range_anime_score <span class="ot">&lt;-</span> <span class="fu">range</span>(anime<span class="sc">$</span>score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb50-3"><a href="descriptive-analysis.html#cb50-3" tabindex="-1"></a>range_anime_score</span></code></pre></div>
+<div class="sourceCode" id="cb68"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the range of anime scores</span></span>
+<span><span class="va">range_anime_score</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">anime</span><span class="op">$</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">range_anime_score</span></span></code></pre></div>
 <p>This will provide the minimum and maximum anime scores, showing how spread out the ratings are across the dataset.</p>
 <p>In the <strong>video_games</strong> dataset, we can calculate the range of average playtime (<code>average_playtime</code>):</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="descriptive-analysis.html#cb51-1" tabindex="-1"></a><span class="co"># Calculate the range of average playtime</span></span>
-<span id="cb51-2"><a href="descriptive-analysis.html#cb51-2" tabindex="-1"></a>range_playtime <span class="ot">&lt;-</span> <span class="fu">range</span>(video_games<span class="sc">$</span>average_playtime, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb51-3"><a href="descriptive-analysis.html#cb51-3" tabindex="-1"></a>range_playtime</span></code></pre></div>
+<div class="sourceCode" id="cb69"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the range of average playtime</span></span>
+<span><span class="va">range_playtime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/range.html">range</a></span><span class="op">(</span><span class="va">video_games</span><span class="op">$</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">range_playtime</span></span></code></pre></div>
 <p>This result will show how the shortest and longest playtimes compare, giving an initial sense of variability.</p>
 </div>
 </div>
-<div id="variance" class="section level3 unnumbered hasAnchor">
-<h3>Variance<a href="descriptive-analysis.html#variance" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="variance" class="section level3 unnumbered">
+<h3>Variance<a class="anchor" aria-label="anchor" href="#variance"><i class="fas fa-link"></i></a>
+</h3>
 <p><strong>Variance</strong> measures the average squared deviation of each data point from the mean. It gives a sense of how much the values in a dataset vary. A high variance means the data points are spread out from the mean, while a low variance indicates that they are clustered closely around the mean.</p>
-<div id="why-variance-is-useful" class="section level4 unnumbered hasAnchor">
-<h4>Why Variance Is Useful<a href="descriptive-analysis.html#why-variance-is-useful" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="why-variance-is-useful" class="section level4 unnumbered">
+<h4>Why Variance Is Useful<a class="anchor" aria-label="anchor" href="#why-variance-is-useful"><i class="fas fa-link"></i></a>
+</h4>
 <p>Variance is important in mass communication research because it quantifies variability. For instance, understanding the variance in TV show ratings can indicate whether viewers generally agree on the quality of a show or whether their opinions vary widely.</p>
 <p>In the <strong>horror_movies</strong> dataset, the <code>vote_average</code> variable represents movie ratings. To calculate the variance of movie ratings:</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="descriptive-analysis.html#cb52-1" tabindex="-1"></a><span class="co"># Calculate the variance of horror movie ratings</span></span>
-<span id="cb52-2"><a href="descriptive-analysis.html#cb52-2" tabindex="-1"></a>var_vote_avg <span class="ot">&lt;-</span> <span class="fu">var</span>(horror_movies<span class="sc">$</span>vote_average, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb52-3"><a href="descriptive-analysis.html#cb52-3" tabindex="-1"></a>var_vote_avg</span></code></pre></div>
+<div class="sourceCode" id="cb70"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the variance of horror movie ratings</span></span>
+<span><span class="va">var_vote_avg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/cor.html">var</a></span><span class="op">(</span><span class="va">horror_movies</span><span class="op">$</span><span class="va">vote_average</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">var_vote_avg</span></span></code></pre></div>
 <p>This result shows how much individual ratings differ from the average rating.</p>
 </div>
 </div>
-<div id="standard-deviation" class="section level3 unnumbered hasAnchor">
-<h3>Standard Deviation<a href="descriptive-analysis.html#standard-deviation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="standard-deviation" class="section level3 unnumbered">
+<h3>Standard Deviation<a class="anchor" aria-label="anchor" href="#standard-deviation"><i class="fas fa-link"></i></a>
+</h3>
 <p>The <strong>standard deviation</strong> is the square root of the variance and is one of the most commonly used measures of dispersion. It has the advantage of being in the same units as the data itself (unlike variance, which is in squared units). A low standard deviation means that the data points are close to the mean, while a high standard deviation indicates that the data points are more spread out.</p>
-<div id="why-standard-deviation-is-useful" class="section level4 unnumbered hasAnchor">
-<h4>Why Standard Deviation Is Useful<a href="descriptive-analysis.html#why-standard-deviation-is-useful" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="why-standard-deviation-is-useful" class="section level4 unnumbered">
+<h4>Why Standard Deviation Is Useful<a class="anchor" aria-label="anchor" href="#why-standard-deviation-is-useful"><i class="fas fa-link"></i></a>
+</h4>
 <p>Standard deviation is often used in mass communication research to understand the consistency of data. For example, if we want to know how consistently users rate anime, the standard deviation of their ratings can provide that information.</p>
 <p>In the <strong>anime</strong> dataset, we can calculate the standard deviation of user ratings (<code>score</code>):</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="descriptive-analysis.html#cb53-1" tabindex="-1"></a><span class="co"># Calculate the standard deviation of anime scores</span></span>
-<span id="cb53-2"><a href="descriptive-analysis.html#cb53-2" tabindex="-1"></a>sd_anime_score <span class="ot">&lt;-</span> <span class="fu">sd</span>(anime<span class="sc">$</span>score, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb53-3"><a href="descriptive-analysis.html#cb53-3" tabindex="-1"></a>sd_anime_score</span></code></pre></div>
+<div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the standard deviation of anime scores</span></span>
+<span><span class="va">sd_anime_score</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">anime</span><span class="op">$</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">sd_anime_score</span></span></code></pre></div>
 <p>This result shows how much anime scores deviate from the average score, offering insights into whether most users tend to agree on ratings or whether opinions are more varied.</p>
 <p>In the <strong>video_games</strong> dataset, we can also calculate the standard deviation of playtime (<code>average_playtime</code>):</p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="descriptive-analysis.html#cb54-1" tabindex="-1"></a><span class="co"># Calculate the standard deviation of average playtime</span></span>
-<span id="cb54-2"><a href="descriptive-analysis.html#cb54-2" tabindex="-1"></a>sd_playtime <span class="ot">&lt;-</span> <span class="fu">sd</span>(video_games<span class="sc">$</span>average_playtime, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb54-3"><a href="descriptive-analysis.html#cb54-3" tabindex="-1"></a>sd_playtime</span></code></pre></div>
+<div class="sourceCode" id="cb72"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the standard deviation of average playtime</span></span>
+<span><span class="va">sd_playtime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/sd.html">sd</a></span><span class="op">(</span><span class="va">video_games</span><span class="op">$</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">sd_playtime</span></span></code></pre></div>
 <p>This standard deviation will show how consistent playtimes are across different video games, providing insights into whether users typically engage with games for similar amounts of time or whether there’s significant variation.</p>
 </div>
 </div>
-<div id="interquartile-range-iqr" class="section level3 unnumbered hasAnchor">
-<h3>Interquartile Range (IQR)<a href="descriptive-analysis.html#interquartile-range-iqr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interquartile-range-iqr" class="section level3 unnumbered">
+<h3>Interquartile Range (IQR)<a class="anchor" aria-label="anchor" href="#interquartile-range-iqr"><i class="fas fa-link"></i></a>
+</h3>
 <p>The <strong>interquartile range (IQR)</strong> measures the range of the middle 50% of values in a dataset, and is calculated as the difference between the third quartile (Q3) and the first quartile (Q1). It is particularly useful for understanding the spread of the central portion of the data and is less sensitive to outliers than the range.</p>
-<div id="why-the-iqr-is-useful" class="section level4 unnumbered hasAnchor">
-<h4>Why the IQR Is Useful<a href="descriptive-analysis.html#why-the-iqr-is-useful" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="why-the-iqr-is-useful" class="section level4 unnumbered">
+<h4>Why the IQR Is Useful<a class="anchor" aria-label="anchor" href="#why-the-iqr-is-useful"><i class="fas fa-link"></i></a>
+</h4>
 <p>The IQR is useful in identifying the spread of the “typical” data, excluding outliers. It’s especially important in skewed datasets, where the mean and standard deviation might not give an accurate picture of variability.</p>
 <p>In the <strong>horror_movies</strong> dataset, we can calculate the IQR for movie ratings (<code>vote_average</code>):</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="descriptive-analysis.html#cb55-1" tabindex="-1"></a><span class="co"># Calculate the IQR for horror movie ratings</span></span>
-<span id="cb55-2"><a href="descriptive-analysis.html#cb55-2" tabindex="-1"></a>iqr_vote_avg <span class="ot">&lt;-</span> <span class="fu">IQR</span>(horror_movies<span class="sc">$</span>vote_average, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb55-3"><a href="descriptive-analysis.html#cb55-3" tabindex="-1"></a>iqr_vote_avg</span></code></pre></div>
+<div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the IQR for horror movie ratings</span></span>
+<span><span class="va">iqr_vote_avg</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">horror_movies</span><span class="op">$</span><span class="va">vote_average</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">iqr_vote_avg</span></span></code></pre></div>
 <p>This will provide the range of the middle 50% of movie ratings, helping us understand the typical spread of ratings without the influence of extreme values.</p>
 <p>In the <strong>video_games</strong> dataset, we can calculate the IQR for average playtime (<code>average_playtime</code>):</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="descriptive-analysis.html#cb56-1" tabindex="-1"></a><span class="co"># Calculate the IQR for average playtime</span></span>
-<span id="cb56-2"><a href="descriptive-analysis.html#cb56-2" tabindex="-1"></a>iqr_playtime <span class="ot">&lt;-</span> <span class="fu">IQR</span>(video_games<span class="sc">$</span>average_playtime, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb56-3"><a href="descriptive-analysis.html#cb56-3" tabindex="-1"></a>iqr_playtime</span></code></pre></div>
+<div class="sourceCode" id="cb74"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate the IQR for average playtime</span></span>
+<span><span class="va">iqr_playtime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/IQR.html">IQR</a></span><span class="op">(</span><span class="va">video_games</span><span class="op">$</span><span class="va">average_playtime</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">iqr_playtime</span></span></code></pre></div>
 <p>This value shows how playtimes are distributed for the central 50% of video games, helping to identify whether most games have a similar playtime or if there’s a large variance.</p>
 </div>
 </div>
-<div id="understanding-dispersion-in-media-data" class="section level3 unnumbered hasAnchor">
-<h3>Understanding Dispersion in Media Data<a href="descriptive-analysis.html#understanding-dispersion-in-media-data" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="understanding-dispersion-in-media-data" class="section level3 unnumbered">
+<h3>Understanding Dispersion in Media Data<a class="anchor" aria-label="anchor" href="#understanding-dispersion-in-media-data"><i class="fas fa-link"></i></a>
+</h3>
 <p>In summary, measures of dispersion are critical in understanding the variability within datasets. They provide insights beyond the central tendency, helping researchers determine the spread and consistency of values. Here’s how these measures can be applied in mass communication research:</p>
 <ul>
-<li><strong>Range</strong>: Offers a basic view of variability but is sensitive to outliers.
+<li>
+<strong>Range</strong>: Offers a basic view of variability but is sensitive to outliers.
 <ul>
 <li>Example: Calculating the range of anime scores or playtimes in video games.</li>
-</ul></li>
-<li><strong>Variance</strong>: Provides a more nuanced understanding of variability by measuring the average squared deviations from the mean.
+</ul>
+</li>
+<li>
+<strong>Variance</strong>: Provides a more nuanced understanding of variability by measuring the average squared deviations from the mean.
 <ul>
 <li>Example: Analyzing the variance in movie ratings to assess how much opinions vary.</li>
-</ul></li>
-<li><strong>Standard Deviation</strong>: A more interpretable measure than variance, showing how much values deviate from the mean in the original units of the data.
+</ul>
+</li>
+<li>
+<strong>Standard Deviation</strong>: A more interpretable measure than variance, showing how much values deviate from the mean in the original units of the data.
 <ul>
 <li>Example: Understanding the consistency of anime ratings or playtime durations.</li>
-</ul></li>
-<li><strong>Interquartile Range (IQR)</strong>: Focuses on the spread of the middle 50% of the data, excluding outliers.
+</ul>
+</li>
+<li>
+<strong>Interquartile Range (IQR)</strong>: Focuses on the spread of the middle 50% of the data, excluding outliers.
 <ul>
 <li>Example: Examining the IQR of horror movie ratings to get a clearer picture of typical audience sentiment.</li>
-</ul></li>
+</ul>
+</li>
 </ul>
 <p>By learning and applying these measures of dispersion, students will gain a deeper understanding of how data behaves and how to interpret variability in mass communication datasets.</p>
 
 </div>
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="data-management.html"><span class="header-section-number">8</span> Data Management</a></div>
+<div class="next"><a href="inferential-analysis.html"><span class="header-section-number">10</span> Inferential Analysis</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#descriptive-analysis"><span class="header-section-number">9</span> Descriptive Analysis</a></li>
+<li>
+<a class="nav-link" href="#measures-of-central-tendency"><span class="header-section-number">9.1</span> Measures of Central Tendency</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#mean-arithmetic-average">Mean (Arithmetic Average)</a></li>
+<li><a class="nav-link" href="#median">Median</a></li>
+<li><a class="nav-link" href="#mode">Mode</a></li>
+<li><a class="nav-link" href="#comparing-mean-median-and-mode">Comparing Mean, Median, and Mode</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#measures-of-dispersion"><span class="header-section-number">9.2</span> Measures of Dispersion</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#range">Range</a></li>
+<li><a class="nav-link" href="#variance">Variance</a></li>
+<li><a class="nav-link" href="#standard-deviation">Standard Deviation</a></li>
+<li><a class="nav-link" href="#interquartile-range-iqr">Interquartile Range (IQR)</a></li>
+<li><a class="nav-link" href="#understanding-dispersion-in-media-data">Understanding Dispersion in Media Data</a></li>
+</ul>
+</li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="data.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="inferential-analysis.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2024-10-22.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["textbook.pdf", "textbook.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -765,7 +364,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

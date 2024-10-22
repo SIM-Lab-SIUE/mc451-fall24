@@ -89,15 +89,17 @@
 \makesavenoteenv{longtable}
 \usepackage{graphicx}
 \makeatletter
-\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
-\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
-\makeatother
-% Scale images if necessary, so that they will not overflow the page
-% margins by default, and it is still possible to overwrite the defaults
-% using explicit options in \includegraphics[width, height, ...]{}
-\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+\newsavebox\pandoc@box
+\newcommand*\pandocbounded[1]{% scales image to fit in text height/width
+  \sbox\pandoc@box{#1}%
+  \Gscale@div\@tempa{\textheight}{\dimexpr\ht\pandoc@box+\dp\pandoc@box\relax}%
+  \Gscale@div\@tempb{\linewidth}{\wd\pandoc@box}%
+  \ifdim\@tempb\p@<\@tempa\p@\let\@tempa\@tempb\fi% select the smaller of both
+  \ifdim\@tempa\p@<\p@\scalebox{\@tempa}{\usebox\pandoc@box}%
+  \else\usebox{\pandoc@box}%
+  \fi%
+}
 % Set default figure placement to htbp
-\makeatletter
 \def\fps@figure{htbp}
 \makeatother
 \setlength{\emergencystretch}{3em} % prevent overfull lines
@@ -107,9 +109,6 @@
 \usepackage{booktabs}
 \usepackage{fontspec}
 \setmainfont{Roboto Mono}
-\ifLuaTeX
-  \usepackage{selnolig}  % disable illegal ligatures
-\fi
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 \usepackage{bookmark}
@@ -123,7 +122,7 @@
 
 \title{An Introduction to Research Methods in Mass Media}
 \author{Alex P Leith}
-\date{2024-10-01}
+\date{2024-10-22}
 
 \begin{document}
 \maketitle
@@ -173,7 +172,7 @@ For example, in a study analyzing the tone of news coverage, the tone (whether p
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig01a.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig01a.jpg}
 \caption{Highlighting sentiment in newspaper}
 \end{figure}
 
@@ -188,7 +187,7 @@ Content analysis can be qualitative, focusing on the deeper meanings and interpr
 
 \begin{figure}
 \centering
-\includegraphics{images/fig01b.jpg}
+\pandocbounded{\includegraphics[keepaspectratio]{images/fig01b.jpg}}
 \caption{Content analysis of interview using NVivo}
 \end{figure}
 
@@ -268,7 +267,7 @@ The men were told they were being treated for ``bad blood,'' a local term used t
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/Tuskegee-syphilis-study.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/Tuskegee-syphilis-study.jpg}
 \caption{A doctor draws blood from one of the Tuskegee test subjects.}
 \end{figure}
 
@@ -285,7 +284,7 @@ Participants in the Milgram Experiments were told they were participating in a s
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/Milgram_experiment.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/Milgram_experiment.png}
 \caption{Participants by role. T = Teacher, L = Learner, E = Experimenter.}
 \end{figure}
 
@@ -304,7 +303,7 @@ The participants were randomly assigned to play the roles of either guards or pr
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/police-blindfolding.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/police-blindfolding.jpg}
 \caption{Police blindfolding a research participant (\href{https://www.prisonexp.org/gallery}{prisonexp.org}).}
 \end{figure}
 
@@ -326,7 +325,7 @@ The first significant step toward formalizing ethical standards in research came
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/nuremberg-trial.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/nuremberg-trial.jpg}
 \caption{Handing over the indictment to the tribunal, 18 October 1945}
 \end{figure}
 
@@ -403,7 +402,7 @@ As social science research continues to evolve, the ethical challenges facing re
 
 Navigating the Institutional Review Board (IRB) process is critical to conducting ethical research involving human participants. The IRB is responsible for reviewing research proposals to ensure that they comply with ethical standards and protect the rights and welfare of participants. As a researcher, particularly within the context of Southern Illinois University Edwardsville (SIUE), understanding the intricacies of this process is essential for gaining approval and conducting your research responsibly. This section will thoroughly explore the key components of the IRB process at SIUE, including creating consent forms, debriefing participants, assessing potential harm, offering incentives, and understanding the submission protocols.
 
-\href{https://www.siue.edu/compliance/training/}{\includegraphics[width=1\textwidth,height=\textheight]{images/compliance-education.png}}
+\href{https://www.siue.edu/compliance/training/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/compliance-education.png}}
 
 \subsection*{Completing CITI Certification}\label{completing-citi-certification}
 \addcontentsline{toc}{subsection}{Completing CITI Certification}
@@ -428,7 +427,7 @@ Navigating the Institutional Review Board (IRB) process is critical to conductin
 
   \begin{figure}
   \centering
-  \includegraphics[width=1\textwidth,height=\textheight]{images/citi-org-login.png}
+  \includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/citi-org-login.png}
   \caption{Organization Single Sign On (SSO) screen for CITI}
   \end{figure}
 
@@ -456,7 +455,7 @@ Navigating the Institutional Review Board (IRB) process is critical to conductin
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/citi-add-a-course.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/citi-add-a-course.png}
 \caption{Click the circled link to add a new course.}
 \end{figure}
 
@@ -466,7 +465,7 @@ Navigating the Institutional Review Board (IRB) process is critical to conductin
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/citi-topics.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/citi-topics.png}
 \caption{CITI compliance topics.}
 \end{figure}
 
@@ -476,7 +475,7 @@ Navigating the Institutional Review Board (IRB) process is critical to conductin
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/citi-courses.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/citi-courses.png}
 \caption{CITI course selection.}
 \end{figure}
 
@@ -496,13 +495,13 @@ Once you have completed your CITI certification, you can review the course or vi
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/citi-cert-link.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/citi-cert-link.png}
 \caption{Link circled to access IRB certification.}
 \end{figure}
 
 Whether you access your IRB certificate through the CITI website or from your LinkedIn profile, it will be identical. Most research courses or teams will request a copy of your CITI Certificate to keep on record since it is commonly requested when completing an IRB proposal.
 
-\href{https://www.linkedin.com/in/apleith/details/certifications/}{\includegraphics{images/irb-cert.png}}
+\href{https://www.linkedin.com/in/apleith/details/certifications/}{\pandocbounded{\includegraphics[keepaspectratio]{images/irb-cert.png}}}
 
 \subsection*{Completing IRB Proposal}\label{completing-irb-proposal}
 \addcontentsline{toc}{subsection}{Completing IRB Proposal}
@@ -513,13 +512,13 @@ In the \textbf{General Information} section, the creator of the proposal should 
 
 For the \textbf{SIUE Personnel} section, you must include the names of all participants at SIUE. You must make sure to include an answer to all sections. You select the ``\textbf{+ Add Line}'' button to add additional researchers. The pencil icon lets you edit the person's information. From there, you must add information to each field. Required information may include a copy of IRB Certificates. You must also grant Access to all participants, including the professor if they supervise the research. There are sections that include researcher experience and researcher involvement that must be answered, even if there is no experience or limited involvement. You select No for external researchers unless you are also working with scholars outside of your university.
 
-\href{https://siue.kuali.co/protocols/portal/protocols}{\includegraphics[width=1\textwidth,height=\textheight]{images/siue-personnel.png}}
+\href{https://siue.kuali.co/protocols/portal/protocols}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/siue-personnel.png}}
 
 The next significant stage for discussion is the ``\textbf{Review Category Questions (GQ)}'' section. The GQ section allows you to identify how strict the IRB must be with your study. The less potential harm, the simpler it is to approve your research. For this course, we are strictly doing exempt projects. Exempt projects generally exclude protected classes or projects that may cause atypical harm. If you are doing survey research, you select exempt status and Category 2 since this is a survey procedure. You should have learned the different categories curing your CITI IRB certification process.
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/kuali-exempt.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/kuali-exempt.png}
 \caption{Kuali section for select exempt status.}
 \end{figure}
 
@@ -543,7 +542,7 @@ Recruitment materials play a crucial role in attracting participants to a resear
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/recruit-ad.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/recruit-ad.png}
 \caption{Instagram recruitment examples made with Adobe Express.}
 \end{figure}
 
@@ -560,7 +559,7 @@ The survey or interview questions should be constructed to elicit clear, honest 
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/likert-scale.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/likert-scale.png}
 \caption{Common Likert-type scale responses.}
 \end{figure}
 
@@ -593,7 +592,7 @@ Incentives should be described in the IRB protocol submission, with a clear just
 
 \begin{figure}
 \centering
-\includegraphics{images/fig01e.jpg}
+\pandocbounded{\includegraphics[keepaspectratio]{images/fig01e.jpg}}
 \caption{An example of an excessive cash incentive}
 \end{figure}
 
@@ -632,7 +631,7 @@ For example, a researcher studying online communities might participate in discu
 
 \begin{figure}
 \centering
-\includegraphics{images/fig01f.jpg}
+\pandocbounded{\includegraphics[keepaspectratio]{images/fig01f.jpg}}
 \caption{Representation of participant observer}
 \end{figure}
 
@@ -721,37 +720,37 @@ Selecting the appropriate search engine depends on your research topic. If you'r
 
 Google Scholar is one of the most widely used academic search engines. It provides access to a broad range of scholarly articles, theses, books, conference papers, and patents across various disciplines. It's a good starting point for most research topics due to its extensive coverage.
 
-\href{https://scholar.google.com/}{\includegraphics[width=1\textwidth,height=\textheight]{images/google-scholar.jpg}}
+\href{https://scholar.google.com/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/google-scholar.jpg}}
 
 \textbf{2. PubMed}
 
 PubMed is the go-to search engine for research in the biomedical and life sciences. It offers a comprehensive collection of articles from journals in medicine, biology, and health-related fields. If your research is in these areas, PubMed is an indispensable resource.
 
-\href{https://pubmed.ncbi.nlm.nih.gov/}{\includegraphics[width=1\textwidth,height=\textheight]{images/pubmed.jpg}}
+\href{https://pubmed.ncbi.nlm.nih.gov/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/pubmed.jpg}}
 
 \textbf{3. Web of Science}
 
 Web of Science is a powerful tool that covers a wide array of disciplines, including the sciences, social sciences, arts, and humanities. It is particularly useful for citation tracking, allowing you to see how often an article has been cited by others, which can help you gauge its impact and relevance.
 
-\href{https://go.openathens.net/redirector/siue.edu?url=https\%3A\%2F\%2Fwebofknowledge.com\%2FWOS}{\includegraphics[width=1\textwidth,height=\textheight]{images/web-of-science.jpg}}
+\href{https://go.openathens.net/redirector/siue.edu?url=https\%3A\%2F\%2Fwebofknowledge.com\%2FWOS}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/web-of-science.jpg}}
 
 \textbf{4. Scopus}
 
 Scopus is another multidisciplinary database, with an extensive collection of articles in the sciences, technology, medicine, social sciences, and more. Scopus also provides citation analysis, making it useful for understanding the influence of a particular study within its field.
 
-\href{https://www.scopus.com/home.uri}{\includegraphics[width=1\textwidth,height=\textheight]{images/scopus.jpg}}
+\href{https://www.scopus.com/home.uri}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/scopus.jpg}}
 
 \textbf{5. IEEE Xplore}
 
 IEEE Xplore is the premier search engine for research in electrical engineering, computer science, and electronics. It indexes a vast number of conference papers, journal articles, and standards published by the IEEE.
 
-\href{https://ieeexplore.ieee.org/Xplore/home.jsp}{\includegraphics[width=1\textwidth,height=\textheight]{images/ieee-xplore.jpg}}
+\href{https://ieeexplore.ieee.org/Xplore/home.jsp}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/ieee-xplore.jpg}}
 
 \textbf{6. ACM Digital Library}
 
 The ACM Digital Library is essential for computer science research, offering a wide range of articles, conference proceedings, and other publications by the Association for Computing Machinery. It is particularly valuable for topics in software engineering, computer systems, and human-computer interaction.
 
-\href{https://dl.acm.org/}{\includegraphics[width=1\textwidth,height=\textheight]{images/acm-digital-library.jpg}}
+\href{https://dl.acm.org/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/acm-digital-library.jpg}}
 
 \subsubsection*{How to Search}\label{how-to-search}
 \addcontentsline{toc}{subsubsection}{How to Search}
@@ -798,7 +797,7 @@ Boolean operators (AND, OR, NOT) are powerful tools for refining your search:
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/boolean.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/boolean.jpg}
 \caption{Boolean Operators}
 \end{figure}
 
@@ -1032,14 +1031,14 @@ The title of your research report is more than just a label; it is the first imp
 
 The abstract is one of the most critical components of a research report, serving as a concise summary that encapsulates the entire study. It typically ranges between 150 and 250 words and should be written in past tense. The abstract must efficiently convey the purpose of the study, the methods used, the main findings, and the conclusions drawn, providing readers with a clear overview of what the report entails. Since the abstract is often the first---and sometimes the only---part of the report that others will read, it needs to be clear and informative, free of jargon, and devoid of citations. Crafting a strong abstract involves striking a balance between brevity and completeness; it should cover the key aspects of the study without delving into unnecessary details. In learning to write effective abstracts, students will review examples from published research, which will highlight how successful abstracts succinctly summarize complex studies. Through writing exercises and peer reviews, students will develop the skill to distill their research into a compelling, accurate summary, while avoiding common pitfalls like vagueness or excessive detail that can obscure the main message.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig081.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig081.jpg}
 
 \subsubsection*{Introduction}\label{introduction}
 \addcontentsline{toc}{subsubsection}{Introduction}
 
 The introduction of your research report serves as the gateway to your study, providing the necessary background information and framing the research problem within a broader context. A well-written introduction should clearly state the research problem, explain its significance, and outline the research question or hypothesis. This section is crucial for engaging the reader, as it not only introduces the topic but also justifies why the study is important. A strong introduction links the research question to existing literature or ongoing debates in the field, setting the stage for the subsequent sections of the report. In crafting an introduction, it is essential to balance providing enough background to understand the research with keeping the reader's interest. Students will examine examples from academic journals to see how effective introductions establish context, articulate the research problem, and lead seamlessly into the study's objectives. By practicing drafting introductions for hypothetical studies, students will learn to frame their research in a way that is both compelling and informative, ensuring that their readers are both engaged and well-informed from the outset.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig082.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig082.jpg}
 
 \subsubsection*{Literature Review}\label{literature-review}
 \addcontentsline{toc}{subsubsection}{Literature Review}
@@ -1051,7 +1050,7 @@ The literature review is a foundational component of a research report, serving 
 
 The methods section of a research report is where you detail how the research was conducted, providing a roadmap that allows others to replicate your study. This section should include a comprehensive description of the participants, materials, procedures, and methods of data analysis used in the study. Clarity and precision are crucial, as the goal is to provide enough detail for another researcher to replicate the study exactly. The methods section is typically written in the past tense, as it describes actions that have already been completed. To assist in writing this section, students will be provided with a template or checklist to ensure all necessary details are included. They will practice writing a method section based on a described experiment or survey, followed by class reviews to discuss completeness and clarity. These discussions will emphasize the importance of transparency in the methods section, as it underpins the study's scientific rigor and reliability. By mastering the methods section, students will be able to communicate the how of their research clearly and effectively, ensuring that their study can be trusted and potentially replicated by others in the field.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig083.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig083.jpg}
 
 \subsubsection*{Results}\label{results}
 \addcontentsline{toc}{subsubsection}{Results}
@@ -1068,14 +1067,14 @@ The discussion section is where you interpret the results of your study, relatin
 
 The references section is where you list all the sources cited in your research report, providing full citations in the appropriate format (typically APA style). This section is essential for giving credit to the original authors and for allowing readers to locate the sources you used. Accurate and consistent referencing is crucial for maintaining the credibility of your research report. To familiarize students with APA formatting rules, they will be introduced to the APA Publication Manual and other online resources. A workshop will be conducted where students practice formatting references for various types of sources, such as books, journal articles, and websites. During this workshop, common citation errors will be discussed, along with strategies to avoid them. The emphasis will be on maintaining consistency and accuracy in references, as these are key to producing a credible and professional research report.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig085.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig085.jpg}
 
 \subsubsection*{Appendix}\label{appendix}
 \addcontentsline{toc}{subsubsection}{Appendix}
 
 The appendix is where you include supplementary materials that support your research but are not essential to the main text. These materials might include survey instruments, raw data, detailed tables, or consent forms. While not every research report will require an appendix, it can be a valuable addition when you need to provide additional context or transparency. To help students understand what to include in an appendix, examples from published research will be shown. These examples will illustrate the types of materials that are typically included and how they add value to the report without overwhelming the reader. Students will then be assigned to create an appendix for their research report, incorporating materials such as raw data, consent forms, or detailed descriptions of their methodology. The class will discuss how to reference the appendix in the main text, ensuring that it complements the report rather than detracts from it. This exercise will help students understand the role of the appendix in providing transparency and supporting the credibility of their research, while also ensuring that the main body of the report remains focused and concise.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig086.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig086.jpg}
 
 \subsection*{Information for Inclusion}\label{information-for-inclusion}
 \addcontentsline{toc}{subsection}{Information for Inclusion}
@@ -1162,7 +1161,7 @@ There are many different ways to report research in academia. Some of the most c
 
 \textbf{Conference papers}: Conference papers are presented at academic conferences. They are typically shorter than research papers and are written in a more informal style.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/papers.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/papers.png}
 
 \textbf{Theses and dissertations}: Theses and dissertations are written by graduate students to complete their degree requirements. They are typically longer and more comprehensive than research papers.
 
@@ -1172,13 +1171,13 @@ There are many different ways to report research in academia. Some of the most c
 
 \textbf{Presentations}: Presentations are a way to share research with a live audience. They can be given at conferences, workshops, or other events.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/BMS 2023 poster final.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/BMS 2023 poster final.jpg}
 
 \textbf{Blogs and social media}: Blogs and social media can be used to share research with a wider audience. They are a good way to communicate research in a more informal way.
 
 The best way to report research depends on the specific research project and the intended audience. However, all of these methods can be effective ways to communicate research findings and to contribute to the academic community.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig091.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig091.jpg}
 
 \subsubsection*{Industry Examples}\label{industry-examples}
 \addcontentsline{toc}{subsubsection}{Industry Examples}
@@ -1187,7 +1186,7 @@ There are many different ways to report research in industry. Some of the most c
 
 \textbf{White papers}: White papers are a type of report that is commonly used in industry to present research findings to a specific audience. They are typically written in a clear and concise style and focus on a specific topic.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/white_paper.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/white_paper.png}
 
 \textbf{Executive summaries}: Executive summaries are a brief overview of a white paper or other research report. They are typically written for senior executives and other decision-makers.
 
@@ -1261,7 +1260,7 @@ Visual aids, such as charts, graphs, and infographics, are invaluable tools for 
 
 Creating clear and engaging messages involves a careful balance of simplicity and conciseness. The aim is not to oversimplify the content but to make it accessible and interesting to a broader audience. By focusing on these principles, researchers can bridge the gap between academic research and public understanding, ensuring that their work is not only recognized but also valued by society. This approach fosters a greater appreciation for the role of research in addressing societal challenges and advancing knowledge, ultimately contributing to a more informed and engaged public.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig087.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig087.jpg}
 
 \subsubsection*{Employing Storytelling Techniques}\label{employing-storytelling-techniques-1}
 \addcontentsline{toc}{subsubsection}{Employing Storytelling Techniques}
@@ -1301,7 +1300,7 @@ Employing storytelling techniques in research communication is not about embelli
 
 In today's digital landscape, where information is rapidly consumed and often fleetingly retained, the role of visual elements in research communication cannot be overstated. Visuals have the unique ability to condense complex information into more digestible forms, making them indispensable tools for researchers, especially when aiming to engage public audiences. This is particularly true in fields such as social media analytics, where data can be dense and difficult to interpret without visual aids. Effective visuals not only clarify complex data but also enhance the overall appeal and shareability of research findings. This section explores strategies for incorporating visual elements into your research communication, ensuring that your message is both impactful and accessible.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig089.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig089.jpg}
 
 \textbf{Data Visualizations}
 
@@ -1351,7 +1350,7 @@ Maintaining reader interest throughout the article is another crucial element. U
 
 Striking the right tone is also key to crafting an engaging feature article. While the writing should be accessible and conversational, it must also maintain a level of professionalism appropriate for the subject matter. This balance ensures that the article is both credible and approachable. The tone should not be overly casual, as this can undermine the seriousness of the research, but it should avoid the stiffness of academic prose. The aim is to make the content feel like a dialogue rather than a lecture, encouraging readers to engage with the material rather than passively receive it.
 
-\href{https://medium.com/@nishiyama.ry/data-analysis-problematic-and-exploitative-beauty-contests-in-japanese-universities-fe551d31fa66}{\includegraphics[width=1\textwidth,height=\textheight]{images/feature-article.png}}
+\href{https://medium.com/@nishiyama.ry/data-analysis-problematic-and-exploitative-beauty-contests-in-japanese-universities-fe551d31fa66}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/feature-article.png}}
 
 \subsubsection*{Structuring the Article}\label{structuring-the-article}
 \addcontentsline{toc}{subsubsection}{Structuring the Article}
@@ -1379,7 +1378,7 @@ In contrast, the white paper should provide the depth and context that the infog
 
 The white paper should be seen as an extension of the infographic, filling in the gaps and providing the reader with a comprehensive understanding of the research. While the infographic grabs attention and delivers the highlights, the white paper answers the questions that the infographic might raise. For example, if the infographic presents a striking statistic about a correlation between two variables, the white paper should explain how that correlation was discovered, why it is significant, and what it means in practical terms. This detailed explanation helps to reinforce the credibility of the research and provides the audience with the tools they need to interpret the data correctly.
 
-\href{https://winefolly.com/deep-dive/simple-food-and-wine-pairing/}{\includegraphics[width=1\textwidth,height=\textheight]{images/infographic.jpg}}
+\href{https://winefolly.com/deep-dive/simple-food-and-wine-pairing/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/infographic.jpg}}
 
 \subsubsection*{Structuring the White Paper}\label{structuring-the-white-paper}
 \addcontentsline{toc}{subsubsection}{Structuring the White Paper}
@@ -1428,7 +1427,7 @@ Incorporating graphics and text overlays into the storyboard is also essential f
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/storyboard-script.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/storyboard-script.jpg}
 \caption{Example of a storyboard with script}
 \end{figure}
 
@@ -1448,7 +1447,7 @@ Once the storyboard is complete, it is essential to review and revise it to ensu
 
 In the digital age, social media platforms have revolutionized the way information is disseminated, offering researchers unparalleled opportunities to share their findings with a global audience. Each platform---Twitter, Facebook, LinkedIn, and Instagram---brings unique strengths and limitations to the table, making them suitable for different types of research communication. Understanding these characteristics is essential for effectively leveraging social media to maximize the reach and impact of your research. This analysis provides an in-depth exploration of the major platforms, focusing on how they can be utilized to disseminate research findings, engage with audiences, and foster academic discourse.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig092.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig092.jpg}
 
 \subsection*{Twitter}\label{twitter}
 \addcontentsline{toc}{subsection}{Twitter}
@@ -1505,7 +1504,7 @@ A \textbf{concept} is a broad, abstract idea that encapsulates a specific phenom
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/concept-map.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/concept-map.png}
 \caption{Example of a concept map during the early stage of project design.}
 \end{figure}
 
@@ -1548,7 +1547,7 @@ To clarify, imagine a study investigating how different advertising formats infl
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/ind-dep.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/ind-dep.jpg}
 \caption{Difference between Independent and Dependent Variables}
 \end{figure}
 
@@ -1660,7 +1659,7 @@ By beginning with the null hypothesis, researchers can remain objective in their
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/h0-ha.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/h0-ha.png}
 \caption{Type Errors and Hypotheses}
 \end{figure}
 
@@ -1702,7 +1701,7 @@ Ordinal data is frequently used in media research to measure preferences, satisf
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/levels.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/levels.jpg}
 \caption{Levels of Measurement}
 \end{figure}
 
@@ -1744,7 +1743,7 @@ To ensure high construct validity, it's important to design measurement tools ba
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/rel-val.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/rel-val.png}
 \caption{Reliable vs.~Valid}
 \end{figure}
 
@@ -1779,7 +1778,7 @@ One of the most commonly employed experimental approaches is the \textbf{between
 
 The between-subjects design is particularly effective when the goal is to attribute observed effects directly to the independent variable, minimizing the influence of extraneous factors. Since each participant experiences only one condition, there is less risk of biases such as fatigue or learning effects that can occur with repeated exposures. However, ensuring that the groups are equivalent in all respects except for the experimental manipulation is crucial. Random assignment and matching are standard techniques used to achieve group equivalence, thereby enhancing the study's internal validity.
 
-\href{https://www.nngroup.com/articles/between-within-subjects/}{\includegraphics[width=1\textwidth,height=\textheight]{images/subject-design-graphic.jpg}}
+\href{https://www.nngroup.com/articles/between-within-subjects/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/subject-design-graphic.jpg}}
 
 \textbf{Within-Subjects Design}
 
@@ -1793,7 +1792,7 @@ A critical element of any experimental design is including a \textbf{control gro
 
 Control groups are essential for isolating the impact of the independent variable and ruling out alternative explanations for the findings. Without a control group, it becomes challenging to ascertain whether observed changes are due to the manipulation or other external factors. For example, if both the control and experimental groups exhibit similar changes in perception, this might indicate that factors unrelated to the media content are influencing the results.
 
-\href{https://www.thoughtco.com/control-and-experimental-group-differences-606113}{\includegraphics[width=1\textwidth,height=\textheight]{images/control.jpg}}
+\href{https://www.thoughtco.com/control-and-experimental-group-differences-606113}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/control.jpg}}
 
 \textbf{Applying Experimental Designs in Mass Media Research}
 
@@ -1868,7 +1867,7 @@ Random sampling is particularly valuable when drawing conclusions that apply bro
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/random.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/random.jpg}
 \caption{Lottery balls}
 \end{figure}
 
@@ -1882,7 +1881,7 @@ Stratified sampling is particularly beneficial when the population is heterogene
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/strata.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/strata.jpg}
 \caption{Representation of stratified sampling}
 \end{figure}
 
@@ -1926,7 +1925,7 @@ The advantages of Likert-type items include their simplicity and standardization
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/likert-scale.png}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/likert-scale.png}
 \caption{Likert-type scale}
 \end{figure}
 
@@ -1963,7 +1962,7 @@ However, participant observation presents challenges, especially regarding ethic
 
 \begin{figure}
 \centering
-\includegraphics[width=1\textwidth,height=\textheight]{images/part-observation.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/part-observation.jpg}
 \caption{Participant observation in ethnography}
 \end{figure}
 
@@ -2029,7 +2028,7 @@ Achieving \textbf{inter-coder reliability} is essential to ensure the validity o
 
 \begin{figure}
 \centering
-\includegraphics{images/quant-content-scheme.png}
+\pandocbounded{\includegraphics[keepaspectratio]{images/quant-content-scheme.png}}
 \caption{Coding scheme for a quantitative content analysis.}
 \end{figure}
 
@@ -2104,6 +2103,8 @@ For mass communication students and researchers, this means having the ability t
 
 A growing demand in academic research is the ability to reproduce and validate results. RStudio supports this through its integration with R Markdown, which allows researchers to create dynamic documents that combine text, code, and output (e.g., tables, charts) in a single report. This means that anyone reviewing the research can trace the exact steps taken, from data importation to analysis, and reproduce the results with accuracy.
 
+\href{https://geohackweek.github.io/reproducible-research/01-reproducible/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/reproducibility.png}}
+
 For mass communication researchers, this capability ensures transparency and integrity, which are particularly important when dealing with potentially sensitive or high-impact media data. Whether publishing a report on social media trends or presenting findings on audience demographics, R and RStudio help researchers document and share their work in a way that is fully traceable.
 
 \subsection*{Flexibility and Customization}\label{flexibility-and-customization}
@@ -2143,6 +2144,8 @@ R can be downloaded from the Comprehensive R Archive Network (CRAN) at \url{http
   \textbf{Complete the installation}: Once the download is complete, open the installer and follow the on-screen instructions to complete the installation. After installation, R should be ready to use on your system.
 \end{enumerate}
 
+\href{https://cran.r-project.org/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/install-r.png}}
+
 \subsection*{How to Install RStudio}\label{how-to-install-rstudio}
 \addcontentsline{toc}{subsection}{How to Install RStudio}
 
@@ -2153,6 +2156,14 @@ After installing R, you need to install RStudio, a powerful Integrated Developme
 \tightlist
 \item
   \textbf{Visit the RStudio download page}: Go to \url{https://posit.co/download/rstudio-desktop/}.
+\end{enumerate}
+
+\href{https://posit.co/download/rstudio-desktop/}{\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/r-studio.png}}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
 \item
   \textbf{Choose the free version}: Select ``RStudio Desktop -- Open Source License'' to download the free version of RStudio.
 \item
@@ -2179,15 +2190,52 @@ After installing R, you need to install RStudio, a powerful Integrated Developme
 RStudio enhances the R experience by providing a user-friendly interface that simplifies coding, analysis, and visualization. The workspace is divided into four main panels, each serving a distinct function:
 
 \begin{itemize}
+\tightlist
 \item
   \textbf{Script Panel:} The script panel is where you write and edit your R scripts. Scripts are collections of commands that can be saved and reused, which promotes reproducibility and efficiency in your research. By saving your code as scripts, you can run the same analysis on different datasets or share the exact steps with collaborators.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/script-panel.png}
+\caption{Script Panel with iPlastic Theme}
+\end{figure}
+
+\begin{itemize}
+\tightlist
 \item
   \textbf{Console Panel:} The console is the interactive component where R executes commands. You can type commands directly into the console or run them from a script. The console also displays output, including error messages and other system feedback. This real-time interaction is helpful for testing snippets of code before integrating them into your larger script.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/console-panel.png}
+\caption{Console Panel with iPlastic Theme}
+\end{figure}
+
+\begin{itemize}
+\tightlist
 \item
   \textbf{Environment Panel:} The environment panel displays all the objects---such as datasets, variables, and functions---currently stored in memory during your R session. It provides an overview of the data and variables you are working with, allowing you to inspect, remove, or modify them easily.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/environment-panel.png}
+\caption{Environment Panel with iPlastic Theme}
+\end{figure}
+
+\begin{itemize}
+\tightlist
 \item
   \textbf{Plots/Help/Files Panels:} This multifunctional area is where RStudio displays generated plots and visualizations. It also gives access to R's extensive help files and documentation, helping users troubleshoot or learn about specific functions. Additionally, the file browser in this panel lets you navigate your computer's files and directories, making it easy to locate and import data into R.
 \end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/files-panel.png}
+\caption{Plots/Help/Files Panel with iPlastic Theme}
+\end{figure}
 
 \subsection*{Setting Up a New Project}\label{setting-up-a-new-project}
 \addcontentsline{toc}{subsection}{Setting Up a New Project}
@@ -2195,8 +2243,18 @@ RStudio enhances the R experience by providing a user-friendly interface that si
 RStudio's project management system helps keep your work organized, especially when handling multiple files or analyses. Setting up a project ensures that all related files, scripts, and outputs are in one place.
 
 \begin{itemize}
+\tightlist
 \item
   \textbf{Creating a Project:} To start a new project, go to \texttt{File\ \textgreater{}\ New\ Project...}. RStudio allows you to group all the scripts, data files, and visual outputs related to a specific research question or analysis into one project, making it easier to manage your workflow.
+\end{itemize}
+
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/new-project.jpg}
+\caption{New Project Menu}
+\end{figure}
+
+\begin{itemize}
 \item
   \textbf{Choosing a Location:} You can create a new directory for your project or associate it with an existing folder. Creating projects within dedicated directories is crucial for managing your work, as it ensures all related files are in one location and that relative file paths are maintained. This makes it easier to share your project with others or run it on a different machine without breaking file links.
 \item
@@ -2223,6 +2281,12 @@ R scripts (\texttt{.R} files) are text files where you can write and run R comma
   \textbf{When to use R Markdown}: Use R Markdown when you want to combine text, code, and results in a report format that can be converted into HTML, PDF, or Word documents.
 \end{itemize}
 
+\begin{figure}
+\centering
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/script-md.jpg}
+\caption{R Script on Left and R Markdown on Right}
+\end{figure}
+
 \subsubsection*{CSV vs.~Excel}\label{csv-vs.-excel}
 \addcontentsline{toc}{subsubsection}{CSV vs.~Excel}
 
@@ -2239,21 +2303,14 @@ For most data analysis tasks in R, \textbf{CSV} (Comma Separated Values) files a
 \subsubsection*{Subfolders}\label{subfolders}
 \addcontentsline{toc}{subsubsection}{Subfolders}
 
-When working on large projects, use subfolders within your project directory to organize your files. Common subfolders might include:
-- \texttt{data/} for storing raw and processed datasets.
-- \texttt{scripts/} for organizing your R scripts.
-- \texttt{output/} for saving graphs, tables, and other generated outputs.
-- \texttt{reports/} for storing R Markdown files or other documents that summarize your findings.
+When working on large projects, use subfolders within your project directory to organize your files. Common subfolders might include: - \texttt{data/} for storing raw and processed datasets. - \texttt{scripts/} for organizing your R scripts. - \texttt{output/} for saving graphs, tables, and other generated outputs. - \texttt{reports/} for storing R Markdown files or other documents that summarize your findings.
 
 This hierarchical organization makes it easier to locate files and ensures that your project remains structured as it grows in complexity.
 
 \subsubsection*{Other Files}\label{other-files}
 \addcontentsline{toc}{subsubsection}{Other Files}
 
-In addition to scripts and datasets, you may work with a variety of other file types, such as:
-- \textbf{Text files (\texttt{.txt})} for plain text data.
-- \textbf{Image files (\texttt{.png}, \texttt{.jpeg})} for embedding visualizations or outputs into reports.
-- \textbf{RData files (\texttt{.RData})} for saving your R workspace so you can quickly reload objects in future sessions.
+In addition to scripts and datasets, you may work with a variety of other file types, such as: - \textbf{Text files (\texttt{.txt})} for plain text data. - \textbf{Image files (\texttt{.png}, \texttt{.jpeg})} for embedding visualizations or outputs into reports. - \textbf{RData files (\texttt{.RData})} for saving your R workspace so you can quickly reload objects in future sessions.
 
 By keeping your files organized and labeled consistently, you can streamline your workflow and reduce the likelihood of errors when collaborating or revisiting older projects.
 
@@ -2293,12 +2350,7 @@ This makes the package's functions available for use during your R session.
 \subsection*{Commonly Used Packages}\label{commonly-used-packages}
 \addcontentsline{toc}{subsection}{Commonly Used Packages}
 
-Some packages particularly useful for mass communication research include:
-- \textbf{\texttt{ggplot2}}: For creating high-quality data visualizations.
-- \textbf{\texttt{dplyr}}: For data manipulation and cleaning.
-- \textbf{\texttt{tm}}: For text mining and content analysis, useful for analyzing media content.
-- \textbf{\texttt{rtweet}}: For collecting and analyzing Twitter data, essential in social media research.
-- \textbf{\texttt{quanteda}}: For text analysis, commonly used for media content studies.
+Some packages particularly useful for mass communication research include: - \textbf{\texttt{ggplot2}}: For creating high-quality data visualizations. - \textbf{\texttt{dplyr}}: For data manipulation and cleaning. - \textbf{\texttt{tm}}: For text mining and content analysis, useful for analyzing media content. - \textbf{\texttt{rtweet}}: For collecting and analyzing Twitter data, essential in social media research. - \textbf{\texttt{quanteda}}: For text analysis, commonly used for media content studies.
 
 Once installed, packages can be updated periodically using the \texttt{update.packages()} function.
 
@@ -2317,6 +2369,8 @@ In R Markdown, code is written inside ``chunks.'' These chunks execute code and 
 \FunctionTok{print}\NormalTok{(}\StringTok{"Hello, World!"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\emph{Output: ``Hello, World!''}
 
 The code inside the chunk runs when you ``knit'' the document, and the output will appear in the resulting file.
 
@@ -2386,14 +2440,179 @@ In R Markdown, you can organize code sections using headings in markdown format:
 \subsection*{Keeping Code Tidy}\label{keeping-code-tidy}
 \addcontentsline{toc}{subsection}{Keeping Code Tidy}
 
-Organized, readable code is essential, especially in collaborative research projects. Some tips for keeping your code tidy:
-- Use consistent indentation for better readability.
-- Break long lines of code into multiple lines.
-- Avoid excessive nesting of functions; instead, break them into separate steps.
+Organized, readable code is essential, especially in collaborative research projects. Some tips for keeping your code tidy: - Use consistent indentation for better readability. - Break long lines of code into multiple lines. - Avoid excessive nesting of functions; instead, break them into separate steps.
 
 By commenting effectively and organizing your code logically, you make it easier for others (and yourself) to understand your analysis, contributing to better research practices.
 
-\chapter{Data}\label{data}
+\section{Basic Operations in R}\label{basic-operations-in-r}
+
+Understanding the basic operations in R is vital for embarking on more complex data analysis and programming tasks. These operations include arithmetic calculations, variable assignments, and function calls.
+
+\subsection*{Arithmetic Operations}\label{arithmetic-operations}
+\addcontentsline{toc}{subsection}{Arithmetic Operations}
+
+\subsubsection*{Overview}\label{overview}
+\addcontentsline{toc}{subsubsection}{Overview}
+
+Arithmetic operations form the basis of numerical calculations in R. These operations can be conducted directly in the R console and include addition, subtraction, multiplication, division, exponentiation, and other mathematical functions (Chambers, 2008).
+
+\subsubsection*{Common Arithmetic Operators}\label{common-arithmetic-operators}
+\addcontentsline{toc}{subsubsection}{Common Arithmetic Operators}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Addition (\texttt{+})}: Adds two numbers.
+\item
+  \textbf{Subtraction (\texttt{-})}: Subtracts the right-hand operand from the left-hand operand.
+\item
+  \textbf{Multiplication (\texttt{*})}: Multiplies two numbers.
+\item
+  \textbf{Division (\texttt{/})}: Divides the left-hand operand by the right-hand operand.
+\item
+  \textbf{Exponentiation (\texttt{\^{}})}: Raises the left-hand operand to the power of the right-hand operand.
+\item
+  \textbf{Modulus (\texttt{\%\%})}: Gives the remainder of the division between two numbers.
+\end{itemize}
+
+\subsubsection*{Examples}\label{examples}
+\addcontentsline{toc}{subsubsection}{Examples}
+
+You can execute these basic arithmetic operations directly in the R console.
+
+\textbf{\emph{Addition}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5} \SpecialCharTok{+} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Output: 8}
+
+\textbf{\emph{Subtraction}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5} \SpecialCharTok{{-}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Output: 2}
+
+\textbf{\emph{Multiplication}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5} \SpecialCharTok{*} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Output: 15}
+
+\textbf{\emph{Division}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5} \SpecialCharTok{/} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Output: 1.666667}
+
+\textbf{\emph{Exponentiation}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{5} \SpecialCharTok{\^{}} \DecValTok{3}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Output: 125}
+
+\subsection*{Variables}\label{variables}
+\addcontentsline{toc}{subsection}{Variables}
+
+\subsubsection*{What Are Variables?}\label{what-are-variables}
+\addcontentsline{toc}{subsubsection}{What Are Variables?}
+
+Variables act as storage containers for data, including numbers, strings, vectors, and other complex data types. Variable assignment is a crucial aspect of programming and data management in R (Wickham, 2014).
+
+\subsubsection*{Assignment Operators}\label{assignment-operators}
+\addcontentsline{toc}{subsubsection}{Assignment Operators}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Leftward (\texttt{\textless{}-})}: Assigns the value on the right to the variable on the left.
+\item
+  \textbf{Equal (\texttt{=})}: Can also be used for assignment, though \texttt{\textless{}-} is traditionally preferred in R.
+\end{itemize}
+
+\subsubsection*{Examples}\label{examples-1}
+\addcontentsline{toc}{subsubsection}{Examples}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Assigning a numerical value to a variable using \textless{}{-}}
+\NormalTok{x }\OtherTok{\textless{}{-}} \DecValTok{10}
+\NormalTok{y }\OtherTok{\textless{}{-}} \DecValTok{20}
+
+\CommentTok{\# Assigning a string value to a variable using =}
+\NormalTok{text\_variable }\OtherTok{=} \StringTok{"Hello, World!"}
+
+\CommentTok{\# Printing variables}
+\FunctionTok{print}\NormalTok{(x)}
+\FunctionTok{print}\NormalTok{(text\_variable)}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Output:10} \emph{``Hello, World!''}
+
+\subsection*{Functions}\label{functions}
+\addcontentsline{toc}{subsection}{Functions}
+
+\subsubsection*{Function Overview}\label{function-overview}
+\addcontentsline{toc}{subsubsection}{Function Overview}
+
+Functions are predefined sets of operations that perform specific tasks. Functions in R can be either built-in, such as \texttt{sum()} or \texttt{mean()}, or user-defined for more customized operations (Chambers, 2008).
+
+\subsubsection*{Built-in Functions}\label{built-in-functions}
+\addcontentsline{toc}{subsubsection}{Built-in Functions}
+
+Examples of common built-in functions include: dz - \textbf{\texttt{sum()}}: Calculates the sum of all the values in a numeric vector. - \textbf{\texttt{mean()}}: Calculates the arithmetic mean of a numeric vector. - \textbf{\texttt{sqrt()}}: Calculates the square root of a number.
+
+\textbf{\emph{Using sum function}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sum}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Output: 6}
+
+\textbf{\emph{Using mean function}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{mean}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Output: 2.5}
+
+\textbf{\emph{Using sqrt function}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{sqrt}\NormalTok{(}\DecValTok{16}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Output: 4}
+
+\chapter{Data Management}\label{data-management}
 
 \section{Defining Data}\label{defining-data}
 
@@ -2453,6 +2672,105 @@ Different types of data are used in mass communication research, each requiring 
 \section{Inputting Data}\label{inputting-data}
 
 In RStudio, entering and importing data are essential tasks for conducting research. This section introduces DataEditR for manual data input and covers methods for importing data from external files like CSVs. The \textbf{IMDb\_Economist\_tv\_ratings.csv} dataset is used in the examples below, which contains information about TV shows, including titles, seasons, ratings, and genres.
+
+\subsection*{Data Structures in R}\label{data-structures-in-r}
+\addcontentsline{toc}{subsection}{Data Structures in R}
+
+Data structures are fundamental in R programming as they organize and store the data that one works with for analyses, visualizations, and other computational tasks. Understanding these structures is critical for effective manipulation of data and implementing various algorithms (Wickham \& Grolemund, 2017). Below are the primary data structures that R provides.
+
+\subsubsection*{Vectors}\label{vectors}
+\addcontentsline{toc}{subsubsection}{Vectors}
+
+Vectors are one-dimensional arrays used to hold elements of a single data type. This could be numeric, character, or logical data types. Vectors are often used for operations that require the application of a function to each element in the data set (Maindonald \& Braun, 2010).
+
+Vectors can be created using the \texttt{c()} function, which combines elements into a vector.
+
+\emph{Creating a numeric vector}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{numeric\_vector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Creating a character vector}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{character\_vector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"apple"}\NormalTok{, }\StringTok{"banana"}\NormalTok{, }\StringTok{"cherry"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Creating a logical vector}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{logical\_vector }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\ConstantTok{TRUE}\NormalTok{, }\ConstantTok{FALSE}\NormalTok{, }\ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+You can perform various operations on vectors like addition, subtraction, or applying a function to each element.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Adding two vectors}
+\NormalTok{sum\_vector }\OtherTok{\textless{}{-}}\NormalTok{ numeric\_vector }\SpecialCharTok{+} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{1}\NormalTok{)}
+
+\CommentTok{\# Calculating mean of a numeric vector}
+\NormalTok{mean\_value }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(numeric\_vector)}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection*{Data Frames}\label{data-frames}
+\addcontentsline{toc}{subsubsection}{Data Frames}
+
+Data frames serve as the fundamental data structure for data analysis in R. They are similar to matrices but allow different types of variables in different columns, which makes them extremely versatile (Chambers, 2008).
+
+Data frames can be created using the \texttt{data.frame()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Creating a data frame}
+\NormalTok{df }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{Name =} \FunctionTok{c}\NormalTok{(}\StringTok{"Alice"}\NormalTok{, }\StringTok{"Bob"}\NormalTok{), }\AttributeTok{Age =} \FunctionTok{c}\NormalTok{(}\DecValTok{23}\NormalTok{, }\DecValTok{45}\NormalTok{), }\AttributeTok{Gender =} \FunctionTok{c}\NormalTok{(}\StringTok{"F"}\NormalTok{, }\StringTok{"M"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Various operations like subsetting, merging, and sorting can be performed on data frames.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Subsetting data frame by column}
+\NormalTok{subset\_df }\OtherTok{\textless{}{-}}\NormalTok{ df[, }\FunctionTok{c}\NormalTok{(}\StringTok{"Name"}\NormalTok{, }\StringTok{"Age"}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\subsubsection*{Lists}\label{lists}
+\addcontentsline{toc}{subsubsection}{Lists}
+
+Lists are an ordered collection of objects, which can be of different types and structures, including vectors, matrices, and even other lists (Wickham \& Grolemund, 2017).
+
+Lists can be created using the \texttt{list()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Creating a list}
+\NormalTok{my\_list }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{(}\AttributeTok{Name =} \StringTok{"Alice"}\NormalTok{, }\AttributeTok{Age =} \DecValTok{23}\NormalTok{, }\AttributeTok{Scores =} \FunctionTok{c}\NormalTok{(}\DecValTok{90}\NormalTok{, }\DecValTok{85}\NormalTok{, }\DecValTok{88}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Lists can be modified by adding, deleting, or updating list elements.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Updating a list element}
+\NormalTok{my\_list}\SpecialCharTok{$}\NormalTok{Name }\OtherTok{\textless{}{-}} \StringTok{"Bob"}
+
+\CommentTok{\# Adding a new list element}
+\NormalTok{my\_list}\SpecialCharTok{$}\NormalTok{Email }\OtherTok{\textless{}{-}} \StringTok{"bob@email.com"}
+\end{Highlighting}
+\end{Shaded}
+
+By understanding these primary data structures, students in Mass Communications can gain a strong foundation for more complex data analyses relevant to their field, whether it involves analyzing large sets of textual data, audience metrics, or other forms of media data.
 
 \subsection*{DataEditR}\label{dataeditr}
 \addcontentsline{toc}{subsection}{DataEditR}
@@ -2518,11 +2836,13 @@ The \texttt{read.csv()} function is part of base R and can be used to import CSV
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Reading the IMDb\_Economist\_tv\_ratings dataset using read.csv from base R}
-\NormalTok{csv1 }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019{-}01{-}08/IMDb\_Economist\_tv\_ratings.csv"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{csv\_base }\OtherTok{\textless{}{-}} \FunctionTok{read.csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019{-}01{-}08/IMDb\_Economist\_tv\_ratings.csv"}\NormalTok{, }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 This code imports the dataset from the URL provided. The \texttt{header\ =\ TRUE} argument indicates that the first row contains variable names, and \texttt{stringsAsFactors\ =\ FALSE} prevents character strings from being converted to factors.
+
+Use \texttt{write.csv()} to write a data frame to a csv.
 
 \subsubsection*{\texorpdfstring{Use \texttt{read\_csv} from the \texttt{readr} Package}{Use read\_csv from the readr Package}}\label{use-read_csv-from-the-readr-package}
 \addcontentsline{toc}{subsubsection}{Use \texttt{read\_csv} from the \texttt{readr} Package}
@@ -2538,11 +2858,13 @@ The \texttt{readr} package provides an alternative function, \texttt{read\_csv()
 \FunctionTok{library}\NormalTok{(readr)}
 
 \CommentTok{\# Reading the IMDb\_Economist\_tv\_ratings dataset using read\_csv from readr}
-\NormalTok{csv2 }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019{-}01{-}08/IMDb\_Economist\_tv\_ratings.csv"}\NormalTok{)}
+\NormalTok{csv\_readr }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019{-}01{-}08/IMDb\_Economist\_tv\_ratings.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 The \texttt{read\_csv()} function is faster than \texttt{read.csv()} and automatically detects data types, making it easier to handle larger datasets efficiently.
+
+Use \texttt{write\_csv()} to write a data frame to a csv.
 
 \subsubsection*{\texorpdfstring{Use \texttt{fread} from the \texttt{data.table} Package}{Use fread from the data.table Package}}\label{use-fread-from-the-data.table-package}
 \addcontentsline{toc}{subsubsection}{Use \texttt{fread} from the \texttt{data.table} Package}
@@ -2558,11 +2880,35 @@ For very large datasets, \texttt{fread()} from the \texttt{data.table} package i
 \FunctionTok{library}\NormalTok{(data.table)}
 
 \CommentTok{\# Reading the IMDb\_Economist\_tv\_ratings dataset using fread from data.table}
-\NormalTok{csv3 }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019{-}01{-}08/IMDb\_Economist\_tv\_ratings.csv"}\NormalTok{)}
+\NormalTok{csv\_datatable }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019{-}01{-}08/IMDb\_Economist\_tv\_ratings.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 The \texttt{fread()} function provides high-speed reading for large CSV files, making it ideal for processing extensive datasets.
+
+Use \texttt{fwrite()} to write a data frame to a csv.
+
+\subsubsection*{\texorpdfstring{Use \texttt{vroom,} from the \texttt{vroom} Package}{Use vroom, from the vroom Package}}\label{use-vroom-from-the-vroom-package}
+\addcontentsline{toc}{subsubsection}{Use \texttt{vroom,} from the \texttt{vroom} Package}
+
+The fastest method for reading rectangular data that I know of is \texttt{vroom()} from the \texttt{vroom} package:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Install the data.table package if it\textquotesingle{}s not already installed}
+\CommentTok{\# install.packages("vroom")}
+
+\CommentTok{\# Load the data.table package}
+\FunctionTok{library}\NormalTok{(vroom)}
+
+\CommentTok{\# Reading the IMDb\_Economist\_tv\_ratings dataset using fread from data.table}
+\NormalTok{csv\_vroom }\OtherTok{\textless{}{-}} \FunctionTok{vroom}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019{-}01{-}08/IMDb\_Economist\_tv\_ratings.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+The \texttt{vroom()} function provides the fastest current read for .csv files.
+
+Use \texttt{vroom\_write()} to write a data frame to a csv.
 
 \subsection*{Editing Imported Data}\label{editing-imported-data}
 \addcontentsline{toc}{subsection}{Editing Imported Data}
@@ -2950,7 +3296,7 @@ Example: Find the mean and standard deviation of \texttt{peak\_position}.
 
 Central tendency is a fundamental concept in descriptive statistics, representing the ``center'' or ``typical'' value of a dataset. It provides a single value that summarizes the data and helps us understand its overall distribution. The three primary measures of central tendency are the \textbf{mean}, \textbf{median}, and \textbf{mode}. Each measure has its strengths and weaknesses, depending on the nature of the data and the research question at hand.
 
-In mass communication research, we often use these measures to summarize key data points such as viewer ratings, playtime, episode counts, or even specific word frequencies in media content. By understanding the different measures of central tendency, researchers can more effectively interpret the underlying patterns in their datasets.
+In mass communication research, we often use these measures to summarize key data points such as viewer ratings, playtime, episode counts, or even specific word frequencies in media content. By understanding the different measures of central tendency, researchers can more effectively interpret the underlying patterns in their data sets.
 
 \textbf{Load data for chapter}
 
@@ -2969,6 +3315,23 @@ In mass communication research, we often use these measures to summarize key dat
 \NormalTok{video\_games }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019{-}07{-}30/video\_games.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+You can access the data descriptions for each of these data sets on their respective TidyTuesday page.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md}{Anime Dataset}
+\item
+  \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md}{Horror Movies}
+\item
+  \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-09-26/readme.md}{Roy Kent F**k count}
+\item
+  \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-01-08/readme.md}{TV's golden age is real}
+\item
+  \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30//readme.md}{Video Games Dataset}
+\end{enumerate}
 
 \subsection*{Mean (Arithmetic Average)}\label{mean-arithmetic-average}
 \addcontentsline{toc}{subsection}{Mean (Arithmetic Average)}
@@ -4197,7 +4560,7 @@ As you advance in your understanding of data visualization, it's essential to mo
 
 To get started with ggplot2, you will be guided through a step-by-step process. We will begin with basic plots, such as simple scatter plots or bar charts, and gradually introduce more complex features like faceting, theming, and layering. Faceting allows you to create multiple plots based on a factor variable, while theming enables you to customize the overall appearance of your plots to match specific aesthetic requirements. This flexibility makes ggplot2 an indispensable tool for creating visualizations that are both informative and visually appealing.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig076.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig076.jpg}
 
 \emph{Figure 076. A multi-layered scatter plot created using ggplot2, with annotations highlighting the different layers (e.g., points, colors, shapes) and explaining how each layer contributes to the overall visualization. This visual will help students understand the modular approach of ggplot2 and how to build complex plots by adding layers.}
 
@@ -4207,7 +4570,7 @@ Another critical aspect of advanced data visualization is the use of \textbf{Int
 
 We will introduce the concept of interactive visualizations by discussing their advantages, particularly in making data more accessible and engaging for your audience. Interactive visualizations allow users to explore data on their own terms, leading to a more personalized and impactful understanding of the information presented.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig077.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig077.jpg}
 
 \emph{Figure 077. A screenshot of an interactive dashboard created in R Shiny, showing how users can filter data and update the visualizations in real-time. Annotations should explain the different interactive elements, such as dropdown menus, sliders, and dynamically updating charts, to illustrate the added value of interactivity in data exploration.}
 
@@ -4224,7 +4587,7 @@ Infographics are a powerful tool for summarizing and presenting complex informat
 
 To achieve this, you should follow several principles of good infographic design. Clarity is paramount; your infographic should communicate its message at a glance. This means avoiding clutter, using simple language, and ensuring that your visual elements are easy to interpret. Simplicity is also crucial---select a clean, minimalistic layout that helps guide the viewer's eye through the information logically and intuitively. Additionally, the effective use of color and space can make a significant difference in how your infographic is perceived. Colors should not only make the infographic visually appealing but also help differentiate between different sections or data points. Similarly, strategic use of white space can help prevent the design from feeling crowded and can make the content easier to read.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig078.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig078.jpg}
 
 \emph{Figure 078. An example infographic that summarizes the results of a media consumption survey. The infographic should include clear headings, well-organized data points, simple icons or charts, and a consistent color scheme. Annotations can point out how clarity, simplicity, and effective use of color contribute to the overall effectiveness of the design.}
 
@@ -4232,7 +4595,7 @@ Once you understand these principles, tools like Adobe Express or Canva can be i
 
 Customizing visualizations is another essential aspect of effective data communication. Customization involves tailoring the appearance and elements of a visualization to better match the data's message and the intended audience. For example, you might need to adjust the color schemes and fonts in a ggplot2 plot to align with a publication's style guidelines or to make the visualization more accessible to a broader audience. Customization can significantly enhance the effectiveness of your data visualizations, helping to ensure that your message is clear and impactful.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig079.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig079.jpg}
 
 \emph{Figure 079. A side-by-side comparison of two visualizations of the same dataset---one basic and the other customized. The customized version should demonstrate improved clarity, aesthetic appeal, and alignment with the intended message. Annotations should explain the specific changes made, such as color adjustments, font changes, and layout refinements, and how they improve the visualization.}
 
@@ -4240,7 +4603,7 @@ In the classroom, we will explore examples of how customization can enhance the 
 
 Finally, \textbf{Adobe Express} is introduced as a practical tool for creating infographics and other visual content. Adobe Express offers a range of pre-designed templates and easy customization options, making it accessible to non-designers. For instance, you might use Adobe Express to create an infographic that summarizes a study's key findings. The platform's drag-and-drop interface allows you to experiment with different layouts, colors, and fonts, making it easier to design visually compelling infographics without the need for advanced design skills.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig080.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig080.jpg}
 
 \emph{Figure 080. A screenshot of the Adobe Express interface, showing a user creating an infographic. The image should highlight the drag-and-drop functionality, template options, and customization tools available in Adobe Express. Annotations can explain how these features help streamline the design process for users of all skill levels.}
 
@@ -4397,9 +4760,9 @@ This dataset presumably contains information about video games.
 Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4054}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2703}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3243}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4054}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2703}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3243}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 variable
@@ -4447,10 +4810,10 @@ related & character & dictionary: related animes, series, games etc. \\
 Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2329}}
-  >{\centering\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2329}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2466}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2877}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2329}}
+  >{\centering\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2329}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2466}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2877}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Variable}
@@ -4490,9 +4853,9 @@ Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/202
 Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2023/2023-09-26/readme.md\#roy-kent-fk-count}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3750}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2500}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3750}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3750}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3750}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 variable
@@ -4528,13 +4891,13 @@ Imdb\_rating & double & Imdb rating of that episode \\
 Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-01-08/readme.md}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1493}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1940}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1194}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1343}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.0746}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1642}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 12\tabcolsep) * \real{0.1642}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1493}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1940}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1194}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1343}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.0746}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1642}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 12\tabcolsep) * \real{0.1642}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 type
@@ -4569,9 +4932,9 @@ numeric & share & 0 & 2266 & 2266 & NA & NA \\
 Source: \url{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30/readme.md}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.4359}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2564}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3077}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.4359}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.2564}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 4\tabcolsep) * \real{0.3077}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 variable
@@ -5662,7 +6025,7 @@ Ethical considerations are paramount when designing and conducting research usin
 
 To illustrate the importance of these issues, we will discuss several case studies where privacy concerns in internet panels were brought to light. For instance, one case might involve a breach of data security where participants' personal information was accessed by unauthorized parties. In another, participants may have been unaware of the extent to which their data was being shared with third parties, leading to concerns about data ownership and consent.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig094.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig094.jpg}
 
 \emph{Figure 094. A diagram showing the flow of data in an internet panel study, highlighting key points where privacy and security measures must be implemented, such as consent forms, data encryption, and storage protocols.}
 
@@ -5674,7 +6037,7 @@ Internet surveys are another widely used tool in digital research, offering a co
 
 To ensure the security of data collected through internet surveys, researchers should implement best practices such as encryption of data during transmission and storage, anonymization of responses to protect participant identities, and secure storage solutions that prevent unauthorized access. Additionally, the ethical implications of these practices must be considered, particularly in relation to the digital divide, where unequal access to technology can influence who participates in online surveys and how they respond.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig095.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig095.jpg}
 
 \emph{Figure 095. A flowchart illustrating the process of conducting an internet survey, from design to data collection, with emphasis on points where privacy and security measures should be implemented, such as data encryption and anonymization techniques.}
 
@@ -5688,7 +6051,7 @@ For example, in surveys about socially sensitive topics, participants might alte
 
 We will explore this concept through examples of online surveys where social desirability bias may have influenced the results. For instance, consider a survey on political beliefs conducted online, where respondents may alter their answers depending on the political climate or the perceived anonymity of the platform.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig096.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig096.jpg}
 
 \emph{Figure 096. A comparison of survey responses on a sensitive topic, showing how social desirability bias might influence the difference between anonymous and non-anonymous responses.}
 
@@ -5710,7 +6073,7 @@ To help you understand the importance of data collection, we will explore the pr
 
 Ethical considerations are paramount in this process, particularly regarding issues of consent, privacy, and potential misuse of data. Journalists must navigate these challenges carefully to ensure that their work upholds the highest standards of integrity.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig097.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig097.jpg}
 
 \emph{Figure 097. A flowchart illustrating the data collection process in journalism, from identifying sources to ensuring data accuracy and addressing ethical considerations.}
 
@@ -5720,7 +6083,7 @@ Once the data has been collected, the next step is analysis. Data analysis in jo
 
 In this section, we will cover basic statistical techniques commonly used in data journalism, such as frequency analysis, cross-tabulation, and regression. You will be assigned to analyze a dataset, identify key insights, and consider how these insights could inform a news story. The focus will be on maintaining accuracy and integrity in data interpretation, ensuring that the story told by the data is both truthful and compelling.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig098.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig098.jpg}
 
 *Figure 098. A bar chart showing the results of a data analysis, with annotations that highlight key findings and how they might inform a news story.
 
@@ -5732,7 +6095,7 @@ You will be introduced to various tools and techniques for creating effective da
 
 We will also discuss the ethical implications of data visualization, such as the potential for creating misleading visuals. Transparency in design choices is critical to maintaining the credibility of the work.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig099.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig099.jpg}
 
 \emph{Figure 099. A sample data visualization created using \texttt{ggplot2}, showing a well-designed, clear, and engaging chart that effectively communicates a data-driven story.}
 
@@ -5750,7 +6113,7 @@ In this section, we will explore examples of discourse analysis applied to vario
 
 You will also be assigned a project to conduct a discourse analysis on a chosen media text, such as a commercial, a political ad, or a news article. This project will help you develop the skills needed to critically evaluate how language shapes the audience's perception of reality.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig100.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig100.jpg}
 
 \emph{Figure 100. A visual breakdown of a political speech, highlighting key phrases, metaphors, and rhetorical strategies used to influence public opinion. The image should include annotations explaining how these elements contribute to the construction of meaning and power relations.}
 
@@ -5762,7 +6125,7 @@ We will begin by introducing the basic principles of conversation analysis using
 
 The insights gained from conversation analysis can help you better understand how media representations of conversations, such as those in talk shows or news interviews, reflect and reinforce social norms and power structures.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig101.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig101.jpg}
 
 \emph{Figure 101. A diagram showing a transcript of a conversation with highlighted sections that illustrate key conversational features like turn-taking, pauses, and repairs. Annotations should explain how these features contribute to the overall flow and meaning of the interaction.}
 
@@ -5774,7 +6137,7 @@ In this section, we will explore how standpoint theory has been applied in media
 
 A reflective writing exercise will be assigned where you will analyze a media text from your perspective, considering how your social position shapes your understanding and interpretation. This exercise will help you appreciate the diversity of perspectives in media interpretation and challenge dominant narratives that may marginalize certain viewpoints.
 
-\includegraphics[width=1\textwidth,height=\textheight]{images/fig102.jpg}
+\includegraphics[width=1\linewidth,height=\textheight,keepaspectratio]{images/fig102.jpg}
 
 \emph{Figure 102. A visual representation of how different social groups (e.g., based on race, gender, class) might interpret the same media content differently. The image could depict a diverse group of individuals watching the same news report, with thought bubbles showing their different interpretations and reactions.}
 
