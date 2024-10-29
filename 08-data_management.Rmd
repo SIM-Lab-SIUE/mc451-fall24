@@ -6,6 +6,8 @@ editor_options:
 
 # Data Management
 
+[[Chunk Version]](_book/files/08-data_management-chunks.Rmd)
+
 ## Defining Data
 
 ### What is Data? {.unnumbered}

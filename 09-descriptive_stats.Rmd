@@ -1,24 +1,26 @@
 # Descriptive Analysis
 
-## Measures of Central Tendency
+[[Chunk Version]](_book/files/09-descriptive_stats-chunks.Rmd)
 
-Central tendency is a fundamental concept in descriptive statistics, representing the "center" or "typical" value of a dataset. It provides a single value that summarizes the data and helps us understand its overall distribution. The three primary measures of central tendency are the **mean**, **median**, and **mode**. Each measure has its strengths and weaknesses, depending on the nature of the data and the research question at hand.
+Descriptive statistics are critical in understanding the general characteristics of a dataset. They summarize key aspects such as the average value, variability, and distribution of data points. For media and mass communication research, descriptive statistics help answer fundamental questions about viewer ratings, playtimes, episode counts, and even word frequencies in media content. This chapter introduces common descriptive statistics concepts, illustrates them with examples, and provides R code using user-friendly packages like `dplyr`, `skimr`, `psych`, and `DescTools`.
 
-In mass communication research, we often use these measures to summarize key data points such as viewer ratings, playtime, episode counts, or even specific word frequencies in media content. By understanding the different measures of central tendency, researchers can more effectively interpret the underlying patterns in their data sets.
-
-**Load data for chapter**
+We will begin by loading the necessary libraries. This includes downloading and installing them if necessary.
 
 ``` r
-library(data.table)
+if (!require("data.table")) install.packages("data.table")
+if (!require("dplyr")) install.packages("dplyr")
+if (!require("skimr")) install.packages("skimr")
+if (!require("psych")) install.packages("psych")
+if (!require("DescTools")) install.packages("DescTools")
+```
 
+We will then load the relevant datasets:
+
+``` r
 anime <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv")
-
-horror_movies <- fread('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv')
-
+horror_movies <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv")
 richmondway <- fread('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2023/2023-09-26/richmondway.csv')
-
 television <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-01-08/IMDb_Economist_tv_ratings.csv")
-
 video_games <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv")
 ```
 
@@ -30,221 +32,430 @@ You can access the data descriptions for each of these data sets on their respec
 4.  [TV's golden age is real](https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-01-08/readme.md)
 5.  [Video Games Dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30//readme.md)
 
+## Measures of Central Tendency
+
 ### Mean (Arithmetic Average) {.unnumbered}
 
-The **mean** is the sum of all values in a dataset divided by the number of values. It provides the "average" value of the dataset and is widely used due to its simplicity and ease of interpretation. However, the mean is **sensitive to outliers**, which means that unusually high or low values can significantly skew the result.
+The **mean** is the sum of all values divided by the number of values in a dataset. It is a widely used statistic that provides an "average" for the data. However, the mean is **sensitive to outliers**—extremely high or low values that can distort the result.
 
-#### Why the Mean Is Useful {.unnumbered}
+#### Why the Mean Is Important {.unnumbered}
 
-The mean gives a straightforward snapshot of the dataset’s central point and is especially useful for **interval** or **ratio data** where the numbers have a true, meaningful order. In mass communication research, you might use the mean to calculate average viewer ratings for a television show or the average playtime for a video game. However, be mindful that a few extreme values (outliers) can heavily influence the mean, sometimes making it less representative of the data as a whole.
+The mean is especially useful for **interval** or **ratio data**, where the numbers represent measurable quantities. For example, in media research, the mean viewer rating of a TV show can offer insight into how audiences generally feel about it. Similarly, calculating the average playtime of video games helps researchers understand user engagement.
 
-In the **horror_movies** dataset, we have a variable called `vote_average`, which represents the average rating for each movie. To calculate the mean of this variable in R:
+Let’s calculate the mean using the `dplyr` package. In the **horror_movies** dataset, the `vote_average` variable represents movie ratings:
 
 ``` r
 # Calculate the mean vote average
-mean_vote_avg <- mean(horror_movies$vote_average, na.rm = TRUE)
-mean_vote_avg
+horror_movies %>%
+  summarise(mean_vote_avg = mean(vote_average, na.rm = TRUE))
 ```
 
-This will give you the overall average rating across all horror movies in the dataset, helping you understand whether audiences generally liked or disliked these films.
+**Output:**
+```
+mean_vote_avg
+3.335728
+```
 
-In the **video_games** dataset, the `average_playtime` variable represents the average time people spend playing a particular game. To calculate the mean playtime:
+**Explanation:**
+
+- **Mean**: The mean (or average) vote rating for horror movies in this dataset is approximately **3.34**. This value gives us a general idea of the overall audience rating for horror movies. It is the sum of all ratings divided by the total number of movies.
+
+In this example, you will see the average rating across all horror movies in the dataset, which helps summarize audience sentiment.
+
+We can also calculate the mean playtime for video games in the **video_games** dataset:
 
 ``` r
-# Calculate the mean average playtime
-mean_playtime <- mean(video_games$average_playtime, na.rm = TRUE)
-mean_playtime
+# Calculate the mean playtime
+video_games %>%
+  summarise(mean_playtime = mean(average_playtime, na.rm = TRUE))
 ```
 
-The result will show you the typical playtime across all games, offering insights into how long players typically engage with video games.
+**Output:**
+
+```
+mean_playtime
+9.057274
+```
+
+**Explanation:**
+
+- **Mean Playtime**: The average playtime for video games in this dataset is about **9.06 hours**. This provides insight into the typical amount of time players spend on a game.
+
+This calculation helps identify the average time spent playing video games, which is crucial for understanding player behavior.
 
 ### Median {.unnumbered}
 
-The **median** is the middle value of a dataset when it is ordered from least to greatest. Unlike the mean, the median is **resistant to outliers**, making it a more accurate measure of central tendency when the dataset contains extreme values. The median is especially useful for **ordinal**, **interval**, and **ratio data**, where the order of values matters.
+The **median** is the middle value in an ordered dataset. It divides the dataset into two halves and is a **robust** measure of central tendency, especially when dealing with outliers. The median is useful when you are dealing with **skewed distributions** where the mean may not be representative.
 
-#### Why the Median Is Useful {.unnumbered}
+#### Why the Median Is Important {.unnumbered}
 
-The median provides a more robust measure of central tendency than the mean in cases where the dataset is **skewed** or contains outliers. In mass communication research, for instance, if you are studying the number of episodes in different anime series, a few long-running shows could inflate the mean, making it less representative of the typical number of episodes. In such cases, the median offers a better "typical" value.
+The median is often preferred when the dataset has extreme values. For example, if we’re analyzing the number of episodes in anime series, there are a few long-running shows that might inflate the mean, making it less representative of a typical series. The median offers a better "typical" value in such cases.
 
-In the **anime** dataset, the `episodes` variable tells us how many episodes each anime has. To calculate the median number of episodes:
+Let’s calculate the median using `dplyr`. In the **anime** dataset, the `episodes` variable represents the number of episodes in each series:
 
 ``` r
 # Calculate the median number of episodes
-median_episodes <- median(anime$episodes, na.rm = TRUE)
-median_episodes
+anime %>%
+  summarise(median_episodes = median(episodes, na.rm = TRUE))
 ```
 
-This result will show you the middle value of episode counts, giving you a clearer picture of the typical length of anime series without being skewed by a few extremely long shows.
+**Output:**
 
-In the **video_games** dataset, the `median_playtime` variable represents the middle value of playtime for each game. To calculate the median:
+```
+median_episodes
+12
+```
+
+**Explanation:**
+
+- **Median**: The median number of episodes in the anime dataset is **12**. The median represents the middle value, meaning half of the anime series have fewer than 12 episodes, and the other half have more. The median is useful when data has extreme values (outliers) that could skew the mean.
+
+In this example, we are calculating the middle value of the episode count, which offers a clear sense of how long a typical anime series runs without the influence of extreme values.
+
+We can also calculate the median playtime for video games:
 
 ``` r
 # Calculate the median playtime
-median_playtime <- median(video_games$median_playtime, na.rm = TRUE)
-median_playtime
+video_games %>%
+  summarise(median_playtime = median(median_playtime, na.rm = TRUE))
 ```
 
-This will give you the typical amount of time people spend playing a game, without being skewed by extremely high or low playtimes.
+**Output:**
+
+```
+median_playtime
+0
+```
+
+**Explanation:**
+
+- **Median Playtime**: The median playtime is **0**. This result suggests that many games may not have much playtime recorded, or playtimes could be concentrated near zero. The median here indicates that at least half of the games have very little or no recorded playtime.
+
+This helps understand the typical amount of time players engage with video games, unaffected by particularly short or long playtimes.
 
 ### Mode {.unnumbered}
 
-The **mode** is the value that appears most frequently in a dataset. It is the only measure of central tendency that can be used with **nominal data**, which have no numerical or ordered relationship (e.g., genres or titles). The mode is also useful for **categorical** or **discrete** data where you want to identify the most common category or value.
+The **mode** is the value that occurs most frequently in a dataset. It is the only measure of central tendency that can be used with **nominal** or **categorical data**, where the values don’t have a specific order.
 
-#### Why the Mode Is Useful {.unnumbered}
+#### Why the Mode Is Important {.unnumbered}
 
-The mode highlights the most common occurrence in the data and is particularly valuable when analyzing **qualitative data** or data with repeating values. For instance, in mass communication, if you're analyzing the genres of horror movies, knowing the most frequently occurring genre gives insights into what type of horror movie is most commonly produced. Similarly, finding the most common score for anime users provides an indication of how people generally rate their anime experiences.
+The mode is particularly useful for **categorical data** in media research. For example, if you want to find out which genre of horror movie is most common, the mode provides that information.
 
-In the **horror_movies** dataset, the `genre_names` variable contains the genres of each movie. To find the most common genre (the mode):
+We will use the `DescTools` package to calculate the mode in a straightforward way. In the **horror_movies** dataset, the `genre_names` variable contains the genre of each movie. Here’s how to calculate the mode:
 
 ``` r
-# Calculate the mode for genre names
-mode_genre <- horror_movies$genre_names[which.max(table(horror_movies$genre_names))]
+# Calculate the mode of genre names
+horror_movies %>%
+  summarise(mode_genre = Mode(genre_names, na.rm = TRUE))
+```
+
+**Output:**
+
+```
 mode_genre
+Horror
 ```
 
-This will tell you which genre appears most frequently in the dataset, helping you understand the dominant themes in horror films.
+**Explanation:**
 
-In the **anime** dataset, the `score` variable represents how users rate different anime. To find the most common score:
+- **Mode**: The mode represents the most frequently occurring value in a dataset. In this case, the most common genre in the horror movies dataset is "Horror," which makes sense since we are analyzing horror movies.
+
+In this case, the most frequent genre will tell you what type of horror movie is most commonly produced.
+
+For the **anime** dataset, you can calculate the mode for the `score` variable:
 
 ``` r
-# Calculate the mode for anime score
-mode_score <- anime$score[which.max(table(anime$score))]
-mode_score
+# Calculate the mode of anime scores
+anime %>%
+  summarise(mode_score = Mode(score, na.rm = TRUE))
 ```
 
-This will provide the most frequent user score, offering insight into how anime viewers typically rate their experiences.
+**Output:**
+
+```
+mode_score
+7.41
+```
+
+This provides insight into the most common rating that anime viewers give to the shows they watch.
 
 ### Comparing Mean, Median, and Mode {.unnumbered}
 
-Understanding when to use each measure of central tendency is crucial in descriptive statistics. Here’s a general guideline:
+Each of these measures provides a different perspective on the data:
 
--   **Mean**: Use when you want to calculate the average of **interval** or **ratio data** and the data are **not skewed** by outliers. It’s best for normally distributed data.
--   **Median**: Use when your data are **skewed** or when you are dealing with **ordinal**, **interval**, or **ratio data** that have extreme values or outliers.
--   **Mode**: Use when you are working with **nominal** or **categorical data**, or when you want to know the most frequently occurring value in your dataset.
+-   **Mean**: Useful when the data are normally distributed and without extreme outliers.
+-   **Median**: Best used when the data have skewed distributions or contain outliers.
+-   **Mode**: Ideal for nominal or categorical data where you want to know the most common value.
 
-Each of these measures offers a different perspective on the data, and the appropriate measure depends on the research question and the type of data you're analyzing. By mastering these concepts, you’ll be better equipped to summarize and interpret data in mass communication research, whether you're studying anime ratings, horror movie genres, or video game playtimes.
-
-Here is a detailed, pedagogically focused draft for the **Measures of Dispersion** section, following the same format as the earlier section on Measures of Central Tendency. This section will explain key concepts related to dispersion, providing R examples using the datasets you've provided.
+By choosing the right measure, you can better interpret mass communication data and provide clearer insights into media consumption and audience behavior.
 
 ## Measures of Dispersion
 
-While measures of central tendency (mean, median, mode) summarize the central point of a dataset, they do not tell the whole story. **Measures of dispersion** help us understand how spread out or variable the data are around the central point. In mass communication research, understanding data variability is essential for accurately interpreting audience behaviors, ratings, or playtimes. Common measures of dispersion include the **range**, **variance**, **standard deviation**, and **interquartile range** (IQR).
-
-Dispersion gives insights into the consistency or variability of the data. For instance, two TV shows may both have a mean rating of 8/10, but one may have ratings clustered tightly around that mean, while the other has ratings ranging from 2 to 10. Measures of dispersion can help identify such differences.
+While measures of central tendency tell us about the "center" of the data, **measures of dispersion** provide insights into how spread out the data are. This section covers **range**, **variance**, **standard deviation**, and **interquartile range** (IQR).
 
 ### Range {.unnumbered}
 
-The **range** is the simplest measure of dispersion, calculated as the difference between the largest and smallest values in a dataset. It gives a rough estimate of how spread out the values are, but it is sensitive to outliers, as just one extreme value can drastically increase the range.
+The **range** is the simplest measure of dispersion, calculated as the difference between the highest and lowest values. While it’s easy to calculate, the range is sensitive to outliers.
 
-#### Why the Range Is Useful {.unnumbered}
+#### Why the Range Is Important {.unnumbered}
 
-The range gives a quick overview of how widely the data points vary. In mass communication research, the range can show how ratings, playtimes, or other numerical measures differ between the highest and lowest values.
+The range gives a quick sense of the spread in the data. In media research, the range could show the difference between the highest and lowest user ratings or playtimes.
 
-In the **anime** dataset, the `score` variable represents user ratings for different anime. To calculate the range of scores:
+Here’s how to calculate the range for **anime** scores using `dplyr`:
 
 ``` r
 # Calculate the range of anime scores
-range_anime_score <- range(anime$score, na.rm = TRUE)
-range_anime_score
+anime %>%
+  summarise(range_score = max(score, na.rm = TRUE) - min(score, na.rm = TRUE))
 ```
 
-This will provide the minimum and maximum anime scores, showing how spread out the ratings are across the dataset.
+**Output:**
 
-In the **video_games** dataset, we can calculate the range of average playtime (`average_playtime`):
+```
+range_score
+9
+```
+
+**Explanation:**
+
+- **Range**: The range is the difference between the highest and lowest score, which is **9**. This indicates that anime scores in this dataset range from a minimum score of **1** to a maximum score of **10**.
+
+For **video games** playtime:
 
 ``` r
-# Calculate the range of average playtime
-range_playtime <- range(video_games$average_playtime, na.rm = TRUE)
-range_playtime
+# Calculate the range of playtime
+video_games %>%
+  summarise(range_playtime = max(average_playtime, na.rm = TRUE) - min(average_playtime, na.rm = TRUE))
 ```
 
-This result will show how the shortest and longest playtimes compare, giving an initial sense of variability.
+**Output:**
+
+```
+range_playtime
+5670
+```
+
+**Explanation:**
+
+- **Range**: The difference between the maximum and minimum playtime is **5670 hours**, indicating a wide variation in playtimes. Some games have very high playtimes, while others have little or no recorded playtime.
 
 ### Variance {.unnumbered}
 
-**Variance** measures the average squared deviation of each data point from the mean. It gives a sense of how much the values in a dataset vary. A high variance means the data points are spread out from the mean, while a low variance indicates that they are clustered closely around the mean.
+Variance measures how far data points are from the mean. It is calculated by averaging the squared deviations from the mean.
 
-#### Why Variance Is Useful {.unnumbered}
+#### Why Variance Is Important {.unnumbered}
 
-Variance is important in mass communication research because it quantifies variability. For instance, understanding the variance in TV show ratings can indicate whether viewers generally agree on the quality of a show or whether their opinions vary widely.
+Variance gives a sense of the overall variability in the data. In media research, it helps understand whether viewer ratings are tightly clustered or widely spread.
 
-In the **horror_movies** dataset, the `vote_average` variable represents movie ratings. To calculate the variance of movie ratings:
+Here’s how to calculate variance for horror movie ratings:
 
 ``` r
 # Calculate the variance of horror movie ratings
-var_vote_avg <- var(horror_movies$vote_average, na.rm = TRUE)
-var_vote_avg
+horror_movies %>%
+  summarise(var_vote_avg = var(vote_average, na.rm = TRUE))
 ```
 
-This result shows how much individual ratings differ from the average rating.
+**Output:**
+
+```
+var_vote_avg
+8.271386
+```
+
+**Explanation:**
+
+- **Variance**: The variance of the horror movie ratings is **8.27**. Variance measures how much the ratings spread out from the average. A higher variance means there’s a lot of variability in the ratings (some movies are rated very high, others very low).
 
 ### Standard Deviation {.unnumbered}
 
-The **standard deviation** is the square root of the variance and is one of the most commonly used measures of dispersion. It has the advantage of being in the same units as the data itself (unlike variance, which is in squared units). A low standard deviation means that the data points are close to the mean, while a high standard deviation indicates that the data points are more spread out.
+The **standard deviation** is the square root of the variance. It provides a more interpretable measure of variability since it is expressed in the same units as the data.
 
-#### Why Standard Deviation Is Useful {.unnumbered}
+#### Why Standard Deviation Is Important {.unnumbered}
 
-Standard deviation is often used in mass communication research to understand the consistency of data. For example, if we want to know how consistently users rate anime, the standard deviation of their ratings can provide that information.
+The standard deviation is widely used in media research because it shows how consistent or variable audience ratings or playtimes are.
 
-In the **anime** dataset, we can calculate the standard deviation of user ratings (`score`):
+Here’s how to calculate the standard deviation for **anime** scores:
 
 ``` r
 # Calculate the standard deviation of anime scores
-sd_anime_score <- sd(anime$score, na.rm = TRUE)
-sd_anime_score
+anime %>%
+  summarise(sd_score = sd(score, na.rm = TRUE))
 ```
 
-This result shows how much anime scores deviate from the average score, offering insights into whether most users tend to agree on ratings or whether opinions are more varied.
+**Output:**
 
-In the **video_games** dataset, we can also calculate the standard deviation of playtime (`average_playtime`):
-
-``` r
-# Calculate the standard deviation of average playtime
-sd_playtime <- sd(video_games$average_playtime, na.rm = TRUE)
-sd_playtime
+```
+sd_score
+0.973677
 ```
 
-This standard deviation will show how consistent playtimes are across different video games, providing insights into whether users typically engage with games for similar amounts of time or whether there’s significant variation.
+**Explanation:**
+
+- **Standard Deviation**: The standard deviation is **0.97**, which tells us how much anime scores deviate from the mean score. A smaller standard deviation would indicate that most anime scores are close to the mean, while a larger standard deviation would show that scores are spread out.
+
+Continuing from where we left off, let's elaborate on **Interquartile Range (IQR)** and why it’s particularly useful in descriptive analysis, followed by a broader summary of how students can interpret these measures of dispersion in mass communication and media research.
 
 ### Interquartile Range (IQR) {.unnumbered}
 
-The **interquartile range (IQR)** measures the range of the middle 50% of values in a dataset, and is calculated as the difference between the third quartile (Q3) and the first quartile (Q1). It is particularly useful for understanding the spread of the central portion of the data and is less sensitive to outliers than the range.
+The **IQR** is calculated by subtracting the 25th percentile (Q1) from the 75th percentile (Q3) of the data. This measure focuses on the central spread of the data, providing a more robust understanding of variability, especially in the presence of outliers or skewed distributions.
 
-#### Why the IQR Is Useful {.unnumbered}
+#### Why IQR Is Important {.unnumbered}
 
-The IQR is useful in identifying the spread of the "typical" data, excluding outliers. It’s especially important in skewed datasets, where the mean and standard deviation might not give an accurate picture of variability.
+The IQR is a great way to assess the **spread of typical values** in a dataset without being influenced by extreme values. In media research, the IQR could help determine typical viewership ranges for television shows or typical ratings for movies, excluding unusually high or low values that may distort the analysis.
 
-In the **horror_movies** dataset, we can calculate the IQR for movie ratings (`vote_average`):
-
-``` r
-# Calculate the IQR for horror movie ratings
-iqr_vote_avg <- IQR(horror_movies$vote_average, na.rm = TRUE)
-iqr_vote_avg
-```
-
-This will provide the range of the middle 50% of movie ratings, helping us understand the typical spread of ratings without the influence of extreme values.
-
-In the **video_games** dataset, we can calculate the IQR for average playtime (`average_playtime`):
+Let’s calculate the IQR for **video games** playtime using `dplyr`:
 
 ``` r
-# Calculate the IQR for average playtime
-iqr_playtime <- IQR(video_games$average_playtime, na.rm = TRUE)
-iqr_playtime
+# Calculate the IQR for playtime in video games
+video_games %>%
+  summarise(IQR_playtime = IQR(average_playtime, na.rm = TRUE))
 ```
 
-This value shows how playtimes are distributed for the central 50% of video games, helping to identify whether most games have a similar playtime or if there’s a large variance.
+**Output:**
 
-### Understanding Dispersion in Media Data {.unnumbered}
+```
+IQR_playtime
+0
+```
 
-In summary, measures of dispersion are critical in understanding the variability within datasets. They provide insights beyond the central tendency, helping researchers determine the spread and consistency of values. Here’s how these measures can be applied in mass communication research:
+**Explanation:**
 
--   **Range**: Offers a basic view of variability but is sensitive to outliers.
-    -   Example: Calculating the range of anime scores or playtimes in video games.
--   **Variance**: Provides a more nuanced understanding of variability by measuring the average squared deviations from the mean.
-    -   Example: Analyzing the variance in movie ratings to assess how much opinions vary.
--   **Standard Deviation**: A more interpretable measure than variance, showing how much values deviate from the mean in the original units of the data.
-    -   Example: Understanding the consistency of anime ratings or playtime durations.
--   **Interquartile Range (IQR)**: Focuses on the spread of the middle 50% of the data, excluding outliers.
-    -   Example: Examining the IQR of horror movie ratings to get a clearer picture of typical audience sentiment.
+- **IQR (Interquartile Range)**: The IQR is **0**, which means that the middle 50% of the data (from the 25th to the 75th percentile) has the same value, indicating that most of the recorded playtimes are likely very small or close to zero.
 
-By learning and applying these measures of dispersion, students will gain a deeper understanding of how data behaves and how to interpret variability in mass communication datasets.
+This calculation focuses on the middle 50% of playtime values, which can reveal what the "typical" playtime for most users looks like, while ignoring extreme playtimes that might distort the analysis.
+
+### Summary of Dispersion Measures {.unnumbered}
+
+Measures of dispersion complement measures of central tendency by providing insights into how spread out or variable the data is. Here’s a breakdown of when to use each:
+
+-   **Range**: Gives the simplest view of spread but is sensitive to outliers.
+    -   Example: The range of anime ratings helps determine the difference between the highest and lowest user scores.
+-   **Variance**: Quantifies overall variability by measuring how far each value is from the mean.
+    -   Example: The variance in movie ratings reveals how much viewer opinion varies for different horror films.
+-   **Standard Deviation**: A more interpretable measure of dispersion, expressed in the same units as the data. It shows how closely clustered values are around the mean.
+    -   Example: The standard deviation of video game playtime helps understand how consistent or varied player engagement is.
+-   **Interquartile Range (IQR)**: Focuses on the middle 50% of the data, excluding outliers. It is useful for skewed datasets.
+    -   Example: The IQR of horror movie ratings tells us the spread of typical viewer ratings, without being skewed by a few extremely high or low ratings.
+
+Together, these measures of dispersion provide a more complete picture of the dataset, helping researchers to assess whether their data is tightly clustered or spread out, consistent or varied, and to what extent outliers are influencing the results.
+
+## Using `skimr` for Quick Descriptive Analysis
+
+The `skimr` package offers a quick and comprehensive summary of a dataset, including both central tendency and dispersion measures. It’s a great tool for providing students with an overview of their data before diving deeper into analysis.
+
+### Convert the date columns to a proper date format
+
+You can use `as.Date()` to ensure your date and time data are in the correct format.
+
+``` r
+# Convert date columns to Date format
+anime <- anime %>%
+  mutate(start_date = as.Date(start_date, format = "%Y-%m-%d"),
+         end_date = as.Date(end_date, format = "%Y-%m-%d"))
+```
+
+This assumes the dates are in "YYYY-MM-DD" format. If they are in another format, adjust the `format` argument accordingly.
+
+### Run `skim()` after fixing the dates
+
+Once the dates are properly formatted, you can run `skim()` again to get a summary of the dataset:
+
+``` r
+# Quick summary of the anime dataset
+skim(anime)
+```
+
+**Output 1 (General Summary)**:
+- **Name**: anime
+- **Number of rows**: 77,911 (number of observations)
+- **Number of columns**: 28 (number of variables)
+- **Data types**: Most columns are character (17), with 8 numeric, 2 date, and 1 logical.
+
+**Output 2 (Column Details)**:
+- This part of the output provides detailed information about individual columns. For example:
+  - **name**: No missing values, with 13,628 unique entries.
+  - **episodes**: Has 987 missing values, median is 12 episodes, and the max is 3,057 episodes.
+
+**Explanation**:
+- **skim()** gives a comprehensive overview of the dataset, including missing values, column types, unique values, and basic statistics like min, max, and median. This helps you quickly understand the structure and quality of the data before analyzing it further.
+
+This command will give you a detailed summary of each variable, including counts, missing values, mean, median, standard deviation, min/max values, and more. The `skimr` package is particularly useful because it provides a concise summary in an easy-to-read format, making it ideal for exploratory data analysis.
+
+## Using the `psych` Package for Descriptive Statistics
+
+The `psych` package also offers advanced functions for summary statistics, which are especially useful in media research. This package simplifies descriptive and inferential statistics and makes it easy to calculate multiple statistics at once.
+
+Here’s how to calculate a wide range of descriptive statistics for the **horror_movies** dataset:
+
+``` r
+# Summary statistics using psych
+describe(horror_movies$vote_average)
+```
+
+**Output:**
+
+```
+vars  n      mean  sd   median  trimmed  mad  min  max  range  skew  kurtosis  se
+X1    1   32540   3.34  2.88    4       3.17   3.71   0    10   10   0.13  -1.18  0.02
+```
+
+**Explanation**:
+- **Mean (3.34)**: Average rating for horror movies.
+- **Median (4)**: The middle value, showing that half the movies have a rating lower than 4, and half have a rating higher.
+- **Standard Deviation (2.88)**: This shows there’s a wide range of ratings, as ratings deviate quite a bit from the average.
+- **Range (10)**: Movies are rated between 0 and 10.
+- **Skew (0.13)**: A slightly positive skew, meaning the data is somewhat skewed to the right (a few high ratings).
+- **Kurtosis (-1.18)**: Negative kurtosis indicates the distribution is flatter than normal (fewer extreme values).
+
+This command provides the mean, standard deviation, min/max values, and additional metrics like skewness and kurtosis, which can help you understand the shape and distribution of the data.
+
+For the **video_games** dataset:
+
+``` r
+# Summary statistics for video game playtime
+describe(video_games$average_playtime)
+```
+
+**Output:**
+
+```
+vars  n      mean   sd    median trimmed   mad   min  max   range skew  kurtosis  se
+X1    1    26679   9.06  117.94  0        0       0     5670  5670  27.03  948.55  0.72
+```
+
+**Explanation**:
+- **Mean Playtime (9.06 hours)**: On average, people spend around 9 hours playing video games, though this average may not represent typical behavior because of the extreme variation in playtime.
+- **Median Playtime (0 hours)**: This indicates that at least 50% of the video games have a playtime of zero, meaning many games in the dataset might not have much recorded playtime or are rarely played.
+- **Standard Deviation (117.94 hours)**: This large value suggests that there is a significant variation in playtime among video games. While many games have little to no playtime, some have extremely high playtimes.
+- **Range (5,670 hours)**: The difference between the longest and shortest playtimes is 5,670 hours, showing that a few games have very long playtimes.
+- **Skewness (27.03)**: The highly positive skew indicates that most of the playtimes are clustered at the lower end (near zero), with a few extreme values pulling the distribution to the right.
+- **Kurtosis (948.55)**: The extremely high kurtosis value suggests the distribution has heavy tails and outliers, meaning that a few games with very long playtimes are significantly influencing the distribution.
+- **Standard Error (SE = 0.72)**: This represents the average error in the estimation of the mean. Given the large standard deviation and skew, the standard error is relatively low, but the distribution remains highly variable.
+
+This command gives you a broad view of the central tendencies and variability in the dataset, helping you spot trends and outliers before performing more advanced analyses.
+
+## Interpreting Descriptive Statistics in Media Research
+
+### Putting It All Together {.unnumbered}
+
+In mass communication research, descriptive statistics help answer fundamental questions about media content, viewer engagement, and user behavior. By calculating measures of central tendency and dispersion, students can gain valuable insights into how media is consumed, rated, and discussed.
+
+For instance:
+
+-   **Viewer Ratings**: Understanding the mean and standard deviation of movie ratings can help researchers identify whether certain films are polarizing or generally well-received.
+-   **Playtime**: Analyzing the IQR of video game playtime can reveal the most common engagement patterns, highlighting whether most players engage briefly or deeply with the content.
+-   **Media Content**: Finding the mode of genres or themes can help researchers pinpoint what type of content is most frequently produced and consumed.
+
+Descriptive statistics form the backbone of media research, offering a clear, structured way to summarize complex data and make it interpretable. Whether you’re analyzing anime ratings, video game playtimes, or horror movie genres, these tools provide a foundation for deeper statistical analyses and meaningful insights.
+
+### Summary and Learning Points for Beginners: {.unnumbered}
+
+In these examples, you have explored various descriptive statistics for data sets related to horror movies, anime, and video games. Here's a recap of the key statistics covered:
+
+- **Mean**: A measure of central tendency that provides the "average" value of the dataset.
+- **Median**: The middle value of the data, useful when there are outliers or skewed data distributions.
+- **Mode**: The most frequently occurring value, particularly useful for categorical data.
+- **Range**: The difference between the maximum and minimum values, showing how spread out the data is.
+- **Variance and Standard Deviation**: Measures of how much the data varies or deviates from the mean. The standard deviation is often preferred because it is in the same units as the data.
+- **Interquartile Range (IQR)**: A measure of the spread of the middle 50% of the data, used to understand variability without being influenced by extreme values.
+- **Skewness and Kurtosis**: Skewness describes the symmetry of the data, while kurtosis indicates whether the data has heavy tails or outliers compared to a normal distribution.

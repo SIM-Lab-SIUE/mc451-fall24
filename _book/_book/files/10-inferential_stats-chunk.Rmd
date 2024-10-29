@@ -1,0 +1,600 @@
+# Inferential Analysis
+
+Inferential statistics are essential for making generalizations from a sample to a population. While descriptive statistics help summarize the data at hand, inferential statistics enable researchers to draw conclusions about a larger group based on a smaller sample. In mass communication research, inferential statistics are often used to determine relationships between variables, test hypotheses, and make predictions about audience behavior, media content, and public opinion.
+
+Let’s start by loading the necessary R packages.
+
+```{r}
+if (!require("data.table")) install.packages("data.table")
+if (!require("dplyr")) install.packages("dplyr")
+if (!require("psych")) install.packages("psych")
+if (!require("DescTools")) install.packages("DescTools")
+```
+
+Now load the datasets for this chapter.
+
+```{r}
+anime <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv")
+horror_movies <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv")
+video_games <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv")
+```
+
+You can access the data descriptions for each of these data sets on their respective TidyTuesday page.
+
+1.  [Anime Dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md)
+2.  [Horror Movies](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md)
+3.  [Video Games Dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30//readme.md)
+
+## Chi-Square Test of Independence
+
+The **Chi-square test of independence** helps determine if there is an association between two categorical variables. In mass communication research, this might involve testing whether media consumption habits (e.g., TV vs. social media) are associated with demographic characteristics (e.g., age group).
+
+### Why Use a Chi-Square Test? {.unnumbered}
+
+-   **Non-parametric Test**: Chi-square does not assume normal distribution.
+-   **Categorical Data**: It is specifically designed for use with nominal or ordinal data.
+-   **Media Research Example**: Suppose we want to analyze whether there is a relationship between a viewer’s gender and their preference for a media genre (e.g., horror vs. comedy).
+
+### Chi-Square Test in R {.unnumbered}
+
+Let’s say we want to examine the relationship between two categorical variables from the **horror_movies** dataset: `genre_names` and `vote_average_category` (a binned version of average movie ratings).
+
+First, let’s create a binned version of movie ratings:
+
+```{r}
+# Binning vote_average into low, medium, and high categories
+horror_movies <- horror_movies %>%
+  mutate(vote_average_category = cut(vote_average, 
+                                     breaks = c(0, 4, 7, 10),
+                                     labels = c("Low", "Medium", "High")))
+
+# Crosstab of genre and vote average category
+table_genre_ratings <- table(horror_movies$genre_names, horror_movies$vote_average_category)
+
+# Perform chi-square test
+chi_square_result <- chisq.test(table_genre_ratings)
+chi_square_result
+```
+
+**Output:**
+
+```
+Warning: Chi-squared approximation may be incorrect
+	Pearson's Chi-squared test
+
+data:  table_genre_ratings
+X-squared = NaN, df = 1542, p-value = NA
+```
+
+**Explanation:**
+
+- **Warning: Chi-squared approximation may be incorrect**: This warning often occurs when the expected frequencies in some cells of the contingency table are too small (less than 5), which can lead to unreliable results.
+- **X-squared = NaN**: This indicates that the test failed to compute the chi-square statistic, likely due to empty cells or categories with very few observations.
+- **p-value = NA**: The p-value is not available, meaning the test could not produce valid results. You may need to reduce the number of categories or ensure that every category has sufficient data before running the test again.
+
+### Interpreting Chi-Square Output {.unnumbered}
+
+-   **Chi-Square Statistic**: Measures how much the observed data deviate from the expected frequencies.
+-   **p-value**: If the p-value is less than 0.05, we reject the null hypothesis that the variables are independent. A significant result would suggest that the genre is related to the average rating category.
+-   **Degrees of Freedom**: Reflects the number of categories being compared. The higher the degrees of freedom, the more comparisons are being made.
+
+## Comparison of Means: T-tests
+
+T-tests are used to compare the means of two groups. In media research, you might compare the average viewer ratings between two genres, or the average playtime between two types of video games.
+
+### Independent Samples T-test {.unnumbered}
+
+The **independent samples t-test** is used when comparing two independent groups, such as different genres of movies. For example, we might want to compare the average viewer rating (`vote_average`) for horror movies and comedy movies.
+
+#### T-test in R {.unnumbered}
+
+We can use `dplyr` to filter the data for these two genres and then run a t-test using the `t.test()` function.
+
+```{r}
+# Filter for horror and comedy movies
+horror_comedy <- horror_movies %>%
+  filter(genre_names %in% c("Horror, Thriller", "Comedy, Horror"))
+
+# Perform t-test
+t_test_result <- t.test(vote_average ~ genre_names, data = horror_comedy)
+t_test_result
+```
+
+**Output:**
+
+```
+Welch Two Sample t-test
+
+data:  vote_average by genre_names
+t = -9.581, df = 5758.5, p-value < 2.2e-16
+alternative hypothesis: true difference in means between group Comedy, Horror and group Horror, Thriller is not equal to 0
+95 percent confidence interval:
+ -0.8317594 -0.5491999
+sample estimates:
+  mean in group Comedy, Horror 
+                      3.125809 
+mean in group Horror, Thriller 
+                      3.816288 
+```
+
+**Explanation:**
+
+- **t = -9.581**: This is the t-statistic, which shows the difference between the two group means relative to the variability within the groups. A large absolute value indicates a significant difference.
+- **p-value < 2.2e-16**: A very small p-value indicates that the difference between the means of the two groups (Comedy, Horror vs. Horror, Thriller) is statistically significant.
+- **95% confidence interval**: The range of values within which the true difference in means is likely to fall. Since the interval does not contain 0, we conclude there is a significant difference.
+- **Mean in each group**: The average `vote_average` for "Comedy, Horror" movies is 3.13, while for "Horror, Thriller" movies it is 3.82.
+
+### Interpreting T-test Output {.unnumbered}
+
+-   **t-statistic**: Indicates the size of the difference relative to the variation in the sample data.
+-   **p-value**: A p-value less than 0.05 suggests a statistically significant difference between the two groups.
+-   **95% Confidence Interval**: This interval gives the range of values that is likely to include the true mean difference between the groups.
+
+### Paired Samples T-test {.unnumbered}
+
+A **paired samples t-test** is used when comparing the means of the same group at two different points in time or under two different conditions. For example, if we wanted to compare the average viewer ratings of movies at the start and end of a movie-watching experiment, we could use a paired t-test.
+
+#### Paired T-test Example {.unnumbered}
+
+Assume that we want to compare the `vote_average` of a set of horror movies between two conditions: "before watching a trailer" and "after watching a trailer."
+
+```{r}
+# Create a paired dataset (hypothetical example)
+before_trailer <- horror_movies %>% filter(genre_names == "Horror") %>% mutate(condition = "Before Trailer")
+after_trailer <- horror_movies %>% filter(genre_names == "Horror") %>% mutate(condition = "After Trailer")
+
+# Join the datasets for a paired t-test (matching on movie title)
+paired_data <- before_trailer %>%
+  rename(vote_before = vote_average) %>%
+  inner_join(after_trailer %>% rename(vote_after = vote_average), by = "title")
+
+# Perform paired t-test
+paired_t_test_result <- t.test(paired_data$vote_before, paired_data$vote_after, paired = TRUE)
+paired_t_test_result
+```
+
+**Output:**
+
+```
+Warning: Detected an unexpected many-to-many relationship between `x` and `y`.
+	Paired t-test
+
+data:  paired_data$vote_before and paired_data$vote_after
+t = 0, df = 14232, p-value = 1
+alternative hypothesis: true mean difference is not equal to 0
+95 percent confidence interval:
+ -0.02362386  0.02362386
+sample estimates:
+mean difference 
+              0 
+```
+
+**Explanation:**
+
+- **Warning: Many-to-many relationship**: This suggests that the same movie may appear more than once in either the "before" or "after" dataset. Ensure that each movie is unique for a valid paired t-test.
+- **t = 0**: The t-statistic is 0, meaning there is no difference between the paired observations.
+- **p-value = 1**: A p-value of 1 means there is no evidence to reject the null hypothesis, indicating no significant difference between the two conditions.
+- **Mean difference = 0**: The average difference between the paired scores is 0, confirming no change between the two conditions.
+
+### Interpreting Paired T-test Output {.unnumbered}
+
+-   **Mean Difference**: Shows the average difference between the paired observations.
+-   **p-value**: A low p-value indicates that the mean difference is statistically significant.
+
+## Analysis of Variance (ANOVA)
+
+**ANOVA** is used when comparing means across more than two groups. For instance, if you wanted to compare average viewer ratings across three or more genres (e.g., horror, comedy, drama), ANOVA would be appropriate.
+
+### One-Way ANOVA {.unnumbered}
+
+One-way ANOVA tests the difference between the means of more than two independent groups. Let’s compare the average `vote_average` across several genres in the **horror_movies** dataset.
+
+#### ANOVA in R {.unnumbered}
+
+```{r}
+# One-way ANOVA for genre and vote_average
+anova_result <- aov(vote_average ~ genre_names, data = horror_movies)
+summary(anova_result)
+```
+
+**Output:**
+
+```
+               Df Sum Sq Mean Sq F value Pr(>F)    
+genre_names   771  21277  27.596   3.537 <2e-16 ***
+Residuals   31768 247866   7.802                   
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
+
+**Explanation:**
+
+- **Df (Degrees of freedom)**: 771 for the genres and 31,768 for the residuals. This reflects the number of categories (771) and the total number of observations minus the number of groups.
+- **Sum Sq**: The total variance attributed to the genre categories (21,277) and the residual variance (247,866).
+- **Mean Sq**: The mean square values, which are the sum of squares divided by the degrees of freedom. These represent the average variation within and between groups.
+- **F value = 3.537**: This is the ratio of the mean square between groups to the mean square within groups. A higher value indicates a greater difference between group means.
+- **p-value < 2e-16**: A very small p-value suggests that there are significant differences in `vote_average` across genres.
+
+### Interpreting ANOVA Output {.unnumbered}
+
+-   **F-statistic**: Measures the ratio of between-group variance to within-group variance. A higher F-value suggests a greater difference between group means.
+-   **p-value**: If the p-value is below 0.05, we can conclude that there is a statistically significant difference between the group means.
+
+## Regression Analysis
+
+Regression analysis helps identify the relationship between dependent and independent variables. In media research, you might want to predict viewer ratings based on various predictors such as genre, year of release, or budget.
+
+### Simple Linear Regression {.unnumbered}
+
+Simple linear regression models the relationship between one independent variable and one dependent variable. Let’s use **anime** data to predict the `score` of an anime series based on the number of episodes.
+
+#### Linear Regression in R {.unnumbered}
+
+```{r}
+# Linear regression for score based on episodes
+linear_model <- lm(score ~ episodes, data = anime)
+summary(linear_model)
+```
+
+**Output:**
+
+```
+Call:
+lm(formula = score ~ episodes, data = anime)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-8.2035 -0.5285  0.1229  0.6475  3.1349 
+
+Coefficients:
+             Estimate Std. Error t value Pr(>|t|)    
+(Intercept) 6.863e+00  3.693e-03  1858.4  <2e-16 ***
+episodes    2.284e-03  7.901e-05    28.9  <2e-16 ***
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 0.9627 on 76750 degrees of freedom
+  (1159 observations deleted due to missingness)
+Multiple R-squared:  0.01077,	Adjusted R-squared:  0.01075 
+F-statistic: 835.3 on 1 and 76750 DF,  p-value: < 2.2e-16
+```
+
+**Explanation:**
+
+- **Residuals**: This provides information on the distribution of the residuals (differences between observed and predicted values). A smaller residual range indicates a better fit.
+- **Coefficients**: 
+  - **Intercept (6.863)**: The predicted score when `episodes` is zero.
+  - **episodes (0.002284)**: For each additional episode, the score increases by about 0.002.
+- **p-values < 2e-16**: Both the intercept and the `episodes` coefficient are statistically significant.
+- **R-squared = 0.01077**: This suggests that about 1.1% of the variance in `score` is explained by the number of episodes. This is a small proportion, indicating a weak relationship.
+
+### Interpreting Regression Output {.unnumbered}
+
+-   **Coefficients**: The slope of the line indicates how much the dependent variable changes for every unit change in the independent variable.
+-   **R-squared**: Indicates the proportion of the variance in the dependent variable that is predictable from the independent variable(s). A higher R-squared value indicates a better fit.
+-   **p-value**: Tests the null hypothesis that the coefficient is zero (no effect). A small p-value suggests that the independent variable significantly predicts the dependent variable.
+
+## Effect Sizes
+
+**Effect sizes** measure the magnitude of relationships between variables. In addition to statistical significance, effect sizes provide context about the practical significance of the results. For example, even if a difference between means is statistically significant, it might not be meaningful if the effect size is small.
+
+### Cohen’s d for T-tests {.unnumbered}
+
+Cohen’s d is commonly used to measure effect size for t-tests. It provides a standardized difference between two means.
+
+#### Calculating Cohen’s d in R {.unnumbered}
+
+```{r}
+# Calculate Cohen's d for horror and comedy movies
+cohen_d_result <- cohen.d(vote_average ~ genre_names, data = horror_comedy)
+cohen_d_result
+```
+
+****Output:****
+
+```
+Call: cohen.d(x = vote_average ~ genre_names, data = horror_comedy)
+Cohen d statistic of difference between two means
+             lower effect upper
+vote_average   0.2   0.25   0.3
+```
+
+**Explanation:**
+
+- **Cohen's d statistic of difference between two means**: This measures the effect size, indicating the magnitude of the difference between the two groups (Comedy, Horror vs. Horror, Thriller) in terms of their `vote_average`.
+  - **Lower (0.2), effect (0.25), upper (0.3)**: This gives the range of Cohen's d, with the point estimate of 0.25 suggesting a **small effect size**. This means there is a small but noticeable difference in average ratings between the two genres.
+- **Multivariate (Mahalanobis) distance**: The Mahalanobis distance here quantifies the distance between the two groups in a multivariate space, helping to assess their overall separation.
+- **r equivalent (0.12)**: This provides the correlation equivalent of the difference between the means, suggesting a weak correlation between genre and vote average.
+
+### Interpreting Cohen’s d {.unnumbered}
+
+-   **d = 0.2**: Small effect size.
+-   **d = 0.5**: Medium effect size.
+-   **d = 0.8 or higher**: Large effect size.
+
+### $R^2$ for Regression Analysis {.unnumbered}
+
+In regression analysis, $R^2$ (the coefficient of determination) represents the proportion of the variance in the dependent variable that is predictable from the independent variable(s). A higher $R^2$ value indicates that the model fits the data well.
+
+#### Interpreting $R^2$ {.unnumbered}
+
+-   $R^2 = 0$: The model explains none of the variance in the dependent variable.
+-   $R^2 = 1$: The model perfectly explains all the variance in the dependent variable.
+-   **Moderate** $R^2$ values: In practice, especially in social sciences like media studies, moderate $R^2$ values (e.g., between 0.3 and 0.6) can still provide meaningful insight.
+
+Here’s an example of calculating and interpreting $R^2$ in a regression model using the **anime** dataset:
+
+```{r}
+# Fit a regression model to predict score based on episodes
+linear_model <- lm(score ~ episodes, data = anime)
+
+# Extract and print the R-squared value
+summary(linear_model)$r.squared
+```
+
+**Output:**
+
+```
+[1] 0.010766
+```
+
+**Explanation:**
+
+- **R-squared = 0.01077**: This indicates that the number of episodes explains only about 1.1% of the variability in the `score`. In other words, the model has a weak predictive power, suggesting that the number of episodes is not a strong predictor of anime scores.
+
+If the $R^2$ value is 0.4, for example, this means that 40% of the variability in anime scores can be explained by the number of episodes.
+
+### Effect Size for ANOVA: Eta-Squared ($\eta^2$) {.unnumbered}
+
+In ANOVA, **eta-squared (**$\eta^2$) is a common measure of effect size that describes how much of the total variability is attributed to the factors being studied. It is a way to quantify the proportion of variance accounted for by a factor, similar to $R^2$ in regression.
+
+#### Calculating $\eta^2$ in R {.unnumbered}
+
+We can calculate $\eta^2$ using the `etaSquared()` function from the `DescTools` package:
+
+```{r}
+# Calculate eta-squared for the ANOVA model
+library(DescTools)
+eta_squared <- EtaSq(anova_result)
+eta_squared
+```
+
+**Output:**
+
+```
+                eta.sq eta.sq.part
+genre_names 0.07905414  0.07905414
+```
+
+**Explanation:**
+
+- **Eta-squared (η² = 0.079)**: This measures the proportion of the variance in `vote_average` that can be explained by the `genre_names`. An eta-squared value of 0.079 means that 7.9% of the variability in vote averages can be attributed to the genre of the movies. In general, this indicates a small-to-moderate effect size.
+
+#### Interpreting $\eta^2$ {.unnumbered}
+
+-   **Small effect (**$\eta^2 = 0.01$): Small proportion of variance explained by the factor.
+-   **Medium effect (**$\eta^2 = 0.06$): Medium proportion of variance explained.
+-   **Large effect (**$\eta^2 = 0.14$): Large proportion of variance explained.
+
+For instance, if $\eta^2 = 0.10$ for a factor like movie genre, this would mean that 10% of the variability in movie ratings can be attributed to differences between genres.
+
+## Logistic Regression
+
+**Logistic regression** is used when the dependent variable is categorical (binary or multinomial), such as predicting whether a media viewer will subscribe to a service (Yes/No). Logistic regression models the probability of a particular outcome, such as whether a person will engage with a particular form of media based on demographic or behavioral data.
+
+### Simple Logistic Regression {.unnumbered}
+
+Let’s use a logistic regression model to predict whether a video game from the **video_games** dataset is rated as popular (defined as having a score greater than 80) based on the average playtime.
+
+```{r}
+# Create a binary outcome for popularity
+video_games <- video_games %>%
+  mutate(is_popular = ifelse(metascore > 80, 1, 0))
+
+# Fit a logistic regression model
+logistic_model <- glm(is_popular ~ average_playtime, family = binomial, data = video_games)
+summary(logistic_model)
+```
+
+**Output:**
+
+```
+Call:
+glm(formula = is_popular ~ average_playtime, family = binomial, 
+    data = video_games)
+
+Coefficients:
+                   Estimate Std. Error z value Pr(>|z|)    
+(Intercept)      -1.3245992  0.0466207 -28.412  <2e-16 ***
+average_playtime  0.0008414  0.0001799   4.676  2.92e-06 ***
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 2984.6  on 2847  degrees of freedom
+Residual deviance: 2955.3  on 2846  degrees of freedom
+  (23840 observations deleted due to missingness)
+AIC: 2959.3
+```
+
+**Explanation:**
+
+- **Coefficients**:
+  - **Intercept (-1.3246)**: The log odds of a game being popular when `average_playtime` is 0. This is statistically significant (p < 2e-16).
+  - **average_playtime (0.0008414)**: For each additional unit of average playtime, the log odds of a game being popular increase by 0.0008414, which is statistically significant (p = 2.92e-06).
+- **Residual deviance (2955.3)**: This measures how well the model fits the data. Lower deviance suggests a better fit.
+- **AIC (2959.3)**: The Akaike Information Criterion, a measure of model quality. Lower AIC values indicate better models.
+
+### Interpreting Logistic Regression Output {.unnumbered}
+
+-   **Coefficients**: In logistic regression, the coefficients represent log odds. Positive coefficients suggest that higher values of the predictor increase the probability of the outcome, while negative coefficients indicate the opposite.
+-   **Odds Ratio**: You can exponentiate the coefficients to obtain odds ratios, which are more interpretable. For example, if the odds ratio is 1.5, then for each one-unit increase in `average_playtime`, the odds of a game being popular increase by 50%.
+
+```{r}
+# Get odds ratios
+exp(coef(logistic_model))
+```
+
+**Output:**
+
+```
+     (Intercept) average_playtime 
+       0.2659095        1.0008417 
+```
+
+**Explanation:**
+
+- **Intercept (0.2659)**: The odds of a game being popular when `average_playtime` is 0 are 0.2659, or about 27%. This suggests that, when playtime is 0, the likelihood of a game being popular is low.
+- **average_playtime (1.0008417)**: For each additional unit of average playtime, the odds of a game being popular increase by a factor of 1.00084 (or 0.08%). While this is a small effect, it is statistically significant.
+
+### Multiple Logistic Regression {.unnumbered}
+
+Multiple logistic regression allows us to model a binary outcome based on multiple predictors. For example, we could predict whether an anime series is highly rated (score \> 8) based on the number of episodes and whether it falls under the action genre.
+
+```{r}
+# Create a binary outcome for high score
+anime <- anime %>%
+  mutate(is_high_score = ifelse(score > 8, 1, 0),
+         is_action = ifelse(grepl("Action", genre), 1, 0))  # Create binary variable for Action genre
+
+# Fit a multiple logistic regression model
+logistic_model_multi <- glm(is_high_score ~ episodes + is_action, family = binomial, data = anime)
+
+# Summary of the model
+summary(logistic_model_multi)
+```
+
+**Output:**
+
+```
+Call:
+glm(formula = is_high_score ~ episodes + is_action, family = binomial, 
+    data = anime)
+
+Coefficients:
+             Estimate Std. Error  z value Pr(>|z|)    
+(Intercept) -2.195536   0.013290 -165.207  <2e-16 ***
+episodes     0.004507   0.000281   16.039  <2e-16 ***
+is_action   -0.064141   0.042507   -1.509    0.131    
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 52232  on 76751  degrees of freedom
+Residual deviance: 51897  on 76749  degrees of freedom
+  (1159 observations deleted due to missingness)
+AIC: 51903
+```
+
+**Explanation:**
+
+- **Coefficients**:
+  - **Intercept (-2.1955)**: The log odds of an anime having a high score when the number of episodes is 0 and the genre is not Action.
+  - **episodes (0.004507)**: For each additional episode, the log odds of an anime having a high score increase by 0.0045. This is statistically significant (p < 2e-16).
+  - **is_action (-0.064141)**: The log odds of an anime being high-scored decrease slightly if it belongs to the Action genre, but this effect is not statistically significant (p = 0.131).
+
+### Interpreting Multiple Logistic Regression Output {.unnumbered}
+
+-   **Interaction Terms**: If you include interaction terms (e.g., `episodes * genre_names`), the model will estimate how the effect of one predictor depends on the level of another.
+-   **Adjusted Odds Ratio**: Odds ratios in multiple logistic regression account for the simultaneous effect of all predictors.
+
+## Confidence Intervals and Hypothesis Testing
+
+### Confidence Intervals {.unnumbered}
+
+Confidence intervals provide a range of values within which the true population parameter is expected to fall. In the context of mass communication research, confidence intervals give a sense of the uncertainty surrounding an estimate (e.g., the average viewer rating of a show).
+
+#### Calculating Confidence Intervals in R {.unnumbered}
+
+Confidence intervals for regression coefficients can be extracted using the `confint()` function.
+
+```{r}
+# Confidence intervals for logistic regression coefficients
+confint(logistic_model)
+```
+
+**Output:**
+
+```
+Waiting for profiling to be done...
+                         2.5 %      97.5 %
+(Intercept)      -1.4167964640 -1.23401187
+average_playtime  0.0005114701  0.00121759
+```
+
+**Explanation:**
+
+- **Confidence intervals for coefficients**:
+  - **Intercept**: The 95% confidence interval for the intercept is between -1.4168 and -1.2340. This range does not include 0, which indicates that the intercept is significantly different from 0.
+  - **average_playtime**: The 95% confidence interval for the average playtime coefficient is between 0.000511 and 0.001218. This range does not include 0, suggesting that the effect of average playtime is statistically significant.
+
+### Hypothesis Testing {.unnumbered}
+
+In inferential statistics, **hypothesis testing** is used to determine whether there is enough evidence to support a certain claim about a population. Common steps in hypothesis testing include:
+
+1.  **Null Hypothesis (H0)**: Assumes no effect or no difference.
+2.  **Alternative Hypothesis (H1)**: Assumes that there is an effect or a difference.
+3.  **Test Statistic**: A calculated value used to assess the likelihood of the null hypothesis.
+4.  **p-value**: The probability of obtaining the observed data if the null hypothesis were true. If the p-value is below a predefined threshold (usually 0.05), we reject the null hypothesis.
+
+### Example: Testing Whether Genre Affects Viewer Ratings {.unnumbered}
+
+If we want to test whether genre affects viewer ratings in the **horror_movies** dataset, we can use an ANOVA model and interpret the p-values to decide whether to reject the null hypothesis.
+
+```{r}
+# Fit an ANOVA model
+anova_model <- aov(vote_average ~ genre_names, data = horror_movies)
+
+# Check p-value for genre effect
+summary(anova_model)
+```
+
+**Output:**
+
+```
+               Df Sum Sq Mean Sq F value Pr(>F)    
+genre_names   771  21277  27.596   3.537 <2e-16 ***
+Residuals   31768 247866   7.802                   
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+```
+
+**Explanation:**
+
+- **Degrees of Freedom (Df)**: There are 771 degrees of freedom for the genre variable, which means that there are 772 unique genres in the dataset. The residual degrees of freedom are 31,768, which is the number of observations minus the number of genres.
+  
+- **Sum Sq (Sum of Squares)**: 
+  - **genre_names (21,277)**: The total variation in `vote_average` explained by differences between genres.
+  - **Residuals (247,866)**: The total variation in `vote_average` that is not explained by the genre differences.
+  
+- **Mean Sq (Mean Square)**: 
+  - **genre_names (27.596)**: The average variation in `vote_average` due to genre differences (Sum of Squares divided by degrees of freedom).
+  - **Residuals (7.802)**: The average variation in `vote_average` within each genre (Residual Sum of Squares divided by residual degrees of freedom).
+  
+- **F-value (3.537)**: This indicates the ratio of the mean square for genres to the mean square for residuals. A larger F-value indicates that there is more variation between genres than would be expected by chance.
+  
+- **p-value (< 2e-16)**: The very small p-value indicates that the variation in `vote_average` across different genres is statistically significant. In other words, genre has a significant effect on movie ratings.
+
+If the p-value for `genre_names` is less than 0.05, we would reject the null hypothesis and conclude that genre has a significant effect on viewer ratings.
+
+### Summary of Key Concepts {.unnumbered}
+
+In this chapter, we covered several essential inferential statistics techniques used in mass communication and media research, including:
+
+1. **Chi-Square Test**: A warning indicated issues with small expected frequencies, leading to invalid results.
+2. **T-Test**: Showed a significant difference in `vote_average` between the "Comedy, Horror" and "Horror, Thriller" genres.
+3. **Paired T-Test**: The analysis revealed no significant difference in `vote_average` before and after the trailer for horror movies.
+4. **ANOVA**: Demonstrated that genre significantly affects `vote_average`, with a small-to-moderate effect size (eta-squared of 0.079).
+5. **Linear Regression**: Indicated a weak positive relationship between the number of episodes and anime scores, with an R-squared value of only 0.01.
+6. **Cohen’s d**: A small effect size (0.25) was observed between the two genres.
+7. **Logistic Regression**: Highlighted the relationship between `average_playtime` and the likelihood of a video game being popular.
+8. **Confidence Intervals**: Provided additional evidence that the effects were statistically significant.
+
+These tools allow researchers to draw conclusions about media consumption patterns, viewer preferences, and other media-related behaviors. By using the statistical methods and packages demonstrated in this chapter, students can perform robust analyses that contribute to a deeper understanding of the media landscape.

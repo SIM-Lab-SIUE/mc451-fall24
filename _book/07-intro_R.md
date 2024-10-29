@@ -1,5 +1,7 @@
 # Introduction to R and RStudio
 
+[[Chunk Version]](_book/files/07-intro_R-chunks.Rmd)
+
 ## What is R and RStudio?
 
 ### What is R? {.unnumbered}
@@ -156,19 +158,19 @@ R's strength lies in its extensive ecosystem of packages, which extend its core 
 
 To install a package in R, you need to use the `install.packages()` function. This only needs to be done once per package:
 
-```r
+``` r
 install.packages("ggplot2")
 ```
 
 In RStudio, you can run this code in a code chunk or type it directly into the console. For example, to install a package in R Markdown, use the following code chunk:
 
-```r
+``` r
 install.packages("ggplot2")
 ```
 
 After installation, load the package into your R session using the `library()` function:
 
-```r
+``` r
 library(ggplot2)
 ```
 
@@ -188,7 +190,7 @@ This section introduces basic R programming concepts relevant to mass communicat
 
 In R Markdown, code is written inside "chunks." These chunks execute code and display the output directly in the document. To insert a code chunk in R Markdown, use three backticks followed by `{r}` to indicate you are writing R code. For example:
 
-```r
+``` r
 # This is a code chunk
 print("Hello, World!")
 ```
@@ -201,7 +203,7 @@ The code inside the chunk runs when you "knit" the document, and the output will
 
 Data can be input directly into R, which is useful for small datasets or examples. Below is how you manually input data as a vector (a list of numbers or words):
 
-```r
+``` r
 # Inputting numerical data
 age <- c(18, 23, 21, 30)
 
@@ -217,14 +219,14 @@ Clear, well-commented, and organized code is crucial for making your analysis re
 
 In R, comments are created using the `#` symbol. Anything written after `#` is ignored by R and is only meant for humans reading the code. Commenting is useful for explaining what each section of the code does or noting important details about the analysis:
 
-```r
+``` r
 # This is a comment
 age <- c(18, 23, 21, 30)  # Vector of ages
 ```
 
 Use comments to explain the purpose of code sections, especially when performing key analyses. For example:
 
-```r
+``` r
 # This code reads data from an online CSV file
 billboard <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2021/2021-09-14/billboard.csv")
 ```
@@ -233,7 +235,7 @@ billboard <- read.csv("https://raw.githubusercontent.com/rfordatascience/tidytue
 
 To organize larger scripts, you can use headers or dividers to mark different sections. This makes it easier to navigate the code:
 
-```r
+``` r
 # ===========================
 # Section: Data Preparation
 # ===========================
@@ -243,7 +245,7 @@ In R Markdown, you can organize code sections using headings in markdown format:
 
 ## Data Preparation
 
-```r
+``` r
 # Code for preparing data goes here
 ```
 
@@ -278,7 +280,7 @@ You can execute these basic arithmetic operations directly in the R console.
 
 ***Addition***
 
-```r
+``` r
 5 + 3
 ```
 
@@ -286,7 +288,7 @@ You can execute these basic arithmetic operations directly in the R console.
 
 ***Subtraction***
 
-```r
+``` r
 5 - 3
 ```
 
@@ -294,7 +296,7 @@ You can execute these basic arithmetic operations directly in the R console.
 
 ***Multiplication***
 
-```r
+``` r
 5 * 3
 ```
 
@@ -302,7 +304,7 @@ You can execute these basic arithmetic operations directly in the R console.
 
 ***Division***
 
-```r
+``` r
 5 / 3
 ```
 
@@ -310,7 +312,7 @@ You can execute these basic arithmetic operations directly in the R console.
 
 ***Exponentiation***
 
-```r
+``` r
 5 ^ 3
 ```
 
@@ -329,7 +331,7 @@ Variables act as storage containers for data, including numbers, strings, vector
 
 #### Examples {.unnumbered}
 
-```r
+``` r
 # Assigning a numerical value to a variable using <-
 x <- 10
 y <- 20
@@ -356,7 +358,7 @@ Examples of common built-in functions include: dz - **`sum()`**: Calculates the 
 
 ***Using sum function***
 
-```r
+``` r
 sum(1, 2, 3)
 ```
 
@@ -364,7 +366,7 @@ sum(1, 2, 3)
 
 ***Using mean function***
 
-```r
+``` r
 mean(c(1, 2, 3, 4))
 ```
 
@@ -372,7 +374,7 @@ mean(c(1, 2, 3, 4))
 
 ***Using sqrt function***
 
-```r
+``` r
 sqrt(16)
 ```
 
