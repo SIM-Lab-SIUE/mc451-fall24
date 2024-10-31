@@ -123,7 +123,7 @@
 
 \title{An Introduction to Research Methods in Mass Media}
 \author{Alex P Leith}
-\date{2024-10-29}
+\date{2024-10-30}
 
 \begin{document}
 \maketitle
@@ -3931,6 +3931,7 @@ Now load the datasets for this chapter.
 \begin{Highlighting}[]
 \NormalTok{anime }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019{-}04{-}23/tidy\_anime.csv"}\NormalTok{)}
 \NormalTok{horror\_movies }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022{-}11{-}01/horror\_movies.csv"}\NormalTok{)}
+\NormalTok{survivor }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2021/2021{-}06{-}01/summary.csv"}\NormalTok{)}
 \NormalTok{video\_games }\OtherTok{\textless{}{-}} \FunctionTok{fread}\NormalTok{(}\StringTok{"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019{-}07{-}30/video\_games.csv"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
@@ -3943,7 +3944,9 @@ You can access the data descriptions for each of these data sets on their respec
 \item
   \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md}{Anime Dataset}
 \item
-  \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md}{Horror Movies}
+  \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md}{Horror Movies Dataset}
+\item
+  \href{https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-06-01}{Survivor Dataset}
 \item
   \href{https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30//readme.md}{Video Games Dataset}
 \end{enumerate}
@@ -3974,15 +3977,70 @@ First, let's create a binned version of movie ratings:
 
 \begin{Shaded}
 \begin{Highlighting}[]
+\CommentTok{\# Filtering for desired datasets}
+\NormalTok{thriller\_comedy }\OtherTok{\textless{}{-}}\NormalTok{ horror\_movies }\SpecialCharTok{\%\textgreater{}\%}
+  \FunctionTok{filter}\NormalTok{(genre\_names }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Horror, Thriller"}\NormalTok{, }\StringTok{"Comedy, Horror"}\NormalTok{))}
+
 \CommentTok{\# Binning vote\_average into low, medium, and high categories}
-\NormalTok{horror\_movies }\OtherTok{\textless{}{-}}\NormalTok{ horror\_movies }\SpecialCharTok{\%\textgreater{}\%}
+\NormalTok{thriller\_comedy }\OtherTok{\textless{}{-}}\NormalTok{ thriller\_comedy }\SpecialCharTok{\%\textgreater{}\%}
   \FunctionTok{mutate}\NormalTok{(}\AttributeTok{vote\_average\_category =} \FunctionTok{cut}\NormalTok{(vote\_average, }
                                      \AttributeTok{breaks =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{10}\NormalTok{),}
                                      \AttributeTok{labels =} \FunctionTok{c}\NormalTok{(}\StringTok{"Low"}\NormalTok{, }\StringTok{"Medium"}\NormalTok{, }\StringTok{"High"}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
 
+Next, we calculate the crosstab table.
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{\# Crosstab of genre and vote average category}
-\NormalTok{table\_genre\_ratings }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(horror\_movies}\SpecialCharTok{$}\NormalTok{genre\_names, horror\_movies}\SpecialCharTok{$}\NormalTok{vote\_average\_category)}
+\NormalTok{table\_genre\_ratings }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(thriller\_comedy}\SpecialCharTok{$}\NormalTok{genre\_names, thriller\_comedy}\SpecialCharTok{$}\NormalTok{vote\_average\_category)}
+\NormalTok{table\_genre\_ratings}
+\end{Highlighting}
+\end{Shaded}
 
+\textbf{Output:}
+
+\begin{verbatim}
+                    Low Medium High
+  Comedy, Horror    448   1059  202
+  Horror, Thriller  575   1668  190
+\end{verbatim}
+
+\textbf{Explanation:}
+
+\begin{itemize}
+\tightlist
+\item
+  For \textbf{Comedy, Horror}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    448 movies are in the Low vote average category.
+  \item
+    1059 movies are in the Medium vote average category.
+  \item
+    202 movies are in the High vote average category.
+  \end{itemize}
+\item
+  For \textbf{Horror, Thriller}:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    575 movies are in the Low vote average category.
+  \item
+    1668 movies are in the Medium vote average category.
+  \item
+    190 movies are in the High vote average category.
+  \end{itemize}
+\end{itemize}
+
+Finally, preform the chi-square test
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \CommentTok{\# Perform chi{-}square test}
 \NormalTok{chi\_square\_result }\OtherTok{\textless{}{-}} \FunctionTok{chisq.test}\NormalTok{(table\_genre\_ratings)}
 \NormalTok{chi\_square\_result}
@@ -3992,23 +4050,21 @@ First, let's create a binned version of movie ratings:
 \textbf{Output:}
 
 \begin{verbatim}
-Warning: Chi-squared approximation may be incorrect
     Pearson's Chi-squared test
 
 data:  table_genre_ratings
-X-squared = NaN, df = 1542, p-value = NA
+X-squared = 26.392, df = 2, p-value = 1.858e-06
 \end{verbatim}
 
 \textbf{Explanation:}
 
 \begin{itemize}
-\tightlist
 \item
-  \textbf{Warning: Chi-squared approximation may be incorrect}: This warning often occurs when the expected frequencies in some cells of the contingency table are too small (less than 5), which can lead to unreliable results.
+  \textbf{X-squared = 26.392}: This is the chi-square statistic, which measures the extent of difference between the observed frequencies (the counts in the crosstab) and the expected frequencies (what we would expect if there were no association between the two variables). A higher chi-square statistic indicates a greater deviation from what we would expect under the assumption of independence (no association).
 \item
-  \textbf{X-squared = NaN}: This indicates that the test failed to compute the chi-square statistic, likely due to empty cells or categories with very few observations.
+  \textbf{df = 2}: Degrees of freedom. This is calculated as \((\text{number of rows} - 1) \times (\text{number of columns} - 1)\). In this case, there are 2 genres (rows) and 3 vote average categories (columns), so the degrees of freedom are \((2 - 1) \times (3 - 1) = 2\).
 \item
-  \textbf{p-value = NA}: The p-value is not available, meaning the test could not produce valid results. You may need to reduce the number of categories or ensure that every category has sufficient data before running the test again.
+  \textbf{p-value = 1.858e-06}: The p-value represents the probability of observing a chi-square statistic at least as extreme as 26.392 if there is no actual association between genre and vote average category. In this case, the p-value is extremely small (\(1.858 \times 10^{-6}\), or 0.000001858), which is well below the typical significance threshold of 0.05. This indicates \textbf{strong evidence} that there is a significant association between genre and vote average category.
 \end{itemize}
 
 \subsection*{Interpreting Chi-Square Output}\label{interpreting-chi-square-output}
@@ -4040,12 +4096,8 @@ We can use \texttt{dplyr} to filter the data for these two genres and then run a
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Filter for horror and comedy movies}
-\NormalTok{horror\_comedy }\OtherTok{\textless{}{-}}\NormalTok{ horror\_movies }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{filter}\NormalTok{(genre\_names }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\StringTok{"Horror, Thriller"}\NormalTok{, }\StringTok{"Comedy, Horror"}\NormalTok{))}
-
 \CommentTok{\# Perform t{-}test}
-\NormalTok{t\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{t.test}\NormalTok{(vote\_average }\SpecialCharTok{\textasciitilde{}}\NormalTok{ genre\_names, }\AttributeTok{data =}\NormalTok{ horror\_comedy)}
+\NormalTok{t\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{t.test}\NormalTok{(vote\_average }\SpecialCharTok{\textasciitilde{}}\NormalTok{ genre\_names, }\AttributeTok{data =}\NormalTok{ thriller\_comedy)}
 \NormalTok{t\_test\_result}
 \end{Highlighting}
 \end{Shaded}
@@ -4097,26 +4149,17 @@ mean in group Horror, Thriller
 \subsection*{Paired Samples T-test}\label{paired-samples-t-test}
 \addcontentsline{toc}{subsection}{Paired Samples T-test}
 
-A \textbf{paired samples t-test} is used when comparing the means of the same group at two different points in time or under two different conditions. For example, if we wanted to compare the average viewer ratings of movies at the start and end of a movie-watching experiment, we could use a paired t-test.
+A \textbf{paired samples t-test} is used when comparing the means of the same group at two different points in time or under two different conditions. For example, if we wanted to compare the number of viewers for the first and last episodes of television series, we could use a paired t-test.
 
 \subsubsection*{Paired T-test Example}\label{paired-t-test-example}
 \addcontentsline{toc}{subsubsection}{Paired T-test Example}
 
-Assume that we want to compare the \texttt{vote\_average} of a set of horror movies between two conditions: ``before watching a trailer'' and ``after watching a trailer.''
+Assume that we want to compare the \texttt{viewers\_premier} to the \texttt{viewers\_finale} of seasons of the show Survivor.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{\# Create a paired dataset (hypothetical example)}
-\NormalTok{before\_trailer }\OtherTok{\textless{}{-}}\NormalTok{ horror\_movies }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(genre\_names }\SpecialCharTok{==} \StringTok{"Horror"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{condition =} \StringTok{"Before Trailer"}\NormalTok{)}
-\NormalTok{after\_trailer }\OtherTok{\textless{}{-}}\NormalTok{ horror\_movies }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{filter}\NormalTok{(genre\_names }\SpecialCharTok{==} \StringTok{"Horror"}\NormalTok{) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{mutate}\NormalTok{(}\AttributeTok{condition =} \StringTok{"After Trailer"}\NormalTok{)}
-
-\CommentTok{\# Join the datasets for a paired t{-}test (matching on movie title)}
-\NormalTok{paired\_data }\OtherTok{\textless{}{-}}\NormalTok{ before\_trailer }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{rename}\NormalTok{(}\AttributeTok{vote\_before =}\NormalTok{ vote\_average) }\SpecialCharTok{\%\textgreater{}\%}
-  \FunctionTok{inner\_join}\NormalTok{(after\_trailer }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{rename}\NormalTok{(}\AttributeTok{vote\_after =}\NormalTok{ vote\_average), }\AttributeTok{by =} \StringTok{"title"}\NormalTok{)}
-
 \CommentTok{\# Perform paired t{-}test}
-\NormalTok{paired\_t\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{t.test}\NormalTok{(paired\_data}\SpecialCharTok{$}\NormalTok{vote\_before, paired\_data}\SpecialCharTok{$}\NormalTok{vote\_after, }\AttributeTok{paired =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{paired\_t\_test\_result }\OtherTok{\textless{}{-}} \FunctionTok{t.test}\NormalTok{(survivor}\SpecialCharTok{$}\NormalTok{viewers\_premier, survivor}\SpecialCharTok{$}\NormalTok{viewers\_finale, }\AttributeTok{paired =} \ConstantTok{TRUE}\NormalTok{)}
 \NormalTok{paired\_t\_test\_result}
 \end{Highlighting}
 \end{Shaded}
@@ -4124,17 +4167,16 @@ Assume that we want to compare the \texttt{vote\_average} of a set of horror mov
 \textbf{Output:}
 
 \begin{verbatim}
-Warning: Detected an unexpected many-to-many relationship between `x` and `y`.
-    Paired t-test
+    Paired t-test 
 
-data:  paired_data$vote_before and paired_data$vote_after
-t = 0, df = 14232, p-value = 1
+data:  survivor$viewers_premier and survivor$viewers_finale
+t = -0.76096, df = 39, p-value = 0.4513
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -0.02362386  0.02362386
+ -2.764596  1.253096
 sample estimates:
 mean difference 
-              0 
+       -0.75575 
 \end{verbatim}
 
 \textbf{Explanation:}
@@ -4142,13 +4184,15 @@ mean difference
 \begin{itemize}
 \tightlist
 \item
-  \textbf{Warning: Many-to-many relationship}: This suggests that the same movie may appear more than once in either the ``before'' or ``after'' dataset. Ensure that each movie is unique for a valid paired t-test.
+  \textbf{t-Statistic (t = -0.76096)}: The \textbf{t-value} is a measure of the size of the difference relative to the variation in the sample data. In this case, the t-value is -0.761. The negative sign suggests that, on average, viewership during the premieres was slightly lower than during the finales, but the magnitude of the difference is not very large.
 \item
-  \textbf{t = 0}: The t-statistic is 0, meaning there is no difference between the paired observations.
+  \textbf{Degrees of Freedom (df = 39)}: Degrees of freedom refer to the number of independent pieces of information available to estimate the population variance. For a paired t-test, the degrees of freedom are the number of pairs minus one. In this case, there are 40 pairs of premiere and finale viewership data (df = 40 - 1 = 39).
 \item
-  \textbf{p-value = 1}: A p-value of 1 means there is no evidence to reject the null hypothesis, indicating no significant difference between the two conditions.
+  \textbf{p-value (p = 0.4513)}: The p-value is 0.4513, which is \textbf{well above} the common significance level of 0.05. Since the p-value is much larger than 0.05, \textbf{we fail to reject the null hypothesis}, meaning that there is \textbf{no significant difference} between the mean viewership for the premieres and finales of the \emph{Survivor} seasons in this sample.
 \item
-  \textbf{Mean difference = 0}: The average difference between the paired scores is 0, confirming no change between the two conditions.
+  \textbf{Confidence Interval (95\% CI: -2.764596 to 1.253096)}: The confidence interval spans from \textbf{-2.76} to \textbf{1.25}, which includes zero. This further supports the conclusion that there is \textbf{no significant difference} between premiere and finale viewership, since the interval suggests that the mean difference could plausibly be zero.
+\item
+  \textbf{Mean Difference (mean difference = -0.75575)}: The mean difference is \textbf{-0.75575}, indicating that on average, the premiere viewership was 0.76 units (likely in millions of viewers) lower than the finale viewership. However, this difference is small and, as indicated by the p-value, is not statistically significant.
 \end{itemize}
 
 \subsection*{Interpreting Paired T-test Output}\label{interpreting-paired-t-test-output}
@@ -4314,15 +4358,15 @@ Cohen's d is commonly used to measure effect size for t-tests. It provides a sta
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# Calculate Cohen\textquotesingle{}s d for horror and comedy movies}
-\NormalTok{cohen\_d\_result }\OtherTok{\textless{}{-}} \FunctionTok{cohen.d}\NormalTok{(vote\_average }\SpecialCharTok{\textasciitilde{}}\NormalTok{ genre\_names, }\AttributeTok{data =}\NormalTok{ horror\_comedy)}
+\NormalTok{cohen\_d\_result }\OtherTok{\textless{}{-}} \FunctionTok{cohen.d}\NormalTok{(vote\_average }\SpecialCharTok{\textasciitilde{}}\NormalTok{ genre\_names, }\AttributeTok{data =}\NormalTok{ thriller\_comedy)}
 \NormalTok{cohen\_d\_result}
 \end{Highlighting}
 \end{Shaded}
 
-****Output:****
+\textbf{Output:}
 
 \begin{verbatim}
-Call: cohen.d(x = vote_average ~ genre_names, data = horror_comedy)
+Call: cohen.d(x = vote_average ~ genre_names, data = thriller_comedy)
 Cohen d statistic of difference between two means
              lower effect upper
 vote_average   0.2   0.25   0.3

@@ -1,632 +1,203 @@
 <!DOCTYPE html>
-<html lang="" xml:lang="">
+<html lang="en">
 <head>
-
-  <meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 10 Inferential Analysis | An Introduction to Research Methods in Mass Media</title>
-  <meta name="description" content="This is the textbook for MC 451 at SIU Edwardsville." />
-  <meta name="generator" content="bookdown 0.40 and GitBook 2.6.7" />
-
-  <meta property="og:title" content="Chapter 10 Inferential Analysis | An Introduction to Research Methods in Mass Media" />
-  <meta property="og:type" content="book" />
-  <meta property="og:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg" />
-  <meta property="og:description" content="This is the textbook for MC 451 at SIU Edwardsville." />
-  <meta name="github-repo" content="SIM-Lab-SIUE/mc451-fall24" />
-
-  <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 10 Inferential Analysis | An Introduction to Research Methods in Mass Media" />
-  
-  <meta name="twitter:description" content="This is the textbook for MC 451 at SIU Edwardsville." />
-  <meta name="twitter:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg" />
-
-<meta name="author" content="Alex P Leith" />
-
-
-<meta name="date" content="2024-10-29" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
-  
-  
-<link rel="prev" href="descriptive-analysis.html"/>
-<link rel="next" href="data-visualization-in-r.html"/>
-<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
-<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
-<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
-
-
-
-
-
-
-
-
-<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
-<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
-<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
-
-
-<style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { color: #008000; } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { color: #008000; font-weight: bold; } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-</style>
-
-<style type="text/css">
-  
-  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
-</style>
-
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>Chapter 10 Inferential Analysis | An Introduction to Research Methods in Mass Media</title>
+<meta name="author" content="Alex P Leith">
+<meta name="description" content="[Chunk Version] Inferential statistics are essential for making generalizations from a sample to a population. While descriptive statistics help summarize the data at hand, inferential statistics...">
+<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta property="og:title" content="Chapter 10 Inferential Analysis | An Introduction to Research Methods in Mass Media">
+<meta property="og:type" content="book">
+<meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/inferential-analysis.html">
+<meta property="og:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
+<meta property="og:description" content="[Chunk Version] Inferential statistics are essential for making generalizations from a sample to a population. While descriptive statistics help summarize the data at hand, inferential statistics...">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Chapter 10 Inferential Analysis | An Introduction to Research Methods in Mass Media">
+<meta name="twitter:description" content="[Chunk Version] Inferential statistics are essential for making generalizations from a sample to a population. While descriptive statistics help summarize the data at hand, inferential statistics...">
+<meta name="twitter:image" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/images/cover.jpg">
+<!-- JS --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/6.4.6/fuse.js" integrity="sha512-zv6Ywkjyktsohkbp9bb45V6tEMoWhzFzXis+LrMehmJZZSys19Yxf1dopHx7WzIKxr5tK2dVcYmaCk2uqdjF4A==" crossorigin="anonymous"></script><script src="https://kit.fontawesome.com/6ecbd6c532.js" crossorigin="anonymous"></script><script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link href="libs/bootstrap-4.6.0/bootstrap.min.css" rel="stylesheet">
+<script src="libs/bootstrap-4.6.0/bootstrap.bundle.min.js"></script><script src="libs/bs3compat-0.8.0/transition.js"></script><script src="libs/bs3compat-0.8.0/tabs.js"></script><script src="libs/bs3compat-0.8.0/bs3compat.js"></script><link href="libs/bs4_book-1.0.0/bs4_book.css" rel="stylesheet">
+<script src="libs/bs4_book-1.0.0/bs4_book.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/autocomplete.js/0.38.0/autocomplete.jquery.min.js" integrity="sha512-GU9ayf+66Xx2TmpxqJpliWbT5PiGYxpaG8rfnBEk1LL8l1KGkRShhngwdXK1UgqhAzWpZHSiYPc09/NwDQIGyg==" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/mark.min.js" integrity="sha512-5CYOlHXGh6QpOFA/TeTylKLWfB3ftPsde7AnmhuitiTX4K5SqCLBeKro6sPS8ilsz1Q4NRx3v8Ko2IBiszzdww==" crossorigin="anonymous"></script><!-- CSS --><style type="text/css">
+    
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  </style>
+<link rel="stylesheet" href="https://bootswatch.com/5/litera/bootstrap.min.css">
+<link rel="stylesheet" href="style.css">
 </head>
+<body data-spy="scroll" data-target="#toc">
 
-<body>
+<div class="container-fluid">
+<div class="row">
+  <header class="col-sm-12 col-lg-3 sidebar sidebar-book"><a class="sr-only sr-only-focusable" href="#content">Skip to main content</a>
 
-
-
-  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
-
-    <div class="book-summary">
-      <nav role="navigation">
-
-<ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html"><i class="fa fa-check"></i><b>1</b> Overview of Research Methods</a>
-<ul>
-<li class="chapter" data-level="1.1" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#definition-and-importance-of-research"><i class="fa fa-check"></i><b>1.1</b> Definition and Importance of Research</a>
-<ul>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#artifacts-in-mass-communications-research"><i class="fa fa-check"></i>Artifacts in Mass Communications Research</a></li>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#attributes-and-their-role-in-research"><i class="fa fa-check"></i>Attributes and Their Role in Research</a></li>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#the-significance-of-content-analysis"><i class="fa fa-check"></i>The Significance of Content Analysis</a></li>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#studying-media-portrayals"><i class="fa fa-check"></i>Studying Media Portrayals</a></li>
-</ul></li>
-<li class="chapter" data-level="1.2" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#qualitative-vs.-quantitative"><i class="fa fa-check"></i><b>1.2</b> Qualitative vs. Quantitative</a>
-<ul>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#qualitative-research"><i class="fa fa-check"></i>Qualitative Research</a></li>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#quantitative-research"><i class="fa fa-check"></i>Quantitative Research</a></li>
-<li class="chapter" data-level="" data-path="overview-of-research-methods.html"><a href="overview-of-research-methods.html#mixed-methods-approach"><i class="fa fa-check"></i>Mixed Methods Approach</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html"><i class="fa fa-check"></i><b>2</b> Research Ethics and the IRB Process</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-evolution-of-research-ethics-in-social-science"><i class="fa fa-check"></i><b>2.1</b> The Evolution of Research Ethics in Social Science</a>
-<ul>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#early-ethical-violations-and-the-call-for-reform"><i class="fa fa-check"></i>Early Ethical Violations and the Call for Reform</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-emergence-of-ethical-standards"><i class="fa fa-check"></i>The Emergence of Ethical Standards</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#navigating-the-irb-process"><i class="fa fa-check"></i><b>2.2</b> Navigating the IRB Process</a>
-<ul>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#completing-citi-certification"><i class="fa fa-check"></i>Completing CITI Certification</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#retrieving-your-citi-certificate"><i class="fa fa-check"></i>Retrieving Your CITI Certificate</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#completing-irb-proposal"><i class="fa fa-check"></i>Completing IRB Proposal</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#developing-consent-forms"><i class="fa fa-check"></i>Developing Consent Forms</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#developing-recruitment-materials"><i class="fa fa-check"></i>Developing Recruitment Materials</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#developing-survey-or-interview-questions"><i class="fa fa-check"></i>Developing Survey or Interview Questions</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-debriefing-process"><i class="fa fa-check"></i>The Debriefing Process</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#assessing-and-minimizing-harm"><i class="fa fa-check"></i>Assessing and Minimizing Harm</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#offering-incentives"><i class="fa fa-check"></i>Offering Incentives</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#submission-and-review-protocols"><i class="fa fa-check"></i>Submission and Review Protocols</a></li>
-</ul></li>
-<li class="chapter" data-level="2.3" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#ethical-considerations-specific-to-mass-media-research"><i class="fa fa-check"></i><b>2.3</b> Ethical Considerations Specific to Mass Media Research</a>
-<ul>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-observer-effect"><i class="fa fa-check"></i>The Observer Effect</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#the-observer-as-participant-role"><i class="fa fa-check"></i>The Observer-as-Participant Role</a></li>
-<li class="chapter" data-level="" data-path="research-ethics-and-the-irb-process.html"><a href="research-ethics-and-the-irb-process.html#ethical-considerations-and-strategies-for-mitigation"><i class="fa fa-check"></i>Ethical Considerations and Strategies for Mitigation</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html"><i class="fa fa-check"></i><b>3</b> Introduction to Research Papers</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#what-are-research-papers"><i class="fa fa-check"></i><b>3.1</b> What are Research Papers</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#originality"><i class="fa fa-check"></i>Originality</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#methodology"><i class="fa fa-check"></i>Methodology</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#evidence-based"><i class="fa fa-check"></i>Evidence-Based</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#peer-review"><i class="fa fa-check"></i>Peer Review</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#structure"><i class="fa fa-check"></i>Structure</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#find"><i class="fa fa-check"></i><b>3.2</b> How to Find Research Papers</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#check-your-university-library"><i class="fa fa-check"></i>Check Your University Library</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#use-a-specialized-search-engine."><i class="fa fa-check"></i>Use a specialized search engine.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#using-social-media-to-find-research-articles"><i class="fa fa-check"></i>Using Social Media to Find Research Articles</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#contacting-experts-in-your-field"><i class="fa fa-check"></i>Contacting Experts in Your Field</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#read"><i class="fa fa-check"></i><b>3.3</b> How to Read Research Papers</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-three-pass-approach."><i class="fa fa-check"></i>The three-pass approach.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-question-based-approach."><i class="fa fa-check"></i>The question-based approach.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-active-reading-approach."><i class="fa fa-check"></i>The active reading approach.</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#the-collaborative-reading-approach."><i class="fa fa-check"></i>The collaborative reading approach.</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#write"><i class="fa fa-check"></i><b>3.4</b> How to Write Research Papers</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#sections-of-an-academic-paper"><i class="fa fa-check"></i>Sections of an Academic Paper</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#information-for-inclusion"><i class="fa fa-check"></i>Information for Inclusion</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-research-papers.html"><a href="introduction-to-research-papers.html#examples-of-formal-reports"><i class="fa fa-check"></i>Examples of Formal Reports</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="4" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html"><i class="fa fa-check"></i><b>4</b> Writing for a Public Audience</a>
-<ul>
-<li class="chapter" data-level="4.1" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#communication-strategies"><i class="fa fa-check"></i><b>4.1</b> Communication Strategies</a>
-<ul>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#crafting-compelling-messages"><i class="fa fa-check"></i>Crafting Compelling Messages</a></li>
-</ul></li>
-<li class="chapter" data-level="4.2" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#common-formats"><i class="fa fa-check"></i><b>4.2</b> Common Formats</a>
-<ul>
-<li class="chapter" data-level="4.2.1" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#feature-article"><i class="fa fa-check"></i><b>4.2.1</b> Feature Article</a></li>
-<li class="chapter" data-level="4.2.2" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#infographic-with-white-paper"><i class="fa fa-check"></i><b>4.2.2</b> Infographic with White Paper</a></li>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#news-broadcast-script-with-storyboarding"><i class="fa fa-check"></i>News Broadcast Script with Storyboarding</a></li>
-</ul></li>
-<li class="chapter" data-level="4.3" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#utilizing-social-media-platforms"><i class="fa fa-check"></i><b>4.3</b> Utilizing Social Media Platforms</a>
-<ul>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#strengths-and-limitations"><i class="fa fa-check"></i>Strengths and Limitations</a></li>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#twitter"><i class="fa fa-check"></i>Twitter</a></li>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#facebook"><i class="fa fa-check"></i>Facebook</a></li>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#linkedin"><i class="fa fa-check"></i>LinkedIn</a></li>
-<li class="chapter" data-level="" data-path="writing-for-a-public-audience.html"><a href="writing-for-a-public-audience.html#instagram"><i class="fa fa-check"></i>Instagram</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="5" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html"><i class="fa fa-check"></i><b>5</b> Developing Research Questions and Hypotheses</a>
-<ul>
-<li class="chapter" data-level="5.1" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#conceptual-definitions-and-operationalization"><i class="fa fa-check"></i><b>5.1</b> Conceptual Definitions and Operationalization</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#conceptual-definitions"><i class="fa fa-check"></i>Conceptual Definitions</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#operationalization"><i class="fa fa-check"></i>Operationalization</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-importance-of-conceptual-definitions-and-operationalization"><i class="fa fa-check"></i>The Importance of Conceptual Definitions and Operationalization</a></li>
-</ul></li>
-<li class="chapter" data-level="5.2" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#identifying-independent-and-dependent-variables"><i class="fa fa-check"></i><b>5.2</b> Identifying Independent and Dependent Variables</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#independent-variables"><i class="fa fa-check"></i>Independent Variables</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#dependent-variables"><i class="fa fa-check"></i>Dependent Variables</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#cause-and-effect"><i class="fa fa-check"></i>Cause-and-Effect</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-role-of-variables-in-experimental-design"><i class="fa fa-check"></i>The Role of Variables in Experimental Design</a></li>
-</ul></li>
-<li class="chapter" data-level="5.3" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#formulating-research-questions"><i class="fa fa-check"></i><b>5.3</b> Formulating Research Questions</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#what-makes-a-good-research-question"><i class="fa fa-check"></i>What Makes a Good Research Question?</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#types-of-research-questions"><i class="fa fa-check"></i>Types of Research Questions</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-process-of-developing-a-research-question"><i class="fa fa-check"></i>The Process of Developing a Research Question</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-importance-of-well-defined-research-questions"><i class="fa fa-check"></i>The Importance of Well-Defined Research Questions</a></li>
-</ul></li>
-<li class="chapter" data-level="5.4" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#constructing-hypotheses"><i class="fa fa-check"></i><b>5.4</b> Constructing Hypotheses</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#null-hypothesis-h0"><i class="fa fa-check"></i>Null Hypothesis (H0)</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#alternative-hypothesis-h1"><i class="fa fa-check"></i>Alternative Hypothesis (H1)</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-role-of-hypotheses-in-research-design"><i class="fa fa-check"></i>The Role of Hypotheses in Research Design</a></li>
-</ul></li>
-<li class="chapter" data-level="5.5" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#levels-of-measurement-in-mass-media-research"><i class="fa fa-check"></i><b>5.5</b> Levels of Measurement in Mass Media Research</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#nominal-level-of-measurement"><i class="fa fa-check"></i>Nominal Level of Measurement</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#ordinal-level-of-measurement"><i class="fa fa-check"></i>Ordinal Level of Measurement</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#interval-level-of-measurement"><i class="fa fa-check"></i>Interval Level of Measurement</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#ratio-level-of-measurement"><i class="fa fa-check"></i>Ratio Level of Measurement</a></li>
-</ul></li>
-<li class="chapter" data-level="5.6" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#issues-in-measurement"><i class="fa fa-check"></i><b>5.6</b> Issues in Measurement</a>
-<ul>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#measurement-error"><i class="fa fa-check"></i>Measurement Error</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#validity"><i class="fa fa-check"></i>Validity</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#reliability"><i class="fa fa-check"></i>Reliability</a></li>
-<li class="chapter" data-level="" data-path="developing-research-questions-and-hypotheses.html"><a href="developing-research-questions-and-hypotheses.html#the-relationship-between-validity-and-reliability"><i class="fa fa-check"></i>The Relationship Between Validity and Reliability</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html"><i class="fa fa-check"></i><b>6</b> Designing Quantitative Research</a>
-<ul>
-<li class="chapter" data-level="6.1" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#research-design"><i class="fa fa-check"></i><b>6.1</b> Research Design</a>
-<ul>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#experimental-designs"><i class="fa fa-check"></i>Experimental Designs</a></li>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#non-experimental-designs"><i class="fa fa-check"></i>Non-Experimental Designs</a></li>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#sampling-methods"><i class="fa fa-check"></i>Sampling Methods</a></li>
-</ul></li>
-<li class="chapter" data-level="6.2" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#data-collection-techniques"><i class="fa fa-check"></i><b>6.2</b> Data Collection Techniques</a>
-<ul>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#surveys-and-questionnaires"><i class="fa fa-check"></i>Surveys and Questionnaires</a></li>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#observation-methods"><i class="fa fa-check"></i>Observation Methods</a></li>
-<li class="chapter" data-level="" data-path="designing-quantitative-research.html"><a href="designing-quantitative-research.html#content-analysis"><i class="fa fa-check"></i>Content Analysis</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html"><i class="fa fa-check"></i><b>7</b> Introduction to R and RStudio</a>
-<ul>
-<li class="chapter" data-level="7.1" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-r-and-rstudio"><i class="fa fa-check"></i><b>7.1</b> What is R and RStudio?</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-r"><i class="fa fa-check"></i>What is R?</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#what-is-rstudio"><i class="fa fa-check"></i>What is RStudio?</a></li>
-</ul></li>
-<li class="chapter" data-level="7.2" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#why-use-r-and-rstudio"><i class="fa fa-check"></i><b>7.2</b> Why Use R and RStudio?</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#open-source"><i class="fa fa-check"></i>Open Source</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-analysis-and-visualization"><i class="fa fa-check"></i>Data Analysis and Visualization</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#reproducible-research"><i class="fa fa-check"></i>Reproducible Research</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#flexibility-and-customization"><i class="fa fa-check"></i>Flexibility and Customization</a></li>
-</ul></li>
-<li class="chapter" data-level="7.3" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#how-to-install-r-and-rstudio"><i class="fa fa-check"></i><b>7.3</b> How to Install R and RStudio</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#how-to-install-r"><i class="fa fa-check"></i>How to Install R</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#how-to-install-rstudio"><i class="fa fa-check"></i>How to Install RStudio</a></li>
-</ul></li>
-<li class="chapter" data-level="7.4" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#getting-started-with-r-and-rstudio"><i class="fa fa-check"></i><b>7.4</b> Getting Started with R and RStudio</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#the-rstudio-interface"><i class="fa fa-check"></i>The RStudio Interface</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#setting-up-a-new-project"><i class="fa fa-check"></i>Setting Up a New Project</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#file-management"><i class="fa fa-check"></i>File Management</a></li>
-</ul></li>
-<li class="chapter" data-level="7.5" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#package-management"><i class="fa fa-check"></i><b>7.5</b> Package Management</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#installing-packages"><i class="fa fa-check"></i>Installing Packages</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#commonly-used-packages"><i class="fa fa-check"></i>Commonly Used Packages</a></li>
-</ul></li>
-<li class="chapter" data-level="7.6" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#basics-of-r-programming"><i class="fa fa-check"></i><b>7.6</b> Basics of R Programming</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#code-chunks-in-r-markdown"><i class="fa fa-check"></i>Code Chunks in R Markdown</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#manually-inputting-data"><i class="fa fa-check"></i>Manually Inputting Data</a></li>
-</ul></li>
-<li class="chapter" data-level="7.7" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#commenting-and-organizing-code"><i class="fa fa-check"></i><b>7.7</b> Commenting and Organizing Code</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#commenting-code"><i class="fa fa-check"></i>Commenting Code</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#organizing-code-with-sections"><i class="fa fa-check"></i>Organizing Code with Sections</a></li>
-</ul></li>
-<li class="chapter" data-level="7.8" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#data-preparation"><i class="fa fa-check"></i><b>7.8</b> Data Preparation</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#keeping-code-tidy"><i class="fa fa-check"></i>Keeping Code Tidy</a></li>
-</ul></li>
-<li class="chapter" data-level="7.9" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#basic-operations-in-r"><i class="fa fa-check"></i><b>7.9</b> Basic Operations in R</a>
-<ul>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#arithmetic-operations"><i class="fa fa-check"></i>Arithmetic Operations</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#variables"><i class="fa fa-check"></i>Variables</a></li>
-<li class="chapter" data-level="" data-path="introduction-to-r-and-rstudio.html"><a href="introduction-to-r-and-rstudio.html#functions"><i class="fa fa-check"></i>Functions</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="8" data-path="data-management.html"><a href="data-management.html"><i class="fa fa-check"></i><b>8</b> Data Management</a>
-<ul>
-<li class="chapter" data-level="8.1" data-path="data-management.html"><a href="data-management.html#defining-data"><i class="fa fa-check"></i><b>8.1</b> Defining Data</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#what-is-data"><i class="fa fa-check"></i>What is Data?</a></li>
-<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#what-is-data-in-mass-communication-research"><i class="fa fa-check"></i>What is Data in Mass Communication Research?</a></li>
-<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#qualitative-vs.-quantitative-data"><i class="fa fa-check"></i>Qualitative vs. Quantitative Data</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="data-management.html"><a href="data-management.html#variables-and-observations"><i class="fa fa-check"></i><b>8.2</b> Variables and Observations</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#explanation-of-data-types"><i class="fa fa-check"></i>Explanation of Data Types</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="data-management.html"><a href="data-management.html#inputting-data"><i class="fa fa-check"></i><b>8.3</b> Inputting Data</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#data-structures-in-r"><i class="fa fa-check"></i>Data Structures in R</a></li>
-<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#dataeditr"><i class="fa fa-check"></i>DataEditR</a></li>
-<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#importing-data-from-a-file"><i class="fa fa-check"></i>Importing Data from a File</a></li>
-<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#editing-imported-data"><i class="fa fa-check"></i>Editing Imported Data</a></li>
-</ul></li>
-<li class="chapter" data-level="8.4" data-path="data-management.html"><a href="data-management.html#manipulating-data"><i class="fa fa-check"></i><b>8.4</b> Manipulating Data</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-management.html"><a href="data-management.html#the-dplyr-package"><i class="fa fa-check"></i>The <code>dplyr</code> Package</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="9" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html"><i class="fa fa-check"></i><b>9</b> Descriptive Analysis</a>
-<ul>
-<li class="chapter" data-level="9.1" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#measures-of-central-tendency"><i class="fa fa-check"></i><b>9.1</b> Measures of Central Tendency</a>
-<ul>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#mean-arithmetic-average"><i class="fa fa-check"></i>Mean (Arithmetic Average)</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#median"><i class="fa fa-check"></i>Median</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#mode"><i class="fa fa-check"></i>Mode</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#comparing-mean-median-and-mode"><i class="fa fa-check"></i>Comparing Mean, Median, and Mode</a></li>
-</ul></li>
-<li class="chapter" data-level="9.2" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#measures-of-dispersion"><i class="fa fa-check"></i><b>9.2</b> Measures of Dispersion</a>
-<ul>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#range"><i class="fa fa-check"></i>Range</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#variance"><i class="fa fa-check"></i>Variance</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#standard-deviation"><i class="fa fa-check"></i>Standard Deviation</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#interquartile-range-iqr"><i class="fa fa-check"></i>Interquartile Range (IQR)</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#summary-of-dispersion-measures"><i class="fa fa-check"></i>Summary of Dispersion Measures</a></li>
-</ul></li>
-<li class="chapter" data-level="9.3" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#using-skimr-for-quick-descriptive-analysis"><i class="fa fa-check"></i><b>9.3</b> Using <code>skimr</code> for Quick Descriptive Analysis</a>
-<ul>
-<li class="chapter" data-level="9.3.1" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#convert-the-date-columns-to-a-proper-date-format"><i class="fa fa-check"></i><b>9.3.1</b> Convert the date columns to a proper date format</a></li>
-<li class="chapter" data-level="9.3.2" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#run-skim-after-fixing-the-dates"><i class="fa fa-check"></i><b>9.3.2</b> Run <code>skim()</code> after fixing the dates</a></li>
-</ul></li>
-<li class="chapter" data-level="9.4" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#using-the-psych-package-for-descriptive-statistics"><i class="fa fa-check"></i><b>9.4</b> Using the <code>psych</code> Package for Descriptive Statistics</a></li>
-<li class="chapter" data-level="9.5" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#interpreting-descriptive-statistics-in-media-research"><i class="fa fa-check"></i><b>9.5</b> Interpreting Descriptive Statistics in Media Research</a>
-<ul>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#putting-it-all-together"><i class="fa fa-check"></i>Putting It All Together</a></li>
-<li class="chapter" data-level="" data-path="descriptive-analysis.html"><a href="descriptive-analysis.html#summary-and-learning-points-for-beginners"><i class="fa fa-check"></i>Summary and Learning Points for Beginners:</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="10" data-path="inferential-analysis.html"><a href="inferential-analysis.html"><i class="fa fa-check"></i><b>10</b> Inferential Analysis</a>
-<ul>
-<li class="chapter" data-level="10.1" data-path="inferential-analysis.html"><a href="inferential-analysis.html#chi-square-test-of-independence"><i class="fa fa-check"></i><b>10.1</b> Chi-Square Test of Independence</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#why-use-a-chi-square-test"><i class="fa fa-check"></i>Why Use a Chi-Square Test?</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#chi-square-test-in-r"><i class="fa fa-check"></i>Chi-Square Test in R</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-chi-square-output"><i class="fa fa-check"></i>Interpreting Chi-Square Output</a></li>
-</ul></li>
-<li class="chapter" data-level="10.2" data-path="inferential-analysis.html"><a href="inferential-analysis.html#comparison-of-means-t-tests"><i class="fa fa-check"></i><b>10.2</b> Comparison of Means: T-tests</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#independent-samples-t-test"><i class="fa fa-check"></i>Independent Samples T-test</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-t-test-output"><i class="fa fa-check"></i>Interpreting T-test Output</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#paired-samples-t-test"><i class="fa fa-check"></i>Paired Samples T-test</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-paired-t-test-output"><i class="fa fa-check"></i>Interpreting Paired T-test Output</a></li>
-</ul></li>
-<li class="chapter" data-level="10.3" data-path="inferential-analysis.html"><a href="inferential-analysis.html#analysis-of-variance-anova"><i class="fa fa-check"></i><b>10.3</b> Analysis of Variance (ANOVA)</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#one-way-anova"><i class="fa fa-check"></i>One-Way ANOVA</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-anova-output"><i class="fa fa-check"></i>Interpreting ANOVA Output</a></li>
-</ul></li>
-<li class="chapter" data-level="10.4" data-path="inferential-analysis.html"><a href="inferential-analysis.html#regression-analysis"><i class="fa fa-check"></i><b>10.4</b> Regression Analysis</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#simple-linear-regression"><i class="fa fa-check"></i>Simple Linear Regression</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-regression-output"><i class="fa fa-check"></i>Interpreting Regression Output</a></li>
-</ul></li>
-<li class="chapter" data-level="10.5" data-path="inferential-analysis.html"><a href="inferential-analysis.html#effect-sizes"><i class="fa fa-check"></i><b>10.5</b> Effect Sizes</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#cohens-d-for-t-tests"><i class="fa fa-check"></i>Cohen’s d for T-tests</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-cohens-d"><i class="fa fa-check"></i>Interpreting Cohen’s d</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#r2-for-regression-analysis"><i class="fa fa-check"></i><span class="math inline">\(R^2\)</span> for Regression Analysis</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#effect-size-for-anova-eta-squared-eta2"><i class="fa fa-check"></i>Effect Size for ANOVA: Eta-Squared (<span class="math inline">\(\eta^2\)</span>)</a></li>
-</ul></li>
-<li class="chapter" data-level="10.6" data-path="inferential-analysis.html"><a href="inferential-analysis.html#logistic-regression"><i class="fa fa-check"></i><b>10.6</b> Logistic Regression</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#simple-logistic-regression"><i class="fa fa-check"></i>Simple Logistic Regression</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-logistic-regression-output"><i class="fa fa-check"></i>Interpreting Logistic Regression Output</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#multiple-logistic-regression"><i class="fa fa-check"></i>Multiple Logistic Regression</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#interpreting-multiple-logistic-regression-output"><i class="fa fa-check"></i>Interpreting Multiple Logistic Regression Output</a></li>
-</ul></li>
-<li class="chapter" data-level="10.7" data-path="inferential-analysis.html"><a href="inferential-analysis.html#confidence-intervals-and-hypothesis-testing"><i class="fa fa-check"></i><b>10.7</b> Confidence Intervals and Hypothesis Testing</a>
-<ul>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#confidence-intervals"><i class="fa fa-check"></i>Confidence Intervals</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#hypothesis-testing"><i class="fa fa-check"></i>Hypothesis Testing</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#example-testing-whether-genre-affects-viewer-ratings"><i class="fa fa-check"></i>Example: Testing Whether Genre Affects Viewer Ratings</a></li>
-<li class="chapter" data-level="" data-path="inferential-analysis.html"><a href="inferential-analysis.html#summary-of-key-concepts"><i class="fa fa-check"></i>Summary of Key Concepts</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="11" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html"><i class="fa fa-check"></i><b>11</b> Data Visualization in R</a>
-<ul>
-<li class="chapter" data-level="11.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-data-visualization"><i class="fa fa-check"></i><b>11.1</b> Introduction to Data Visualization</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#the-importance-of-data-visualization-in-mass-communications-research"><i class="fa fa-check"></i>The Importance of Data Visualization in Mass Communications Research</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#overview-of-data-visualization-capabilities-in-r"><i class="fa fa-check"></i>Overview of Data Visualization Capabilities in R</a></li>
-</ul></li>
-<li class="chapter" data-level="11.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#visualization-techniques"><i class="fa fa-check"></i><b>11.2</b> Visualization Techniques</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#creating-infographics"><i class="fa fa-check"></i>Creating Infographics</a></li>
-</ul></li>
-<li class="chapter" data-level="11.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#getting-started-with-ggplot2"><i class="fa fa-check"></i><b>11.3</b> Getting Started with ggplot2</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-ggplot2"><i class="fa fa-check"></i>Introduction to ggplot2</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#basic-concepts-of-the-grammar-of-graphics"><i class="fa fa-check"></i>Basic Concepts of the Grammar of Graphics</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#setting-up-rstudio-and-installing-ggplot2"><i class="fa fa-check"></i>Setting Up RStudio and Installing ggplot2</a></li>
-</ul></li>
-<li class="chapter" data-level="11.4" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#plots"><i class="fa fa-check"></i><b>11.4</b> Plots</a>
-<ul>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#prepare-workspace"><i class="fa fa-check"></i>Prepare Workspace</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#components-of-ggplot2-in-r"><i class="fa fa-check"></i>Components of ggplot2 in R</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#distribution-plots"><i class="fa fa-check"></i>Distribution Plots</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#correlation-plots"><i class="fa fa-check"></i>Correlation Plots</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#ranking-plots"><i class="fa fa-check"></i>Ranking Plots</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#part-of-a-whole"><i class="fa fa-check"></i>Part of a Whole</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#store-and-edit-plots"><i class="fa fa-check"></i>Store and Edit Plots</a></li>
-<li class="chapter" data-level="" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#saving-plots-in-r-markdown"><i class="fa fa-check"></i>Saving Plots in R Markdown</a></li>
-</ul></li>
-<li class="chapter" data-level="11.5" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#designing-infographics-in-r"><i class="fa fa-check"></i><b>11.5</b> Designing Infographics in R</a>
-<ul>
-<li class="chapter" data-level="11.5.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#overview-of-infographics-and-their-value-in-communicating-research-findings"><i class="fa fa-check"></i><b>11.5.1</b> Overview of Infographics and Their Value in Communicating Research Findings</a></li>
-<li class="chapter" data-level="11.5.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#tools-and-packages-in-r-for-creating-infographics"><i class="fa fa-check"></i><b>11.5.2</b> Tools and Packages in R for Creating Infographics</a></li>
-<li class="chapter" data-level="11.5.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#tips-for-effective-infographic-design"><i class="fa fa-check"></i><b>11.5.3</b> Tips for Effective Infographic Design</a></li>
-</ul></li>
-<li class="chapter" data-level="11.6" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#advanced-visualization-techniques"><i class="fa fa-check"></i><b>11.6</b> Advanced Visualization Techniques</a>
-<ul>
-<li class="chapter" data-level="11.6.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#visualizing-multiple-linear-regressions"><i class="fa fa-check"></i><b>11.6.1</b> Visualizing Multiple Linear Regressions</a></li>
-<li class="chapter" data-level="11.6.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#heat-maps-and-correlation-plots"><i class="fa fa-check"></i><b>11.6.2</b> Heat Maps and Correlation Plots</a></li>
-<li class="chapter" data-level="11.6.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#network-diagrams-and-maps"><i class="fa fa-check"></i><b>11.6.3</b> Network Diagrams and Maps</a></li>
-</ul></li>
-<li class="chapter" data-level="11.7" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#customizing-visualizations-in-r"><i class="fa fa-check"></i><b>11.7</b> Customizing Visualizations in R</a>
-<ul>
-<li class="chapter" data-level="11.7.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#customizing-plot-aesthetics-themes-colors-and-fonts"><i class="fa fa-check"></i><b>11.7.1</b> Customizing Plot Aesthetics: Themes, Colors, and Fonts</a></li>
-<li class="chapter" data-level="11.7.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#adding-annotations-and-labels-to-enhance-understanding"><i class="fa fa-check"></i><b>11.7.2</b> Adding Annotations and Labels to Enhance Understanding</a></li>
-<li class="chapter" data-level="11.7.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#adjusting-plot-dimensions-and-exporting-for-publication-and-presentations"><i class="fa fa-check"></i><b>11.7.3</b> Adjusting Plot Dimensions and Exporting for Publication and Presentations</a></li>
-</ul></li>
-<li class="chapter" data-level="11.8" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#interactive-visualizations-with-r"><i class="fa fa-check"></i><b>11.8</b> Interactive Visualizations with R</a>
-<ul>
-<li class="chapter" data-level="11.8.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#introduction-to-interactive-visualizations-using-packages-like-plotly-and-shiny"><i class="fa fa-check"></i><b>11.8.1</b> Introduction to Interactive Visualizations Using Packages like <code>plotly</code> and <code>shiny</code></a></li>
-<li class="chapter" data-level="11.8.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#creating-web-based-interactive-charts-and-dashboards"><i class="fa fa-check"></i><b>11.8.2</b> Creating Web-based Interactive Charts and Dashboards</a></li>
-<li class="chapter" data-level="11.8.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#applications-of-interactive-visualizations-in-mass-communications-research"><i class="fa fa-check"></i><b>11.8.3</b> Applications of Interactive Visualizations in Mass Communications Research</a></li>
-</ul></li>
-<li class="chapter" data-level="11.9" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#best-practices-for-data-visualization"><i class="fa fa-check"></i><b>11.9</b> Best Practices for Data Visualization</a>
-<ul>
-<li class="chapter" data-level="11.9.1" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#ethical-considerations-in-data-visualization"><i class="fa fa-check"></i><b>11.9.1</b> Ethical Considerations in Data Visualization</a></li>
-<li class="chapter" data-level="11.9.2" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#choosing-the-right-type-of-visualization-for-your-data"><i class="fa fa-check"></i><b>11.9.2</b> Choosing the Right Type of Visualization for Your Data</a></li>
-<li class="chapter" data-level="11.9.3" data-path="data-visualization-in-r.html"><a href="data-visualization-in-r.html#storytelling-with-data-crafting-a-narrative-around-your-visualizations"><i class="fa fa-check"></i><b>11.9.3</b> Storytelling with Data: Crafting a Narrative Around Your Visualizations</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="12" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html"><i class="fa fa-check"></i><b>12</b> Special Topics in Research Methods</a>
-<ul>
-<li class="chapter" data-level="12.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#ethical-issues-in-emerging-media-research"><i class="fa fa-check"></i><b>12.1</b> Ethical Issues in Emerging Media Research</a>
-<ul>
-<li class="chapter" data-level="12.1.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#digital-privacy-and-research"><i class="fa fa-check"></i><b>12.1.1</b> Digital Privacy and Research</a></li>
-</ul></li>
-<li class="chapter" data-level="12.2" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#current-trends-in-mass-media-research"><i class="fa fa-check"></i><b>12.2</b> Current Trends in Mass Media Research</a>
-<ul>
-<li class="chapter" data-level="12.2.1" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#data-driven-journalism"><i class="fa fa-check"></i><b>12.2.1</b> Data-Driven Journalism</a></li>
-<li class="chapter" data-level="12.2.2" data-path="special-topics-in-research-methods.html"><a href="special-topics-in-research-methods.html#critical-analysis-and-rhetorical-criticism"><i class="fa fa-check"></i><b>12.2.2</b> Critical Analysis and Rhetorical Criticism</a></li>
-</ul></li>
-</ul></li>
-<li class="chapter" data-level="13" data-path="appendix-1.html"><a href="appendix-1.html"><i class="fa fa-check"></i><b>13</b> Appendix</a>
-<ul>
-<li class="chapter" data-level="13.1" data-path="appendix-1.html"><a href="appendix-1.html#glossary-of-terms"><i class="fa fa-check"></i><b>13.1</b> Glossary of Terms</a>
-<ul>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#introduction-to-research-in-mass-communications"><i class="fa fa-check"></i>2. <strong>Introduction to Research in Mass Communications</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#developing-research-questions-and-hypotheses-1"><i class="fa fa-check"></i>3. <strong>Developing Research Questions and Hypotheses</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#designing-quantitative-research-1"><i class="fa fa-check"></i>4. <strong>Designing Quantitative Research</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#data-analysis-and-statistical-techniques"><i class="fa fa-check"></i>5. <strong>Data Analysis and Statistical Techniques</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#data-management-and-visualization"><i class="fa fa-check"></i>6. <strong>Data Management and Visualization</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#writing-and-presenting-research"><i class="fa fa-check"></i>7. <strong>Writing and Presenting Research</strong></a></li>
-<li class="chapter" data-level="" data-path="appendix-1.html"><a href="appendix-1.html#special-topics-in-research-methods-1"><i class="fa fa-check"></i>8. <strong>Special Topics in Research Methods</strong></a></li>
-</ul></li>
-<li class="chapter" data-level="13.2" data-path="appendix-1.html"><a href="appendix-1.html#assignments"><i class="fa fa-check"></i><b>13.2</b> Assignments</a></li>
-</ul></li>
-</ul>
-
-      </nav>
+    <div class="d-flex align-items-start justify-content-between">
+      <h1>
+        <a href="index.html" title="">An Introduction to Research Methods in Mass Media</a>
+      </h1>
+      <button class="btn btn-outline-primary d-lg-none ml-2 mt-1" type="button" data-toggle="collapse" data-target="#main-nav" aria-expanded="true" aria-controls="main-nav"><i class="fas fa-bars"></i><span class="sr-only">Show table of contents</span></button>
     </div>
 
-    <div class="book-body">
-      <div class="body-inner">
-        <div class="book-header" role="navigation">
-          <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">An Introduction to Research Methods in Mass Media</a>
-          </h1>
+    <div id="main-nav" class="collapse-lg">
+      <form role="search">
+        <input id="search" class="form-control" type="search" placeholder="Search" aria-label="Search">
+</form>
+
+      <nav aria-label="Table of contents"><h2>Table of contents</h2>
+        <ul class="book-toc list-unstyled">
+<li><a class="" href="index.html">Preface</a></li>
+<li><a class="" href="overview-of-research-methods.html"><span class="header-section-number">1</span> Overview of Research Methods</a></li>
+<li><a class="" href="research-ethics-and-the-irb-process.html"><span class="header-section-number">2</span> Research Ethics and the IRB Process</a></li>
+<li><a class="" href="introduction-to-research-papers.html"><span class="header-section-number">3</span> Introduction to Research Papers</a></li>
+<li><a class="" href="writing-for-a-public-audience.html"><span class="header-section-number">4</span> Writing for a Public Audience</a></li>
+<li><a class="" href="developing-research-questions-and-hypotheses.html"><span class="header-section-number">5</span> Developing Research Questions and Hypotheses</a></li>
+<li><a class="" href="designing-quantitative-research.html"><span class="header-section-number">6</span> Designing Quantitative Research</a></li>
+<li><a class="" href="introduction-to-r-and-rstudio.html"><span class="header-section-number">7</span> Introduction to R and RStudio</a></li>
+<li><a class="" href="data-management.html"><span class="header-section-number">8</span> Data Management</a></li>
+<li><a class="" href="descriptive-analysis.html"><span class="header-section-number">9</span> Descriptive Analysis</a></li>
+<li><a class="active" href="inferential-analysis.html"><span class="header-section-number">10</span> Inferential Analysis</a></li>
+<li><a class="" href="data-visualization-in-r.html"><span class="header-section-number">11</span> Data Visualization in R</a></li>
+<li><a class="" href="special-topics-in-research-methods.html"><span class="header-section-number">12</span> Special Topics in Research Methods</a></li>
+<li><a class="" href="appendix-1.html"><span class="header-section-number">13</span> Appendix</a></li>
+</ul>
+
+        <div class="book-extra">
+          
         </div>
-
-        <div class="page-wrapper" tabindex="-1" role="main">
-          <div class="page-inner">
-
-            <section class="normal" id="section-">
-<div id="inferential-analysis" class="section level1 hasAnchor" number="10">
-<h1><span class="header-section-number">Chapter 10</span> Inferential Analysis<a href="inferential-analysis.html#inferential-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+      </nav>
+</div>
+  </header><main class="col-sm-12 col-md-9 col-lg-7" id="content"><div id="inferential-analysis" class="section level1" number="10">
+<h1>
+<span class="header-section-number">10</span> Inferential Analysis<a class="anchor" aria-label="anchor" href="#inferential-analysis"><i class="fas fa-link"></i></a>
+</h1>
 <p><a href="_book/files/10-inferential_stats-chunk.Rmd">[Chunk Version]</a></p>
 <p>Inferential statistics are essential for making generalizations from a sample to a population. While descriptive statistics help summarize the data at hand, inferential statistics enable researchers to draw conclusions about a larger group based on a smaller sample. In mass communication research, inferential statistics are often used to determine relationships between variables, test hypotheses, and make predictions about audience behavior, media content, and public opinion.</p>
 <p>Let’s start by loading the necessary R packages.</p>
-<div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb91-1"><a href="inferential-analysis.html#cb91-1" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;data.table&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;data.table&quot;</span>)</span>
-<span id="cb91-2"><a href="inferential-analysis.html#cb91-2" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;dplyr&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;dplyr&quot;</span>)</span>
-<span id="cb91-3"><a href="inferential-analysis.html#cb91-3" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;psych&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;psych&quot;</span>)</span>
-<span id="cb91-4"><a href="inferential-analysis.html#cb91-4" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;DescTools&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;DescTools&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb91"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://r-datatable.com">"data.table"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"data.table"</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://personality-project.org/r/psych/">"psych"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"psych"</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://andrisignorell.github.io/DescTools/">"DescTools"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"DescTools"</span><span class="op">)</span></span></code></pre></div>
 <p>Now load the datasets for this chapter.</p>
-<div class="sourceCode" id="cb92"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb92-1"><a href="inferential-analysis.html#cb92-1" tabindex="-1"></a>anime <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv&quot;</span>)</span>
-<span id="cb92-2"><a href="inferential-analysis.html#cb92-2" tabindex="-1"></a>horror_movies <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv&quot;</span>)</span>
-<span id="cb92-3"><a href="inferential-analysis.html#cb92-3" tabindex="-1"></a>video_games <span class="ot">&lt;-</span> <span class="fu">fread</span>(<span class="st">&quot;https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv"</span><span class="op">)</span></span>
+<span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv"</span><span class="op">)</span></span>
+<span><span class="va">survivor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2021/2021-06-01/summary.csv"</span><span class="op">)</span></span>
+<span><span class="va">video_games</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv"</span><span class="op">)</span></span></code></pre></div>
 <p>You can access the data descriptions for each of these data sets on their respective TidyTuesday page.</p>
 <ol style="list-style-type: decimal">
 <li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md">Anime Dataset</a></li>
-<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md">Horror Movies</a></li>
+<li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md">Horror Movies Dataset</a></li>
+<li><a href="https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-06-01">Survivor Dataset</a></li>
 <li><a href="https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30//readme.md">Video Games Dataset</a></li>
 </ol>
-<div id="chi-square-test-of-independence" class="section level2 hasAnchor" number="10.1">
-<h2><span class="header-section-number">10.1</span> Chi-Square Test of Independence<a href="inferential-analysis.html#chi-square-test-of-independence" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="chi-square-test-of-independence" class="section level2" number="10.1">
+<h2>
+<span class="header-section-number">10.1</span> Chi-Square Test of Independence<a class="anchor" aria-label="anchor" href="#chi-square-test-of-independence"><i class="fas fa-link"></i></a>
+</h2>
 <p>The <strong>Chi-square test of independence</strong> helps determine if there is an association between two categorical variables. In mass communication research, this might involve testing whether media consumption habits (e.g., TV vs. social media) are associated with demographic characteristics (e.g., age group).</p>
-<div id="why-use-a-chi-square-test" class="section level3 unnumbered hasAnchor">
-<h3>Why Use a Chi-Square Test?<a href="inferential-analysis.html#why-use-a-chi-square-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="why-use-a-chi-square-test" class="section level3 unnumbered">
+<h3>Why Use a Chi-Square Test?<a class="anchor" aria-label="anchor" href="#why-use-a-chi-square-test"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><strong>Non-parametric Test</strong>: Chi-square does not assume normal distribution.</li>
-<li><strong>Categorical Data</strong>: It is specifically designed for use with nominal or ordinal data.</li>
-<li><strong>Media Research Example</strong>: Suppose we want to analyze whether there is a relationship between a viewer’s gender and their preference for a media genre (e.g., horror vs. comedy).</li>
+<li>
+<strong>Non-parametric Test</strong>: Chi-square does not assume normal distribution.</li>
+<li>
+<strong>Categorical Data</strong>: It is specifically designed for use with nominal or ordinal data.</li>
+<li>
+<strong>Media Research Example</strong>: Suppose we want to analyze whether there is a relationship between a viewer’s gender and their preference for a media genre (e.g., horror vs. comedy).</li>
 </ul>
 </div>
-<div id="chi-square-test-in-r" class="section level3 unnumbered hasAnchor">
-<h3>Chi-Square Test in R<a href="inferential-analysis.html#chi-square-test-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="chi-square-test-in-r" class="section level3 unnumbered">
+<h3>Chi-Square Test in R<a class="anchor" aria-label="anchor" href="#chi-square-test-in-r"><i class="fas fa-link"></i></a>
+</h3>
 <p>Let’s say we want to examine the relationship between two categorical variables from the <strong>horror_movies</strong> dataset: <code>genre_names</code> and <code>vote_average_category</code> (a binned version of average movie ratings).</p>
 <p>First, let’s create a binned version of movie ratings:</p>
-<div class="sourceCode" id="cb93"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb93-1"><a href="inferential-analysis.html#cb93-1" tabindex="-1"></a><span class="co"># Binning vote_average into low, medium, and high categories</span></span>
-<span id="cb93-2"><a href="inferential-analysis.html#cb93-2" tabindex="-1"></a>horror_movies <span class="ot">&lt;-</span> horror_movies <span class="sc">%&gt;%</span></span>
-<span id="cb93-3"><a href="inferential-analysis.html#cb93-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">vote_average_category =</span> <span class="fu">cut</span>(vote_average, </span>
-<span id="cb93-4"><a href="inferential-analysis.html#cb93-4" tabindex="-1"></a>                                     <span class="at">breaks =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">4</span>, <span class="dv">7</span>, <span class="dv">10</span>),</span>
-<span id="cb93-5"><a href="inferential-analysis.html#cb93-5" tabindex="-1"></a>                                     <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">&quot;Low&quot;</span>, <span class="st">&quot;Medium&quot;</span>, <span class="st">&quot;High&quot;</span>)))</span>
-<span id="cb93-6"><a href="inferential-analysis.html#cb93-6" tabindex="-1"></a></span>
-<span id="cb93-7"><a href="inferential-analysis.html#cb93-7" tabindex="-1"></a><span class="co"># Crosstab of genre and vote average category</span></span>
-<span id="cb93-8"><a href="inferential-analysis.html#cb93-8" tabindex="-1"></a>table_genre_ratings <span class="ot">&lt;-</span> <span class="fu">table</span>(horror_movies<span class="sc">$</span>genre_names, horror_movies<span class="sc">$</span>vote_average_category)</span>
-<span id="cb93-9"><a href="inferential-analysis.html#cb93-9" tabindex="-1"></a></span>
-<span id="cb93-10"><a href="inferential-analysis.html#cb93-10" tabindex="-1"></a><span class="co"># Perform chi-square test</span></span>
-<span id="cb93-11"><a href="inferential-analysis.html#cb93-11" tabindex="-1"></a>chi_square_result <span class="ot">&lt;-</span> <span class="fu">chisq.test</span>(table_genre_ratings)</span>
-<span id="cb93-12"><a href="inferential-analysis.html#cb93-12" tabindex="-1"></a>chi_square_result</span></code></pre></div>
+<div class="sourceCode" id="cb93"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Filtering for desired datasets</span></span>
+<span><span class="va">thriller_comedy</span> <span class="op">&lt;-</span> <span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">genre_names</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Horror, Thriller"</span>, <span class="st">"Comedy, Horror"</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Binning vote_average into low, medium, and high categories</span></span>
+<span><span class="va">thriller_comedy</span> <span class="op">&lt;-</span> <span class="va">thriller_comedy</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>vote_average_category <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cut.html">cut</a></span><span class="op">(</span><span class="va">vote_average</span>, </span>
+<span>                                     breaks <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="fl">0</span>, <span class="fl">4</span>, <span class="fl">7</span>, <span class="fl">10</span><span class="op">)</span>,</span>
+<span>                                     labels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Low"</span>, <span class="st">"Medium"</span>, <span class="st">"High"</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p>Next, we calculate the crosstab table.</p>
+<div class="sourceCode" id="cb94"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Crosstab of genre and vote average category</span></span>
+<span><span class="va">table_genre_ratings</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/table.html">table</a></span><span class="op">(</span><span class="va">thriller_comedy</span><span class="op">$</span><span class="va">genre_names</span>, <span class="va">thriller_comedy</span><span class="op">$</span><span class="va">vote_average_category</span><span class="op">)</span></span>
+<span><span class="va">table_genre_ratings</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
-<pre><code>Warning: Chi-squared approximation may be incorrect
-    Pearson&#39;s Chi-squared test
-
-data:  table_genre_ratings
-X-squared = NaN, df = 1542, p-value = NA</code></pre>
+<pre><code>                    Low Medium High
+  Comedy, Horror    448   1059  202
+  Horror, Thriller  575   1668  190</code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Warning: Chi-squared approximation may be incorrect</strong>: This warning often occurs when the expected frequencies in some cells of the contingency table are too small (less than 5), which can lead to unreliable results.</li>
-<li><strong>X-squared = NaN</strong>: This indicates that the test failed to compute the chi-square statistic, likely due to empty cells or categories with very few observations.</li>
-<li><strong>p-value = NA</strong>: The p-value is not available, meaning the test could not produce valid results. You may need to reduce the number of categories or ensure that every category has sufficient data before running the test again.</li>
-</ul>
-</div>
-<div id="interpreting-chi-square-output" class="section level3 unnumbered hasAnchor">
-<h3>Interpreting Chi-Square Output<a href="inferential-analysis.html#interpreting-chi-square-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<li>For <strong>Comedy, Horror</strong>:
 <ul>
-<li><strong>Chi-Square Statistic</strong>: Measures how much the observed data deviate from the expected frequencies.</li>
-<li><strong>p-value</strong>: If the p-value is less than 0.05, we reject the null hypothesis that the variables are independent. A significant result would suggest that the genre is related to the average rating category.</li>
-<li><strong>Degrees of Freedom</strong>: Reflects the number of categories being compared. The higher the degrees of freedom, the more comparisons are being made.</li>
+<li>448 movies are in the Low vote average category.</li>
+<li>1059 movies are in the Medium vote average category.</li>
+<li>202 movies are in the High vote average category.</li>
+</ul>
+</li>
+<li>For <strong>Horror, Thriller</strong>:
+<ul>
+<li>575 movies are in the Low vote average category.</li>
+<li>1668 movies are in the Medium vote average category.</li>
+<li>190 movies are in the High vote average category.</li>
+</ul>
+</li>
+</ul>
+<p>Finally, preform the chi-square test</p>
+<div class="sourceCode" id="cb96"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Perform chi-square test</span></span>
+<span><span class="va">chi_square_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/chisq.test.html">chisq.test</a></span><span class="op">(</span><span class="va">table_genre_ratings</span><span class="op">)</span></span>
+<span><span class="va">chi_square_result</span></span></code></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>    Pearson's Chi-squared test
+
+data:  table_genre_ratings
+X-squared = 26.392, df = 2, p-value = 1.858e-06</code></pre>
+<p><strong>Explanation:</strong></p>
+<ul>
+<li><p><strong>X-squared = 26.392</strong>: This is the chi-square statistic, which measures the extent of difference between the observed frequencies (the counts in the crosstab) and the expected frequencies (what we would expect if there were no association between the two variables). A higher chi-square statistic indicates a greater deviation from what we would expect under the assumption of independence (no association).</p></li>
+<li><p><strong>df = 2</strong>: Degrees of freedom. This is calculated as <span class="math inline">\((\text{number of rows} - 1) \times (\text{number of columns} - 1)\)</span>. In this case, there are 2 genres (rows) and 3 vote average categories (columns), so the degrees of freedom are <span class="math inline">\((2 - 1) \times (3 - 1) = 2\)</span>.</p></li>
+<li><p><strong>p-value = 1.858e-06</strong>: The p-value represents the probability of observing a chi-square statistic at least as extreme as 26.392 if there is no actual association between genre and vote average category. In this case, the p-value is extremely small (<span class="math inline">\(1.858 \times 10^{-6}\)</span>, or 0.000001858), which is well below the typical significance threshold of 0.05. This indicates <strong>strong evidence</strong> that there is a significant association between genre and vote average category.</p></li>
+</ul>
+</div>
+<div id="interpreting-chi-square-output" class="section level3 unnumbered">
+<h3>Interpreting Chi-Square Output<a class="anchor" aria-label="anchor" href="#interpreting-chi-square-output"><i class="fas fa-link"></i></a>
+</h3>
+<ul>
+<li>
+<strong>Chi-Square Statistic</strong>: Measures how much the observed data deviate from the expected frequencies.</li>
+<li>
+<strong>p-value</strong>: If the p-value is less than 0.05, we reject the null hypothesis that the variables are independent. A significant result would suggest that the genre is related to the average rating category.</li>
+<li>
+<strong>Degrees of Freedom</strong>: Reflects the number of categories being compared. The higher the degrees of freedom, the more comparisons are being made.</li>
 </ul>
 </div>
 </div>
-<div id="comparison-of-means-t-tests" class="section level2 hasAnchor" number="10.2">
-<h2><span class="header-section-number">10.2</span> Comparison of Means: T-tests<a href="inferential-analysis.html#comparison-of-means-t-tests" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="comparison-of-means-t-tests" class="section level2" number="10.2">
+<h2>
+<span class="header-section-number">10.2</span> Comparison of Means: T-tests<a class="anchor" aria-label="anchor" href="#comparison-of-means-t-tests"><i class="fas fa-link"></i></a>
+</h2>
 <p>T-tests are used to compare the means of two groups. In media research, you might compare the average viewer ratings between two genres, or the average playtime between two types of video games.</p>
-<div id="independent-samples-t-test" class="section level3 unnumbered hasAnchor">
-<h3>Independent Samples T-test<a href="inferential-analysis.html#independent-samples-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="independent-samples-t-test" class="section level3 unnumbered">
+<h3>Independent Samples T-test<a class="anchor" aria-label="anchor" href="#independent-samples-t-test"><i class="fas fa-link"></i></a>
+</h3>
 <p>The <strong>independent samples t-test</strong> is used when comparing two independent groups, such as different genres of movies. For example, we might want to compare the average viewer rating (<code>vote_average</code>) for horror movies and comedy movies.</p>
-<div id="t-test-in-r" class="section level4 unnumbered hasAnchor">
-<h4>T-test in R<a href="inferential-analysis.html#t-test-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>We can use <code>dplyr</code> to filter the data for these two genres and then run a t-test using the <code>t.test()</code> function.</p>
-<div class="sourceCode" id="cb95"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb95-1"><a href="inferential-analysis.html#cb95-1" tabindex="-1"></a><span class="co"># Filter for horror and comedy movies</span></span>
-<span id="cb95-2"><a href="inferential-analysis.html#cb95-2" tabindex="-1"></a>horror_comedy <span class="ot">&lt;-</span> horror_movies <span class="sc">%&gt;%</span></span>
-<span id="cb95-3"><a href="inferential-analysis.html#cb95-3" tabindex="-1"></a>  <span class="fu">filter</span>(genre_names <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">&quot;Horror, Thriller&quot;</span>, <span class="st">&quot;Comedy, Horror&quot;</span>))</span>
-<span id="cb95-4"><a href="inferential-analysis.html#cb95-4" tabindex="-1"></a></span>
-<span id="cb95-5"><a href="inferential-analysis.html#cb95-5" tabindex="-1"></a><span class="co"># Perform t-test</span></span>
-<span id="cb95-6"><a href="inferential-analysis.html#cb95-6" tabindex="-1"></a>t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(vote_average <span class="sc">~</span> genre_names, <span class="at">data =</span> horror_comedy)</span>
-<span id="cb95-7"><a href="inferential-analysis.html#cb95-7" tabindex="-1"></a>t_test_result</span></code></pre></div>
+<div id="t-test-in-r" class="section level4 unnumbered">
+<h4>T-test in R<a class="anchor" aria-label="anchor" href="#t-test-in-r"><i class="fas fa-link"></i></a>
+</h4>
+<p>We can use <code>dplyr</code> to filter the data for these two genres and then run a t-test using the <code><a href="https://rdrr.io/r/stats/t.test.html">t.test()</a></code> function.</p>
+<div class="sourceCode" id="cb98"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Perform t-test</span></span>
+<span><span class="va">t_test_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">vote_average</span> <span class="op">~</span> <span class="va">genre_names</span>, data <span class="op">=</span> <span class="va">thriller_comedy</span><span class="op">)</span></span>
+<span><span class="va">t_test_result</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>Welch Two Sample t-test
 
@@ -642,79 +213,94 @@ mean in group Horror, Thriller
                       3.816288 </code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>t = -9.581</strong>: This is the t-statistic, which shows the difference between the two group means relative to the variability within the groups. A large absolute value indicates a significant difference.</li>
-<li><strong>p-value &lt; 2.2e-16</strong>: A very small p-value indicates that the difference between the means of the two groups (Comedy, Horror vs. Horror, Thriller) is statistically significant.</li>
-<li><strong>95% confidence interval</strong>: The range of values within which the true difference in means is likely to fall. Since the interval does not contain 0, we conclude there is a significant difference.</li>
-<li><strong>Mean in each group</strong>: The average <code>vote_average</code> for “Comedy, Horror” movies is 3.13, while for “Horror, Thriller” movies it is 3.82.</li>
+<li>
+<strong>t = -9.581</strong>: This is the t-statistic, which shows the difference between the two group means relative to the variability within the groups. A large absolute value indicates a significant difference.</li>
+<li>
+<strong>p-value &lt; 2.2e-16</strong>: A very small p-value indicates that the difference between the means of the two groups (Comedy, Horror vs. Horror, Thriller) is statistically significant.</li>
+<li>
+<strong>95% confidence interval</strong>: The range of values within which the true difference in means is likely to fall. Since the interval does not contain 0, we conclude there is a significant difference.</li>
+<li>
+<strong>Mean in each group</strong>: The average <code>vote_average</code> for “Comedy, Horror” movies is 3.13, while for “Horror, Thriller” movies it is 3.82.</li>
 </ul>
 </div>
 </div>
-<div id="interpreting-t-test-output" class="section level3 unnumbered hasAnchor">
-<h3>Interpreting T-test Output<a href="inferential-analysis.html#interpreting-t-test-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpreting-t-test-output" class="section level3 unnumbered">
+<h3>Interpreting T-test Output<a class="anchor" aria-label="anchor" href="#interpreting-t-test-output"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><strong>t-statistic</strong>: Indicates the size of the difference relative to the variation in the sample data.</li>
-<li><strong>p-value</strong>: A p-value less than 0.05 suggests a statistically significant difference between the two groups.</li>
-<li><strong>95% Confidence Interval</strong>: This interval gives the range of values that is likely to include the true mean difference between the groups.</li>
+<li>
+<strong>t-statistic</strong>: Indicates the size of the difference relative to the variation in the sample data.</li>
+<li>
+<strong>p-value</strong>: A p-value less than 0.05 suggests a statistically significant difference between the two groups.</li>
+<li>
+<strong>95% Confidence Interval</strong>: This interval gives the range of values that is likely to include the true mean difference between the groups.</li>
 </ul>
 </div>
-<div id="paired-samples-t-test" class="section level3 unnumbered hasAnchor">
-<h3>Paired Samples T-test<a href="inferential-analysis.html#paired-samples-t-test" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<p>A <strong>paired samples t-test</strong> is used when comparing the means of the same group at two different points in time or under two different conditions. For example, if we wanted to compare the average viewer ratings of movies at the start and end of a movie-watching experiment, we could use a paired t-test.</p>
-<div id="paired-t-test-example" class="section level4 unnumbered hasAnchor">
-<h4>Paired T-test Example<a href="inferential-analysis.html#paired-t-test-example" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Assume that we want to compare the <code>vote_average</code> of a set of horror movies between two conditions: “before watching a trailer” and “after watching a trailer.”</p>
-<div class="sourceCode" id="cb97"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb97-1"><a href="inferential-analysis.html#cb97-1" tabindex="-1"></a><span class="co"># Create a paired dataset (hypothetical example)</span></span>
-<span id="cb97-2"><a href="inferential-analysis.html#cb97-2" tabindex="-1"></a>before_trailer <span class="ot">&lt;-</span> horror_movies <span class="sc">%&gt;%</span> <span class="fu">filter</span>(genre_names <span class="sc">==</span> <span class="st">&quot;Horror&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="st">&quot;Before Trailer&quot;</span>)</span>
-<span id="cb97-3"><a href="inferential-analysis.html#cb97-3" tabindex="-1"></a>after_trailer <span class="ot">&lt;-</span> horror_movies <span class="sc">%&gt;%</span> <span class="fu">filter</span>(genre_names <span class="sc">==</span> <span class="st">&quot;Horror&quot;</span>) <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">condition =</span> <span class="st">&quot;After Trailer&quot;</span>)</span>
-<span id="cb97-4"><a href="inferential-analysis.html#cb97-4" tabindex="-1"></a></span>
-<span id="cb97-5"><a href="inferential-analysis.html#cb97-5" tabindex="-1"></a><span class="co"># Join the datasets for a paired t-test (matching on movie title)</span></span>
-<span id="cb97-6"><a href="inferential-analysis.html#cb97-6" tabindex="-1"></a>paired_data <span class="ot">&lt;-</span> before_trailer <span class="sc">%&gt;%</span></span>
-<span id="cb97-7"><a href="inferential-analysis.html#cb97-7" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">vote_before =</span> vote_average) <span class="sc">%&gt;%</span></span>
-<span id="cb97-8"><a href="inferential-analysis.html#cb97-8" tabindex="-1"></a>  <span class="fu">inner_join</span>(after_trailer <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">vote_after =</span> vote_average), <span class="at">by =</span> <span class="st">&quot;title&quot;</span>)</span>
-<span id="cb97-9"><a href="inferential-analysis.html#cb97-9" tabindex="-1"></a></span>
-<span id="cb97-10"><a href="inferential-analysis.html#cb97-10" tabindex="-1"></a><span class="co"># Perform paired t-test</span></span>
-<span id="cb97-11"><a href="inferential-analysis.html#cb97-11" tabindex="-1"></a>paired_t_test_result <span class="ot">&lt;-</span> <span class="fu">t.test</span>(paired_data<span class="sc">$</span>vote_before, paired_data<span class="sc">$</span>vote_after, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb97-12"><a href="inferential-analysis.html#cb97-12" tabindex="-1"></a>paired_t_test_result</span></code></pre></div>
+<div id="paired-samples-t-test" class="section level3 unnumbered">
+<h3>Paired Samples T-test<a class="anchor" aria-label="anchor" href="#paired-samples-t-test"><i class="fas fa-link"></i></a>
+</h3>
+<p>A <strong>paired samples t-test</strong> is used when comparing the means of the same group at two different points in time or under two different conditions. For example, if we wanted to compare the number of viewers for the first and last episodes of television series, we could use a paired t-test.</p>
+<div id="paired-t-test-example" class="section level4 unnumbered">
+<h4>Paired T-test Example<a class="anchor" aria-label="anchor" href="#paired-t-test-example"><i class="fas fa-link"></i></a>
+</h4>
+<p>Assume that we want to compare the <code>viewers_premier</code> to the <code>viewers_finale</code> of seasons of the show Survivor.</p>
+<div class="sourceCode" id="cb100"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Perform paired t-test</span></span>
+<span><span class="va">paired_t_test_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/t.test.html">t.test</a></span><span class="op">(</span><span class="va">survivor</span><span class="op">$</span><span class="va">viewers_premier</span>, <span class="va">survivor</span><span class="op">$</span><span class="va">viewers_finale</span>, paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">paired_t_test_result</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
-<pre><code>Warning: Detected an unexpected many-to-many relationship between `x` and `y`.
-    Paired t-test
+<pre><code>    Paired t-test 
 
-data:  paired_data$vote_before and paired_data$vote_after
-t = 0, df = 14232, p-value = 1
+data:  survivor$viewers_premier and survivor$viewers_finale
+t = -0.76096, df = 39, p-value = 0.4513
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -0.02362386  0.02362386
+ -2.764596  1.253096
 sample estimates:
 mean difference 
-              0 </code></pre>
+       -0.75575 </code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Warning: Many-to-many relationship</strong>: This suggests that the same movie may appear more than once in either the “before” or “after” dataset. Ensure that each movie is unique for a valid paired t-test.</li>
-<li><strong>t = 0</strong>: The t-statistic is 0, meaning there is no difference between the paired observations.</li>
-<li><strong>p-value = 1</strong>: A p-value of 1 means there is no evidence to reject the null hypothesis, indicating no significant difference between the two conditions.</li>
-<li><strong>Mean difference = 0</strong>: The average difference between the paired scores is 0, confirming no change between the two conditions.</li>
+<li>
+<strong>t-Statistic (t = -0.76096)</strong>: The <strong>t-value</strong> is a measure of the size of the difference relative to the variation in the sample data. In this case, the t-value is -0.761. The negative sign suggests that, on average, viewership during the premieres was slightly lower than during the finales, but the magnitude of the difference is not very large.</li>
+<li>
+<strong>Degrees of Freedom (df = 39)</strong>: Degrees of freedom refer to the number of independent pieces of information available to estimate the population variance. For a paired t-test, the degrees of freedom are the number of pairs minus one. In this case, there are 40 pairs of premiere and finale viewership data (df = 40 - 1 = 39).</li>
+<li>
+<strong>p-value (p = 0.4513)</strong>: The p-value is 0.4513, which is <strong>well above</strong> the common significance level of 0.05. Since the p-value is much larger than 0.05, <strong>we fail to reject the null hypothesis</strong>, meaning that there is <strong>no significant difference</strong> between the mean viewership for the premieres and finales of the <em>Survivor</em> seasons in this sample.</li>
+<li>
+<strong>Confidence Interval (95% CI: -2.764596 to 1.253096)</strong>: The confidence interval spans from <strong>-2.76</strong> to <strong>1.25</strong>, which includes zero. This further supports the conclusion that there is <strong>no significant difference</strong> between premiere and finale viewership, since the interval suggests that the mean difference could plausibly be zero.</li>
+<li>
+<strong>Mean Difference (mean difference = -0.75575)</strong>: The mean difference is <strong>-0.75575</strong>, indicating that on average, the premiere viewership was 0.76 units (likely in millions of viewers) lower than the finale viewership. However, this difference is small and, as indicated by the p-value, is not statistically significant.</li>
 </ul>
 </div>
 </div>
-<div id="interpreting-paired-t-test-output" class="section level3 unnumbered hasAnchor">
-<h3>Interpreting Paired T-test Output<a href="inferential-analysis.html#interpreting-paired-t-test-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpreting-paired-t-test-output" class="section level3 unnumbered">
+<h3>Interpreting Paired T-test Output<a class="anchor" aria-label="anchor" href="#interpreting-paired-t-test-output"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><strong>Mean Difference</strong>: Shows the average difference between the paired observations.</li>
-<li><strong>p-value</strong>: A low p-value indicates that the mean difference is statistically significant.</li>
+<li>
+<strong>Mean Difference</strong>: Shows the average difference between the paired observations.</li>
+<li>
+<strong>p-value</strong>: A low p-value indicates that the mean difference is statistically significant.</li>
 </ul>
 </div>
 </div>
-<div id="analysis-of-variance-anova" class="section level2 hasAnchor" number="10.3">
-<h2><span class="header-section-number">10.3</span> Analysis of Variance (ANOVA)<a href="inferential-analysis.html#analysis-of-variance-anova" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="analysis-of-variance-anova" class="section level2" number="10.3">
+<h2>
+<span class="header-section-number">10.3</span> Analysis of Variance (ANOVA)<a class="anchor" aria-label="anchor" href="#analysis-of-variance-anova"><i class="fas fa-link"></i></a>
+</h2>
 <p><strong>ANOVA</strong> is used when comparing means across more than two groups. For instance, if you wanted to compare average viewer ratings across three or more genres (e.g., horror, comedy, drama), ANOVA would be appropriate.</p>
-<div id="one-way-anova" class="section level3 unnumbered hasAnchor">
-<h3>One-Way ANOVA<a href="inferential-analysis.html#one-way-anova" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="one-way-anova" class="section level3 unnumbered">
+<h3>One-Way ANOVA<a class="anchor" aria-label="anchor" href="#one-way-anova"><i class="fas fa-link"></i></a>
+</h3>
 <p>One-way ANOVA tests the difference between the means of more than two independent groups. Let’s compare the average <code>vote_average</code> across several genres in the <strong>horror_movies</strong> dataset.</p>
-<div id="anova-in-r" class="section level4 unnumbered hasAnchor">
-<h4>ANOVA in R<a href="inferential-analysis.html#anova-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb99"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb99-1"><a href="inferential-analysis.html#cb99-1" tabindex="-1"></a><span class="co"># One-way ANOVA for genre and vote_average</span></span>
-<span id="cb99-2"><a href="inferential-analysis.html#cb99-2" tabindex="-1"></a>anova_result <span class="ot">&lt;-</span> <span class="fu">aov</span>(vote_average <span class="sc">~</span> genre_names, <span class="at">data =</span> horror_movies)</span>
-<span id="cb99-3"><a href="inferential-analysis.html#cb99-3" tabindex="-1"></a><span class="fu">summary</span>(anova_result)</span></code></pre></div>
+<div id="anova-in-r" class="section level4 unnumbered">
+<h4>ANOVA in R<a class="anchor" aria-label="anchor" href="#anova-in-r"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb102"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># One-way ANOVA for genre and vote_average</span></span>
+<span><span class="va">anova_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">vote_average</span> <span class="op">~</span> <span class="va">genre_names</span>, data <span class="op">=</span> <span class="va">horror_movies</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova_result</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>               Df Sum Sq Mean Sq F value Pr(&gt;F)    
 genre_names   771  21277  27.596   3.537 &lt;2e-16 ***
@@ -724,33 +310,46 @@ Signif. codes:
 0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1</code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Df (Degrees of freedom)</strong>: 771 for the genres and 31,768 for the residuals. This reflects the number of categories (771) and the total number of observations minus the number of groups.</li>
-<li><strong>Sum Sq</strong>: The total variance attributed to the genre categories (21,277) and the residual variance (247,866).</li>
-<li><strong>Mean Sq</strong>: The mean square values, which are the sum of squares divided by the degrees of freedom. These represent the average variation within and between groups.</li>
-<li><strong>F value = 3.537</strong>: This is the ratio of the mean square between groups to the mean square within groups. A higher value indicates a greater difference between group means.</li>
-<li><strong>p-value &lt; 2e-16</strong>: A very small p-value suggests that there are significant differences in <code>vote_average</code> across genres.</li>
+<li>
+<strong>Df (Degrees of freedom)</strong>: 771 for the genres and 31,768 for the residuals. This reflects the number of categories (771) and the total number of observations minus the number of groups.</li>
+<li>
+<strong>Sum Sq</strong>: The total variance attributed to the genre categories (21,277) and the residual variance (247,866).</li>
+<li>
+<strong>Mean Sq</strong>: The mean square values, which are the sum of squares divided by the degrees of freedom. These represent the average variation within and between groups.</li>
+<li>
+<strong>F value = 3.537</strong>: This is the ratio of the mean square between groups to the mean square within groups. A higher value indicates a greater difference between group means.</li>
+<li>
+<strong>p-value &lt; 2e-16</strong>: A very small p-value suggests that there are significant differences in <code>vote_average</code> across genres.</li>
 </ul>
 </div>
 </div>
-<div id="interpreting-anova-output" class="section level3 unnumbered hasAnchor">
-<h3>Interpreting ANOVA Output<a href="inferential-analysis.html#interpreting-anova-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpreting-anova-output" class="section level3 unnumbered">
+<h3>Interpreting ANOVA Output<a class="anchor" aria-label="anchor" href="#interpreting-anova-output"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><strong>F-statistic</strong>: Measures the ratio of between-group variance to within-group variance. A higher F-value suggests a greater difference between group means.</li>
-<li><strong>p-value</strong>: If the p-value is below 0.05, we can conclude that there is a statistically significant difference between the group means.</li>
+<li>
+<strong>F-statistic</strong>: Measures the ratio of between-group variance to within-group variance. A higher F-value suggests a greater difference between group means.</li>
+<li>
+<strong>p-value</strong>: If the p-value is below 0.05, we can conclude that there is a statistically significant difference between the group means.</li>
 </ul>
 </div>
 </div>
-<div id="regression-analysis" class="section level2 hasAnchor" number="10.4">
-<h2><span class="header-section-number">10.4</span> Regression Analysis<a href="inferential-analysis.html#regression-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="regression-analysis" class="section level2" number="10.4">
+<h2>
+<span class="header-section-number">10.4</span> Regression Analysis<a class="anchor" aria-label="anchor" href="#regression-analysis"><i class="fas fa-link"></i></a>
+</h2>
 <p>Regression analysis helps identify the relationship between dependent and independent variables. In media research, you might want to predict viewer ratings based on various predictors such as genre, year of release, or budget.</p>
-<div id="simple-linear-regression" class="section level3 unnumbered hasAnchor">
-<h3>Simple Linear Regression<a href="inferential-analysis.html#simple-linear-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="simple-linear-regression" class="section level3 unnumbered">
+<h3>Simple Linear Regression<a class="anchor" aria-label="anchor" href="#simple-linear-regression"><i class="fas fa-link"></i></a>
+</h3>
 <p>Simple linear regression models the relationship between one independent variable and one dependent variable. Let’s use <strong>anime</strong> data to predict the <code>score</code> of an anime series based on the number of episodes.</p>
-<div id="linear-regression-in-r" class="section level4 unnumbered hasAnchor">
-<h4>Linear Regression in R<a href="inferential-analysis.html#linear-regression-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb101"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb101-1"><a href="inferential-analysis.html#cb101-1" tabindex="-1"></a><span class="co"># Linear regression for score based on episodes</span></span>
-<span id="cb101-2"><a href="inferential-analysis.html#cb101-2" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> episodes, <span class="at">data =</span> anime)</span>
-<span id="cb101-3"><a href="inferential-analysis.html#cb101-3" tabindex="-1"></a><span class="fu">summary</span>(linear_model)</span></code></pre></div>
+<div id="linear-regression-in-r" class="section level4 unnumbered">
+<h4>Linear Regression in R<a class="anchor" aria-label="anchor" href="#linear-regression-in-r"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb104"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Linear regression for score based on episodes</span></span>
+<span><span class="va">linear_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">episodes</span>, data <span class="op">=</span> <span class="va">anime</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">linear_model</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>Call:
 lm(formula = score ~ episodes, data = anime)
@@ -773,128 +372,173 @@ Multiple R-squared:  0.01077,   Adjusted R-squared:  0.01075
 F-statistic: 835.3 on 1 and 76750 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Residuals</strong>: This provides information on the distribution of the residuals (differences between observed and predicted values). A smaller residual range indicates a better fit.</li>
-<li><strong>Coefficients</strong>:
+<li>
+<strong>Residuals</strong>: This provides information on the distribution of the residuals (differences between observed and predicted values). A smaller residual range indicates a better fit.</li>
+<li>
+<strong>Coefficients</strong>:
 <ul>
-<li><strong>Intercept (6.863)</strong>: The predicted score when <code>episodes</code> is zero.</li>
-<li><strong>episodes (0.002284)</strong>: For each additional episode, the score increases by about 0.002.</li>
-</ul></li>
-<li><strong>p-values &lt; 2e-16</strong>: Both the intercept and the <code>episodes</code> coefficient are statistically significant.</li>
-<li><strong>R-squared = 0.01077</strong>: This suggests that about 1.1% of the variance in <code>score</code> is explained by the number of episodes. This is a small proportion, indicating a weak relationship.</li>
+<li>
+<strong>Intercept (6.863)</strong>: The predicted score when <code>episodes</code> is zero.</li>
+<li>
+<strong>episodes (0.002284)</strong>: For each additional episode, the score increases by about 0.002.</li>
+</ul>
+</li>
+<li>
+<strong>p-values &lt; 2e-16</strong>: Both the intercept and the <code>episodes</code> coefficient are statistically significant.</li>
+<li>
+<strong>R-squared = 0.01077</strong>: This suggests that about 1.1% of the variance in <code>score</code> is explained by the number of episodes. This is a small proportion, indicating a weak relationship.</li>
 </ul>
 </div>
 </div>
-<div id="interpreting-regression-output" class="section level3 unnumbered hasAnchor">
-<h3>Interpreting Regression Output<a href="inferential-analysis.html#interpreting-regression-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpreting-regression-output" class="section level3 unnumbered">
+<h3>Interpreting Regression Output<a class="anchor" aria-label="anchor" href="#interpreting-regression-output"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><strong>Coefficients</strong>: The slope of the line indicates how much the dependent variable changes for every unit change in the independent variable.</li>
-<li><strong>R-squared</strong>: Indicates the proportion of the variance in the dependent variable that is predictable from the independent variable(s). A higher R-squared value indicates a better fit.</li>
-<li><strong>p-value</strong>: Tests the null hypothesis that the coefficient is zero (no effect). A small p-value suggests that the independent variable significantly predicts the dependent variable.</li>
+<li>
+<strong>Coefficients</strong>: The slope of the line indicates how much the dependent variable changes for every unit change in the independent variable.</li>
+<li>
+<strong>R-squared</strong>: Indicates the proportion of the variance in the dependent variable that is predictable from the independent variable(s). A higher R-squared value indicates a better fit.</li>
+<li>
+<strong>p-value</strong>: Tests the null hypothesis that the coefficient is zero (no effect). A small p-value suggests that the independent variable significantly predicts the dependent variable.</li>
 </ul>
 </div>
 </div>
-<div id="effect-sizes" class="section level2 hasAnchor" number="10.5">
-<h2><span class="header-section-number">10.5</span> Effect Sizes<a href="inferential-analysis.html#effect-sizes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="effect-sizes" class="section level2" number="10.5">
+<h2>
+<span class="header-section-number">10.5</span> Effect Sizes<a class="anchor" aria-label="anchor" href="#effect-sizes"><i class="fas fa-link"></i></a>
+</h2>
 <p><strong>Effect sizes</strong> measure the magnitude of relationships between variables. In addition to statistical significance, effect sizes provide context about the practical significance of the results. For example, even if a difference between means is statistically significant, it might not be meaningful if the effect size is small.</p>
-<div id="cohens-d-for-t-tests" class="section level3 unnumbered hasAnchor">
-<h3>Cohen’s d for T-tests<a href="inferential-analysis.html#cohens-d-for-t-tests" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="cohens-d-for-t-tests" class="section level3 unnumbered">
+<h3>Cohen’s d for T-tests<a class="anchor" aria-label="anchor" href="#cohens-d-for-t-tests"><i class="fas fa-link"></i></a>
+</h3>
 <p>Cohen’s d is commonly used to measure effect size for t-tests. It provides a standardized difference between two means.</p>
-<div id="calculating-cohens-d-in-r" class="section level4 unnumbered hasAnchor">
-<h4>Calculating Cohen’s d in R<a href="inferential-analysis.html#calculating-cohens-d-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb103"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb103-1"><a href="inferential-analysis.html#cb103-1" tabindex="-1"></a><span class="co"># Calculate Cohen&#39;s d for horror and comedy movies</span></span>
-<span id="cb103-2"><a href="inferential-analysis.html#cb103-2" tabindex="-1"></a>cohen_d_result <span class="ot">&lt;-</span> <span class="fu">cohen.d</span>(vote_average <span class="sc">~</span> genre_names, <span class="at">data =</span> horror_comedy)</span>
-<span id="cb103-3"><a href="inferential-analysis.html#cb103-3" tabindex="-1"></a>cohen_d_result</span></code></pre></div>
-<p>****Output:****</p>
-<pre><code>Call: cohen.d(x = vote_average ~ genre_names, data = horror_comedy)
+<div id="calculating-cohens-d-in-r" class="section level4 unnumbered">
+<h4>Calculating Cohen’s d in R<a class="anchor" aria-label="anchor" href="#calculating-cohens-d-in-r"><i class="fas fa-link"></i></a>
+</h4>
+<div class="sourceCode" id="cb106"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate Cohen's d for horror and comedy movies</span></span>
+<span><span class="va">cohen_d_result</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/psych/man/cohen.d.html">cohen.d</a></span><span class="op">(</span><span class="va">vote_average</span> <span class="op">~</span> <span class="va">genre_names</span>, data <span class="op">=</span> <span class="va">thriller_comedy</span><span class="op">)</span></span>
+<span><span class="va">cohen_d_result</span></span></code></pre></div>
+<p><strong>Output:</strong></p>
+<pre><code>Call: cohen.d(x = vote_average ~ genre_names, data = thriller_comedy)
 Cohen d statistic of difference between two means
              lower effect upper
 vote_average   0.2   0.25   0.3</code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Cohen’s d statistic of difference between two means</strong>: This measures the effect size, indicating the magnitude of the difference between the two groups (Comedy, Horror vs. Horror, Thriller) in terms of their <code>vote_average</code>.
+<li>
+<strong>Cohen’s d statistic of difference between two means</strong>: This measures the effect size, indicating the magnitude of the difference between the two groups (Comedy, Horror vs. Horror, Thriller) in terms of their <code>vote_average</code>.
 <ul>
-<li><strong>Lower (0.2), effect (0.25), upper (0.3)</strong>: This gives the range of Cohen’s d, with the point estimate of 0.25 suggesting a <strong>small effect size</strong>. This means there is a small but noticeable difference in average ratings between the two genres.</li>
-</ul></li>
-<li><strong>Multivariate (Mahalanobis) distance</strong>: The Mahalanobis distance here quantifies the distance between the two groups in a multivariate space, helping to assess their overall separation.</li>
-<li><strong>r equivalent (0.12)</strong>: This provides the correlation equivalent of the difference between the means, suggesting a weak correlation between genre and vote average.</li>
+<li>
+<strong>Lower (0.2), effect (0.25), upper (0.3)</strong>: This gives the range of Cohen’s d, with the point estimate of 0.25 suggesting a <strong>small effect size</strong>. This means there is a small but noticeable difference in average ratings between the two genres.</li>
+</ul>
+</li>
+<li>
+<strong>Multivariate (Mahalanobis) distance</strong>: The Mahalanobis distance here quantifies the distance between the two groups in a multivariate space, helping to assess their overall separation.</li>
+<li>
+<strong>r equivalent (0.12)</strong>: This provides the correlation equivalent of the difference between the means, suggesting a weak correlation between genre and vote average.</li>
 </ul>
 </div>
 </div>
-<div id="interpreting-cohens-d" class="section level3 unnumbered hasAnchor">
-<h3>Interpreting Cohen’s d<a href="inferential-analysis.html#interpreting-cohens-d" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpreting-cohens-d" class="section level3 unnumbered">
+<h3>Interpreting Cohen’s d<a class="anchor" aria-label="anchor" href="#interpreting-cohens-d"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><strong>d = 0.2</strong>: Small effect size.</li>
-<li><strong>d = 0.5</strong>: Medium effect size.</li>
-<li><strong>d = 0.8 or higher</strong>: Large effect size.</li>
+<li>
+<strong>d = 0.2</strong>: Small effect size.</li>
+<li>
+<strong>d = 0.5</strong>: Medium effect size.</li>
+<li>
+<strong>d = 0.8 or higher</strong>: Large effect size.</li>
 </ul>
 </div>
-<div id="r2-for-regression-analysis" class="section level3 unnumbered hasAnchor">
-<h3><span class="math inline">\(R^2\)</span> for Regression Analysis<a href="inferential-analysis.html#r2-for-regression-analysis" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="r2-for-regression-analysis" class="section level3 unnumbered">
+<h3>
+<span class="math inline">\(R^2\)</span> for Regression Analysis<a class="anchor" aria-label="anchor" href="#r2-for-regression-analysis"><i class="fas fa-link"></i></a>
+</h3>
 <p>In regression analysis, <span class="math inline">\(R^2\)</span> (the coefficient of determination) represents the proportion of the variance in the dependent variable that is predictable from the independent variable(s). A higher <span class="math inline">\(R^2\)</span> value indicates that the model fits the data well.</p>
-<div id="interpreting-r2" class="section level4 unnumbered hasAnchor">
-<h4>Interpreting <span class="math inline">\(R^2\)</span><a href="inferential-analysis.html#interpreting-r2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="interpreting-r2" class="section level4 unnumbered">
+<h4>Interpreting <span class="math inline">\(R^2\)</span><a class="anchor" aria-label="anchor" href="#interpreting-r2"><i class="fas fa-link"></i></a>
+</h4>
 <ul>
-<li><span class="math inline">\(R^2 = 0\)</span>: The model explains none of the variance in the dependent variable.</li>
-<li><span class="math inline">\(R^2 = 1\)</span>: The model perfectly explains all the variance in the dependent variable.</li>
-<li><strong>Moderate</strong> <span class="math inline">\(R^2\)</span> values: In practice, especially in social sciences like media studies, moderate <span class="math inline">\(R^2\)</span> values (e.g., between 0.3 and 0.6) can still provide meaningful insight.</li>
+<li>
+<span class="math inline">\(R^2 = 0\)</span>: The model explains none of the variance in the dependent variable.</li>
+<li>
+<span class="math inline">\(R^2 = 1\)</span>: The model perfectly explains all the variance in the dependent variable.</li>
+<li>
+<strong>Moderate</strong> <span class="math inline">\(R^2\)</span> values: In practice, especially in social sciences like media studies, moderate <span class="math inline">\(R^2\)</span> values (e.g., between 0.3 and 0.6) can still provide meaningful insight.</li>
 </ul>
 <p>Here’s an example of calculating and interpreting <span class="math inline">\(R^2\)</span> in a regression model using the <strong>anime</strong> dataset:</p>
-<div class="sourceCode" id="cb105"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb105-1"><a href="inferential-analysis.html#cb105-1" tabindex="-1"></a><span class="co"># Fit a regression model to predict score based on episodes</span></span>
-<span id="cb105-2"><a href="inferential-analysis.html#cb105-2" tabindex="-1"></a>linear_model <span class="ot">&lt;-</span> <span class="fu">lm</span>(score <span class="sc">~</span> episodes, <span class="at">data =</span> anime)</span>
-<span id="cb105-3"><a href="inferential-analysis.html#cb105-3" tabindex="-1"></a></span>
-<span id="cb105-4"><a href="inferential-analysis.html#cb105-4" tabindex="-1"></a><span class="co"># Extract and print the R-squared value</span></span>
-<span id="cb105-5"><a href="inferential-analysis.html#cb105-5" tabindex="-1"></a><span class="fu">summary</span>(linear_model)<span class="sc">$</span>r.squared</span></code></pre></div>
+<div class="sourceCode" id="cb108"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Fit a regression model to predict score based on episodes</span></span>
+<span><span class="va">linear_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/lm.html">lm</a></span><span class="op">(</span><span class="va">score</span> <span class="op">~</span> <span class="va">episodes</span>, data <span class="op">=</span> <span class="va">anime</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Extract and print the R-squared value</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">linear_model</span><span class="op">)</span><span class="op">$</span><span class="va">r.squared</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>[1] 0.010766</code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>R-squared = 0.01077</strong>: This indicates that the number of episodes explains only about 1.1% of the variability in the <code>score</code>. In other words, the model has a weak predictive power, suggesting that the number of episodes is not a strong predictor of anime scores.</li>
+<li>
+<strong>R-squared = 0.01077</strong>: This indicates that the number of episodes explains only about 1.1% of the variability in the <code>score</code>. In other words, the model has a weak predictive power, suggesting that the number of episodes is not a strong predictor of anime scores.</li>
 </ul>
 <p>If the <span class="math inline">\(R^2\)</span> value is 0.4, for example, this means that 40% of the variability in anime scores can be explained by the number of episodes.</p>
 </div>
 </div>
-<div id="effect-size-for-anova-eta-squared-eta2" class="section level3 unnumbered hasAnchor">
-<h3>Effect Size for ANOVA: Eta-Squared (<span class="math inline">\(\eta^2\)</span>)<a href="inferential-analysis.html#effect-size-for-anova-eta-squared-eta2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="effect-size-for-anova-eta-squared-eta2" class="section level3 unnumbered">
+<h3>Effect Size for ANOVA: Eta-Squared (<span class="math inline">\(\eta^2\)</span>)<a class="anchor" aria-label="anchor" href="#effect-size-for-anova-eta-squared-eta2"><i class="fas fa-link"></i></a>
+</h3>
 <p>In ANOVA, <strong>eta-squared (</strong><span class="math inline">\(\eta^2\)</span>) is a common measure of effect size that describes how much of the total variability is attributed to the factors being studied. It is a way to quantify the proportion of variance accounted for by a factor, similar to <span class="math inline">\(R^2\)</span> in regression.</p>
-<div id="calculating-eta2-in-r" class="section level4 unnumbered hasAnchor">
-<h4>Calculating <span class="math inline">\(\eta^2\)</span> in R<a href="inferential-analysis.html#calculating-eta2-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="calculating-eta2-in-r" class="section level4 unnumbered">
+<h4>Calculating <span class="math inline">\(\eta^2\)</span> in R<a class="anchor" aria-label="anchor" href="#calculating-eta2-in-r"><i class="fas fa-link"></i></a>
+</h4>
 <p>We can calculate <span class="math inline">\(\eta^2\)</span> using the <code>etaSquared()</code> function from the <code>DescTools</code> package:</p>
-<div class="sourceCode" id="cb107"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb107-1"><a href="inferential-analysis.html#cb107-1" tabindex="-1"></a><span class="co"># Calculate eta-squared for the ANOVA model</span></span>
-<span id="cb107-2"><a href="inferential-analysis.html#cb107-2" tabindex="-1"></a><span class="fu">library</span>(DescTools)</span>
-<span id="cb107-3"><a href="inferential-analysis.html#cb107-3" tabindex="-1"></a>eta_squared <span class="ot">&lt;-</span> <span class="fu">EtaSq</span>(anova_result)</span>
-<span id="cb107-4"><a href="inferential-analysis.html#cb107-4" tabindex="-1"></a>eta_squared</span></code></pre></div>
+<div class="sourceCode" id="cb110"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Calculate eta-squared for the ANOVA model</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://andrisignorell.github.io/DescTools/">DescTools</a></span><span class="op">)</span></span>
+<span><span class="va">eta_squared</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://andrisignorell.github.io/DescTools/reference/EtaSq.html">EtaSq</a></span><span class="op">(</span><span class="va">anova_result</span><span class="op">)</span></span>
+<span><span class="va">eta_squared</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>                eta.sq eta.sq.part
 genre_names 0.07905414  0.07905414</code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Eta-squared (η² = 0.079)</strong>: This measures the proportion of the variance in <code>vote_average</code> that can be explained by the <code>genre_names</code>. An eta-squared value of 0.079 means that 7.9% of the variability in vote averages can be attributed to the genre of the movies. In general, this indicates a small-to-moderate effect size.</li>
+<li>
+<strong>Eta-squared (η² = 0.079)</strong>: This measures the proportion of the variance in <code>vote_average</code> that can be explained by the <code>genre_names</code>. An eta-squared value of 0.079 means that 7.9% of the variability in vote averages can be attributed to the genre of the movies. In general, this indicates a small-to-moderate effect size.</li>
 </ul>
 </div>
-<div id="interpreting-eta2" class="section level4 unnumbered hasAnchor">
-<h4>Interpreting <span class="math inline">\(\eta^2\)</span><a href="inferential-analysis.html#interpreting-eta2" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<div id="interpreting-eta2" class="section level4 unnumbered">
+<h4>Interpreting <span class="math inline">\(\eta^2\)</span><a class="anchor" aria-label="anchor" href="#interpreting-eta2"><i class="fas fa-link"></i></a>
+</h4>
 <ul>
-<li><strong>Small effect (</strong><span class="math inline">\(\eta^2 = 0.01\)</span>): Small proportion of variance explained by the factor.</li>
-<li><strong>Medium effect (</strong><span class="math inline">\(\eta^2 = 0.06\)</span>): Medium proportion of variance explained.</li>
-<li><strong>Large effect (</strong><span class="math inline">\(\eta^2 = 0.14\)</span>): Large proportion of variance explained.</li>
+<li>
+<strong>Small effect (</strong><span class="math inline">\(\eta^2 = 0.01\)</span>): Small proportion of variance explained by the factor.</li>
+<li>
+<strong>Medium effect (</strong><span class="math inline">\(\eta^2 = 0.06\)</span>): Medium proportion of variance explained.</li>
+<li>
+<strong>Large effect (</strong><span class="math inline">\(\eta^2 = 0.14\)</span>): Large proportion of variance explained.</li>
 </ul>
 <p>For instance, if <span class="math inline">\(\eta^2 = 0.10\)</span> for a factor like movie genre, this would mean that 10% of the variability in movie ratings can be attributed to differences between genres.</p>
 </div>
 </div>
 </div>
-<div id="logistic-regression" class="section level2 hasAnchor" number="10.6">
-<h2><span class="header-section-number">10.6</span> Logistic Regression<a href="inferential-analysis.html#logistic-regression" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="logistic-regression" class="section level2" number="10.6">
+<h2>
+<span class="header-section-number">10.6</span> Logistic Regression<a class="anchor" aria-label="anchor" href="#logistic-regression"><i class="fas fa-link"></i></a>
+</h2>
 <p><strong>Logistic regression</strong> is used when the dependent variable is categorical (binary or multinomial), such as predicting whether a media viewer will subscribe to a service (Yes/No). Logistic regression models the probability of a particular outcome, such as whether a person will engage with a particular form of media based on demographic or behavioral data.</p>
-<div id="simple-logistic-regression" class="section level3 unnumbered hasAnchor">
-<h3>Simple Logistic Regression<a href="inferential-analysis.html#simple-logistic-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="simple-logistic-regression" class="section level3 unnumbered">
+<h3>Simple Logistic Regression<a class="anchor" aria-label="anchor" href="#simple-logistic-regression"><i class="fas fa-link"></i></a>
+</h3>
 <p>Let’s use a logistic regression model to predict whether a video game from the <strong>video_games</strong> dataset is rated as popular (defined as having a score greater than 80) based on the average playtime.</p>
-<div class="sourceCode" id="cb109"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb109-1"><a href="inferential-analysis.html#cb109-1" tabindex="-1"></a><span class="co"># Create a binary outcome for popularity</span></span>
-<span id="cb109-2"><a href="inferential-analysis.html#cb109-2" tabindex="-1"></a>video_games <span class="ot">&lt;-</span> video_games <span class="sc">%&gt;%</span></span>
-<span id="cb109-3"><a href="inferential-analysis.html#cb109-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_popular =</span> <span class="fu">ifelse</span>(metascore <span class="sc">&gt;</span> <span class="dv">80</span>, <span class="dv">1</span>, <span class="dv">0</span>))</span>
-<span id="cb109-4"><a href="inferential-analysis.html#cb109-4" tabindex="-1"></a></span>
-<span id="cb109-5"><a href="inferential-analysis.html#cb109-5" tabindex="-1"></a><span class="co"># Fit a logistic regression model</span></span>
-<span id="cb109-6"><a href="inferential-analysis.html#cb109-6" tabindex="-1"></a>logistic_model <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_popular <span class="sc">~</span> average_playtime, <span class="at">family =</span> binomial, <span class="at">data =</span> video_games)</span>
-<span id="cb109-7"><a href="inferential-analysis.html#cb109-7" tabindex="-1"></a><span class="fu">summary</span>(logistic_model)</span></code></pre></div>
+<div class="sourceCode" id="cb112"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create a binary outcome for popularity</span></span>
+<span><span class="va">video_games</span> <span class="op">&lt;-</span> <span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>is_popular <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">metascore</span> <span class="op">&gt;</span> <span class="fl">80</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Fit a logistic regression model</span></span>
+<span><span class="va">logistic_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">is_popular</span> <span class="op">~</span> <span class="va">average_playtime</span>, family <span class="op">=</span> <span class="va">binomial</span>, data <span class="op">=</span> <span class="va">video_games</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">logistic_model</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>Call:
 glm(formula = is_popular ~ average_playtime, family = binomial, 
@@ -916,45 +560,59 @@ Residual deviance: 2955.3  on 2846  degrees of freedom
 AIC: 2959.3</code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Coefficients</strong>:
+<li>
+<strong>Coefficients</strong>:
 <ul>
-<li><strong>Intercept (-1.3246)</strong>: The log odds of a game being popular when <code>average_playtime</code> is 0. This is statistically significant (p &lt; 2e-16).</li>
-<li><strong>average_playtime (0.0008414)</strong>: For each additional unit of average playtime, the log odds of a game being popular increase by 0.0008414, which is statistically significant (p = 2.92e-06).</li>
-</ul></li>
-<li><strong>Residual deviance (2955.3)</strong>: This measures how well the model fits the data. Lower deviance suggests a better fit.</li>
-<li><strong>AIC (2959.3)</strong>: The Akaike Information Criterion, a measure of model quality. Lower AIC values indicate better models.</li>
+<li>
+<strong>Intercept (-1.3246)</strong>: The log odds of a game being popular when <code>average_playtime</code> is 0. This is statistically significant (p &lt; 2e-16).</li>
+<li>
+<strong>average_playtime (0.0008414)</strong>: For each additional unit of average playtime, the log odds of a game being popular increase by 0.0008414, which is statistically significant (p = 2.92e-06).</li>
+</ul>
+</li>
+<li>
+<strong>Residual deviance (2955.3)</strong>: This measures how well the model fits the data. Lower deviance suggests a better fit.</li>
+<li>
+<strong>AIC (2959.3)</strong>: The Akaike Information Criterion, a measure of model quality. Lower AIC values indicate better models.</li>
 </ul>
 </div>
-<div id="interpreting-logistic-regression-output" class="section level3 unnumbered hasAnchor">
-<h3>Interpreting Logistic Regression Output<a href="inferential-analysis.html#interpreting-logistic-regression-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpreting-logistic-regression-output" class="section level3 unnumbered">
+<h3>Interpreting Logistic Regression Output<a class="anchor" aria-label="anchor" href="#interpreting-logistic-regression-output"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><strong>Coefficients</strong>: In logistic regression, the coefficients represent log odds. Positive coefficients suggest that higher values of the predictor increase the probability of the outcome, while negative coefficients indicate the opposite.</li>
-<li><strong>Odds Ratio</strong>: You can exponentiate the coefficients to obtain odds ratios, which are more interpretable. For example, if the odds ratio is 1.5, then for each one-unit increase in <code>average_playtime</code>, the odds of a game being popular increase by 50%.</li>
+<li>
+<strong>Coefficients</strong>: In logistic regression, the coefficients represent log odds. Positive coefficients suggest that higher values of the predictor increase the probability of the outcome, while negative coefficients indicate the opposite.</li>
+<li>
+<strong>Odds Ratio</strong>: You can exponentiate the coefficients to obtain odds ratios, which are more interpretable. For example, if the odds ratio is 1.5, then for each one-unit increase in <code>average_playtime</code>, the odds of a game being popular increase by 50%.</li>
 </ul>
-<div class="sourceCode" id="cb111"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb111-1"><a href="inferential-analysis.html#cb111-1" tabindex="-1"></a><span class="co"># Get odds ratios</span></span>
-<span id="cb111-2"><a href="inferential-analysis.html#cb111-2" tabindex="-1"></a><span class="fu">exp</span>(<span class="fu">coef</span>(logistic_model))</span></code></pre></div>
+<div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Get odds ratios</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/Log.html">exp</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/coef.html">coef</a></span><span class="op">(</span><span class="va">logistic_model</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>     (Intercept) average_playtime 
        0.2659095        1.0008417 </code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Intercept (0.2659)</strong>: The odds of a game being popular when <code>average_playtime</code> is 0 are 0.2659, or about 27%. This suggests that, when playtime is 0, the likelihood of a game being popular is low.</li>
-<li><strong>average_playtime (1.0008417)</strong>: For each additional unit of average playtime, the odds of a game being popular increase by a factor of 1.00084 (or 0.08%). While this is a small effect, it is statistically significant.</li>
+<li>
+<strong>Intercept (0.2659)</strong>: The odds of a game being popular when <code>average_playtime</code> is 0 are 0.2659, or about 27%. This suggests that, when playtime is 0, the likelihood of a game being popular is low.</li>
+<li>
+<strong>average_playtime (1.0008417)</strong>: For each additional unit of average playtime, the odds of a game being popular increase by a factor of 1.00084 (or 0.08%). While this is a small effect, it is statistically significant.</li>
 </ul>
 </div>
-<div id="multiple-logistic-regression" class="section level3 unnumbered hasAnchor">
-<h3>Multiple Logistic Regression<a href="inferential-analysis.html#multiple-logistic-regression" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="multiple-logistic-regression" class="section level3 unnumbered">
+<h3>Multiple Logistic Regression<a class="anchor" aria-label="anchor" href="#multiple-logistic-regression"><i class="fas fa-link"></i></a>
+</h3>
 <p>Multiple logistic regression allows us to model a binary outcome based on multiple predictors. For example, we could predict whether an anime series is highly rated (score &gt; 8) based on the number of episodes and whether it falls under the action genre.</p>
-<div class="sourceCode" id="cb113"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb113-1"><a href="inferential-analysis.html#cb113-1" tabindex="-1"></a><span class="co"># Create a binary outcome for high score</span></span>
-<span id="cb113-2"><a href="inferential-analysis.html#cb113-2" tabindex="-1"></a>anime <span class="ot">&lt;-</span> anime <span class="sc">%&gt;%</span></span>
-<span id="cb113-3"><a href="inferential-analysis.html#cb113-3" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">is_high_score =</span> <span class="fu">ifelse</span>(score <span class="sc">&gt;</span> <span class="dv">8</span>, <span class="dv">1</span>, <span class="dv">0</span>),</span>
-<span id="cb113-4"><a href="inferential-analysis.html#cb113-4" tabindex="-1"></a>         <span class="at">is_action =</span> <span class="fu">ifelse</span>(<span class="fu">grepl</span>(<span class="st">&quot;Action&quot;</span>, genre), <span class="dv">1</span>, <span class="dv">0</span>))  <span class="co"># Create binary variable for Action genre</span></span>
-<span id="cb113-5"><a href="inferential-analysis.html#cb113-5" tabindex="-1"></a></span>
-<span id="cb113-6"><a href="inferential-analysis.html#cb113-6" tabindex="-1"></a><span class="co"># Fit a multiple logistic regression model</span></span>
-<span id="cb113-7"><a href="inferential-analysis.html#cb113-7" tabindex="-1"></a>logistic_model_multi <span class="ot">&lt;-</span> <span class="fu">glm</span>(is_high_score <span class="sc">~</span> episodes <span class="sc">+</span> is_action, <span class="at">family =</span> binomial, <span class="at">data =</span> anime)</span>
-<span id="cb113-8"><a href="inferential-analysis.html#cb113-8" tabindex="-1"></a></span>
-<span id="cb113-9"><a href="inferential-analysis.html#cb113-9" tabindex="-1"></a><span class="co"># Summary of the model</span></span>
-<span id="cb113-10"><a href="inferential-analysis.html#cb113-10" tabindex="-1"></a><span class="fu">summary</span>(logistic_model_multi)</span></code></pre></div>
+<div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Create a binary outcome for high score</span></span>
+<span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>is_high_score <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="va">score</span> <span class="op">&gt;</span> <span class="fl">8</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span>,</span>
+<span>         is_action <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/grep.html">grepl</a></span><span class="op">(</span><span class="st">"Action"</span>, <span class="va">genre</span><span class="op">)</span>, <span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span><span class="op">)</span>  <span class="co"># Create binary variable for Action genre</span></span>
+<span></span>
+<span><span class="co"># Fit a multiple logistic regression model</span></span>
+<span><span class="va">logistic_model_multi</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span><span class="op">(</span><span class="va">is_high_score</span> <span class="op">~</span> <span class="va">episodes</span> <span class="op">+</span> <span class="va">is_action</span>, family <span class="op">=</span> <span class="va">binomial</span>, data <span class="op">=</span> <span class="va">anime</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Summary of the model</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">logistic_model_multi</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>Call:
 glm(formula = is_high_score ~ episodes + is_action, family = binomial, 
@@ -977,32 +635,45 @@ Residual deviance: 51897  on 76749  degrees of freedom
 AIC: 51903</code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Coefficients</strong>:
+<li>
+<strong>Coefficients</strong>:
 <ul>
-<li><strong>Intercept (-2.1955)</strong>: The log odds of an anime having a high score when the number of episodes is 0 and the genre is not Action.</li>
-<li><strong>episodes (0.004507)</strong>: For each additional episode, the log odds of an anime having a high score increase by 0.0045. This is statistically significant (p &lt; 2e-16).</li>
-<li><strong>is_action (-0.064141)</strong>: The log odds of an anime being high-scored decrease slightly if it belongs to the Action genre, but this effect is not statistically significant (p = 0.131).</li>
-</ul></li>
+<li>
+<strong>Intercept (-2.1955)</strong>: The log odds of an anime having a high score when the number of episodes is 0 and the genre is not Action.</li>
+<li>
+<strong>episodes (0.004507)</strong>: For each additional episode, the log odds of an anime having a high score increase by 0.0045. This is statistically significant (p &lt; 2e-16).</li>
+<li>
+<strong>is_action (-0.064141)</strong>: The log odds of an anime being high-scored decrease slightly if it belongs to the Action genre, but this effect is not statistically significant (p = 0.131).</li>
+</ul>
+</li>
 </ul>
 </div>
-<div id="interpreting-multiple-logistic-regression-output" class="section level3 unnumbered hasAnchor">
-<h3>Interpreting Multiple Logistic Regression Output<a href="inferential-analysis.html#interpreting-multiple-logistic-regression-output" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="interpreting-multiple-logistic-regression-output" class="section level3 unnumbered">
+<h3>Interpreting Multiple Logistic Regression Output<a class="anchor" aria-label="anchor" href="#interpreting-multiple-logistic-regression-output"><i class="fas fa-link"></i></a>
+</h3>
 <ul>
-<li><strong>Interaction Terms</strong>: If you include interaction terms (e.g., <code>episodes * genre_names</code>), the model will estimate how the effect of one predictor depends on the level of another.</li>
-<li><strong>Adjusted Odds Ratio</strong>: Odds ratios in multiple logistic regression account for the simultaneous effect of all predictors.</li>
+<li>
+<strong>Interaction Terms</strong>: If you include interaction terms (e.g., <code>episodes * genre_names</code>), the model will estimate how the effect of one predictor depends on the level of another.</li>
+<li>
+<strong>Adjusted Odds Ratio</strong>: Odds ratios in multiple logistic regression account for the simultaneous effect of all predictors.</li>
 </ul>
 </div>
 </div>
-<div id="confidence-intervals-and-hypothesis-testing" class="section level2 hasAnchor" number="10.7">
-<h2><span class="header-section-number">10.7</span> Confidence Intervals and Hypothesis Testing<a href="inferential-analysis.html#confidence-intervals-and-hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="confidence-intervals" class="section level3 unnumbered hasAnchor">
-<h3>Confidence Intervals<a href="inferential-analysis.html#confidence-intervals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="confidence-intervals-and-hypothesis-testing" class="section level2" number="10.7">
+<h2>
+<span class="header-section-number">10.7</span> Confidence Intervals and Hypothesis Testing<a class="anchor" aria-label="anchor" href="#confidence-intervals-and-hypothesis-testing"><i class="fas fa-link"></i></a>
+</h2>
+<div id="confidence-intervals" class="section level3 unnumbered">
+<h3>Confidence Intervals<a class="anchor" aria-label="anchor" href="#confidence-intervals"><i class="fas fa-link"></i></a>
+</h3>
 <p>Confidence intervals provide a range of values within which the true population parameter is expected to fall. In the context of mass communication research, confidence intervals give a sense of the uncertainty surrounding an estimate (e.g., the average viewer rating of a show).</p>
-<div id="calculating-confidence-intervals-in-r" class="section level4 unnumbered hasAnchor">
-<h4>Calculating Confidence Intervals in R<a href="inferential-analysis.html#calculating-confidence-intervals-in-r" class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<p>Confidence intervals for regression coefficients can be extracted using the <code>confint()</code> function.</p>
-<div class="sourceCode" id="cb115"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb115-1"><a href="inferential-analysis.html#cb115-1" tabindex="-1"></a><span class="co"># Confidence intervals for logistic regression coefficients</span></span>
-<span id="cb115-2"><a href="inferential-analysis.html#cb115-2" tabindex="-1"></a><span class="fu">confint</span>(logistic_model)</span></code></pre></div>
+<div id="calculating-confidence-intervals-in-r" class="section level4 unnumbered">
+<h4>Calculating Confidence Intervals in R<a class="anchor" aria-label="anchor" href="#calculating-confidence-intervals-in-r"><i class="fas fa-link"></i></a>
+</h4>
+<p>Confidence intervals for regression coefficients can be extracted using the <code><a href="https://rdrr.io/r/stats/confint.html">confint()</a></code> function.</p>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Confidence intervals for logistic regression coefficients</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/stats/confint.html">confint</a></span><span class="op">(</span><span class="va">logistic_model</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>Waiting for profiling to be done...
                          2.5 %      97.5 %
@@ -1010,32 +681,43 @@ AIC: 51903</code></pre>
 average_playtime  0.0005114701  0.00121759</code></pre>
 <p><strong>Explanation:</strong></p>
 <ul>
-<li><strong>Confidence intervals for coefficients</strong>:
+<li>
+<strong>Confidence intervals for coefficients</strong>:
 <ul>
-<li><strong>Intercept</strong>: The 95% confidence interval for the intercept is between -1.4168 and -1.2340. This range does not include 0, which indicates that the intercept is significantly different from 0.</li>
-<li><strong>average_playtime</strong>: The 95% confidence interval for the average playtime coefficient is between 0.000511 and 0.001218. This range does not include 0, suggesting that the effect of average playtime is statistically significant.</li>
-</ul></li>
+<li>
+<strong>Intercept</strong>: The 95% confidence interval for the intercept is between -1.4168 and -1.2340. This range does not include 0, which indicates that the intercept is significantly different from 0.</li>
+<li>
+<strong>average_playtime</strong>: The 95% confidence interval for the average playtime coefficient is between 0.000511 and 0.001218. This range does not include 0, suggesting that the effect of average playtime is statistically significant.</li>
+</ul>
+</li>
 </ul>
 </div>
 </div>
-<div id="hypothesis-testing" class="section level3 unnumbered hasAnchor">
-<h3>Hypothesis Testing<a href="inferential-analysis.html#hypothesis-testing" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="hypothesis-testing" class="section level3 unnumbered">
+<h3>Hypothesis Testing<a class="anchor" aria-label="anchor" href="#hypothesis-testing"><i class="fas fa-link"></i></a>
+</h3>
 <p>In inferential statistics, <strong>hypothesis testing</strong> is used to determine whether there is enough evidence to support a certain claim about a population. Common steps in hypothesis testing include:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Null Hypothesis (H0)</strong>: Assumes no effect or no difference.</li>
-<li><strong>Alternative Hypothesis (H1)</strong>: Assumes that there is an effect or a difference.</li>
-<li><strong>Test Statistic</strong>: A calculated value used to assess the likelihood of the null hypothesis.</li>
-<li><strong>p-value</strong>: The probability of obtaining the observed data if the null hypothesis were true. If the p-value is below a predefined threshold (usually 0.05), we reject the null hypothesis.</li>
+<li>
+<strong>Null Hypothesis (H0)</strong>: Assumes no effect or no difference.</li>
+<li>
+<strong>Alternative Hypothesis (H1)</strong>: Assumes that there is an effect or a difference.</li>
+<li>
+<strong>Test Statistic</strong>: A calculated value used to assess the likelihood of the null hypothesis.</li>
+<li>
+<strong>p-value</strong>: The probability of obtaining the observed data if the null hypothesis were true. If the p-value is below a predefined threshold (usually 0.05), we reject the null hypothesis.</li>
 </ol>
 </div>
-<div id="example-testing-whether-genre-affects-viewer-ratings" class="section level3 unnumbered hasAnchor">
-<h3>Example: Testing Whether Genre Affects Viewer Ratings<a href="inferential-analysis.html#example-testing-whether-genre-affects-viewer-ratings" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="example-testing-whether-genre-affects-viewer-ratings" class="section level3 unnumbered">
+<h3>Example: Testing Whether Genre Affects Viewer Ratings<a class="anchor" aria-label="anchor" href="#example-testing-whether-genre-affects-viewer-ratings"><i class="fas fa-link"></i></a>
+</h3>
 <p>If we want to test whether genre affects viewer ratings in the <strong>horror_movies</strong> dataset, we can use an ANOVA model and interpret the p-values to decide whether to reject the null hypothesis.</p>
-<div class="sourceCode" id="cb117"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb117-1"><a href="inferential-analysis.html#cb117-1" tabindex="-1"></a><span class="co"># Fit an ANOVA model</span></span>
-<span id="cb117-2"><a href="inferential-analysis.html#cb117-2" tabindex="-1"></a>anova_model <span class="ot">&lt;-</span> <span class="fu">aov</span>(vote_average <span class="sc">~</span> genre_names, <span class="at">data =</span> horror_movies)</span>
-<span id="cb117-3"><a href="inferential-analysis.html#cb117-3" tabindex="-1"></a></span>
-<span id="cb117-4"><a href="inferential-analysis.html#cb117-4" tabindex="-1"></a><span class="co"># Check p-value for genre effect</span></span>
-<span id="cb117-5"><a href="inferential-analysis.html#cb117-5" tabindex="-1"></a><span class="fu">summary</span>(anova_model)</span></code></pre></div>
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Fit an ANOVA model</span></span>
+<span><span class="va">anova_model</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/aov.html">aov</a></span><span class="op">(</span><span class="va">vote_average</span> <span class="op">~</span> <span class="va">genre_names</span>, data <span class="op">=</span> <span class="va">horror_movies</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Check p-value for genre effect</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">anova_model</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>               Df Sum Sq Mean Sq F value Pr(&gt;F)    
 genre_names   771  21277  27.596   3.537 &lt;2e-16 ***
@@ -1046,101 +728,139 @@ Signif. codes:
 <p><strong>Explanation:</strong></p>
 <ul>
 <li><p><strong>Degrees of Freedom (Df)</strong>: There are 771 degrees of freedom for the genre variable, which means that there are 772 unique genres in the dataset. The residual degrees of freedom are 31,768, which is the number of observations minus the number of genres.</p></li>
-<li><p><strong>Sum Sq (Sum of Squares)</strong>:</p>
+<li>
+<p><strong>Sum Sq (Sum of Squares)</strong>:</p>
 <ul>
-<li><strong>genre_names (21,277)</strong>: The total variation in <code>vote_average</code> explained by differences between genres.</li>
-<li><strong>Residuals (247,866)</strong>: The total variation in <code>vote_average</code> that is not explained by the genre differences.</li>
-</ul></li>
-<li><p><strong>Mean Sq (Mean Square)</strong>:</p>
+<li>
+<strong>genre_names (21,277)</strong>: The total variation in <code>vote_average</code> explained by differences between genres.</li>
+<li>
+<strong>Residuals (247,866)</strong>: The total variation in <code>vote_average</code> that is not explained by the genre differences.</li>
+</ul>
+</li>
+<li>
+<p><strong>Mean Sq (Mean Square)</strong>:</p>
 <ul>
-<li><strong>genre_names (27.596)</strong>: The average variation in <code>vote_average</code> due to genre differences (Sum of Squares divided by degrees of freedom).</li>
-<li><strong>Residuals (7.802)</strong>: The average variation in <code>vote_average</code> within each genre (Residual Sum of Squares divided by residual degrees of freedom).</li>
-</ul></li>
+<li>
+<strong>genre_names (27.596)</strong>: The average variation in <code>vote_average</code> due to genre differences (Sum of Squares divided by degrees of freedom).</li>
+<li>
+<strong>Residuals (7.802)</strong>: The average variation in <code>vote_average</code> within each genre (Residual Sum of Squares divided by residual degrees of freedom).</li>
+</ul>
+</li>
 <li><p><strong>F-value (3.537)</strong>: This indicates the ratio of the mean square for genres to the mean square for residuals. A larger F-value indicates that there is more variation between genres than would be expected by chance.</p></li>
 <li><p><strong>p-value (&lt; 2e-16)</strong>: The very small p-value indicates that the variation in <code>vote_average</code> across different genres is statistically significant. In other words, genre has a significant effect on movie ratings.</p></li>
 </ul>
 <p>If the p-value for <code>genre_names</code> is less than 0.05, we would reject the null hypothesis and conclude that genre has a significant effect on viewer ratings.</p>
 </div>
-<div id="summary-of-key-concepts" class="section level3 unnumbered hasAnchor">
-<h3>Summary of Key Concepts<a href="inferential-analysis.html#summary-of-key-concepts" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="summary-of-key-concepts" class="section level3 unnumbered">
+<h3>Summary of Key Concepts<a class="anchor" aria-label="anchor" href="#summary-of-key-concepts"><i class="fas fa-link"></i></a>
+</h3>
 <p>In this chapter, we covered several essential inferential statistics techniques used in mass communication and media research, including:</p>
 <ol style="list-style-type: decimal">
-<li><strong>Chi-Square Test</strong>: A warning indicated issues with small expected frequencies, leading to invalid results.</li>
-<li><strong>T-Test</strong>: Showed a significant difference in <code>vote_average</code> between the “Comedy, Horror” and “Horror, Thriller” genres.</li>
-<li><strong>Paired T-Test</strong>: The analysis revealed no significant difference in <code>vote_average</code> before and after the trailer for horror movies.</li>
-<li><strong>ANOVA</strong>: Demonstrated that genre significantly affects <code>vote_average</code>, with a small-to-moderate effect size (eta-squared of 0.079).</li>
-<li><strong>Linear Regression</strong>: Indicated a weak positive relationship between the number of episodes and anime scores, with an R-squared value of only 0.01.</li>
-<li><strong>Cohen’s d</strong>: A small effect size (0.25) was observed between the two genres.</li>
-<li><strong>Logistic Regression</strong>: Highlighted the relationship between <code>average_playtime</code> and the likelihood of a video game being popular.</li>
-<li><strong>Confidence Intervals</strong>: Provided additional evidence that the effects were statistically significant.</li>
+<li>
+<strong>Chi-Square Test</strong>: A warning indicated issues with small expected frequencies, leading to invalid results.</li>
+<li>
+<strong>T-Test</strong>: Showed a significant difference in <code>vote_average</code> between the “Comedy, Horror” and “Horror, Thriller” genres.</li>
+<li>
+<strong>Paired T-Test</strong>: The analysis revealed no significant difference in <code>vote_average</code> before and after the trailer for horror movies.</li>
+<li>
+<strong>ANOVA</strong>: Demonstrated that genre significantly affects <code>vote_average</code>, with a small-to-moderate effect size (eta-squared of 0.079).</li>
+<li>
+<strong>Linear Regression</strong>: Indicated a weak positive relationship between the number of episodes and anime scores, with an R-squared value of only 0.01.</li>
+<li>
+<strong>Cohen’s d</strong>: A small effect size (0.25) was observed between the two genres.</li>
+<li>
+<strong>Logistic Regression</strong>: Highlighted the relationship between <code>average_playtime</code> and the likelihood of a video game being popular.</li>
+<li>
+<strong>Confidence Intervals</strong>: Provided additional evidence that the effects were statistically significant.</li>
 </ol>
 <p>These tools allow researchers to draw conclusions about media consumption patterns, viewer preferences, and other media-related behaviors. By using the statistical methods and packages demonstrated in this chapter, students can perform robust analyses that contribute to a deeper understanding of the media landscape.</p>
 
 </div>
 </div>
 </div>
-            </section>
+  <div class="chapter-nav">
+<div class="prev"><a href="descriptive-analysis.html"><span class="header-section-number">9</span> Descriptive Analysis</a></div>
+<div class="next"><a href="data-visualization-in-r.html"><span class="header-section-number">11</span> Data Visualization in R</a></div>
+</div></main><div class="col-md-3 col-lg-2 d-none d-md-block sidebar sidebar-chapter">
+    <nav id="toc" data-toggle="toc" aria-label="On this page"><h2>On this page</h2>
+      <ul class="nav navbar-nav">
+<li><a class="nav-link" href="#inferential-analysis"><span class="header-section-number">10</span> Inferential Analysis</a></li>
+<li>
+<a class="nav-link" href="#chi-square-test-of-independence"><span class="header-section-number">10.1</span> Chi-Square Test of Independence</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#why-use-a-chi-square-test">Why Use a Chi-Square Test?</a></li>
+<li><a class="nav-link" href="#chi-square-test-in-r">Chi-Square Test in R</a></li>
+<li><a class="nav-link" href="#interpreting-chi-square-output">Interpreting Chi-Square Output</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#comparison-of-means-t-tests"><span class="header-section-number">10.2</span> Comparison of Means: T-tests</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#independent-samples-t-test">Independent Samples T-test</a></li>
+<li><a class="nav-link" href="#interpreting-t-test-output">Interpreting T-test Output</a></li>
+<li><a class="nav-link" href="#paired-samples-t-test">Paired Samples T-test</a></li>
+<li><a class="nav-link" href="#interpreting-paired-t-test-output">Interpreting Paired T-test Output</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#analysis-of-variance-anova"><span class="header-section-number">10.3</span> Analysis of Variance (ANOVA)</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#one-way-anova">One-Way ANOVA</a></li>
+<li><a class="nav-link" href="#interpreting-anova-output">Interpreting ANOVA Output</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#regression-analysis"><span class="header-section-number">10.4</span> Regression Analysis</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#simple-linear-regression">Simple Linear Regression</a></li>
+<li><a class="nav-link" href="#interpreting-regression-output">Interpreting Regression Output</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#effect-sizes"><span class="header-section-number">10.5</span> Effect Sizes</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#cohens-d-for-t-tests">Cohen’s d for T-tests</a></li>
+<li><a class="nav-link" href="#interpreting-cohens-d">Interpreting Cohen’s d</a></li>
+<li><a class="nav-link" href="#r2-for-regression-analysis">\(R^2\) for Regression Analysis</a></li>
+<li><a class="nav-link" href="#effect-size-for-anova-eta-squared-eta2">Effect Size for ANOVA: Eta-Squared (\(\eta^2\))</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#logistic-regression"><span class="header-section-number">10.6</span> Logistic Regression</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#simple-logistic-regression">Simple Logistic Regression</a></li>
+<li><a class="nav-link" href="#interpreting-logistic-regression-output">Interpreting Logistic Regression Output</a></li>
+<li><a class="nav-link" href="#multiple-logistic-regression">Multiple Logistic Regression</a></li>
+<li><a class="nav-link" href="#interpreting-multiple-logistic-regression-output">Interpreting Multiple Logistic Regression Output</a></li>
+</ul>
+</li>
+<li>
+<a class="nav-link" href="#confidence-intervals-and-hypothesis-testing"><span class="header-section-number">10.7</span> Confidence Intervals and Hypothesis Testing</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#confidence-intervals">Confidence Intervals</a></li>
+<li><a class="nav-link" href="#hypothesis-testing">Hypothesis Testing</a></li>
+<li><a class="nav-link" href="#example-testing-whether-genre-affects-viewer-ratings">Example: Testing Whether Genre Affects Viewer Ratings</a></li>
+<li><a class="nav-link" href="#summary-of-key-concepts">Summary of Key Concepts</a></li>
+</ul>
+</li>
+</ul>
 
-          </div>
-        </div>
-      </div>
-<a href="descriptive-analysis.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="data-visualization-in-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
-    </div>
+      <div class="book-extra">
+        <ul class="list-unstyled">
+          
+        </ul>
+</div>
+    </nav>
+</div>
+
+</div>
+</div> <!-- .container -->
+
+<footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
+
+  <div class="col-12 col-md-6 mt-3">
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2024-10-30.</p>
   </div>
-<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
-<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
-<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
-<script>
-gitbook.require(["gitbook"], function(gitbook) {
-gitbook.start({
-"sharing": {
-"github": false,
-"facebook": true,
-"twitter": true,
-"linkedin": false,
-"weibo": false,
-"instapaper": false,
-"vk": false,
-"whatsapp": false,
-"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
-},
-"fontsettings": {
-"theme": "white",
-"family": "sans",
-"size": 2
-},
-"edit": {
-"link": null,
-"text": null
-},
-"history": {
-"link": null,
-"text": null
-},
-"view": {
-"link": null,
-"text": null
-},
-"download": ["textbook.pdf", "textbook.epub"],
-"search": {
-"engine": "fuse",
-"options": null
-},
-"toc": {
-"collapse": "subsection"
-}
-});
-});
-</script>
 
-<!-- dynamically load mathjax for compatibility with self-contained -->
-<script>
+  <div class="col-12 col-md-6 mt-3">
+    <p>This book was built by the <a class="text-light" href="https://bookdown.org">bookdown</a> R package.</p>
+  </div>
+
+</div></div>
+</footer><!-- dynamically load mathjax for compatibility with self-contained --><script>
   (function () {
     var script = document.createElement("script");
     script.type = "text/javascript";
@@ -1152,7 +872,22 @@ gitbook.start({
     script.src = src;
     document.getElementsByTagName("head")[0].appendChild(script);
   })();
+</script><script type="text/x-mathjax-config">const popovers = document.querySelectorAll('a.footnote-ref[data-toggle="popover"]');
+for (let popover of popovers) {
+  const div = document.createElement('div');
+  div.setAttribute('style', 'position: absolute; top: 0, left:0; width:0, height:0, overflow: hidden; visibility: hidden;');
+  div.innerHTML = popover.getAttribute('data-content');
+
+  var has_math = div.querySelector("span.math");
+  if (has_math) {
+    document.body.appendChild(div);
+    MathJax.Hub.Queue(["Typeset", MathJax.Hub, div]);
+    MathJax.Hub.Queue(function() {
+      popover.setAttribute('data-content', div.innerHTML);
+      document.body.removeChild(div);
+    })
+  }
+}
 </script>
 </body>
-
 </html>

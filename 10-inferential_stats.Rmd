@@ -18,14 +18,16 @@ Now load the datasets for this chapter.
 ``` r
 anime <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv")
 horror_movies <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv")
+survivor <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2021/2021-06-01/summary.csv")
 video_games <- fread("https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv")
 ```
 
 You can access the data descriptions for each of these data sets on their respective TidyTuesday page.
 
 1.  [Anime Dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-04-23/readme.md)
-2.  [Horror Movies](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md)
-3.  [Video Games Dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30//readme.md)
+2.  [Horror Movies Dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2022/2022-11-01/readme.md)
+3.  [Survivor Dataset](https://github.com/rfordatascience/tidytuesday/tree/master/data/2021/2021-06-01)
+4.  [Video Games Dataset](https://github.com/rfordatascience/tidytuesday/blob/master/data/2019/2019-07-30//readme.md)
 
 ## Chi-Square Test of Independence
 
@@ -44,15 +46,47 @@ Let’s say we want to examine the relationship between two categorical variable
 First, let’s create a binned version of movie ratings:
 
 ``` r
+# Filtering for desired datasets
+thriller_comedy <- horror_movies %>%
+  filter(genre_names %in% c("Horror, Thriller", "Comedy, Horror"))
+
 # Binning vote_average into low, medium, and high categories
-horror_movies <- horror_movies %>%
+thriller_comedy <- thriller_comedy %>%
   mutate(vote_average_category = cut(vote_average, 
                                      breaks = c(0, 4, 7, 10),
                                      labels = c("Low", "Medium", "High")))
+```
 
+Next, we calculate the crosstab table.
+
+``` r
 # Crosstab of genre and vote average category
-table_genre_ratings <- table(horror_movies$genre_names, horror_movies$vote_average_category)
+table_genre_ratings <- table(thriller_comedy$genre_names, thriller_comedy$vote_average_category)
+table_genre_ratings
+```
 
+**Output:**
+
+```         
+                    Low Medium High
+  Comedy, Horror    448   1059  202
+  Horror, Thriller  575   1668  190
+```
+
+**Explanation:**
+
+-   For **Comedy, Horror**:
+    -   448 movies are in the Low vote average category.
+    -   1059 movies are in the Medium vote average category.
+    -   202 movies are in the High vote average category.
+-   For **Horror, Thriller**:
+    -   575 movies are in the Low vote average category.
+    -   1668 movies are in the Medium vote average category.
+    -   190 movies are in the High vote average category.
+
+Finally, preform the chi-square test
+
+``` r
 # Perform chi-square test
 chi_square_result <- chisq.test(table_genre_ratings)
 chi_square_result
@@ -60,19 +94,20 @@ chi_square_result
 
 **Output:**
 
-```
-Warning: Chi-squared approximation may be incorrect
-	Pearson's Chi-squared test
+```         
+    Pearson's Chi-squared test
 
 data:  table_genre_ratings
-X-squared = NaN, df = 1542, p-value = NA
+X-squared = 26.392, df = 2, p-value = 1.858e-06
 ```
 
 **Explanation:**
 
-- **Warning: Chi-squared approximation may be incorrect**: This warning often occurs when the expected frequencies in some cells of the contingency table are too small (less than 5), which can lead to unreliable results.
-- **X-squared = NaN**: This indicates that the test failed to compute the chi-square statistic, likely due to empty cells or categories with very few observations.
-- **p-value = NA**: The p-value is not available, meaning the test could not produce valid results. You may need to reduce the number of categories or ensure that every category has sufficient data before running the test again.
+-   **X-squared = 26.392**: This is the chi-square statistic, which measures the extent of difference between the observed frequencies (the counts in the crosstab) and the expected frequencies (what we would expect if there were no association between the two variables). A higher chi-square statistic indicates a greater deviation from what we would expect under the assumption of independence (no association).
+
+-   **df = 2**: Degrees of freedom. This is calculated as $(\text{number of rows} - 1) \times (\text{number of columns} - 1)$. In this case, there are 2 genres (rows) and 3 vote average categories (columns), so the degrees of freedom are $(2 - 1) \times (3 - 1) = 2$.
+
+-   **p-value = 1.858e-06**: The p-value represents the probability of observing a chi-square statistic at least as extreme as 26.392 if there is no actual association between genre and vote average category. In this case, the p-value is extremely small ($1.858 \times 10^{-6}$, or 0.000001858), which is well below the typical significance threshold of 0.05. This indicates **strong evidence** that there is a significant association between genre and vote average category.
 
 ### Interpreting Chi-Square Output {.unnumbered}
 
@@ -93,18 +128,14 @@ The **independent samples t-test** is used when comparing two independent groups
 We can use `dplyr` to filter the data for these two genres and then run a t-test using the `t.test()` function.
 
 ``` r
-# Filter for horror and comedy movies
-horror_comedy <- horror_movies %>%
-  filter(genre_names %in% c("Horror, Thriller", "Comedy, Horror"))
-
 # Perform t-test
-t_test_result <- t.test(vote_average ~ genre_names, data = horror_comedy)
+t_test_result <- t.test(vote_average ~ genre_names, data = thriller_comedy)
 t_test_result
 ```
 
 **Output:**
 
-```
+```         
 Welch Two Sample t-test
 
 data:  vote_average by genre_names
@@ -121,10 +152,10 @@ mean in group Horror, Thriller
 
 **Explanation:**
 
-- **t = -9.581**: This is the t-statistic, which shows the difference between the two group means relative to the variability within the groups. A large absolute value indicates a significant difference.
-- **p-value < 2.2e-16**: A very small p-value indicates that the difference between the means of the two groups (Comedy, Horror vs. Horror, Thriller) is statistically significant.
-- **95% confidence interval**: The range of values within which the true difference in means is likely to fall. Since the interval does not contain 0, we conclude there is a significant difference.
-- **Mean in each group**: The average `vote_average` for "Comedy, Horror" movies is 3.13, while for "Horror, Thriller" movies it is 3.82.
+-   **t = -9.581**: This is the t-statistic, which shows the difference between the two group means relative to the variability within the groups. A large absolute value indicates a significant difference.
+-   **p-value \< 2.2e-16**: A very small p-value indicates that the difference between the means of the two groups (Comedy, Horror vs. Horror, Thriller) is statistically significant.
+-   **95% confidence interval**: The range of values within which the true difference in means is likely to fall. Since the interval does not contain 0, we conclude there is a significant difference.
+-   **Mean in each group**: The average `vote_average` for "Comedy, Horror" movies is 3.13, while for "Horror, Thriller" movies it is 3.82.
 
 ### Interpreting T-test Output {.unnumbered}
 
@@ -134,49 +165,40 @@ mean in group Horror, Thriller
 
 ### Paired Samples T-test {.unnumbered}
 
-A **paired samples t-test** is used when comparing the means of the same group at two different points in time or under two different conditions. For example, if we wanted to compare the average viewer ratings of movies at the start and end of a movie-watching experiment, we could use a paired t-test.
+A **paired samples t-test** is used when comparing the means of the same group at two different points in time or under two different conditions. For example, if we wanted to compare the number of viewers for the first and last episodes of television series, we could use a paired t-test.
 
 #### Paired T-test Example {.unnumbered}
 
-Assume that we want to compare the `vote_average` of a set of horror movies between two conditions: "before watching a trailer" and "after watching a trailer."
+Assume that we want to compare the `viewers_premier` to the `viewers_finale` of seasons of the show Survivor.
 
 ``` r
-# Create a paired dataset (hypothetical example)
-before_trailer <- horror_movies %>% filter(genre_names == "Horror") %>% mutate(condition = "Before Trailer")
-after_trailer <- horror_movies %>% filter(genre_names == "Horror") %>% mutate(condition = "After Trailer")
-
-# Join the datasets for a paired t-test (matching on movie title)
-paired_data <- before_trailer %>%
-  rename(vote_before = vote_average) %>%
-  inner_join(after_trailer %>% rename(vote_after = vote_average), by = "title")
-
 # Perform paired t-test
-paired_t_test_result <- t.test(paired_data$vote_before, paired_data$vote_after, paired = TRUE)
+paired_t_test_result <- t.test(survivor$viewers_premier, survivor$viewers_finale, paired = TRUE)
 paired_t_test_result
 ```
 
 **Output:**
 
-```
-Warning: Detected an unexpected many-to-many relationship between `x` and `y`.
-	Paired t-test
+```         
+    Paired t-test 
 
-data:  paired_data$vote_before and paired_data$vote_after
-t = 0, df = 14232, p-value = 1
+data:  survivor$viewers_premier and survivor$viewers_finale
+t = -0.76096, df = 39, p-value = 0.4513
 alternative hypothesis: true mean difference is not equal to 0
 95 percent confidence interval:
- -0.02362386  0.02362386
+ -2.764596  1.253096
 sample estimates:
 mean difference 
-              0 
+       -0.75575 
 ```
 
 **Explanation:**
 
-- **Warning: Many-to-many relationship**: This suggests that the same movie may appear more than once in either the "before" or "after" dataset. Ensure that each movie is unique for a valid paired t-test.
-- **t = 0**: The t-statistic is 0, meaning there is no difference between the paired observations.
-- **p-value = 1**: A p-value of 1 means there is no evidence to reject the null hypothesis, indicating no significant difference between the two conditions.
-- **Mean difference = 0**: The average difference between the paired scores is 0, confirming no change between the two conditions.
+-   **t-Statistic (t = -0.76096)**: The **t-value** is a measure of the size of the difference relative to the variation in the sample data. In this case, the t-value is -0.761. The negative sign suggests that, on average, viewership during the premieres was slightly lower than during the finales, but the magnitude of the difference is not very large.
+-   **Degrees of Freedom (df = 39)**: Degrees of freedom refer to the number of independent pieces of information available to estimate the population variance. For a paired t-test, the degrees of freedom are the number of pairs minus one. In this case, there are 40 pairs of premiere and finale viewership data (df = 40 - 1 = 39).
+-   **p-value (p = 0.4513)**: The p-value is 0.4513, which is **well above** the common significance level of 0.05. Since the p-value is much larger than 0.05, **we fail to reject the null hypothesis**, meaning that there is **no significant difference** between the mean viewership for the premieres and finales of the *Survivor* seasons in this sample.
+-   **Confidence Interval (95% CI: -2.764596 to 1.253096)**: The confidence interval spans from **-2.76** to **1.25**, which includes zero. This further supports the conclusion that there is **no significant difference** between premiere and finale viewership, since the interval suggests that the mean difference could plausibly be zero.
+-   **Mean Difference (mean difference = -0.75575)**: The mean difference is **-0.75575**, indicating that on average, the premiere viewership was 0.76 units (likely in millions of viewers) lower than the finale viewership. However, this difference is small and, as indicated by the p-value, is not statistically significant.
 
 ### Interpreting Paired T-test Output {.unnumbered}
 
@@ -201,7 +223,7 @@ summary(anova_result)
 
 **Output:**
 
-```
+```         
                Df Sum Sq Mean Sq F value Pr(>F)    
 genre_names   771  21277  27.596   3.537 <2e-16 ***
 Residuals   31768 247866   7.802                   
@@ -212,11 +234,11 @@ Signif. codes:
 
 **Explanation:**
 
-- **Df (Degrees of freedom)**: 771 for the genres and 31,768 for the residuals. This reflects the number of categories (771) and the total number of observations minus the number of groups.
-- **Sum Sq**: The total variance attributed to the genre categories (21,277) and the residual variance (247,866).
-- **Mean Sq**: The mean square values, which are the sum of squares divided by the degrees of freedom. These represent the average variation within and between groups.
-- **F value = 3.537**: This is the ratio of the mean square between groups to the mean square within groups. A higher value indicates a greater difference between group means.
-- **p-value < 2e-16**: A very small p-value suggests that there are significant differences in `vote_average` across genres.
+-   **Df (Degrees of freedom)**: 771 for the genres and 31,768 for the residuals. This reflects the number of categories (771) and the total number of observations minus the number of groups.
+-   **Sum Sq**: The total variance attributed to the genre categories (21,277) and the residual variance (247,866).
+-   **Mean Sq**: The mean square values, which are the sum of squares divided by the degrees of freedom. These represent the average variation within and between groups.
+-   **F value = 3.537**: This is the ratio of the mean square between groups to the mean square within groups. A higher value indicates a greater difference between group means.
+-   **p-value \< 2e-16**: A very small p-value suggests that there are significant differences in `vote_average` across genres.
 
 ### Interpreting ANOVA Output {.unnumbered}
 
@@ -241,7 +263,7 @@ summary(linear_model)
 
 **Output:**
 
-```
+```         
 Call:
 lm(formula = score ~ episodes, data = anime)
 
@@ -259,18 +281,18 @@ Signif. codes:
 
 Residual standard error: 0.9627 on 76750 degrees of freedom
   (1159 observations deleted due to missingness)
-Multiple R-squared:  0.01077,	Adjusted R-squared:  0.01075 
+Multiple R-squared:  0.01077,   Adjusted R-squared:  0.01075 
 F-statistic: 835.3 on 1 and 76750 DF,  p-value: < 2.2e-16
 ```
 
 **Explanation:**
 
-- **Residuals**: This provides information on the distribution of the residuals (differences between observed and predicted values). A smaller residual range indicates a better fit.
-- **Coefficients**: 
-  - **Intercept (6.863)**: The predicted score when `episodes` is zero.
-  - **episodes (0.002284)**: For each additional episode, the score increases by about 0.002.
-- **p-values < 2e-16**: Both the intercept and the `episodes` coefficient are statistically significant.
-- **R-squared = 0.01077**: This suggests that about 1.1% of the variance in `score` is explained by the number of episodes. This is a small proportion, indicating a weak relationship.
+-   **Residuals**: This provides information on the distribution of the residuals (differences between observed and predicted values). A smaller residual range indicates a better fit.
+-   **Coefficients**:
+    -   **Intercept (6.863)**: The predicted score when `episodes` is zero.
+    -   **episodes (0.002284)**: For each additional episode, the score increases by about 0.002.
+-   **p-values \< 2e-16**: Both the intercept and the `episodes` coefficient are statistically significant.
+-   **R-squared = 0.01077**: This suggests that about 1.1% of the variance in `score` is explained by the number of episodes. This is a small proportion, indicating a weak relationship.
 
 ### Interpreting Regression Output {.unnumbered}
 
@@ -290,14 +312,14 @@ Cohen’s d is commonly used to measure effect size for t-tests. It provides a s
 
 ``` r
 # Calculate Cohen's d for horror and comedy movies
-cohen_d_result <- cohen.d(vote_average ~ genre_names, data = horror_comedy)
+cohen_d_result <- cohen.d(vote_average ~ genre_names, data = thriller_comedy)
 cohen_d_result
 ```
 
-****Output:****
+**Output:**
 
-```
-Call: cohen.d(x = vote_average ~ genre_names, data = horror_comedy)
+```         
+Call: cohen.d(x = vote_average ~ genre_names, data = thriller_comedy)
 Cohen d statistic of difference between two means
              lower effect upper
 vote_average   0.2   0.25   0.3
@@ -305,10 +327,10 @@ vote_average   0.2   0.25   0.3
 
 **Explanation:**
 
-- **Cohen's d statistic of difference between two means**: This measures the effect size, indicating the magnitude of the difference between the two groups (Comedy, Horror vs. Horror, Thriller) in terms of their `vote_average`.
-  - **Lower (0.2), effect (0.25), upper (0.3)**: This gives the range of Cohen's d, with the point estimate of 0.25 suggesting a **small effect size**. This means there is a small but noticeable difference in average ratings between the two genres.
-- **Multivariate (Mahalanobis) distance**: The Mahalanobis distance here quantifies the distance between the two groups in a multivariate space, helping to assess their overall separation.
-- **r equivalent (0.12)**: This provides the correlation equivalent of the difference between the means, suggesting a weak correlation between genre and vote average.
+-   **Cohen's d statistic of difference between two means**: This measures the effect size, indicating the magnitude of the difference between the two groups (Comedy, Horror vs. Horror, Thriller) in terms of their `vote_average`.
+    -   **Lower (0.2), effect (0.25), upper (0.3)**: This gives the range of Cohen's d, with the point estimate of 0.25 suggesting a **small effect size**. This means there is a small but noticeable difference in average ratings between the two genres.
+-   **Multivariate (Mahalanobis) distance**: The Mahalanobis distance here quantifies the distance between the two groups in a multivariate space, helping to assess their overall separation.
+-   **r equivalent (0.12)**: This provides the correlation equivalent of the difference between the means, suggesting a weak correlation between genre and vote average.
 
 ### Interpreting Cohen’s d {.unnumbered}
 
@@ -338,13 +360,13 @@ summary(linear_model)$r.squared
 
 **Output:**
 
-```
+```         
 [1] 0.010766
 ```
 
 **Explanation:**
 
-- **R-squared = 0.01077**: This indicates that the number of episodes explains only about 1.1% of the variability in the `score`. In other words, the model has a weak predictive power, suggesting that the number of episodes is not a strong predictor of anime scores.
+-   **R-squared = 0.01077**: This indicates that the number of episodes explains only about 1.1% of the variability in the `score`. In other words, the model has a weak predictive power, suggesting that the number of episodes is not a strong predictor of anime scores.
 
 If the $R^2$ value is 0.4, for example, this means that 40% of the variability in anime scores can be explained by the number of episodes.
 
@@ -365,14 +387,14 @@ eta_squared
 
 **Output:**
 
-```
+```         
                 eta.sq eta.sq.part
 genre_names 0.07905414  0.07905414
 ```
 
 **Explanation:**
 
-- **Eta-squared (η² = 0.079)**: This measures the proportion of the variance in `vote_average` that can be explained by the `genre_names`. An eta-squared value of 0.079 means that 7.9% of the variability in vote averages can be attributed to the genre of the movies. In general, this indicates a small-to-moderate effect size.
+-   **Eta-squared (η² = 0.079)**: This measures the proportion of the variance in `vote_average` that can be explained by the `genre_names`. An eta-squared value of 0.079 means that 7.9% of the variability in vote averages can be attributed to the genre of the movies. In general, this indicates a small-to-moderate effect size.
 
 #### Interpreting $\eta^2$ {.unnumbered}
 
@@ -402,7 +424,7 @@ summary(logistic_model)
 
 **Output:**
 
-```
+```         
 Call:
 glm(formula = is_popular ~ average_playtime, family = binomial, 
     data = video_games)
@@ -425,11 +447,11 @@ AIC: 2959.3
 
 **Explanation:**
 
-- **Coefficients**:
-  - **Intercept (-1.3246)**: The log odds of a game being popular when `average_playtime` is 0. This is statistically significant (p < 2e-16).
-  - **average_playtime (0.0008414)**: For each additional unit of average playtime, the log odds of a game being popular increase by 0.0008414, which is statistically significant (p = 2.92e-06).
-- **Residual deviance (2955.3)**: This measures how well the model fits the data. Lower deviance suggests a better fit.
-- **AIC (2959.3)**: The Akaike Information Criterion, a measure of model quality. Lower AIC values indicate better models.
+-   **Coefficients**:
+    -   **Intercept (-1.3246)**: The log odds of a game being popular when `average_playtime` is 0. This is statistically significant (p \< 2e-16).
+    -   **average_playtime (0.0008414)**: For each additional unit of average playtime, the log odds of a game being popular increase by 0.0008414, which is statistically significant (p = 2.92e-06).
+-   **Residual deviance (2955.3)**: This measures how well the model fits the data. Lower deviance suggests a better fit.
+-   **AIC (2959.3)**: The Akaike Information Criterion, a measure of model quality. Lower AIC values indicate better models.
 
 ### Interpreting Logistic Regression Output {.unnumbered}
 
@@ -443,15 +465,15 @@ exp(coef(logistic_model))
 
 **Output:**
 
-```
+```         
      (Intercept) average_playtime 
        0.2659095        1.0008417 
 ```
 
 **Explanation:**
 
-- **Intercept (0.2659)**: The odds of a game being popular when `average_playtime` is 0 are 0.2659, or about 27%. This suggests that, when playtime is 0, the likelihood of a game being popular is low.
-- **average_playtime (1.0008417)**: For each additional unit of average playtime, the odds of a game being popular increase by a factor of 1.00084 (or 0.08%). While this is a small effect, it is statistically significant.
+-   **Intercept (0.2659)**: The odds of a game being popular when `average_playtime` is 0 are 0.2659, or about 27%. This suggests that, when playtime is 0, the likelihood of a game being popular is low.
+-   **average_playtime (1.0008417)**: For each additional unit of average playtime, the odds of a game being popular increase by a factor of 1.00084 (or 0.08%). While this is a small effect, it is statistically significant.
 
 ### Multiple Logistic Regression {.unnumbered}
 
@@ -472,7 +494,7 @@ summary(logistic_model_multi)
 
 **Output:**
 
-```
+```         
 Call:
 glm(formula = is_high_score ~ episodes + is_action, family = binomial, 
     data = anime)
@@ -496,10 +518,10 @@ AIC: 51903
 
 **Explanation:**
 
-- **Coefficients**:
-  - **Intercept (-2.1955)**: The log odds of an anime having a high score when the number of episodes is 0 and the genre is not Action.
-  - **episodes (0.004507)**: For each additional episode, the log odds of an anime having a high score increase by 0.0045. This is statistically significant (p < 2e-16).
-  - **is_action (-0.064141)**: The log odds of an anime being high-scored decrease slightly if it belongs to the Action genre, but this effect is not statistically significant (p = 0.131).
+-   **Coefficients**:
+    -   **Intercept (-2.1955)**: The log odds of an anime having a high score when the number of episodes is 0 and the genre is not Action.
+    -   **episodes (0.004507)**: For each additional episode, the log odds of an anime having a high score increase by 0.0045. This is statistically significant (p \< 2e-16).
+    -   **is_action (-0.064141)**: The log odds of an anime being high-scored decrease slightly if it belongs to the Action genre, but this effect is not statistically significant (p = 0.131).
 
 ### Interpreting Multiple Logistic Regression Output {.unnumbered}
 
@@ -523,7 +545,7 @@ confint(logistic_model)
 
 **Output:**
 
-```
+```         
 Waiting for profiling to be done...
                          2.5 %      97.5 %
 (Intercept)      -1.4167964640 -1.23401187
@@ -532,9 +554,9 @@ average_playtime  0.0005114701  0.00121759
 
 **Explanation:**
 
-- **Confidence intervals for coefficients**:
-  - **Intercept**: The 95% confidence interval for the intercept is between -1.4168 and -1.2340. This range does not include 0, which indicates that the intercept is significantly different from 0.
-  - **average_playtime**: The 95% confidence interval for the average playtime coefficient is between 0.000511 and 0.001218. This range does not include 0, suggesting that the effect of average playtime is statistically significant.
+-   **Confidence intervals for coefficients**:
+    -   **Intercept**: The 95% confidence interval for the intercept is between -1.4168 and -1.2340. This range does not include 0, which indicates that the intercept is significantly different from 0.
+    -   **average_playtime**: The 95% confidence interval for the average playtime coefficient is between 0.000511 and 0.001218. This range does not include 0, suggesting that the effect of average playtime is statistically significant.
 
 ### Hypothesis Testing {.unnumbered}
 
@@ -559,7 +581,7 @@ summary(anova_model)
 
 **Output:**
 
-```
+```         
                Df Sum Sq Mean Sq F value Pr(>F)    
 genre_names   771  21277  27.596   3.537 <2e-16 ***
 Residuals   31768 247866   7.802                   
@@ -570,19 +592,21 @@ Signif. codes:
 
 **Explanation:**
 
-- **Degrees of Freedom (Df)**: There are 771 degrees of freedom for the genre variable, which means that there are 772 unique genres in the dataset. The residual degrees of freedom are 31,768, which is the number of observations minus the number of genres.
-  
-- **Sum Sq (Sum of Squares)**: 
-  - **genre_names (21,277)**: The total variation in `vote_average` explained by differences between genres.
-  - **Residuals (247,866)**: The total variation in `vote_average` that is not explained by the genre differences.
-  
-- **Mean Sq (Mean Square)**: 
-  - **genre_names (27.596)**: The average variation in `vote_average` due to genre differences (Sum of Squares divided by degrees of freedom).
-  - **Residuals (7.802)**: The average variation in `vote_average` within each genre (Residual Sum of Squares divided by residual degrees of freedom).
-  
-- **F-value (3.537)**: This indicates the ratio of the mean square for genres to the mean square for residuals. A larger F-value indicates that there is more variation between genres than would be expected by chance.
-  
-- **p-value (< 2e-16)**: The very small p-value indicates that the variation in `vote_average` across different genres is statistically significant. In other words, genre has a significant effect on movie ratings.
+-   **Degrees of Freedom (Df)**: There are 771 degrees of freedom for the genre variable, which means that there are 772 unique genres in the dataset. The residual degrees of freedom are 31,768, which is the number of observations minus the number of genres.
+
+-   **Sum Sq (Sum of Squares)**:
+
+    -   **genre_names (21,277)**: The total variation in `vote_average` explained by differences between genres.
+    -   **Residuals (247,866)**: The total variation in `vote_average` that is not explained by the genre differences.
+
+-   **Mean Sq (Mean Square)**:
+
+    -   **genre_names (27.596)**: The average variation in `vote_average` due to genre differences (Sum of Squares divided by degrees of freedom).
+    -   **Residuals (7.802)**: The average variation in `vote_average` within each genre (Residual Sum of Squares divided by residual degrees of freedom).
+
+-   **F-value (3.537)**: This indicates the ratio of the mean square for genres to the mean square for residuals. A larger F-value indicates that there is more variation between genres than would be expected by chance.
+
+-   **p-value (\< 2e-16)**: The very small p-value indicates that the variation in `vote_average` across different genres is statistically significant. In other words, genre has a significant effect on movie ratings.
 
 If the p-value for `genre_names` is less than 0.05, we would reject the null hypothesis and conclude that genre has a significant effect on viewer ratings.
 
@@ -590,13 +614,13 @@ If the p-value for `genre_names` is less than 0.05, we would reject the null hyp
 
 In this chapter, we covered several essential inferential statistics techniques used in mass communication and media research, including:
 
-1. **Chi-Square Test**: A warning indicated issues with small expected frequencies, leading to invalid results.
-2. **T-Test**: Showed a significant difference in `vote_average` between the "Comedy, Horror" and "Horror, Thriller" genres.
-3. **Paired T-Test**: The analysis revealed no significant difference in `vote_average` before and after the trailer for horror movies.
-4. **ANOVA**: Demonstrated that genre significantly affects `vote_average`, with a small-to-moderate effect size (eta-squared of 0.079).
-5. **Linear Regression**: Indicated a weak positive relationship between the number of episodes and anime scores, with an R-squared value of only 0.01.
-6. **Cohen’s d**: A small effect size (0.25) was observed between the two genres.
-7. **Logistic Regression**: Highlighted the relationship between `average_playtime` and the likelihood of a video game being popular.
-8. **Confidence Intervals**: Provided additional evidence that the effects were statistically significant.
+1.  **Chi-Square Test**: A warning indicated issues with small expected frequencies, leading to invalid results.
+2.  **T-Test**: Showed a significant difference in `vote_average` between the "Comedy, Horror" and "Horror, Thriller" genres.
+3.  **Paired T-Test**: The analysis revealed no significant difference in `vote_average` before and after the trailer for horror movies.
+4.  **ANOVA**: Demonstrated that genre significantly affects `vote_average`, with a small-to-moderate effect size (eta-squared of 0.079).
+5.  **Linear Regression**: Indicated a weak positive relationship between the number of episodes and anime scores, with an R-squared value of only 0.01.
+6.  **Cohen’s d**: A small effect size (0.25) was observed between the two genres.
+7.  **Logistic Regression**: Highlighted the relationship between `average_playtime` and the likelihood of a video game being popular.
+8.  **Confidence Intervals**: Provided additional evidence that the effects were statistically significant.
 
 These tools allow researchers to draw conclusions about media consumption patterns, viewer preferences, and other media-related behaviors. By using the statistical methods and packages demonstrated in this chapter, students can perform robust analyses that contribute to a deeper understanding of the media landscape.
