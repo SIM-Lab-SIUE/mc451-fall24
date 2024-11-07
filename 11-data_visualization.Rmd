@@ -450,7 +450,7 @@ Once your plot is in Adobe Express, you have a wide array of customization tools
 
 6. **Add Interactive Elements for Digital Presentations**: For interactive or digital presentations, Adobe Express enables the addition of clickable elements, embedded links, or QR codes. Although Adobe Express does not support interactive plotting, it allows for links to other resources or interactive plots hosted on external platforms. Adding QR codes to static visuals can provide viewers with access to dynamic data or related resources.
 
-[[![Examples of Edited Plots from Express](images/express_plots.png){width="100%"}(https://www.adobe.com/express/learn/blog/data-visualization)]
+[![Examples of Edited Plots from Express](../images/express_plots.png){width="100%"}](https://www.adobe.com/express/learn/blog/data-visualization)
 
 ### Example Workflow: Enhancing a Plot with Adobe Express {.unnumbered}
 
