@@ -57,8 +57,8 @@ analysis-of-variance-anova
 regression-analysis
 data-visualization-in-r
 introduction-to-data-visualization
-types-of-plots-for-data-visualization
-adapting-plots-for-public-content-using-adobe-express
+data-visualization-in-r-1
+data-visualization-with-adobe-express
 special-topics-in-research-methods
 ethical-issues-in-emerging-media-research
 digital-privacy-and-research

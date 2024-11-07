@@ -79,24 +79,23 @@
 </h2>
 <p>Data visualization is essential to media and mass communication research, where vast amounts of data are often collected from surveys, social media, content analyses, and audience metrics. In this field, researchers seek not only to analyze complex patterns in media usage, audience behaviors, and communication flows but also to communicate these findings effectively to diverse stakeholders, including scholars, practitioners, and the general public. Through visual representation, data visualization facilitates the transformation of abstract or complex datasets into digestible, engaging, and informative visual narratives. By highlighting key patterns, trends, and outliers, visualization plays a critical role in clarifying the underlying relationships in media data and providing evidence-based insights into issues such as audience engagement, social trends, and the effectiveness of media content.</p>
 <p>In mass communication and media studies, data visualization serves as a bridge between raw data and meaningful interpretation, enabling researchers to accomplish several critical objectives:</p>
-<ul>
-<li><p><strong>Simplifies Complexity</strong>: Visualization tools condense extensive and complex datasets into graphics that allow for quick comprehension. For instance, when analyzing social media trends or audience demographics, visualizations can encapsulate intricate relationships that would otherwise be difficult to discern from raw data alone.</p></li>
-<li><p><strong>Reveals Patterns and Trends</strong>: By plotting data points, researchers can observe patterns, trends, and anomalies that are essential to understanding the broader implications of media behaviors and interactions. Time series plots, for example, help track shifts in public opinion or media consumption over time, providing a clearer view of longitudinal changes.</p></li>
-<li><p><strong>Enhances Accessibility for Diverse Audiences</strong>: In the field of mass communication, research findings often reach non-specialist audiences, such as policymakers, media professionals, and the public. Visualizations allow researchers to translate complex data into accessible formats, supporting transparency and fostering informed discussions on media impact and societal trends.</p></li>
-<li><p><strong>Supports Evidence-Based Decision-Making</strong>: For media professionals, visualizations provide a rapid means to interpret audience metrics and content performance. By making data instantly interpretable, visualization supports data-driven strategies in media planning, content creation, and marketing.</p></li>
-</ul>
+<p><strong>Simplifies Complexity</strong></p>
+<p>Visualization tools condense extensive and complex datasets into graphics that allow for quick comprehension. For instance, when analyzing social media trends or audience demographics, visualizations can encapsulate intricate relationships that would otherwise be difficult to discern from raw data alone.</p>
+<p><strong>Reveals Patterns and Trends</strong></p>
+<p>By plotting data points, researchers can observe patterns, trends, and anomalies that are essential to understanding the broader implications of media behaviors and interactions. Time series plots, for example, help track shifts in public opinion or media consumption over time, providing a clearer view of longitudinal changes.</p>
+<p><strong>Enhances Accessibility for Diverse Audiences</strong></p>
+<p>In the field of mass communication, research findings often reach non-specialist audiences, such as policymakers, media professionals, and the public. Visualizations allow researchers to translate complex data into accessible formats, supporting transparency and fostering informed discussions on media impact and societal trends.</p>
+<p><strong>Supports Evidence-Based Decision-Making</strong></p>
+<p>For media professionals, visualizations provide a rapid means to interpret audience metrics and content performance. By making data instantly interpretable, visualization supports data-driven strategies in media planning, content creation, and marketing.</p>
 <p>Data visualization methods are diverse, encompassing a range of charts, graphs, maps, and infographics that can be customized to the research question at hand. To support these visualizations, RStudio’s <code>ggplot2</code> package provides a robust framework grounded in the “Grammar of Graphics” concept. <code>ggplot2</code> enables researchers to build each visualization by defining essential elements—such as data mappings, geometric shapes, scales, and themes—in layers. This layered approach allows for a high degree of customization, from selecting aesthetic properties (e.g., color and size) to applying statistical transformations. The flexibility of <code>ggplot2</code> makes it particularly suitable for mass communication research, where diverse data sources and varied research questions demand adaptable visualization techniques.</p>
 <p>Furthermore, as media and communication studies increasingly incorporate big data and computational methods, visualizations play a pivotal role in exploring and communicating findings derived from large-scale datasets. Social media analyses, for instance, generate millions of data points, which become understandable through network graphs, sentiment heatmaps, or frequency distribution plots. In this context, <code>ggplot2</code>’s range of functionalities—from basic scatter plots to complex faceted plots—enables researchers to produce sophisticated, publication-quality visualizations that align with the rigor and interpretive needs of mass communication research.</p>
 <p>Data visualization is a cornerstone of media and communication studies, where it aids researchers in presenting complex data in an engaging, transparent, and interpretable way. It allows scholars and media professionals alike to uncover hidden patterns, effectively communicate findings, and make informed, evidence-based decisions that can shape media policies, content, and strategies.</p>
 </div>
-<div id="types-of-plots-for-data-visualization" class="section level2" number="11.2">
+<div id="data-visualization-in-r-1" class="section level2" number="11.2">
 <h2>
-<span class="header-section-number">11.2</span> Types of Plots for Data Visualization<a class="anchor" aria-label="anchor" href="#types-of-plots-for-data-visualization"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.2</span> Data Visualization in R<a class="anchor" aria-label="anchor" href="#data-visualization-in-r-1"><i class="fas fa-link"></i></a>
 </h2>
-<p>Visualizing data effectively begins with choosing the appropriate plot based on the structure and nature of your variables. Different types of plots reveal various aspects of the data, from distribution shapes to relationships between variables. This section introduces four primary categories of plots in <code>ggplot2</code>, organized by variable type.</p>
-<div id="loading-necessary-r-packages-1" class="section level3 unnumbered">
-<h3>Loading Necessary R Packages<a class="anchor" aria-label="anchor" href="#loading-necessary-r-packages-1"><i class="fas fa-link"></i></a>
-</h3>
+<p><strong>Loading Necessary R Packages</strong></p>
 <p>The following packages are required to execute the analyses presented in this chapter. Each package plays a unique role in data manipulation, visualization, or statistical testing, which will be clarified in the sections that follow.</p>
 <p>Here’s the updated section where the listed libraries in the code block are then defined immediately afterward.</p>
 <div class="sourceCode" id="cb114"><pre class="downlit sourceCode r">
@@ -105,19 +104,18 @@
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://dplyr.tidyverse.org">"dplyr"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"dplyr"</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://ggplot2.tidyverse.org">"ggplot2"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggplot2"</span><span class="op">)</span></span>
 <span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://lubridate.tidyverse.org">"lubridate"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"lubridate"</span><span class="op">)</span></span>
-<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://github.com/edzer/hexbin">"hexbin"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"hexbin"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://github.com/edzer/hexbin">"hexbin"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"hexbin"</span><span class="op">)</span></span>
+<span><span class="kw">if</span> <span class="op">(</span><span class="op">!</span><span class="kw"><a href="https://rdrr.io/r/base/library.html">require</a></span><span class="op">(</span><span class="st"><a href="https://jrnold.github.io/ggthemes/">"ggthemes"</a></span><span class="op">)</span><span class="op">)</span> <span class="fu"><a href="https://rdrr.io/r/utils/install.packages.html">install.packages</a></span><span class="op">(</span><span class="st">"ggthemes"</span><span class="op">)</span></span></code></pre></div>
 <ul>
 <li><p><strong>data.table</strong>: Efficiently handles large datasets, particularly useful when working with substantial media-related data files. <code>data.table</code> enhances R’s base data structures, allowing fast aggregation, joining, and filtering, which can be especially beneficial in media studies that involve analyzing large sets of audience metrics or social media data.</p></li>
 <li><p><strong>dplyr</strong>: Facilitates data manipulation and cleaning, ensuring datasets are structured appropriately for each analysis type. <code>dplyr</code> provides a set of intuitive functions, such as <code><a href="https://dplyr.tidyverse.org/reference/filter.html">filter()</a></code>, <code><a href="https://dplyr.tidyverse.org/reference/select.html">select()</a></code>, and <code><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate()</a></code>, which simplify data wrangling processes and allow researchers to prepare data for analysis or visualization.</p></li>
 <li><p><strong>ggplot2</strong>: A powerful visualization library based on the “Grammar of Graphics,” enabling researchers to construct complex, layered plots. <code>ggplot2</code> is ideal for creating publication-ready visuals, including scatter plots, bar charts, and histograms, which support data-driven storytelling in media and communication research.</p></li>
 <li><p><strong>lubridate</strong>: Simplifies the handling of dates and times, making it easier to parse, manipulate, and analyze date-time data. This is useful for analyzing time-based patterns, such as tracking audience engagement over time or studying trends in social media activity.</p></li>
 <li><p><strong>hexbin</strong>: Useful for visualizing large amounts of two-dimensional data using hexagonal binning. <code>hexbin</code> is particularly helpful when scatter plots become overcrowded, allowing researchers to represent data density more effectively. This is valuable for media research when analyzing extensive datasets with two continuous variables, such as user engagement versus time spent on a platform.</p></li>
+<li><p><strong>ggthemes</strong>: This package provides for a variation of specialized themes to assist with stylizing ggplot2 plots.</p></li>
 </ul>
 <p>This set of libraries supports efficient data manipulation, visualization, and statistical analysis, ensuring that your research data is handled effectively throughout the workflow.</p>
-</div>
-<div id="loading-the-datasets-1" class="section level3 unnumbered">
-<h3>Loading the Datasets<a class="anchor" aria-label="anchor" href="#loading-the-datasets-1"><i class="fas fa-link"></i></a>
-</h3>
+<p><strong>Loading the Datasets</strong></p>
 <p>The analyses in this chapter utilize four distinct datasets from various domains in media studies, loaded from external sources to ensure reproducibility. The datasets include <code>anime</code>, <code>horror_movies</code>, <code>survivor</code>, and <code>video_games</code>, each of which has a corresponding data dictionary to help interpret variables and structure. Below, we load these datasets and briefly describe their contents.</p>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load datasets</span></span>
@@ -125,23 +123,90 @@
 <span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv"</span><span class="op">)</span></span>
 <span><span class="va">swift_songs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2023/2023-10-17/taylor_all_songs.csv'</span><span class="op">)</span></span>
 <span><span class="va">video_games</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv"</span><span class="op">)</span></span></code></pre></div>
-</div>
-<div id="drop-scientific-notation-1" class="section level3 unnumbered">
-<h3>Drop Scientific Notation<a class="anchor" aria-label="anchor" href="#drop-scientific-notation-1"><i class="fas fa-link"></i></a>
-</h3>
+<p><strong>Drop Scientific Notation</strong></p>
 <p>The following option allows you to stop scientific notation.</p>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html">options</a></span><span class="op">(</span>scipen <span class="op">=</span> <span class="fl">999</span><span class="op">)</span> </span></code></pre></div>
-</div>
-<div id="one-variable-continuous" class="section level3 unnumbered">
-<h3>One Variable: Continuous<a class="anchor" aria-label="anchor" href="#one-variable-continuous"><i class="fas fa-link"></i></a>
+<div id="introduction-to-plots-with-ggplot2" class="section level3 unnumbered">
+<h3>Introduction to Plots with <code>ggplot2</code><a class="anchor" aria-label="anchor" href="#introduction-to-plots-with-ggplot2"><i class="fas fa-link"></i></a>
 </h3>
+<p>The <code>ggplot2</code> package in R, developed by Hadley Wickham, is a powerful and flexible tool for creating a wide variety of data visualizations. Designed around the principles of the “Grammar of Graphics” (Wilkinson, 2005), <code>ggplot2</code> allows users to layer various elements of a plot—data, mappings, and geometries—to construct meaningful, interpretable visuals. This approach to plotting is particularly beneficial in media and mass communication research, where clarity and structure are paramount for conveying complex insights about media patterns, audience behaviors, and trends.</p>
+<p>As students new to R, you’ll find that <code>ggplot2</code> provides a structured yet intuitive way to begin creating data visualizations. Using <code>ggplot2</code>, you will learn how to represent data accurately while tailoring visuals to meet the expectations of different audiences, including both academic and industry stakeholders.</p>
+<div id="basic-structure-of-a-ggplot2-plot" class="section level4 unnumbered">
+<h4>Basic Structure of a <code>ggplot2</code> Plot<a class="anchor" aria-label="anchor" href="#basic-structure-of-a-ggplot2-plot"><i class="fas fa-link"></i></a>
+</h4>
+<p>In <code>ggplot2</code>, creating a plot involves three primary components:
+1. <strong>Data</strong>: The dataset you want to visualize.
+2. <strong>Aesthetic Mappings (aes)</strong>: How the variables in your data relate to the visual properties of the plot, such as the x-axis, y-axis, color, size, or shape.
+3. <strong>Geometries (geom)</strong>: The type of plot you want to create, like a bar chart, line graph, or scatter plot.</p>
+<p>The core structure of a <code>ggplot2</code> plot starts with the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function, where you define the data and mappings, followed by a geometry layer. For example:</p>
+<pre><code># Example of a basic scatter plot
+ggplot(data = &lt;dataset&gt;, aes(x = &lt;x_variable&gt;, y = &lt;y_variable&gt;)) +
+  geom_point()</code></pre>
+<p>This code creates a scatter plot, where <code>&lt;dataset&gt;</code> represents your dataset, and <code>&lt;x_variable&gt;</code> and <code>&lt;y_variable&gt;</code> represent the variables you wish to plot on the x- and y-axes, respectively.</p>
+</div>
+<div id="example-visualizing-taylor-swift-data" class="section level4 unnumbered">
+<h4>Example: Visualizing Taylor Swift Data<a class="anchor" aria-label="anchor" href="#example-visualizing-taylor-swift-data"><i class="fas fa-link"></i></a>
+</h4>
+<p>To make this approach more concrete, let’s look at an example relevant to media research. Suppose we have a dataset of Taylor Swift songs. Using <code>ggplot2</code>, we can create a bar chart to illustrate album lengths in hours.</p>
+<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Prepare dataset</span></span>
+<span><span class="va">swift_albums</span> <span class="op">&lt;-</span> <span class="va">swift_songs</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span> <span class="op">(</span><span class="va">album_name</span> <span class="op">!=</span> <span class="st">"NA"</span>,</span>
+<span>          <span class="va">duration_ms</span> <span class="op">!=</span> <span class="st">"NA"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span><span class="op">(</span><span class="va">album_name</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>duration_hrs <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span><span class="op">(</span><span class="va">duration_ms</span><span class="op">/</span><span class="fl">3600000</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Bar chart showing daily shares</span></span>
+<span><span class="va">album_bar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">swift_albums</span>, <span class="co"># data set</span></span>
+<span>       <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">album_name</span>, <span class="va">duration_hrs</span><span class="op">)</span>, <span class="co"># duration_hrs as x value and reorder by album_name</span></span>
+<span>           y <span class="op">=</span> <span class="va">duration_hrs</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> <span class="co"># duration_hrs as y value</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># bar charts</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Length of Taylor Swift Album in Hours"</span>, <span class="co"># title text</span></span>
+<span>       x <span class="op">=</span> <span class="st">"Album Name"</span>, <span class="co"># x-axis text</span></span>
+<span>       y <span class="op">=</span> <span class="st">"Album (hours)"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># y-axis text</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># rotate plot 90 degrees clockwise</span></span>
+<span><span class="va">album_bar</span></span></code></pre></div>
+<p>In this example:
+- <code>swift_songs</code> is the dataset, where <code>album_name</code> is the listed album name, and <code>duration_hrs</code> is the collective time of the tracks on the ablum.
+- <code>geom_bar(stat = "identity")</code> specifies a bar chart, where the height of each bar corresponds directly to the <code>shares</code> value for each day.</p>
+<div class="float">
+<img src="images/ggplot2_example1.png" style="width:100.0%" alt="Example of ggplot2 Plot"><div class="figcaption">Example of <code>ggplot2</code> Plot</div>
+</div>
+</div>
+<div id="adding-layers-and-customization" class="section level4 unnumbered">
+<h4>Adding Layers and Customization<a class="anchor" aria-label="anchor" href="#adding-layers-and-customization"><i class="fas fa-link"></i></a>
+</h4>
+<p>One of the most versatile aspects of <code>ggplot2</code> is the ability to add layers and customize your plots. For instance, you can add a line to distinguish an important part of the plot and change its color, style, and size.</p>
+<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Past example with mean line</span></span>
+<span><span class="va">album_bar</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/mean.html">mean</a></span><span class="op">(</span><span class="va">swift_albums</span><span class="op">$</span><span class="va">duration_hrs</span><span class="op">)</span>, <span class="co">#add mean duration hours</span></span>
+<span>             color <span class="op">=</span> <span class="st">"red"</span>, <span class="co"># make line red</span></span>
+<span>             size <span class="op">=</span> <span class="fl">2</span>, <span class="co"># make line thicker</span></span>
+<span>             linetype <span class="op">=</span> <span class="st">"dashed"</span><span class="op">)</span> <span class="co"># make line dashed</span></span></code></pre></div>
+<p>This bar chart adds a mean line across the album durations.</p>
+<div class="float">
+<img src="images/ggplot2_example2.png" style="width:100.0%" alt="Example of ggplot2 Plot with Red Line"><div class="figcaption">Example of <code>ggplot2</code> Plot with Red Line</div>
+</div>
+</div>
+<div id="practice-and-application" class="section level4 unnumbered">
+<h4>Practice and Application<a class="anchor" aria-label="anchor" href="#practice-and-application"><i class="fas fa-link"></i></a>
+</h4>
+<p>Experimenting with <code>ggplot2</code> is essential to becoming proficient in data visualization. Try altering the <code><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes()</a></code> mappings, using different <code>geom</code> types, or modifying plot aesthetics to fit the specific goals of your analysis. By mastering <code>ggplot2</code>, you will develop a robust skill set that will serve you well in various media research contexts, from academic papers to industry presentations.</p>
+</div>
+</div>
+<div id="types-of-plots-for-data-visualization" class="section level3 unnumbered">
+<h3>Types of Plots for Data Visualization<a class="anchor" aria-label="anchor" href="#types-of-plots-for-data-visualization"><i class="fas fa-link"></i></a>
+</h3>
+<p>Visualizing data effectively begins with choosing the appropriate plot based on the structure and nature of your variables. Different types of plots reveal various aspects of the data, from distribution shapes to relationships between variables. This section introduces four primary categories of plots in <code>ggplot2</code>, organized by variable type.</p>
+<p>One Variable: Continuous {.unnumbered}</p>
 <p>When working with a single continuous variable, visualizations focus on understanding the distribution, central tendency, and variability within the data. Continuous data, such as movie runtime, video game ratings, or anime episode counts, can be plotted to reveal insights about their spread and frequency.</p>
 <ol style="list-style-type: decimal">
 <li>
 <strong>Histograms</strong>: Histograms display the frequency distribution of a continuous variable by grouping data into bins. This is useful for seeing the shape of the distribution (e.g., skewness) and identifying any outliers.</li>
 </ol>
-<div class="sourceCode" id="cb117"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">horror_movies</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">runtime</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span><span class="op">(</span>binwidth <span class="op">=</span> <span class="fl">10</span>, fill <span class="op">=</span> <span class="st">"steelblue"</span>, color <span class="op">=</span> <span class="st">"black"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribution of Horror Movie Runtimes"</span>, x <span class="op">=</span> <span class="st">"Runtime (minutes)"</span>, y <span class="op">=</span> <span class="st">"Frequency"</span><span class="op">)</span></span></code></pre></div>
@@ -152,7 +217,7 @@
 <li>
 <strong>Density Plots</strong>: Density plots are smoothed representations of the data distribution and can provide a clearer picture of the underlying pattern compared to histograms, particularly with large datasets.</li>
 </ol>
-<div class="sourceCode" id="cb118"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">anime</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_density.html">geom_density</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"lightblue"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Density Plot of Anime Episode Counts"</span>, x <span class="op">=</span> <span class="st">"Episodes"</span>, y <span class="op">=</span> <span class="st">"Density"</span><span class="op">)</span></span></code></pre></div>
@@ -163,7 +228,7 @@
 <li>
 <strong>Box Plots</strong>: Box plots summarize the distribution using five-number summaries (minimum, first quartile, median, third quartile, and maximum), making them effective for identifying outliers.</li>
 </ol>
-<div class="sourceCode" id="cb119"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">video_games</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">owners</span>, y <span class="op">=</span> <span class="va">metascore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html">geom_boxplot</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"tomato"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Box Plot of Video Game Ratings"</span>, y <span class="op">=</span> <span class="st">"Rating"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -171,16 +236,15 @@
 <div class="float">
 <img src="images/box_plotsv1.png" style="width:100.0%" alt="Box Plot of Video Game Ratings"><div class="figcaption">Box Plot of Video Game Ratings</div>
 </div>
-</div>
-<div id="two-variables-both-continuous" class="section level3 unnumbered">
-<h3>Two Variables: Both Continuous<a class="anchor" aria-label="anchor" href="#two-variables-both-continuous"><i class="fas fa-link"></i></a>
-</h3>
+<div id="two-variables-both-continuous" class="section level4 unnumbered">
+<h4>Two Variables: Both Continuous<a class="anchor" aria-label="anchor" href="#two-variables-both-continuous"><i class="fas fa-link"></i></a>
+</h4>
 <p>Plots involving two continuous variables reveal relationships, trends, and potential correlations. These visualizations are often used to study associations, such as the relationship between budget and revenue for horror movies or ratings versus popularity in anime.</p>
 <ol style="list-style-type: decimal">
 <li>
 <strong>Scatter Plots</strong>: Scatter plots show the relationship between two continuous variables by plotting individual points. Adding trend lines can help to visualize the direction of the relationship.</li>
 </ol>
-<div class="sourceCode" id="cb120"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">horror_movies</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">budget</span>, y <span class="op">=</span> <span class="va">revenue</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, color <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -192,7 +256,7 @@
 <li>
 <strong>Line Plots</strong>: Line plots are suitable for time-series data or when data points are sequential. This plot type is helpful to show trends over time, such as tracking the average rating of horror movies by year.</li>
 </ol>
-<div class="sourceCode" id="cb121"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Get average score by year</span></span>
 <span><span class="va">horror_score_date</span> <span class="op">&lt;-</span> <span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>release_date <span class="op">=</span> <span class="fu"><a href="https://lubridate.tidyverse.org/reference/round_date.html">floor_date</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/as.Date.html">as.Date</a></span><span class="op">(</span><span class="va">release_date</span>, <span class="st">"%Y-%m-%d"</span><span class="op">)</span>, unit <span class="op">=</span> <span class="st">"year"</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
@@ -210,7 +274,7 @@
 <li>
 <strong>Hexbin Plots</strong>: When scatter plots become overcrowded, hexbin plots provide a clearer view by grouping points into hexagonal bins, which display density through color gradients.</li>
 </ol>
-<div class="sourceCode" id="cb122"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Plot with swift_songs data</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">swift_songs</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">danceability</span>, y <span class="op">=</span> <span class="va">energy</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_hex.html">geom_hex</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
@@ -219,15 +283,15 @@
 <img src="images/hexbin.png" style="width:100.0%" alt="Hexbin Plot of Danceability vs. Energy"><div class="figcaption">Hexbin Plot of Danceability vs. Energy</div>
 </div>
 </div>
-<div id="two-variables-one-discrete-one-continuous" class="section level3 unnumbered">
-<h3>Two Variables: One Discrete, One Continuous<a class="anchor" aria-label="anchor" href="#two-variables-one-discrete-one-continuous"><i class="fas fa-link"></i></a>
-</h3>
+<div id="two-variables-one-discrete-one-continuous" class="section level4 unnumbered">
+<h4>Two Variables: One Discrete, One Continuous<a class="anchor" aria-label="anchor" href="#two-variables-one-discrete-one-continuous"><i class="fas fa-link"></i></a>
+</h4>
 <p>Visualizations with one discrete and one continuous variable are particularly useful for comparing groups or categories. These plots often show how a continuous variable differs across categories, such as movie genres, anime types, or game platforms.</p>
 <ol style="list-style-type: decimal">
 <li>
 <strong>Bar Charts</strong>: Bar charts display the average or total of a continuous variable across different categories. For instance, a bar chart could show the median playtime for different video game publishers.</li>
 </ol>
-<div class="sourceCode" id="cb123"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Filter for top publishers</span></span>
 <span><span class="va">top_game_publishers</span> <span class="op">&lt;-</span> <span class="va">video_games</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">publisher</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"SEGA"</span>, <span class="st">"Ubisoft"</span>, <span class="st">"Square Enix"</span><span class="op">)</span><span class="op">)</span></span>
@@ -243,7 +307,7 @@
 <li>
 <strong>Box Plots (Grouped)</strong>: Grouped box plots display the distribution of a continuous variable across discrete categories, showing medians, quartiles, and outliers.</li>
 </ol>
-<div class="sourceCode" id="cb124"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Filter for two source types</span></span>
 <span><span class="va">original_manga</span> <span class="op">&lt;-</span> <span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">source</span> <span class="op"><a href="https://rdrr.io/r/base/match.html">%in%</a></span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"Manga"</span>, <span class="st">"Original"</span><span class="op">)</span><span class="op">)</span></span>
@@ -259,7 +323,7 @@
 <li>
 <strong>Violin Plots</strong>: Violin plots combine box plot information with a rotated density plot, making it easy to compare distributions across categories.</li>
 </ol>
-<div class="sourceCode" id="cb125"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">top_game_publishers</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">publisher</span>, y <span class="op">=</span> <span class="va">price</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_violin.html">geom_violin</a></span><span class="op">(</span>fill <span class="op">=</span> <span class="st">"turquoise"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Distribution of Price by Publisher"</span>, x <span class="op">=</span> <span class="st">"Publisher"</span>, y <span class="op">=</span> <span class="st">"Price ($)"</span><span class="op">)</span> <span class="op">+</span></span>
@@ -268,15 +332,15 @@
 <img src="images/violin_plot.png" style="width:100.0%" alt="Distribution of Price by Publisher"><div class="figcaption">Distribution of Price by Publisher</div>
 </div>
 </div>
-<div id="two-variables-both-discrete" class="section level3 unnumbered">
-<h3>Two Variables: Both Discrete<a class="anchor" aria-label="anchor" href="#two-variables-both-discrete"><i class="fas fa-link"></i></a>
-</h3>
+<div id="two-variables-both-discrete" class="section level4 unnumbered">
+<h4>Two Variables: Both Discrete<a class="anchor" aria-label="anchor" href="#two-variables-both-discrete"><i class="fas fa-link"></i></a>
+</h4>
 <p>Plots with two discrete variables are helpful in visualizing frequencies or proportions across categories. Such visualizations are valuable for summarizing categorical data, such as counts of anime by genre and season or the distribution of horror movies by subgenre and rating.</p>
 <ol style="list-style-type: decimal">
 <li>
 <strong>Count Plots</strong>: These plots count the occurrences of combinations of two discrete variables, like the frequency of anime genres across different sources.</li>
 </ol>
-<div class="sourceCode" id="cb126"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb129"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">original_manga</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">source</span>, fill <span class="op">=</span> <span class="va">type</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>position <span class="op">=</span> <span class="st">"dodge"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Count of Anime by Source and Type"</span>, x <span class="op">=</span> <span class="st">"Source"</span>, y <span class="op">=</span> <span class="st">"Type"</span><span class="op">)</span></span></code></pre></div>
@@ -287,7 +351,7 @@
 <li>
 <strong>Heatmaps</strong>: Heatmaps use color gradients to display counts or intensities of combinations of two categorical variables, making them particularly useful for understanding interactions between two factors.</li>
 </ol>
-<div class="sourceCode" id="cb127"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb130"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span>data <span class="op">=</span> <span class="va">top_game_publishers</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">publisher</span>, y <span class="op">=</span> <span class="va">owners</span>, fill <span class="op">=</span> <span class="va">metascore</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_tile.html">geom_tile</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Heatmap of Metascores by Publisher and Owner"</span>, x <span class="op">=</span> <span class="st">"Publisher"</span>, y <span class="op">=</span> <span class="st">"Owner"</span><span class="op">)</span></span></code></pre></div>
@@ -297,20 +361,124 @@
 <p>These plot types provide a range of tools for visualizing data based on the structure of variables, allowing researchers to select the plot that best communicates their data’s story. By utilizing <code>ggplot2</code> in R, these visualizations can be tailored to suit specific research questions, enhancing the clarity and impact of findings in media and mass communication research.</p>
 </div>
 </div>
-<div id="adapting-plots-for-public-content-using-adobe-express" class="section level2" number="11.3">
+<div id="add-theme-to-ggplot2-plots" class="section level3 unnumbered">
+<h3>Add Theme to <code>ggplot2</code> Plots<a class="anchor" aria-label="anchor" href="#add-theme-to-ggplot2-plots"><i class="fas fa-link"></i></a>
+</h3>
+</div>
+<div id="customizing-ggplot2-plots-with-themes" class="section level3 unnumbered">
+<h3>Customizing <code>ggplot2</code> Plots with Themes<a class="anchor" aria-label="anchor" href="#customizing-ggplot2-plots-with-themes"><i class="fas fa-link"></i></a>
+</h3>
+<p>Themes are essential in <code>ggplot2</code> for transforming the look of your visualizations to better communicate your data’s story. Beyond colors and labels, themes adjust non-data elements like backgrounds, gridlines, and fonts, enhancing both readability and visual appeal. Themes are particularly valuable in media research, where graphs may need to engage diverse audiences or align with specific branding requirements. This section will introduce base <code>ggplot2</code> themes and themes from the <code>ggthemes</code> package, with examples showing how each theme can alter a plot’s presentation.</p>
+<div id="introduction-to-base-themes-in-ggplot2" class="section level4 unnumbered">
+<h4>Introduction to Base Themes in <code>ggplot2</code><a class="anchor" aria-label="anchor" href="#introduction-to-base-themes-in-ggplot2"><i class="fas fa-link"></i></a>
+</h4>
+<p><code>ggplot2</code> comes with several pre-built themes that cater to a variety of needs:</p>
+<ol style="list-style-type: decimal">
+<li>
+<strong><code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_gray()</a></code></strong>: The default theme, providing a balanced gray background.</li>
+<li>
+<strong><code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw()</a></code></strong>: A black-and-white theme that’s ideal for print.</li>
+<li>
+<strong><code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code></strong>: Reduces visual clutter by removing background elements, making it great for presentations.</li>
+<li>
+<strong><code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic()</a></code></strong>: Offers a clean look with a simple white background and minimal gridlines.</li>
+</ol>
+<p>To illustrate, let’s start with a bar plot of Taylor Swift albums. We will present the original and the and thenapply <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code> to give it a modern, stripped-down look.</p>
+<div class="sourceCode" id="cb131"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">album_bar</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">swift_albums</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span><span class="op">(</span><span class="va">album_name</span>, <span class="va">duration_hrs</span><span class="op">)</span>, y <span class="op">=</span> <span class="va">duration_hrs</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Length of Taylor Swift Albums"</span>, x <span class="op">=</span> <span class="st">"Album Name"</span>, y <span class="op">=</span> <span class="st">"Duration (Hours)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">album_bar</span> </span>
+<span></span>
+<span><span class="va">album_bar</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="images/taylor_theme.jpg" style="width:100.0%" alt="Comparing Theme and No Theme"><div class="figcaption">Comparing Theme and No Theme</div>
+</div>
+<p>Here, <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code> eliminates the default gray background and focuses attention on the bars and labels. You can further customize it by adjusting text, line weights, and colors.</p>
+</div>
+<div id="introducing-ggthemes-expanding-visual-styles" class="section level4 unnumbered">
+<h4>Introducing <code>ggthemes</code>: Expanding Visual Styles<a class="anchor" aria-label="anchor" href="#introducing-ggthemes-expanding-visual-styles"><i class="fas fa-link"></i></a>
+</h4>
+<p>For more specialized visual styles, the <code>ggthemes</code> package offers themes modeled after popular media and publication aesthetics, including:</p>
+<ul>
+<li>
+<strong><code><a href="http://jrnold.github.io/ggthemes/reference/theme_fivethirtyeight.html">theme_fivethirtyeight()</a></code></strong>: Mimics the data-rich but clean style of FiveThirtyEight’s graphics.</li>
+<li>
+<strong><code><a href="http://jrnold.github.io/ggthemes/reference/theme_economist.html">theme_economist()</a></code></strong>: Matches The Economist’s style, with structured gridlines and muted colors.</li>
+<li>
+<strong><code><a href="http://jrnold.github.io/ggthemes/reference/theme_tufte.html">theme_tufte()</a></code></strong>: Inspired by Edward Tufte, this theme minimizes non-data elements for clarity.</li>
+</ul>
+<p>Let’s apply <code><a href="http://jrnold.github.io/ggthemes/reference/theme_economist.html">theme_economist()</a></code> to a scatter plot, showcasing its impact:</p>
+<div class="sourceCode" id="cb132"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">horror_movies</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">budget</span><span class="op">/</span><span class="fl">1000000</span>, y <span class="op">=</span> <span class="va">revenue</span><span class="op">/</span><span class="fl">1000000</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"purple"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"lm"</span>, color <span class="op">=</span> <span class="st">"darkblue"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Budget vs. Revenue of Horror Movies"</span>, x <span class="op">=</span> <span class="st">"Budget (millions)"</span>, y <span class="op">=</span> <span class="st">"Revenue (millions)"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="http://jrnold.github.io/ggthemes/reference/theme_economist.html">theme_economist</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="images/horror_economist.png" style="width:100.0%" alt="Budget vs. Revenue of Horror Movies Plot with Economist Theme"><div class="figcaption">Budget vs. Revenue of Horror Movies Plot with Economist Theme</div>
+</div>
+<p>In this example, <code><a href="http://jrnold.github.io/ggthemes/reference/theme_economist.html">theme_economist()</a></code> adds a subtle background with structured gridlines, helping distinguish data points in a way that resembles financial media graphics. The color scheme and layout enhance the professional tone of the plot.</p>
+</div>
+<div id="customizing-themes-for-adobe-express-export" class="section level4 unnumbered">
+<h4>Customizing Themes for Adobe Express Export<a class="anchor" aria-label="anchor" href="#customizing-themes-for-adobe-express-export"><i class="fas fa-link"></i></a>
+</h4>
+<p>Before exporting to Adobe Express, it’s useful to apply a theme that maintains readability across platforms and allows further editing. Themes like <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic()</a></code> work well, as they provide a clean base, while more complex themes (e.g., <code><a href="http://jrnold.github.io/ggthemes/reference/theme_tufte.html">theme_tufte()</a></code>) can add polish for final presentations.</p>
+<div class="sourceCode" id="cb133"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Example for Adobe Express export-ready plot</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">horror_score_date</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span>x <span class="op">=</span> <span class="va">release_date</span>, y <span class="op">=</span> <span class="va">mean_score</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_path.html">geom_line</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"darkgreen"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span><span class="op">(</span>title <span class="op">=</span> <span class="st">"Horror Movie Ratings Over Time"</span>, x <span class="op">=</span> <span class="st">"Year"</span>, y <span class="op">=</span> <span class="st">"Average Rating"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="images/horror_classic.png" style="width:100.0%" alt="Horror Movie Ratings Over Time Plot with Classic Theme"><div class="figcaption">Horror Movie Ratings Over Time Plot with Classic Theme</div>
+</div>
+<p>This plot uses <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_classic()</a></code>, presenting data in a format that will look consistent across platforms. When using Adobe Express, this clean layout allows you to add custom branding or text overlays without visual interference.</p>
+</div>
+<div id="enhancing-readability-with-custom-theme-adjustments" class="section level4 unnumbered">
+<h4>Enhancing Readability with Custom Theme Adjustments<a class="anchor" aria-label="anchor" href="#enhancing-readability-with-custom-theme-adjustments"><i class="fas fa-link"></i></a>
+</h4>
+<p>Beyond pre-built themes, you can fine-tune aspects of any theme to better suit your audience:</p>
+<div class="sourceCode" id="cb134"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">album_bar</span> <span class="op">+</span> </span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span><span class="op">(</span></span>
+<span>    plot.title <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">16</span>, face <span class="op">=</span> <span class="st">"bold"</span><span class="op">)</span>,</span>
+<span>    axis.title.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">14</span>, color <span class="op">=</span> <span class="st">"darkgray"</span><span class="op">)</span>,</span>
+<span>    axis.text <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">12</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span></code></pre></div>
+<div class="float">
+<img src="images/taylor_custom.png" style="width:100.0%" alt="Length of Taylor Swift Albums Plot with Custom Minimal Theme"><div class="figcaption">Length of Taylor Swift Albums Plot with Custom Minimal Theme</div>
+</div>
+<p>In this example, we add custom font sizes and colors to <code><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal()</a></code>, enhancing readability for both print and digital displays. This flexibility lets you create visualizations that are both data-rich and aesthetically tailored, ready for Adobe Express or any other platform.</p>
+<p>Experimenting with themes in <code>ggplot2</code> and <code>ggthemes</code> allows you to develop a cohesive visual style, whether for academic papers, presentations, or social media posts.</p>
+</div>
+</div>
+</div>
+<div id="data-visualization-with-adobe-express" class="section level2" number="11.3">
 <h2>
-<span class="header-section-number">11.3</span> Adapting Plots for Public Content Using Adobe Express<a class="anchor" aria-label="anchor" href="#adapting-plots-for-public-content-using-adobe-express"><i class="fas fa-link"></i></a>
+<span class="header-section-number">11.3</span> Data Visualization with Adobe Express<a class="anchor" aria-label="anchor" href="#data-visualization-with-adobe-express"><i class="fas fa-link"></i></a>
 </h2>
+<div id="adapting-plots-for-public-content-using-adobe-express" class="section level3 unnumbered">
+<h3>Adapting Plots for Public Content Using Adobe Express<a class="anchor" aria-label="anchor" href="#adapting-plots-for-public-content-using-adobe-express"><i class="fas fa-link"></i></a>
+</h3>
 <p>After creating research visuals in RStudio, Adobe Express enables researchers to adapt these visuals into polished, professional graphics suitable for wider audiences, including presentations, reports, and social media. Adobe Express provides customizable templates, allowing users to upload exported visuals and adjust color schemes, fonts, and layouts. This customization process improves readability and visual appeal, ensuring that complex data is both understandable and engaging.</p>
+</div>
 <div id="exporting-plots-from-rstudio" class="section level3 unnumbered">
 <h3>Exporting Plots from RStudio<a class="anchor" aria-label="anchor" href="#exporting-plots-from-rstudio"><i class="fas fa-link"></i></a>
 </h3>
 <p>To prepare a plot created in <code>ggplot2</code> for Adobe Express, first export the plot as a high-resolution image. RStudio allows you to export plots in both raster (e.g., PNG or JPEG) and vector formats (e.g., PDF or SVG), depending on the intended usage. For presentations or web content, PNG files work well; for printed reports or large displays, vector formats like SVG ensure crisp quality.</p>
+<div class="float">
+<img src="images/export_plot.png" style="width:100.0%" alt="Manually Export Plot"><div class="figcaption">Manually Export Plot</div>
+</div>
 <div id="exporting-via-the-ggsave-function" class="section level4 unnumbered">
 <h4>Exporting via the <code>ggsave()</code> Function<a class="anchor" aria-label="anchor" href="#exporting-via-the-ggsave-function"><i class="fas fa-link"></i></a>
 </h4>
 <p>The <code><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave()</a></code> function in <code>ggplot2</code> enables you to save the last generated plot with custom dimensions and resolution settings. Here is an example:</p>
-<div class="sourceCode" id="cb128"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb135"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Save the plot as a PNG file with specified dimensions and resolution</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html">ggsave</a></span><span class="op">(</span><span class="st">"plot.png"</span>, plot <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/last_plot.html">last_plot</a></span><span class="op">(</span><span class="op">)</span>, width <span class="op">=</span> <span class="fl">8</span>, height <span class="op">=</span> <span class="fl">5</span>, dpi <span class="op">=</span> <span class="fl">300</span><span class="op">)</span></span></code></pre></div>
 <ul>
@@ -344,6 +512,7 @@
 <li><p><strong>Optimize for Different Platforms and Formats</strong>: Adobe Express enables users to adapt their visuals to specific platforms, such as Instagram, LinkedIn, or presentation slides, by adjusting the aspect ratio and resolution. For social media, consider square or vertical formats, while horizontal layouts may be preferable for presentation slides. Adobe Express also allows you to save images in high resolution, making them suitable for print or digital publication.</p></li>
 <li><p><strong>Add Interactive Elements for Digital Presentations</strong>: For interactive or digital presentations, Adobe Express enables the addition of clickable elements, embedded links, or QR codes. Although Adobe Express does not support interactive plotting, it allows for links to other resources or interactive plots hosted on external platforms. Adding QR codes to static visuals can provide viewers with access to dynamic data or related resources.</p></li>
 </ol>
+<p>[[<img src="images/express_plots.png" style="width:100.0%" alt="Examples of Edited Plots from Express">(<a href="https://www.adobe.com/express/learn/blog/data-visualization" class="uri">https://www.adobe.com/express/learn/blog/data-visualization</a>)]</p>
 </div>
 <div id="example-workflow-enhancing-a-plot-with-adobe-express" class="section level3 unnumbered">
 <h3>Example Workflow: Enhancing a Plot with Adobe Express<a class="anchor" aria-label="anchor" href="#example-workflow-enhancing-a-plot-with-adobe-express"><i class="fas fa-link"></i></a>
@@ -381,18 +550,16 @@
 <li><a class="nav-link" href="#data-visualization-in-r"><span class="header-section-number">11</span> Data Visualization in R</a></li>
 <li><a class="nav-link" href="#introduction-to-data-visualization"><span class="header-section-number">11.1</span> Introduction to Data Visualization</a></li>
 <li>
-<a class="nav-link" href="#types-of-plots-for-data-visualization"><span class="header-section-number">11.2</span> Types of Plots for Data Visualization</a><ul class="nav navbar-nav">
-<li><a class="nav-link" href="#loading-necessary-r-packages-1">Loading Necessary R Packages</a></li>
-<li><a class="nav-link" href="#loading-the-datasets-1">Loading the Datasets</a></li>
-<li><a class="nav-link" href="#drop-scientific-notation-1">Drop Scientific Notation</a></li>
-<li><a class="nav-link" href="#one-variable-continuous">One Variable: Continuous</a></li>
-<li><a class="nav-link" href="#two-variables-both-continuous">Two Variables: Both Continuous</a></li>
-<li><a class="nav-link" href="#two-variables-one-discrete-one-continuous">Two Variables: One Discrete, One Continuous</a></li>
-<li><a class="nav-link" href="#two-variables-both-discrete">Two Variables: Both Discrete</a></li>
+<a class="nav-link" href="#data-visualization-in-r-1"><span class="header-section-number">11.2</span> Data Visualization in R</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#introduction-to-plots-with-ggplot2">Introduction to Plots with ggplot2</a></li>
+<li><a class="nav-link" href="#types-of-plots-for-data-visualization">Types of Plots for Data Visualization</a></li>
+<li><a class="nav-link" href="#add-theme-to-ggplot2-plots">Add Theme to ggplot2 Plots</a></li>
+<li><a class="nav-link" href="#customizing-ggplot2-plots-with-themes">Customizing ggplot2 Plots with Themes</a></li>
 </ul>
 </li>
 <li>
-<a class="nav-link" href="#adapting-plots-for-public-content-using-adobe-express"><span class="header-section-number">11.3</span> Adapting Plots for Public Content Using Adobe Express</a><ul class="nav navbar-nav">
+<a class="nav-link" href="#data-visualization-with-adobe-express"><span class="header-section-number">11.3</span> Data Visualization with Adobe Express</a><ul class="nav navbar-nav">
+<li><a class="nav-link" href="#adapting-plots-for-public-content-using-adobe-express">Adapting Plots for Public Content Using Adobe Express</a></li>
 <li><a class="nav-link" href="#exporting-plots-from-rstudio">Exporting Plots from RStudio</a></li>
 <li><a class="nav-link" href="#customizing-with-adobe-express">Customizing with Adobe Express</a></li>
 <li><a class="nav-link" href="#example-workflow-enhancing-a-plot-with-adobe-express">Example Workflow: Enhancing a Plot with Adobe Express</a></li>

@@ -188,7 +188,7 @@
 <div class="sourceCode" id="cb71"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the mode of genre names</span></span>
 <span><span class="va">horror_movies</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mode_genre <span class="op">=</span> <span class="fu"><a href="https://andrisignorell.github.io/DescTools/reference/Mode.html">Mode</a></span><span class="op">(</span><span class="va">genre_names</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mode_genre <span class="op">=</span> <span class="fu">Mode</span><span class="op">(</span><span class="va">genre_names</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>mode_genre
 Horror</code></pre>
@@ -202,7 +202,7 @@ Horror</code></pre>
 <div class="sourceCode" id="cb73"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Calculate the mode of anime scores</span></span>
 <span><span class="va">anime</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mode_score <span class="op">=</span> <span class="fu"><a href="https://andrisignorell.github.io/DescTools/reference/Mode.html">Mode</a></span><span class="op">(</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span><span class="op">(</span>mode_score <span class="op">=</span> <span class="fu">Mode</span><span class="op">(</span><span class="va">score</span>, na.rm <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>mode_score
 7.41</code></pre>
@@ -390,10 +390,10 @@ Horror</code></pre>
 <h3>
 <span class="header-section-number">9.3.2</span> Run <code>skim()</code> after fixing the dates<a class="anchor" aria-label="anchor" href="#run-skim-after-fixing-the-dates"><i class="fas fa-link"></i></a>
 </h3>
-<p>Once the dates are properly formatted, you can run <code><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim()</a></code> again to get a summary of the dataset:</p>
+<p>Once the dates are properly formatted, you can run <code>skim()</code> again to get a summary of the dataset:</p>
 <div class="sourceCode" id="cb86"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Quick summary of the anime dataset</span></span>
-<span><span class="fu"><a href="https://docs.ropensci.org/skimr/reference/skim.html">skim</a></span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">skim</span><span class="op">(</span><span class="va">anime</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output 1 (General Summary)</strong>:
 - <strong>Name</strong>: anime
 - <strong>Number of rows</strong>: 77,911 (number of observations)
@@ -416,7 +416,7 @@ Horror</code></pre>
 <p>Here’s how to calculate a wide range of descriptive statistics for the <strong>horror_movies</strong> dataset:</p>
 <div class="sourceCode" id="cb87"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Summary statistics using psych</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">horror_movies</span><span class="op">$</span><span class="va">vote_average</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">describe</span><span class="op">(</span><span class="va">horror_movies</span><span class="op">$</span><span class="va">vote_average</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>vars  n      mean  sd   median  trimmed  mad  min  max  range  skew  kurtosis  se
 X1    1   32540   3.34  2.88    4       3.17   3.71   0    10   10   0.13  -1.18  0.02</code></pre>
@@ -431,7 +431,7 @@ X1    1   32540   3.34  2.88    4       3.17   3.71   0    10   10   0.13  -1.18
 <p>For the <strong>video_games</strong> dataset:</p>
 <div class="sourceCode" id="cb89"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Summary statistics for video game playtime</span></span>
-<span><span class="fu"><a href="https://rdrr.io/pkg/psych/man/describe.html">describe</a></span><span class="op">(</span><span class="va">video_games</span><span class="op">$</span><span class="va">average_playtime</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu">describe</span><span class="op">(</span><span class="va">video_games</span><span class="op">$</span><span class="va">average_playtime</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Output:</strong></p>
 <pre><code>vars  n      mean   sd    median trimmed   mad   min  max   range skew  kurtosis  se
 X1    1    26679   9.06  117.94  0        0       0     5670  5670  27.03  948.55  0.72</code></pre>
