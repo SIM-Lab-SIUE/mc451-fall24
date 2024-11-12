@@ -45,12 +45,7 @@ The following option allows you to stop scientific notation.
 options(scipen = 999) 
 ```
 
-**Dataset Overviews**:
--   **Anime (`tidy_anime.csv`)**: Contains information on anime titles, genres, ratings, and related features. This dataset provides insights into audience preferences and trends within anime viewership.
--   **Horror Movies (`horror_movies.csv`)**: Focuses on horror film attributes, including genre, average rating, and viewer demographics, useful for examining genre-specific patterns.
--   **Survivor (`summary.csv`)**: Summarizes data from the reality TV show *Survivor*, with details on seasons, contestants, and competition outcomes. This dataset aids in studying audience interest and media representation in reality TV.
--   **Video Games (`video_games.csv`)**: Offers data on video game titles, genres, release dates, and player ratings. This dataset supports research on gaming trends, player behavior, and genre appeal.
-
+**Dataset Overviews**: - **Anime (`tidy_anime.csv`)**: Contains information on anime titles, genres, ratings, and related features. This dataset provides insights into audience preferences and trends within anime viewership. - **Horror Movies (`horror_movies.csv`)**: Focuses on horror film attributes, including genre, average rating, and viewer demographics, useful for examining genre-specific patterns. - **Survivor (`summary.csv`)**: Summarizes data from the reality TV show *Survivor*, with details on seasons, contestants, and competition outcomes. This dataset aids in studying audience interest and media representation in reality TV. - **Video Games (`video_games.csv`)**: Offers data on video game titles, genres, release dates, and player ratings. This dataset supports research on gaming trends, player behavior, and genre appeal.
 
 These datasets provide a diverse foundation for practicing various inferential analyses throughout this chapter. Researchers can consult the respective data dictionaries to understand variable meanings and data structures, as these resources will aid in interpreting results from the analyses to follow.
 
@@ -114,9 +109,9 @@ Cramer's V (adj.) |       95% CI
 
 *Output Explanation*
 
--   **X-squared**: This test statistic reflects the degree of association between genre and rating category. A higher X-squared value suggests a greater difference between observed and expected counts. 
--   **df**: Degrees of freedom, calculated as $(\text{rows} - 1) \times (\text{columns} - 1)$, which in this case equals 2. 
--   **p-value**: A significant p-value (e.g., $p = 1.858 \times 10^{-6}$) indicates a statistically significant association between genre and rating category. 
+-   **X-squared**: This test statistic reflects the degree of association between genre and rating category. A higher X-squared value suggests a greater difference between observed and expected counts.
+-   **df**: Degrees of freedom, calculated as $(\text{rows} - 1) \times (\text{columns} - 1)$, which in this case equals 2.
+-   **p-value**: A significant p-value (e.g., $p = 1.858 \times 10^{-6}$) indicates a statistically significant association between genre and rating category.
 -   **Cramér's** $V$: The effect size measure for chi-square tests of independence. In this example, a Cramér’s $V$ of 0.05 suggests a small effect size, indicating that while the association is statistically significant, the relationship between genre and rating categories is weak.
 
 **Additional Interpretation**: A significant p-value indicates that genre and rating categories are associated, suggesting that certain genres tend to have specific rating distributions. However, a small Cramér’s $V$ effect size (0.05) suggests that this association, while statistically significant, is not practically strong. Researchers might explore additional variables or contexts for more robust associations.
@@ -246,13 +241,13 @@ d    |       95% CI
 
 *Analysis Overview*
 
-The paired samples t-test compares two related measurements, such as pre- and post-test scores for the same group. This test is useful for evaluating changes within a single sample over time or across conditions.  
+The paired samples t-test compares two related measurements, such as pre- and post-test scores for the same group. This test is useful for evaluating changes within a single sample over time or across conditions.
 
 **Example**: Comparing viewers for the premier and finale episodes of a season in the `survivor` dataset to assess shifts in viewer interest.
 
 *Type of Data*
 
--   Continuous data from the same subjects or matched pairs in two     conditions.
+-   Continuous data from the same subjects or matched pairs in two conditions.
 
 *R Code for Analysis*
 
