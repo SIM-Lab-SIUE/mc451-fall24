@@ -1,6 +1,6 @@
 # Descriptive Analysis
 
-[[Chunk Version]](_book/files/09-descriptive_stats-chunks.Rmd)
+[[Chunk Version]](files/09-descriptive_stats-chunks.Rmd)
 
 Descriptive statistics are critical in understanding the general characteristics of a dataset. They summarize key aspects such as the average value, variability, and distribution of data points. For media and mass communication research, descriptive statistics help answer fundamental questions about viewer ratings, playtimes, episode counts, and even word frequencies in media content. This chapter introduces common descriptive statistics concepts, illustrates them with examples, and provides R code using user-friendly packages like `dplyr`, `skimr`, `psych`, and `DescTools`.
 

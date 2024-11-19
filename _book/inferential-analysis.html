@@ -7,7 +7,7 @@
 <title>Chapter 10 Inferential Analysis | An Introduction to Research Methods in Mass Media</title>
 <meta name="author" content="Alex P Leith">
 <meta name="description" content="[Chunk Version]  10.1 Introduction In mass communication research, inferential statistics enable researchers to draw conclusions about larger populations based on data collected from smaller...">
-<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
 <meta property="og:title" content="Chapter 10 Inferential Analysis | An Introduction to Research Methods in Mass Media">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/inferential-analysis.html">
@@ -72,7 +72,7 @@
 <h1>
 <span class="header-section-number">10</span> Inferential Analysis<a class="anchor" aria-label="anchor" href="#inferential-analysis"><i class="fas fa-link"></i></a>
 </h1>
-<p><a href="_book/files/10-inferential_stats-chunk.Rmd">[Chunk Version]</a></p>
+<p><a href="files/10-inferential_stats-chunk.Rmd">[Chunk Version]</a></p>
 <div id="introduction-1" class="section level2" number="10.1">
 <h2>
 <span class="header-section-number">10.1</span> Introduction<a class="anchor" aria-label="anchor" href="#introduction-1"><i class="fas fa-link"></i></a>
@@ -108,10 +108,10 @@
 <p>The analyses in this chapter utilize four distinct datasets from various domains in media studies, loaded from external sources to ensure reproducibility. The datasets include <code>anime</code>, <code>horror_movies</code>, <code>survivor</code>, and <code>video_games</code>, each of which has a corresponding data dictionary to help interpret variables and structure. Below, we load these datasets and briefly describe their contents.</p>
 <div class="sourceCode" id="cb92"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load datasets</span></span>
-<span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv"</span><span class="op">)</span></span>
-<span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv"</span><span class="op">)</span></span>
-<span><span class="va">survivor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2021/2021-06-01/summary.csv"</span><span class="op">)</span></span>
-<span><span class="va">video_games</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv"</span><span class="op">)</span></span>
+<span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv"</span><span class="op">)</span></span>
+<span><span class="va">survivor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2021/2021-06-01/summary.csv"</span><span class="op">)</span></span>
+<span><span class="va">video_games</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div id="drop-scientific-notation" class="section level3 unnumbered">
 <h3>Drop Scientific Notation<a class="anchor" aria-label="anchor" href="#drop-scientific-notation"><i class="fas fa-link"></i></a>
@@ -155,7 +155,7 @@
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">chi_square_result</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate effect size (Cramér's V)</span></span>
-<span><span class="va">effect_size_chi_square</span> <span class="op">&lt;-</span> <span class="fu">cramers_v</span><span class="op">(</span><span class="va">chi_square_result</span><span class="op">)</span></span>
+<span><span class="va">effect_size_chi_square</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/phi.html">cramers_v</a></span><span class="op">(</span><span class="va">chi_square_result</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_chi_square</span><span class="op">)</span></span></code></pre></div>
 <p><em>Analysis Output</em></p>
 <p>The output of the chi-square test provides the following information:</p>
@@ -212,7 +212,7 @@ Cramer's V (adj.) |       95% CI
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">t_test_single</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate effect size (Cohen's d)</span></span>
-<span><span class="va">effect_size_single</span> <span class="op">&lt;-</span> <span class="fu">t_to_d</span><span class="op">(</span><span class="va">t_test_single</span><span class="op">$</span><span class="va">statistic</span>, df <span class="op">=</span> <span class="va">t_test_single</span><span class="op">$</span><span class="va">parameter</span><span class="op">)</span></span>
+<span><span class="va">effect_size_single</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/t_to_r.html">t_to_d</a></span><span class="op">(</span><span class="va">t_test_single</span><span class="op">$</span><span class="va">statistic</span>, df <span class="op">=</span> <span class="va">t_test_single</span><span class="op">$</span><span class="va">parameter</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_single</span><span class="op">)</span></span></code></pre></div>
 <p><em>Analysis Output</em></p>
 <p>The output for the single sample t-test includes the t-statistic, degrees of freedom, p-value, and confidence interval. Example output:</p>
@@ -268,7 +268,7 @@ d     |         95% CI
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">t_test_independent</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate effect size (Cohen's d) for independent samples t-test</span></span>
-<span><span class="va">effect_size_independent</span> <span class="op">&lt;-</span> <span class="fu">t_to_d</span><span class="op">(</span><span class="va">t_test_independent</span><span class="op">$</span><span class="va">statistic</span>, df <span class="op">=</span> <span class="va">t_test_independent</span><span class="op">$</span><span class="va">parameter</span><span class="op">)</span></span>
+<span><span class="va">effect_size_independent</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/t_to_r.html">t_to_d</a></span><span class="op">(</span><span class="va">t_test_independent</span><span class="op">$</span><span class="va">statistic</span>, df <span class="op">=</span> <span class="va">t_test_independent</span><span class="op">$</span><span class="va">parameter</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_independent</span><span class="op">)</span></span></code></pre></div>
 <p><em>Analysis Output</em></p>
 <p>The output for the independent samples t-test includes the t-statistic, degrees of freedom, p-value, and confidence interval. Example output:</p>
@@ -318,7 +318,7 @@ d    |       95% CI
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">paired_t_test_result</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate effect size (Cohen's d) for paired samples t-test</span></span>
-<span><span class="va">effect_size_paired</span> <span class="op">&lt;-</span> <span class="fu">t_to_d</span><span class="op">(</span><span class="va">paired_t_test_result</span><span class="op">$</span><span class="va">statistic</span>, df <span class="op">=</span> <span class="va">paired_t_test_result</span><span class="op">$</span><span class="va">parameter</span>, paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">effect_size_paired</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/t_to_r.html">t_to_d</a></span><span class="op">(</span><span class="va">paired_t_test_result</span><span class="op">$</span><span class="va">statistic</span>, df <span class="op">=</span> <span class="va">paired_t_test_result</span><span class="op">$</span><span class="va">parameter</span>, paired <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_paired</span><span class="op">)</span></span></code></pre></div>
 <p><em>Analysis Output</em></p>
 <p>The output for the paired samples t-test includes the t-statistic, degrees of freedom, p-value, and confidence interval for the mean difference.</p>
@@ -381,11 +381,11 @@ d     |        95% CI
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">one_way_aov_results</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate effect size (Eta-squared)</span></span>
-<span><span class="va">effect_size_one_way</span> <span class="op">&lt;-</span> <span class="fu">eta_squared</span><span class="op">(</span><span class="va">one_way_aov_results</span><span class="op">)</span></span>
+<span><span class="va">effect_size_one_way</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">eta_squared</a></span><span class="op">(</span><span class="va">one_way_aov_results</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_one_way</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Post Hoc Test - Tukey HSD</span></span>
-<span><span class="va">posthoc_results</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="op">(</span><span class="va">one_way_aov_results</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">publisher</span><span class="op">)</span></span>
+<span><span class="va">posthoc_results</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvlenth.github.io/emmeans/reference/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">one_way_aov_results</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">publisher</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">posthoc_results</span><span class="op">)</span></span></code></pre></div>
 <p><em>Analysis Output</em></p>
 <p>The output for one-way ANOVA includes the F-statistic, degrees of freedom, p-value, and effect size. Example output:</p>
@@ -458,11 +458,11 @@ P value adjustment: tukey method for comparing a family of 3 estimates </code></
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">aov_results_two_way</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate effect size (Partial Eta-squared)</span></span>
-<span><span class="va">effect_size_two_way</span> <span class="op">&lt;-</span> <span class="fu">eta_squared</span><span class="op">(</span><span class="va">aov_results_two_way</span>, partial <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">effect_size_two_way</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">eta_squared</a></span><span class="op">(</span><span class="va">aov_results_two_way</span>, partial <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_two_way</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Post Hoc Test - Tukey HSD for interaction term</span></span>
-<span><span class="va">posthoc_results_two_way</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="op">(</span><span class="va">aov_results_two_way</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">genre_names</span> <span class="op">*</span> <span class="va">original_language</span><span class="op">)</span></span>
+<span><span class="va">posthoc_results_two_way</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvlenth.github.io/emmeans/reference/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">aov_results_two_way</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">genre_names</span> <span class="op">*</span> <span class="va">original_language</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">posthoc_results_two_way</span><span class="op">)</span></span></code></pre></div>
 <p><em>Analysis Output</em></p>
 <p>The output for two-way ANOVA includes the F-statistic and p-value for each main effect and interaction term, as well as the effect size.</p>
@@ -550,11 +550,11 @@ P value adjustment: tukey method for comparing a family of 6 estimates </code></
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/summary.html">summary</a></span><span class="op">(</span><span class="va">ancova_results</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Calculate effect size (Partial Eta-squared)</span></span>
-<span><span class="va">effect_size_ancova</span> <span class="op">&lt;-</span> <span class="fu">eta_squared</span><span class="op">(</span><span class="va">ancova_results</span>, partial <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="va">effect_size_ancova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://easystats.github.io/effectsize/reference/eta_squared.html">eta_squared</a></span><span class="op">(</span><span class="va">ancova_results</span>, partial <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">effect_size_ancova</span><span class="op">)</span></span>
 <span></span>
 <span><span class="co"># Post Hoc Test - Tukey HSD for source</span></span>
-<span><span class="va">posthoc_results_ancova</span> <span class="op">&lt;-</span> <span class="fu">emmeans</span><span class="op">(</span><span class="va">ancova_results</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">source</span><span class="op">)</span></span>
+<span><span class="va">posthoc_results_ancova</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rvlenth.github.io/emmeans/reference/emmeans.html">emmeans</a></span><span class="op">(</span><span class="va">ancova_results</span>, <span class="va">pairwise</span> <span class="op">~</span> <span class="va">source</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/print.html">print</a></span><span class="op">(</span><span class="va">posthoc_results_ancova</span><span class="op">)</span></span></code></pre></div>
 <p><em>Analysis Output</em></p>
 <p>The ANCOVA output includes the F-statistic and p-values for the main effects of <code>source</code> and <code>genre</code>, indicating if group differences persist after accounting for the covariate.</p>
@@ -824,7 +824,7 @@ Number of Fisher Scoring iterations: 7</code></pre>
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2024-11-06.</p>
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2024-11-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

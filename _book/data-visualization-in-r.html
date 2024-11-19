@@ -7,7 +7,7 @@
 <title>Chapter 11 Data Visualization in R | An Introduction to Research Methods in Mass Media</title>
 <meta name="author" content="Alex P Leith">
 <meta name="description" content="[Chunk Version]  11.1 Introduction to Data Visualization Data visualization is essential to media and mass communication research, where vast amounts of data are often collected from surveys,...">
-<meta name="generator" content="bookdown 0.40 with bs4_book()">
+<meta name="generator" content="bookdown 0.41 with bs4_book()">
 <meta property="og:title" content="Chapter 11 Data Visualization in R | An Introduction to Research Methods in Mass Media">
 <meta property="og:type" content="book">
 <meta property="og:url" content="https://github.com/SIM-Lab-SIUE/mc451-fall24/data-visualization-in-r.html">
@@ -72,7 +72,7 @@
 <h1>
 <span class="header-section-number">11</span> Data Visualization in R<a class="anchor" aria-label="anchor" href="#data-visualization-in-r"><i class="fas fa-link"></i></a>
 </h1>
-<p><a href="_book/files/11-data_visualization-chunk.Rmd">[Chunk Version]</a></p>
+<p><a href="files/11-data_visualization-chunk.Rmd">[Chunk Version]</a></p>
 <div id="introduction-to-data-visualization" class="section level2" number="11.1">
 <h2>
 <span class="header-section-number">11.1</span> Introduction to Data Visualization<a class="anchor" aria-label="anchor" href="#introduction-to-data-visualization"><i class="fas fa-link"></i></a>
@@ -119,10 +119,10 @@
 <p>The analyses in this chapter utilize four distinct datasets from various domains in media studies, loaded from external sources to ensure reproducibility. The datasets include <code>anime</code>, <code>horror_movies</code>, <code>survivor</code>, and <code>video_games</code>, each of which has a corresponding data dictionary to help interpret variables and structure. Below, we load these datasets and briefly describe their contents.</p>
 <div class="sourceCode" id="cb115"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Load datasets</span></span>
-<span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv"</span><span class="op">)</span></span>
-<span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv"</span><span class="op">)</span></span>
-<span><span class="va">swift_songs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2023/2023-10-17/taylor_all_songs.csv'</span><span class="op">)</span></span>
-<span><span class="va">video_games</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdatatable.gitlab.io/data.table/reference/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv"</span><span class="op">)</span></span></code></pre></div>
+<span><span class="va">anime</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-04-23/tidy_anime.csv"</span><span class="op">)</span></span>
+<span><span class="va">horror_movies</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2022/2022-11-01/horror_movies.csv"</span><span class="op">)</span></span>
+<span><span class="va">swift_songs</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/fread.html">fread</a></span><span class="op">(</span><span class="st">'https://raw.githubusercontent.com/rfordatascience/tidytuesday/refs/heads/master/data/2023/2023-10-17/taylor_all_songs.csv'</span><span class="op">)</span></span>
+<span><span class="va">video_games</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/data.table/man/fread.html">fread</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2019/2019-07-30/video_games.csv"</span><span class="op">)</span></span></code></pre></div>
 <p><strong>Drop Scientific Notation</strong></p>
 <p>The following option allows you to stop scientific notation.</p>
 <div class="sourceCode" id="cb116"><pre class="downlit sourceCode r">
@@ -135,10 +135,7 @@
 <div id="basic-structure-of-a-ggplot2-plot" class="section level4 unnumbered">
 <h4>Basic Structure of a <code>ggplot2</code> Plot<a class="anchor" aria-label="anchor" href="#basic-structure-of-a-ggplot2-plot"><i class="fas fa-link"></i></a>
 </h4>
-<p>In <code>ggplot2</code>, creating a plot involves three primary components:
-1. <strong>Data</strong>: The dataset you want to visualize.
-2. <strong>Aesthetic Mappings (aes)</strong>: How the variables in your data relate to the visual properties of the plot, such as the x-axis, y-axis, color, size, or shape.
-3. <strong>Geometries (geom)</strong>: The type of plot you want to create, like a bar chart, line graph, or scatter plot.</p>
+<p>In <code>ggplot2</code>, creating a plot involves three primary components: 1. <strong>Data</strong>: The dataset you want to visualize. 2. <strong>Aesthetic Mappings (aes)</strong>: How the variables in your data relate to the visual properties of the plot, such as the x-axis, y-axis, color, size, or shape. 3. <strong>Geometries (geom)</strong>: The type of plot you want to create, like a bar chart, line graph, or scatter plot.</p>
 <p>The core structure of a <code>ggplot2</code> plot starts with the <code><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot()</a></code> function, where you define the data and mappings, followed by a geometry layer. For example:</p>
 <pre><code># Example of a basic scatter plot
 ggplot(data = &lt;dataset&gt;, aes(x = &lt;x_variable&gt;, y = &lt;y_variable&gt;)) +
@@ -167,9 +164,7 @@ ggplot(data = &lt;dataset&gt;, aes(x = &lt;x_variable&gt;, y = &lt;y_variable&gt
 <span>       y <span class="op">=</span> <span class="st">"Album (hours)"</span><span class="op">)</span> <span class="op">+</span> <span class="co"># y-axis text</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="co"># rotate plot 90 degrees clockwise</span></span>
 <span><span class="va">album_bar</span></span></code></pre></div>
-<p>In this example:
-- <code>swift_songs</code> is the dataset, where <code>album_name</code> is the listed album name, and <code>duration_hrs</code> is the collective time of the tracks on the ablum.
-- <code>geom_bar(stat = "identity")</code> specifies a bar chart, where the height of each bar corresponds directly to the <code>shares</code> value for each day.</p>
+<p>In this example: - <code>swift_songs</code> is the dataset, where <code>album_name</code> is the listed album name, and <code>duration_hrs</code> is the collective time of the tracks on the ablum. - <code>geom_bar(stat = "identity")</code> specifies a bar chart, where the height of each bar corresponds directly to the <code>shares</code> value for each day.</p>
 <div class="float">
 <img src="images/ggplot2_example1.png" style="width:100.0%" alt="Example of ggplot2 Plot"><div class="figcaption">Example of <code>ggplot2</code> Plot</div>
 </div>
@@ -512,7 +507,7 @@ ggplot(data = &lt;dataset&gt;, aes(x = &lt;x_variable&gt;, y = &lt;y_variable&gt
 <li><p><strong>Optimize for Different Platforms and Formats</strong>: Adobe Express enables users to adapt their visuals to specific platforms, such as Instagram, LinkedIn, or presentation slides, by adjusting the aspect ratio and resolution. For social media, consider square or vertical formats, while horizontal layouts may be preferable for presentation slides. Adobe Express also allows you to save images in high resolution, making them suitable for print or digital publication.</p></li>
 <li><p><strong>Add Interactive Elements for Digital Presentations</strong>: For interactive or digital presentations, Adobe Express enables the addition of clickable elements, embedded links, or QR codes. Although Adobe Express does not support interactive plotting, it allows for links to other resources or interactive plots hosted on external platforms. Adding QR codes to static visuals can provide viewers with access to dynamic data or related resources.</p></li>
 </ol>
-<p>[[<img src="images/express_plots.png" style="width:100.0%" alt="Examples of Edited Plots from Express">(<a href="https://www.adobe.com/express/learn/blog/data-visualization" class="uri">https://www.adobe.com/express/learn/blog/data-visualization</a>)]</p>
+<p><a href="https://www.adobe.com/express/learn/blog/data-visualization"><img src="images/express_plots.png" style="width:100.0%" alt="Examples of Edited Plots from Express"></a></p>
 </div>
 <div id="example-workflow-enhancing-a-plot-with-adobe-express" class="section level3 unnumbered">
 <h3>Example Workflow: Enhancing a Plot with Adobe Express<a class="anchor" aria-label="anchor" href="#example-workflow-enhancing-a-plot-with-adobe-express"><i class="fas fa-link"></i></a>
@@ -582,7 +577,7 @@ ggplot(data = &lt;dataset&gt;, aes(x = &lt;x_variable&gt;, y = &lt;y_variable&gt
 <footer class="bg-primary text-light mt-5"><div class="container"><div class="row">
 
   <div class="col-12 col-md-6 mt-3">
-    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2024-11-06.</p>
+    <p>"<strong>An Introduction to Research Methods in Mass Media</strong>" was written by Alex P Leith. It was last built on 2024-11-19.</p>
   </div>
 
   <div class="col-12 col-md-6 mt-3">

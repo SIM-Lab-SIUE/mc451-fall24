@@ -1,6 +1,6 @@
 # Inferential Analysis
 
-[[Chunk Version]](_book/files/10-inferential_stats-chunk.Rmd)
+[[Chunk Version]](files/10-inferential_stats-chunk.Rmd)
 
 ## Introduction
 
